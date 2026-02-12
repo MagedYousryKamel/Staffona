@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staffona | Empowering Businesses with Seamless HR Solutions</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Icons (Material Symbols for consistency with design syntax) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#002366",
+                        secondary: "#3B82F6",
+                        "secondary-bright": "#60A5FA",
+                        accent: "#00A3FF",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0F172A",
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "Inter", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
+            <a href="#/" class="flex items-center gap-2">
+                <img src="Logo.png" alt="Staffona Logo" class="h-8 w-auto">
+                <span class="font-display font-bold text-xl tracking-tight text-primary dark:text-white">Staffona</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#/" class="nav-link" data-path="/">Home</a>
+                <a href="#/about" class="nav-link" data-path="/about">About</a>
+                <a href="#/services" class="nav-link" data-path="/services">Services</a>
+                <a href="#/why-us" class="nav-link" data-path="/why-us">Why Us</a>
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                        <span class="material-symbols-outlined text-[18px] sun-icon hidden">light_mode</span>
+                        <span class="material-symbols-outlined text-[18px] moon-icon">dark_mode</span>
+                    </button>
+                    <a href="#/contact" class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-slate-800 transition-all">Contact</a>
+                </div>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex md:hidden items-center gap-4">
+                <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    <span class="material-symbols-outlined text-[18px] sun-icon hidden">light_mode</span>
+                    <span class="material-symbols-outlined text-[18px] moon-icon">dark_mode</span>
+                </button>
+                <button id="menu-toggle" class="p-1">
+                    <span class="material-symbols-outlined text-primary dark:text-white menu-icon">menu</span>
+                    <span class="material-symbols-outlined text-primary dark:text-white close-icon hidden">close</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white dark:bg-background-dark transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+            <div class="p-6 flex flex-col h-full">
+                <div class="flex justify-between items-center mb-12">
+                    <a href="#/" class="flex items-center gap-2" onclick="closeMenu()">
+                        <img src="Logo.png" alt="Staffona Logo" class="h-8 w-auto dark:invert">
+                        <span class="font-display font-bold text-xl tracking-tight text-primary dark:text-white">Staffona</span>
+                    </a>
+                    <button class="p-2" onclick="closeMenu()">
+                        <span class="material-symbols-outlined text-3xl text-slate-900 dark:text-white">close</span>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-8 text-2xl font-semibold">
+                    <a href="#/" class="mobile-link" data-path="/" onclick="closeMenu()">Home</a>
+                    <a href="#/about" class="mobile-link" data-path="/about" onclick="closeMenu()">About</a>
+                    <a href="#/services" class="mobile-link" data-path="/services" onclick="closeMenu()">Services</a>
+                    <a href="#/why-us" class="mobile-link" data-path="/why-us" onclick="closeMenu()">Why Us</a>
+                    <a href="#/contact" class="mobile-link" data-path="/contact" onclick="closeMenu()">Contact</a>
+                </nav>
+                <div class="mt-auto pb-10">
+                    <a href="#/contact" onclick="closeMenu()" class="block w-full bg-primary text-white py-4 rounded-xl font-bold text-lg shadow-lg text-center">Request Consultation</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="content-area" class="flex-grow pt-16">
+        <!-- Home Section -->
+        <section id="page-home" class="page-section hidden">
+            <div class="relative overflow-hidden hero-gradient pt-16 pb-20 px-5">
+                <div class="max-w-7xl mx-auto">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-6 border border-blue-100 dark:border-blue-800">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                        </span>
+                        Trusted Global HR Partner
+                    </div>
+                    <h1 class="font-display text-4xl sm:text-6xl leading-[1.1] font-extrabold text-slate-900 dark:text-white mb-6">
+                        Empowering Businesses with <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary dark:from-secondary-bright dark:to-accent">Seamless HR & Outsourcing</span> Solutions
+                    </h1>
+                    <p class="text-slate-600 dark:text-slate-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl">
+                        Tailored business support services designed to streamline your operations, ensure full compliance, and fuel sustainable growth for your enterprise.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#/contact" class="bg-primary hover:bg-opacity-90 text-white py-4 px-8 rounded-xl font-bold text-base shadow-xl transition-all active:scale-[0.98] text-center">Request Consultation</a>
+                        <a href="#/services" class="flex items-center justify-center gap-2 border border-slate-300 dark:border-slate-700 py-4 px-8 rounded-xl font-bold text-base bg-white/50 dark:bg-slate-800 transition-all hover:bg-slate-50 text-slate-900 dark:text-white">
+                            Explore Services
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                    <div class="mt-16 relative">
+                        <div class="rounded-2xl overflow-hidden shadow-2xl border-[6px] border-white dark:border-slate-800">
+                            <img alt="Professional Business Meeting" class="w-full h-[400px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABQO_HVt8mNls9--QjRbVokFv-EOUKQldUGW_OtsfOvBSoi_sVbowcGlWR3uyz3OogJ2kTtgd2hVYKBs1nQEbOOnbSF4Bm_Mnev_Aetean83cLbxPiDx1pRg_1LajD3GRfJ5x09P2w1xuyTx3aNeEL4GyP8TzTNsVQU7nX5JpijBsjCX4K7HKFIVdDD4HIp7L9hI7J9FrFzB97Zs45Jf5a6YlfZ5e1R2qiRe8ImGknGf9anGLrm__adF69D8N53rakusV-SGloB4GS">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                        </div>
+                        <div class="absolute -bottom-6 right-4 sm:right-10 bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-2xl flex items-center gap-4 border border-slate-100 dark:border-slate-700">
+                            <div class="h-12 w-12 bg-green-50 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-green-600 dark:text-green-400">check_circle</span>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Compliance Rate</p>
+                                <p class="text-xl font-extrabold text-slate-900 dark:text-white">100% Secure</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="py-24 px-5 bg-white dark:bg-background-dark/50">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="font-display text-4xl font-extrabold text-slate-900 dark:text-white mb-4">Core Services</h2>
+                        <div class="w-16 h-1.5 bg-secondary mx-auto rounded-full mb-6"></div>
+                        <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto text-lg">End-to-end support ecosystems built for the modern enterprise demands.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Service Cards -->
+                        <div class="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-secondary transition-all duration-300">
+                            <div class="w-16 h-16 bg-white dark:bg-slate-700 rounded-xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all text-primary dark:text-secondary-bright">
+                                <span class="material-symbols-outlined text-[32px]">groups</span>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold mb-4 text-slate-900 dark:text-white">HR Outsourcing</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">Full-lifecycle human resource management from talent acquisition to payroll and retention strategies.</p>
+                            <a href="#/services" class="text-secondary font-bold text-sm inline-flex items-center group/link">
+                                LEARN MORE
+                                <span class="material-symbols-outlined text-[18px] ml-2 group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                        <div class="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-secondary transition-all duration-300">
+                            <div class="w-16 h-16 bg-white dark:bg-slate-700 rounded-xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all text-primary dark:text-secondary-bright">
+                                <span class="material-symbols-outlined text-[32px]">gavel</span>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold mb-4 text-slate-900 dark:text-white">Compliance</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">Mitigate risks with our exhaustive legal and regulatory compliance frameworks tailored to your industry.</p>
+                            <a href="#/services" class="text-secondary font-bold text-sm inline-flex items-center group/link">
+                                LEARN MORE
+                                <span class="material-symbols-outlined text-[18px] ml-2 group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                        <div class="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-secondary transition-all duration-300">
+                            <div class="w-16 h-16 bg-white dark:bg-slate-700 rounded-xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all text-primary dark:text-secondary-bright">
+                                <span class="material-symbols-outlined text-[32px]">hub</span>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold mb-4 text-slate-900 dark:text-white">ERP Systems</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">Implementation and management of world-class Enterprise Resource Planning systems for data-driven decisions.</p>
+                            <a href="#/services" class="text-secondary font-bold text-sm inline-flex items-center group/link">
+                                LEARN MORE
+                                <span class="material-symbols-outlined text-[18px] ml-2 group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                        <div class="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-secondary transition-all duration-300">
+                            <div class="w-16 h-16 bg-white dark:bg-slate-700 rounded-xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all text-primary dark:text-secondary-bright">
+                                <span class="material-symbols-outlined text-[32px]">support_agent</span>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold mb-4 text-slate-900 dark:text-white">Back-Office Support</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">Operational excellence through administrative, clerical, and technical support teams at your service.</p>
+                            <a href="#/services" class="text-secondary font-bold text-sm inline-flex items-center group/link">
+                                LEARN MORE
+                                <span class="material-symbols-outlined text-[18px] ml-2 group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-20 px-5">
+                <div class="max-w-7xl mx-auto bg-primary rounded-[2.5rem] p-12 text-center relative overflow-hidden shadow-2xl">
+                    <div class="absolute inset-0 opacity-10">
+                        <svg class="h-full w-full" fill="none" viewBox="0 0 400 400"><path d="M0 0h400v400H0z" fill="url(#pattern-grid)"></path><defs><pattern height="40" id="pattern-grid" patternUnits="userSpaceOnUse" width="40"><circle cx="2" cy="2" fill="#fff" r="1"></circle></pattern></defs></svg>
+                    </div>
+                    <div class="relative z-10">
+                        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mb-6">Ready to transform your business?</h2>
+                        <p class="text-blue-100 mb-10 max-w-xl mx-auto text-lg">Join hundreds of successful companies that have optimized their operations with Staffona.</p>
+                        <div class="flex justify-center"><a href="#/contact" class="bg-white text-primary px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition-colors shadow-xl">Book a Free Audit</a></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- About Section -->
+        <section id="page-about" class="page-section hidden">
+            <section class="px-5 pt-16 pb-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-background-dark">
+                <div class="max-w-4xl mx-auto text-center">
+                    <span class="text-secondary font-semibold tracking-wider uppercase text-xs">About Staffona</span>
+                    <h1 class="font-display text-4xl sm:text-6xl font-bold mt-4 leading-tight text-primary dark:text-white">Your Strategic HR & Compliance Partner</h1>
+                    <p class="mt-8 text-slate-600 dark:text-slate-400 leading-relaxed text-lg sm:text-xl max-w-2xl mx-auto">Empowering businesses through specialized HR outsourcing, ensuring operational excellence and regulatory peace of mind.</p>
+                </div>
+            </section>
+            <section class="px-5 py-20">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="font-display text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white"><span class="w-1.5 h-8 bg-primary rounded-full"></span>Who We Are</h2>
+                        <div class="bg-white dark:bg-slate-800/50 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                            <p>Staffona is a premier business support firm specializing in comprehensive HR management. We bridge the gap between complex labor regulations and efficient business growth, serving as an extension of your leadership team.</p>
+                        </div>
+                    </div>
+                    <div class="bg-primary dark:bg-slate-900 text-white rounded-[2rem] p-10 shadow-2xl">
+                        <h2 class="font-display text-2xl font-bold mb-6">Our Mission</h2>
+                        <p class="text-blue-100 text-2xl font-light italic leading-relaxed">"To redefine human resource management by delivering innovative, compliant, and people-centric solutions that catalyze sustainable business success."</p>
+                        <div class="mt-12 grid grid-cols-2 gap-6">
+                            <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/10"><div class="text-3xl font-bold">150+</div><div class="text-sm text-blue-200">Clients Served</div></div>
+                            <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/10"><div class="text-3xl font-bold">98%</div><div class="text-sm text-blue-200">Compliance Rate</div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="px-5 py-24 bg-slate-50 dark:bg-background-dark/50">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="font-display text-4xl font-bold mb-16 text-center text-slate-900 dark:text-white">Our Approach</h2>
+                    <div class="relative space-y-16 timeline-container">
+                        <div class="approach-item flex flex-col md:flex-row items-center gap-8 md:flex-row-reverse">
+                            <div class="md:w-1/2"></div>
+                            <div class="timeline-dot bg-primary"><span class="material-symbols-outlined text-sm">search</span></div>
+                            <div class="md:w-1/2 pl-16 md:pl-0 md:text-right md:pr-12">
+                                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-secondary transition-colors">
+                                    <span class="text-secondary font-bold text-sm mb-2 block">01.</span>
+                                    <h3 class="font-display text-xl font-bold mb-3 text-slate-900 dark:text-white">Discovery</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">We dive deep into your organizational culture and existing workflows to identify critical compliance gaps and efficiency opportunities.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="approach-item flex flex-col md:flex-row items-center gap-8">
+                            <div class="md:w-1/2"></div>
+                            <div class="timeline-dot bg-primary"><span class="material-symbols-outlined text-sm">settings</span></div>
+                            <div class="md:w-1/2 pl-16 md:pl-0 md:pl-12">
+                                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-secondary transition-colors">
+                                    <span class="text-secondary font-bold text-sm mb-2 block">02.</span>
+                                    <h3 class="font-display text-xl font-bold mb-3 text-slate-900 dark:text-white">Strategy Design</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Crafting a bespoke HR roadmap that aligns with your specific industry requirements and long-term business objectives.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="approach-item flex flex-col md:flex-row items-center gap-8 md:flex-row-reverse">
+                            <div class="md:w-1/2"></div>
+                            <div class="timeline-dot bg-primary"><span class="material-symbols-outlined text-sm">bolt</span></div>
+                            <div class="md:w-1/2 pl-16 md:pl-0 md:text-right md:pr-12">
+                                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-secondary transition-colors">
+                                    <span class="text-secondary font-bold text-sm mb-2 block">03.</span>
+                                    <h3 class="font-display text-xl font-bold mb-3 text-slate-900 dark:text-white">Implementation</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Deploying advanced HR technologies and streamlined processes with minimal disruption to your day-to-day operations.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="approach-item flex flex-col md:flex-row items-center gap-8">
+                            <div class="md:w-1/2"></div>
+                            <div class="timeline-dot bg-primary"><span class="material-symbols-outlined text-sm">trending_up</span></div>
+                            <div class="md:w-1/2 pl-16 md:pl-0 md:pl-12">
+                                <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-secondary transition-colors">
+                                    <span class="text-secondary font-bold text-sm mb-2 block">04.</span>
+                                    <h3 class="font-display text-xl font-bold mb-3 text-slate-900 dark:text-white">Continuous Optimization</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Ongoing monitoring and adaptation to changing labor laws, ensuring your business remains agile and protected.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="px-5 py-24">
+                <div class="max-w-4xl mx-auto bg-slate-50 dark:bg-slate-900 rounded-[3rem] p-12 border border-slate-100 dark:border-slate-800 shadow-xl relative overflow-hidden">
+                    <span class="material-symbols-outlined absolute top-10 right-10 text-slate-200 dark:text-slate-800 text-[120px] opacity-50">format_quote</span>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-6 mb-8">
+                            <img alt="Managing Director" class="w-24 h-24 rounded-full object-cover border-4 border-primary shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs_lAgEqbkDTDo_i1Q7lfEZWIfZcvJajFirbl126z4Ec2-wybVWhWg2JvmTroNALsPgbTHBUK9VwAcFRTl8TgpRs0WHUXVl_xjN5f2MdfD4c5iL1Glqi3o5yu7vxI8-L_WKYAHveKu0ECq7PHk8Btq6l0JB4WP5jGyfybt9QXyI8HsnJzkWvQaQlhFZ467v7iwBcWYkKxWOGZlC4Sz_ktBWJRqFi6qOHUhuxReCmrZiVgvcc9HzBhRf4bGxO5J6J6fQiL2ICuz2KFD">
+                            <div><h4 class="font-display font-bold text-2xl text-slate-900 dark:text-white">Elizabeth Chen</h4><p class="text-secondary uppercase tracking-widest font-bold text-sm">Managing Director</p></div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 text-2xl italic leading-relaxed pl-4 border-l-4 border-secondary">"In today's landscape, HR isn't just about administration—it's about building a fortress of compliance and a culture of excellence. We're here to be that foundation for you."</p>
+                    </div>
+                </div>
+            </section>
+            <section class="px-5 py-24 text-center">
+                <h2 class="font-display text-4xl font-bold mb-6 text-slate-900 dark:text-white">Ready to elevate your HR?</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-10 text-lg max-w-xl mx-auto">Let's discuss how Staffona can support your business growth.</p>
+                <a href="#/contact" class="inline-block bg-primary text-white font-bold px-12 py-5 rounded-full shadow-2xl hover:scale-105 transition-all">Book a Consultation</a>
+            </section>
+        </section>
+
+        <!-- Services Section -->
+        <section id="page-services" class="page-section hidden">
+            <header class="px-5 pt-16 pb-20 text-center bg-slate-50 dark:bg-slate-900/50">
+                <div class="max-w-3xl mx-auto">
+                    <h1 class="text-4xl sm:text-6xl font-bold text-primary dark:text-white mb-6">Services Overview</h1>
+                    <p class="text-slate-600 dark:text-slate-400 text-lg sm:text-xl leading-relaxed">Empowering your business with integrated HR solutions and expert back-office support.</p>
+                </div>
+            </header>
+            <div class="max-w-5xl mx-auto px-5 py-24 space-y-12">
+                <!-- Service Sections -->
+                <div class="bg-white dark:bg-slate-800 p-10 rounded-[2rem] shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all group">
+                    <div class="flex flex-col md:flex-row gap-10">
+                        <div class="md:w-1/3">
+                            <div class="w-16 h-16 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[28px]">groups</span></div>
+                            <h2 class="text-3xl font-bold text-primary dark:text-white leading-tight mb-4">HR Outsourcing & Payroll</h2>
+                            <p class="text-slate-600 dark:text-slate-400 text-lg">End-to-end management of your human capital and payroll processing to ensure operational efficiency.</p>
+                        </div>
+                        <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Full lifecycle payroll administration</span></div>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Employee benefits management</span></div>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Strategic talent acquisition</span></div>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Performance management frameworks</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-10 rounded-[2rem] shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all group">
+                    <div class="flex flex-col md:flex-row gap-10">
+                        <div class="md:w-1/3">
+                            <div class="w-16 h-16 bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[28px]">gavel</span></div>
+                            <h2 class="text-3xl font-bold text-primary dark:text-white leading-tight mb-4">Compliance & Advisory</h2>
+                            <p class="text-slate-600 dark:text-slate-400 text-lg">Navigating complex labor laws and regulatory requirements to keep your business fully protected.</p>
+                        </div>
+                        <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Labor law & statutory compliance</span></div>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Policy development & audits</span></div>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Risk mitigation strategies</span></div>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Contractual legal support</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-10 rounded-[2rem] shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all group">
+                    <div class="flex flex-col md:flex-row gap-10">
+                        <div class="md:w-1/3">
+                            <div class="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[28px]">database</span></div>
+                            <h2 class="text-3xl font-bold text-primary dark:text-white leading-tight mb-4">ERP & Workforce Systems</h2>
+                            <p class="text-slate-600 dark:text-slate-400 text-lg">Modernizing your workforce with cloud-based enterprise solutions and automated workflows.</p>
+                        </div>
+                        <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Custom ERP implementation</span></div>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Time & attendance automation</span></div>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Digital employee self-service</span></div>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Data analytics & reporting</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-10 rounded-[2rem] shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all group">
+                    <div class="flex flex-col md:flex-row gap-10">
+                        <div class="md:w-1/3">
+                            <div class="w-16 h-16 bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[28px]">business_center</span></div>
+                            <h2 class="text-3xl font-bold text-primary dark:text-white leading-tight mb-4">Back-Office Support</h2>
+                            <p class="text-slate-600 dark:text-slate-400 text-lg">Optimizing administrative overhead so you can focus on core business growth and innovation.</p>
+                        </div>
+                        <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Managed administrative services</span></div>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Accounting & bookkeeping</span></div>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Procurement & vendor management</span></div>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-1">check_circle</span><span class="text-slate-700 dark:text-slate-300 font-medium">Customer experience outsourcing</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-20 text-center">
+                    <div class="bg-primary rounded-3xl p-12 shadow-2xl relative overflow-hidden">
+                        <div class="relative z-10">
+                            <h3 class="text-3xl font-bold text-white mb-6">Need a custom solution?</h3>
+                            <p class="text-blue-100 mb-10 max-w-xl mx-auto text-lg">Talk to our experts to design a service package that fits your unique business needs.</p>
+                            <a href="#/contact" class="inline-flex items-center justify-center gap-3 bg-secondary hover:bg-secondary/90 text-white font-bold px-10 py-4 rounded-xl shadow-lg transition-all">Talk to an Expert <span class="material-symbols-outlined">arrow_forward</span></a>
+                        </div>
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+                    </div>
+                    <p class="mt-8 text-sm text-slate-500 dark:text-slate-500">Trusted by 50+ regional enterprises.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us Section -->
+        <section id="page-why-us" class="page-section hidden">
+            <section class="px-5 pt-20 pb-16 max-w-7xl mx-auto">
+                <span class="text-secondary dark:text-secondary-bright font-bold text-sm tracking-widest uppercase mb-4 block">Differentiators</span>
+                <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6">Why Industry Leaders Choose <span class="text-primary dark:text-secondary-bright">Staffona</span></h1>
+                <p class="text-slate-600 dark:text-slate-400 text-xl leading-relaxed max-w-3xl">Empowering businesses with strategic HR outsourcing and seamless operational support tailored for global growth.</p>
+            </section>
+            <section class="px-5 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto mb-20">
+                <div class="bg-primary p-10 rounded-[2rem] text-white shadow-2xl relative overflow-hidden group"><div class="relative z-10"><div class="text-6xl font-bold mb-4 group-hover:scale-110 transition-transform inline-block">15+</div><div class="text-lg uppercase tracking-widest font-bold opacity-80">Years Experience</div></div><div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div></div>
+                <div class="bg-secondary p-10 rounded-[2rem] text-white shadow-2xl relative overflow-hidden group"><div class="relative z-10"><div class="text-6xl font-bold mb-4 group-hover:scale-110 transition-transform inline-block">500+</div><div class="text-lg uppercase tracking-widest font-bold opacity-80">Global Clients</div></div><div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div></div>
+            </section>
+            <div class="space-y-24 max-w-7xl mx-auto px-5 pb-24">
+                <section class="flex flex-col md:flex-row gap-16 items-center">
+                    <div class="md:w-1/2">
+                        <div class="bg-primary/10 dark:bg-primary/20 p-5 rounded-2xl inline-block mb-8 text-primary dark:text-secondary-bright"><span class="material-symbols-outlined text-[40px]">public</span></div>
+                        <h2 class="text-4xl font-bold text-slate-900 dark:text-white mb-6">Cross-Border Operations</h2>
+                        <p class="text-slate-600 dark:text-slate-400 text-xl leading-relaxed mb-8">Navigate international markets with ease. Our expertise in local labor laws and compliance ensures your global expansion is risk-free.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 text-lg font-medium text-slate-700 dark:text-slate-300"><span class="material-symbols-outlined text-green-500 text-[24px]">check_circle</span>Global Compliance Audits</div>
+                            <div class="flex items-center gap-4 text-lg font-medium text-slate-700 dark:text-slate-300"><span class="material-symbols-outlined text-green-500 text-[24px]">check_circle</span>Multi-currency Payroll Systems</div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2"><img alt="Cross-Border Operations" class="rounded-[2rem] shadow-2xl w-full h-[400px] object-cover" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop"></div>
+                </section>
+                <section class="flex flex-col md:flex-row-reverse gap-16 items-center">
+                    <div class="md:w-1/2">
+                        <div class="bg-primary/10 dark:bg-primary/20 p-5 rounded-2xl inline-block mb-8 text-primary dark:text-secondary-bright"><span class="material-symbols-outlined text-[40px]">gavel</span></div>
+                        <h2 class="text-4xl font-bold text-slate-900 dark:text-white mb-6">Structured Governance</h2>
+                        <p class="text-slate-600 dark:text-slate-400 text-xl leading-relaxed mb-8">We implement rigorous quality controls and reporting standards that mirror top-tier corporate governance frameworks.</p>
+                    </div>
+                    <div class="md:w-1/2"><img alt="Structured Governance" class="rounded-[2rem] shadow-2xl w-full h-[400px] object-cover" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop"></div>
+                </section>
+                <section class="bg-slate-50 dark:bg-slate-800/50 rounded-[3rem] p-12 border border-slate-100 dark:border-slate-700">
+                    <div class="flex flex-col md:flex-row gap-12 items-center">
+                        <div class="md:w-1/2">
+                            <div class="bg-white dark:bg-slate-700 p-4 rounded-2xl shadow-xl mb-8 inline-block"><span class="material-symbols-outlined text-primary text-[40px]">auto_awesome</span></div>
+                            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Technology-Driven</h2>
+                            <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">Proprietary AI-powered HR platforms that streamline recruitment, attendance, and employee engagement metrics.</p>
+                            <div class="bg-white dark:bg-slate-700 p-6 rounded-2xl border border-slate-200 dark:border-slate-600 shadow-sm">
+                                <div class="flex items-center justify-between mb-4"><span class="text-xs font-semibold text-slate-400">DASHBOARD PREVIEW</span><span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-bold">LIVE</span></div>
+                                <div class="h-3 w-full bg-slate-100 dark:bg-slate-600 rounded-full mb-4"><div class="h-3 bg-primary rounded-full w-[75%]"></div></div>
+                                <div class="flex justify-between items-center text-sm"><span class="text-slate-500">Processing Efficiency</span><span class="font-bold text-primary dark:text-accent">98.2%</span></div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2"><img alt="Technology Platform" class="rounded-2xl shadow-2xl" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"></div>
+                    </div>
+                </section>
+            </div>
+            <section class="px-5 py-24 bg-primary text-white text-center relative overflow-hidden">
+                <div class="max-w-3xl mx-auto relative z-10">
+                    <h2 class="text-4xl font-bold mb-6">Ready to scale?</h2>
+                    <p class="text-blue-100 text-xl mb-10">Book a discovery call with our consultants today and see the difference.</p>
+                    <a href="#/contact" class="inline-flex items-center justify-center gap-3 bg-white text-primary font-bold px-12 py-5 rounded-xl shadow-2xl hover:bg-blue-50 transition-all">Contact Us <span class="material-symbols-outlined">arrow_forward</span></a>
+                </div>
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-secondary/20 rounded-full blur-3xl"></div>
+            </section>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="page-contact" class="page-section hidden">
+            <div id="contact-form-container" class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 py-24 px-5">
+                <div>
+                    <span class="text-secondary dark:text-secondary-bright font-bold text-sm tracking-wider uppercase mb-4 block">Contact Us</span>
+                    <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6">Let’s Discuss Your Business Needs</h1>
+                    <p class="text-slate-600 dark:text-slate-400 text-xl leading-relaxed mb-12">Our HR specialists and business advisors are ready to help you scale your operations with expert support.</p>
+                    <div class="space-y-10">
+                        <div class="flex items-start gap-6 group"><div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary dark:text-secondary-bright shrink-0 group-hover:bg-primary group-hover:text-white transition-all"><span class="material-symbols-outlined text-[24px]">mail</span></div><div><h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">Email Us</h3><a class="text-xl font-bold text-slate-900 dark:text-white hover:text-primary transition-colors" href="mailto:solutions@staffona.com">solutions@staffona.com</a></div></div>
+                        <div class="flex items-start gap-6 group"><div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary dark:text-secondary-bright shrink-0 group-hover:bg-primary group-hover:text-white transition-all"><span class="material-symbols-outlined text-[24px]">call</span></div><div><h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">Phone</h3><a class="text-xl font-bold text-slate-900 dark:text-white hover:text-primary transition-colors" href="tel:+15550000000">+1 (555) 000-0000</a></div></div>
+                        <div class="flex items-start gap-6 group"><div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary dark:text-secondary-bright shrink-0 group-hover:bg-primary group-hover:text-white transition-all"><span class="material-symbols-outlined text-[24px]">location_on</span></div><div><h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">Office</h3><p class="text-xl font-bold text-slate-900 dark:text-white">Financial District, Tower B, HQ Central</p></div></div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-8 sm:p-12 rounded-[2.5rem] shadow-2xl border border-slate-100 dark:border-slate-700">
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div><label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2" for="name">Full Name</label><input class="w-full bg-slate-50 dark:bg-slate-900 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary dark:text-white" id="name" placeholder="John Doe" type="text" required></div>
+                            <div><label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2" for="company">Company</label><input class="w-full bg-slate-50 dark:bg-slate-900 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary dark:text-white" id="company" placeholder="Acme Corp" type="text" required></div>
+                        </div>
+                        <div><label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2" for="email">Work Email</label><input class="w-full bg-slate-50 dark:bg-slate-900 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary dark:text-white" id="email" placeholder="john@company.com" type="email" required></div>
+                        <div><label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2" for="subject">Subject</label><select class="w-full bg-slate-50 dark:bg-slate-900 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary dark:text-white" id="subject"><option>HR Outsourcing</option><option>Business Support</option><option>Recruitment Services</option><option>General Inquiry</option></select></div>
+                        <div><label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2" for="message">Message</label><textarea class="w-full bg-slate-50 dark:bg-slate-900 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary dark:text-white" id="message" placeholder="How can we help your business?" rows="4" required></textarea></div>
+                        <button class="w-full bg-primary hover:bg-opacity-90 text-white font-bold py-5 rounded-xl shadow-xl transition-all active:scale-[0.98] flex items-center justify-center gap-3 disabled:opacity-70" type="submit">Send Message <span class="material-symbols-outlined">send</span></button>
+                    </form>
+                </div>
+            </div>
+            <!-- Success Message -->
+            <div id="contact-success" class="max-w-xl mx-auto text-center bg-white dark:bg-slate-800 p-12 rounded-[2rem] shadow-2xl border border-slate-100 dark:border-slate-700 hidden my-24">
+                <div class="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-8 text-green-600"><span class="material-symbols-outlined text-[48px]">check_circle</span></div>
+                <h1 class="text-3xl font-bold mb-4 dark:text-white">Message Sent!</h1>
+                <p class="text-slate-600 dark:text-slate-400 text-lg mb-8">Thank you for reaching out. One of our HR specialists will contact you within 24 hours.</p>
+                <button onclick="resetContactForm()" class="bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-opacity-90 transition-all">Send Another Message</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 dark:bg-slate-900 pt-16 pb-10 px-5 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="Logo.png" alt="Staffona Logo" class="h-6 w-auto">
+                        <span class="font-display font-bold text-lg tracking-tight text-primary dark:text-white">Staffona</span>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-xs mb-6">Excellence in HR and business process outsourcing for enterprises worldwide. Built on trust, delivered with precision.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="h-10 w-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-primary dark:text-white hover:bg-secondary hover:text-white transition-all"><span class="material-symbols-outlined text-[18px]">public</span></a>
+                        <a href="#" class="h-10 w-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-primary dark:text-white hover:bg-secondary hover:text-white transition-all"><span class="material-symbols-outlined text-[18px]">share</span></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-widest mb-6 dark:text-white">Company</h4>
+                    <ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="#/about" class="hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Insights</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Client Portal</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-widest mb-6 dark:text-white">Contact</h4>
+                    <ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0">location_on</span><span>Financial District, Tower B, HQ Central</span></li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px] shrink-0">mail</span><span>hello@staffona.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-slate-400">© 2024 Staffona Inc. All rights reserved.</p>
+                <div class="flex gap-6 text-xs text-slate-400"><a class="hover:text-primary" href="#">Privacy Policy</a><a class="hover:text-primary" href="#">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
