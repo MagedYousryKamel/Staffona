@@ -96,26 +96,29 @@ function closeMenu() {
 
 // Contact Form Logic
 function initContactForm() {
-    const form = document.getElementById('contact-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
+    const form = document.getElementById("contact-form");
 
-            btn.disabled = true;
-            btn.innerHTML = 'Sending...';
+form.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-            setTimeout(() => {
-                document.getElementById('contact-form-container').classList.add('hidden');
-                document.getElementById('contact-success').classList.remove('hidden');
-                btn.disabled = false;
-                btn.innerHTML = originalText;
-                form.reset();
-            }, 1500);
-        });
+    const data = new FormData(form);
+
+    const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        form.reset();
+        alert("Message Sent! One of our HR specialists will contact you within 24 hours.");
+    } else {
+        alert("Oops! Something went wrong.");
     }
-}
+});
+
 
 function resetContactForm() {
     document.getElementById('contact-form-container').classList.remove('hidden');
