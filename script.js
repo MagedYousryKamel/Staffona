@@ -96,28 +96,46 @@ function closeMenu() {
 
 // Contact Form Logic
 function initContactForm() {
-    const form = document.getElementById("contact-form");
+    const form = document.getElementById('contact-form');
 
-form.addEventListener("submit", async function (e) {
-    e.preventDefault();
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-    const data = new FormData(form);
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
 
-    const response = await fetch(form.action, {
-        method: form.method,
-        body: data,
-        headers: {
-            'Accept': 'application/json'
-        }
-    });
+            btn.disabled = true;
+            btn.innerHTML = 'Sending...';
 
-    if (response.ok) {
-        form.reset();
-        alert("Message Sent! One of our HR specialists will contact you within 24 hours.");
-    } else {
-        alert("Oops! Something went wrong.");
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    document.getElementById('contact-form-container').classList.add('hidden');
+                    document.getElementById('contact-success').classList.remove('hidden');
+                    form.reset();
+                } else {
+                    alert("Something went wrong. Please try again.");
+                }
+
+            } catch (error) {
+                alert("Network error. Please try again.");
+            }
+
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        });
     }
-});
+}
 
 
 function resetContactForm() {
