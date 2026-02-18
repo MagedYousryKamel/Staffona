@@ -81,11 +81,46 @@
   "name": "Staffona",
   "url": "https://www.staffona.com",
   "logo": "https://www.staffona.com/Logo.png",
-  "description": "HR outsourcing, payroll management, and compliance support for startups and growing companies.",
+  "description": "Egypt's leading Employer of Record (EOR) and payroll outsourcing specialist. We help foreign companies hire and manage teams in Egypt with full compliance.",
   "founder": {
     "@type": "Person",
     "name": "Maged Yousry"
-  }
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/staffona"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is an Employer of Record (EOR) in Egypt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An Employer of Record (EOR) is a third-party organization that becomes the legal employer of your workers in Egypt. They handle all HR, payroll, tax, and compliance tasks while you retain full control over the employee's work and performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it legal to hire in Egypt without a local entity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, it is perfectly legal to hire through an EOR. The EOR acts as the local legal entity on your behalf, ensuring all statutory requirements are met under Egyptian law."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to hire through EOR in Egypt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The entire process, from candidate selection to being fully onboarded and ready to work, typically takes between 2 and 5 business days."
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -99,11 +134,13 @@
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium">
                 <a href="#/" class="nav-link" data-path="/">Home</a>
+                <a href="#/eor-egypt" class="nav-link" data-path="/eor-egypt">EOR Egypt</a>
+                <a href="#/payroll-egypt" class="nav-link" data-path="/payroll-egypt">Payroll</a>
+                <a href="#/recruitment-egypt" class="nav-link" data-path="/recruitment-egypt">Recruitment</a>
+                <a href="#/resources" class="nav-link" data-path="/resources">Resources</a>
                 <a href="#/about" class="nav-link" data-path="/about">About</a>
-                <a href="#/services" class="nav-link" data-path="/services">Services</a>
-                <a href="#/why-us" class="nav-link" data-path="/why-us">Why Us</a>
                 <div class="flex items-center gap-4">
                     <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
                         <span class="material-symbols-outlined text-[18px] sun-icon hidden">light_mode</span>
@@ -114,7 +151,7 @@
             </nav>
 
             <!-- Mobile Menu Button -->
-            <div class="flex md:hidden items-center gap-4">
+            <div class="flex lg:hidden items-center gap-4">
                 <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
                     <span class="material-symbols-outlined text-[18px] sun-icon hidden">light_mode</span>
                     <span class="material-symbols-outlined text-[18px] moon-icon">dark_mode</span>
@@ -138,11 +175,13 @@
                         <span class="material-symbols-outlined text-3xl text-slate-900 dark:text-white">close</span>
                     </button>
                 </div>
-                <nav class="flex flex-col space-y-8 text-2xl font-semibold">
+                <nav class="flex flex-col space-y-6 text-xl font-semibold">
                     <a href="#/" class="mobile-link" data-path="/" onclick="closeMenu()">Home</a>
-                    <a href="#/about" class="mobile-link" data-path="/about" onclick="closeMenu()">About</a>
-                    <a href="#/services" class="mobile-link" data-path="/services" onclick="closeMenu()">Services</a>
-                    <a href="#/why-us" class="mobile-link" data-path="/why-us" onclick="closeMenu()">Why Us</a>
+                    <a href="#/eor-egypt" class="mobile-link" data-path="/eor-egypt" onclick="closeMenu()">EOR Egypt</a>
+                    <a href="#/payroll-egypt" class="mobile-link" data-path="/payroll-egypt" onclick="closeMenu()">Payroll</a>
+                    <a href="#/recruitment-egypt" class="mobile-link" data-path="/recruitment-egypt" onclick="closeMenu()">Recruitment</a>
+                    <a href="#/resources" class="mobile-link" data-path="/resources" onclick="closeMenu()">Resource Center</a>
+                    <a href="#/about" class="mobile-link" data-path="/about" onclick="closeMenu()">About Us</a>
                     <a href="#/contact" class="mobile-link" data-path="/contact" onclick="closeMenu()">Contact</a>
                 </nav>
                 <div class="mt-auto pb-10">
@@ -154,110 +193,280 @@
     <main id="content-area" class="flex-grow pt-16">
         <!-- Home Section -->
         <section id="page-home" class="page-section hidden">
-            <div class="relative overflow-hidden hero-gradient pt-16 pb-20 px-5">
+            <!-- Hero Section -->
+            <div class="relative overflow-hidden hero-gradient pt-24 pb-20 px-5">
                 <div class="max-w-7xl mx-auto">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-6 border border-blue-100 dark:border-blue-800">
                         <span class="relative flex h-2 w-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                         </span>
-                        Trusted Global HR Partner
+                        Egypt's Leading EOR & Compliance Specialist
                     </div>
                     <h1 class="font-display text-4xl sm:text-6xl leading-[1.1] font-extrabold text-slate-900 dark:text-white mb-6">
-                        Empowering Businesses with <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary dark:from-secondary-bright dark:to-accent">Seamless HR & Outsourcing</span> Solutions
+                        Employer of Record (EOR) Services in Egypt for <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary dark:from-secondary-bright dark:to-accent">Foreign Companies</span>
                     </h1>
-                    <p class="text-slate-600 dark:text-slate-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl">
-                        Tailored business support services designed to streamline your operations, ensure full compliance, and fuel sustainable growth for your enterprise.
+                    <p class="text-slate-600 dark:text-slate-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-3xl">
+                        Hire employees in Egypt legally and efficiently without the need to set up a local entity. Staffona handles your payroll, taxes, and labor law compliance, allowing you to focus on your core business growth.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#/contact" class="bg-primary hover:bg-opacity-90 text-white py-4 px-8 rounded-xl font-bold text-base shadow-xl transition-all active:scale-[0.98] text-center">Request Consultation</a>
-                        <a href="#/services" class="flex items-center justify-center gap-2 border border-slate-300 dark:border-slate-700 py-4 px-8 rounded-xl font-bold text-base bg-white/50 dark:bg-slate-800 transition-all hover:bg-slate-50 text-slate-900 dark:text-white">
-                            Explore Services
+                        <a href="#/contact" class="bg-primary hover:bg-opacity-90 text-white py-4 px-8 rounded-xl font-bold text-base shadow-xl transition-all active:scale-[0.98] text-center">Book a Compliance Consultation</a>
+                        <a href="#/eor-egypt" class="flex items-center justify-center gap-2 border border-slate-300 dark:border-slate-700 py-4 px-8 rounded-xl font-bold text-base bg-white/50 dark:bg-slate-800 transition-all hover:bg-slate-50 text-slate-900 dark:text-white">
+                            Explore EOR Solutions
                             <span class="material-symbols-outlined">arrow_forward</span>
                         </a>
                     </div>
-                    <div class="mt-16 relative">
-                        <div class="rounded-2xl overflow-hidden shadow-2xl border-[6px] border-white dark:border-slate-800">
-                            <img alt="Professional Business Meeting" class="w-full h-[400px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABQO_HVt8mNls9--QjRbVokFv-EOUKQldUGW_OtsfOvBSoi_sVbowcGlWR3uyz3OogJ2kTtgd2hVYKBs1nQEbOOnbSF4Bm_Mnev_Aetean83cLbxPiDx1pRg_1LajD3GRfJ5x09P2w1xuyTx3aNeEL4GyP8TzTNsVQU7nX5JpijBsjCX4K7HKFIVdDD4HIp7L9hI7J9FrFzB97Zs45Jf5a6YlfZ5e1R2qiRe8ImGknGf9anGLrm__adF69D8N53rakusV-SGloB4GS">
-                            <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                            <div class="text-primary dark:text-secondary-bright mb-4"><span class="material-symbols-outlined text-4xl">verified_user</span></div>
+                            <h3 class="text-lg font-bold mb-2">100% Compliant</h3>
+                            <p class="text-slate-500 text-sm">Full adherence to Egyptian Labor Law and Social Insurance regulations.</p>
                         </div>
-                        <div class="absolute -bottom-6 right-4 sm:right-10 bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-2xl flex items-center gap-4 border border-slate-100 dark:border-slate-700">
-                            <div class="h-12 w-12 bg-green-50 dark:bg-green-900/30 rounded-full flex items-center justify-center">
-                                <span class="material-symbols-outlined text-green-600 dark:text-green-400">check_circle</span>
-                            </div>
-                            <div>
-                                <p class="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Compliance Rate</p>
-                                <p class="text-xl font-extrabold text-slate-900 dark:text-white">100% Secure</p>
-                            </div>
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                            <div class="text-primary dark:text-secondary-bright mb-4"><span class="material-symbols-outlined text-4xl">speed</span></div>
+                            <h3 class="text-lg font-bold mb-2">Fast Onboarding</h3>
+                            <p class="text-slate-500 text-sm">Hire and onboard your Egyptian team in as little as 48 hours.</p>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                            <div class="text-primary dark:text-secondary-bright mb-4"><span class="material-symbols-outlined text-4xl">account_balance</span></div>
+                            <h3 class="text-lg font-bold mb-2">No Entity Needed</h3>
+                            <p class="text-slate-500 text-sm">Save thousands in setup costs and months of administrative wait times.</p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Strategic Positioning Section -->
             <section class="py-24 px-5 bg-white dark:bg-background-dark/50">
                 <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-16">
-                        <h2 class="font-display text-4xl font-extrabold text-slate-900 dark:text-white mb-4">Core Services</h2>
-                        <div class="w-16 h-1.5 bg-secondary mx-auto rounded-full mb-6"></div>
-                        <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto text-lg">End-to-end support ecosystems built for the modern enterprise demands.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Service Cards -->
-                        <div class="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-secondary transition-all duration-300">
-                            <div class="w-16 h-16 bg-white dark:bg-slate-700 rounded-xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all text-primary dark:text-secondary-bright">
-                                <span class="material-symbols-outlined text-[32px]">groups</span>
+                    <div class="flex flex-col lg:flex-row items-center gap-16">
+                        <div class="lg:w-1/2">
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-6">Egypt Hiring Solution for Foreign Companies</h2>
+                            <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
+                                Staffona serves as your trusted local partner in Egypt, acting as the legal employer for your staff while you maintain full day-to-day management. Our Employer of Record (EOR) model is specifically designed for international firms, startups, and GCC-based companies looking to tap into Egypt's vast talent pool.
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">
+                                Whether you are looking for <strong>payroll outsourcing in Egypt</strong> or a complete <strong>Egypt labor law compliance</strong> framework, our experts provide the regulatory clarity and operational safety required to scale without risk.
+                            </p>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-3"><span class="material-symbols-outlined text-green-500">check_circle</span> <span class="font-medium">Direct interaction with Egyptian Tax & Social Insurance Authorities</span></div>
+                                <div class="flex items-center gap-3"><span class="material-symbols-outlined text-green-500">check_circle</span> <span class="font-medium">Legally-vetted employment contracts in Arabic and English</span></div>
+                                <div class="flex items-center gap-3"><span class="material-symbols-outlined text-green-500">check_circle</span> <span class="font-medium">Transparent pricing with no hidden administrative fees</span></div>
                             </div>
-                            <h3 class="font-display text-2xl font-bold mb-4 text-slate-900 dark:text-white">HR Outsourcing</h3>
-                            <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">Full-lifecycle human resource management from talent acquisition to payroll and retention strategies.</p>
-                            <a href="#/services" class="text-secondary font-bold text-sm inline-flex items-center group/link">
-                                LEARN MORE
-                                <span class="material-symbols-outlined text-[18px] ml-2 group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
-                            </a>
                         </div>
-                        <div class="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-secondary transition-all duration-300">
-                            <div class="w-16 h-16 bg-white dark:bg-slate-700 rounded-xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all text-primary dark:text-secondary-bright">
-                                <span class="material-symbols-outlined text-[32px]">gavel</span>
+                        <div class="lg:w-1/2">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074&auto=format&fit=crop" alt="Hiring in Egypt" class="rounded-2xl shadow-2xl">
+                                <div class="absolute -bottom-6 -left-6 bg-primary text-white p-8 rounded-2xl shadow-xl hidden sm:block">
+                                    <p class="text-4xl font-bold mb-1">100%</p>
+                                    <p class="text-sm font-medium opacity-80 uppercase tracking-widest">Local Compliance</p>
+                                </div>
                             </div>
-                            <h3 class="font-display text-2xl font-bold mb-4 text-slate-900 dark:text-white">Compliance</h3>
-                            <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">Mitigate risks with our exhaustive legal and regulatory compliance frameworks tailored to your industry.</p>
-                            <a href="#/services" class="text-secondary font-bold text-sm inline-flex items-center group/link">
-                                LEARN MORE
-                                <span class="material-symbols-outlined text-[18px] ml-2 group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
-                            </a>
-                        </div>
-                        <div class="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-secondary transition-all duration-300">
-                            <div class="w-16 h-16 bg-white dark:bg-slate-700 rounded-xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all text-primary dark:text-secondary-bright">
-                                <span class="material-symbols-outlined text-[32px]">hub</span>
-                            </div>
-                            <h3 class="font-display text-2xl font-bold mb-4 text-slate-900 dark:text-white">Recruitment</h3>
-                            <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">We support companies in building local teams efficiently.</p>
-                            <a href="#/services" class="text-secondary font-bold text-sm inline-flex items-center group/link">
-                                LEARN MORE
-                                <span class="material-symbols-outlined text-[18px] ml-2 group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
-                            </a>
-                        </div>
-                        <div class="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-secondary transition-all duration-300">
-                            <div class="w-16 h-16 bg-white dark:bg-slate-700 rounded-xl flex items-center justify-center shadow-sm mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all text-primary dark:text-secondary-bright">
-                                <span class="material-symbols-outlined text-[32px]">support_agent</span>
-                            </div>
-                            <h3 class="font-display text-2xl font-bold mb-4 text-slate-900 dark:text-white">Back-Office Support</h3>
-                            <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">Operational excellence through administrative, clerical, and technical support teams at your service.</p>
-                            <a href="#/services" class="text-secondary font-bold text-sm inline-flex items-center group/link">
-                                LEARN MORE
-                                <span class="material-symbols-outlined text-[18px] ml-2 group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
-                            </a>
                         </div>
                     </div>
                 </div>
             </section>
-            <section class="py-20 px-5">
-                <div class="max-w-7xl mx-auto bg-primary rounded-[2.5rem] p-12 text-center relative overflow-hidden shadow-2xl">
-                    <div class="absolute inset-0 opacity-10">
-                        <svg class="h-full w-full" fill="none" viewBox="0 0 400 400"><path d="M0 0h400v400H0z" fill="url(#pattern-grid)"></path><defs><pattern height="40" id="pattern-grid" patternUnits="userSpaceOnUse" width="40"><circle cx="2" cy="2" fill="#fff" r="1"></circle></pattern></defs></svg>
+
+            <!-- How to Hire Section -->
+            <section class="py-24 px-5 bg-slate-50 dark:bg-slate-900/50">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-4">How to Hire Employees in Egypt Without Opening a Company</h2>
+                        <div class="w-16 h-1.5 bg-secondary mx-auto rounded-full mb-6"></div>
+                        <p class="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-lg">Setting up a legal entity in Egypt can take months and require significant capital. Our EOR service provides a legal shortcut.</p>
                     </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-primary font-bold text-2xl">1</div>
+                            <h3 class="font-bold mb-2">Select Talent</h3>
+                            <p class="text-slate-500 text-sm">You find the right candidate or use our recruitment services.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-primary font-bold text-2xl">2</div>
+                            <h3 class="font-bold mb-2">Compliance Check</h3>
+                            <p class="text-slate-500 text-sm">We verify the contract terms against Egyptian Labor Law.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-primary font-bold text-2xl">3</div>
+                            <h3 class="font-bold mb-2">Onboarding</h3>
+                            <p class="text-slate-500 text-sm">Staffona signs the contract and handles social insurance registration.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-primary font-bold text-2xl">4</div>
+                            <h3 class="font-bold mb-2">Manage & Pay</h3>
+                            <p class="text-slate-500 text-sm">You manage the employee; we handle the monthly payroll and taxes.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comparison Table -->
+            <section class="py-24 px-5">
+                <div class="max-w-7xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-12">Employer of Record vs. Opening an Entity</h2>
+                    <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xl">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-800">
+                                    <th class="p-6 font-bold border-b border-slate-200 dark:border-slate-700">Feature</th>
+                                    <th class="p-6 font-bold border-b border-slate-200 dark:border-slate-700 text-primary dark:text-secondary-bright">Staffona EOR</th>
+                                    <th class="p-6 font-bold border-b border-slate-200 dark:border-slate-700 text-slate-400">Opening a Legal Entity</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                                <tr>
+                                    <td class="p-6 font-medium">Setup Time</td>
+                                    <td class="p-6 text-green-600 dark:text-green-400 font-semibold">2-5 Days</td>
+                                    <td class="p-6">4-8 Months</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-6 font-medium">Initial Capital</td>
+                                    <td class="p-6 text-green-600 dark:text-green-400 font-semibold">Zero</td>
+                                    <td class="p-6">Significant (Min. Capital Req.)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-6 font-medium">Compliance Risk</td>
+                                    <td class="p-6 text-green-600 dark:text-green-400 font-semibold">Staffona assumes risk</td>
+                                    <td class="p-6">Full liability for company</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-6 font-medium">Admin & HR Staff</td>
+                                    <td class="p-6 text-green-600 dark:text-green-400 font-semibold">Included</td>
+                                    <td class="p-6">Must hire locally</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-6 font-medium">Market Exit</td>
+                                    <td class="p-6 text-green-600 dark:text-green-400 font-semibold">Instant / 30-day notice</td>
+                                    <td class="p-6">Complex liquidation (12+ months)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GCC & International Section -->
+            <section class="py-24 px-5 bg-primary text-white overflow-hidden relative">
+                <div class="max-w-7xl mx-auto relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Serving GCC & International Companies</h2>
+                            <p class="text-blue-100 text-lg mb-8 leading-relaxed">
+                                Egypt has become a hub for high-quality, cost-effective talent for companies based in the UAE, Saudi Arabia, and Europe. Our cross-border EOR solutions allow GCC firms to hire Egyptian developers, customer support specialists, and engineers with full regulatory safety.
+                            </p>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/20">
+                                    <h4 class="font-bold mb-1">UAE Companies</h4>
+                                    <p class="text-xs text-blue-200">Expand your team in Cairo from your Dubai HQ.</p>
+                                </div>
+                                <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/20">
+                                    <h4 class="font-bold mb-1">KSA Businesses</h4>
+                                    <p class="text-xs text-blue-200">Tap into Egyptian expertise for Vision 2030 projects.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="bg-white rounded-2xl p-8 text-slate-900 shadow-2xl">
+                                <h3 class="text-xl font-bold mb-4">Request a Compliance Assessment</h3>
+                                <p class="text-slate-500 text-sm mb-6">Get a custom report on hiring costs and legal requirements for your specific needs in Egypt.</p>
+                                <a href="#/contact" class="block w-full bg-secondary text-white text-center py-4 rounded-xl font-bold hover:bg-secondary/90 transition-all">Start Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] -mr-48 -mt-48"></div>
+            </section>
+
+            <!-- Detailed Content for SEO -->
+            <section class="py-24 px-5 max-w-5xl mx-auto prose dark:prose-invert">
+                <h2>Comprehensive Employer of Record (EOR) Solutions in Egypt</h2>
+                <p>
+                    Navigating the Egyptian market requires deep local knowledge. As an <strong>Employer of Record Egypt</strong> specialist, Staffona provides a bridge between global business standards and local regulatory requirements. Our services ensure that your business avoids the common pitfalls of hiring in a foreign jurisdiction, such as misclassification of workers or incorrect tax filings.
+                </p>
+                <h3>Why Hire Employees in Egypt?</h3>
+                <p>
+                    Egypt offers one of the most competitive talent markets in the Middle East and Africa. With a large, young, and multilingual population, foreign companies can access skilled professionals at a fraction of the cost of hiring in Western or GCC markets. However, the <strong>Egypt hiring solution for foreign companies</strong> must include a robust compliance strategy.
+                </p>
+                <ul>
+                    <li><strong>Skilled Workforce:</strong> High concentration of engineers, developers, and bilingual support staff.</li>
+                    <li><strong>Cost Efficiency:</strong> Competitive salary benchmarks compared to neighboring regions.</li>
+                    <li><strong>Strategic Location:</strong> Ideal timezone for serving both European and Asian clients.</li>
+                </ul>
+                <h3>Understanding Egypt Labor Law Compliance</h3>
+                <p>
+                    The Egyptian Labor Law No. 12 of 2003 is the primary legislation governing employment. It covers everything from contract types and working hours to termination and social insurance. Non-compliance can lead to significant fines and legal disputes. Our EOR model handles all these complexities for you, ensuring that every employee is registered correctly with the <strong>Social Insurance Authority</strong> and that <strong>Income Tax</strong> is withheld and paid on time every month.
+                </p>
+                <h3>Payroll Outsourcing in Egypt</h3>
+                <p>
+                    Managing payroll for a distributed team is a logistical challenge that requires precision and a deep understanding of local tax laws. Our <strong>payroll outsourcing Egypt</strong> service simplifies this by centralizing all payments and administrative tasks. We handle the entire lifecycle of payroll management, ensuring that your employees are paid accurately and on time, every single month.
+                </p>
+                <p>
+                    Our payroll experts calculate gross-to-net salaries, taking into account all statutory deductions, including income tax, social insurance contributions, and any other local levies. We also provide employees with detailed, legally-compliant payslips and maintain all necessary payroll records for audit purposes. By outsourcing your payroll to Staffona, you eliminate the risk of late filings and the resulting penalties, while ensuring your company remains compliant with the latest tax amendments and labor regulations.
+                </p>
+                <h3>Egypt Labor Law Compliance: A Deep Dive</h3>
+                <p>
+                    Egyptian Labor Law is designed to protect both the employer and the employee, but its complexity can be a hurdle for foreign investors. Key areas of focus for our compliance team include:
+                </p>
+                <ul>
+                    <li><strong>Employment Contracts:</strong> Contracts must be written in Arabic and can be bilingual. They must clearly state the duration, salary, and nature of the work. Fixed-term contracts are common and provide flexibility for project-based hiring.</li>
+                    <li><strong>Working Hours & Overtime:</strong> Standard working hours are 8 hours per day, 48 hours per week. Overtime must be compensated at specific rates (35% for daytime, 70% for nighttime, and 100% for holidays).</li>
+                    <li><strong>Probation Periods:</strong> A probation period of up to three months is allowed, during which the employer can assess the employee's fit for the role.</li>
+                    <li><strong>Statutory Leave:</strong> Employees are entitled to annual leave (starting at 21 days), sick leave, and maternity leave. Managing these entitlements correctly is crucial for maintaining a positive relationship with your workforce.</li>
+                </ul>
+                <p>
+                    Staffona's legal team stays abreast of all changes in the law, ensuring that your employment practices are always up to date. This proactive approach to <strong>Egypt labor law compliance</strong> is what sets us apart as a premium EOR provider.
+                </p>
+                <h3>Custom Egypt Hiring Solution for Foreign Companies</h3>
+                <p>
+                    No two businesses are the same, and neither are their hiring needs. Staffona offers a <strong>Egypt hiring solution for foreign companies</strong> that is tailored to your specific industry and scale. From tech startups looking for their first remote developer in Cairo to large multinational corporations requiring a managed back-office team, we provide the infrastructure and expertise to make it happen.
+                </p>
+                <p>
+                    Our solution goes beyond just legal employment. We provide ongoing HR support, employee engagement strategies, and performance management frameworks that help you build a loyal and productive team in Egypt. By partnering with us, you gain access to a wealth of local knowledge that helps you navigate the cultural and professional landscape of the Egyptian market.
+                </p>
+                <h3>Serving the Middle East and Beyond</h3>
+                <p>
+                    While we specialize in the Egyptian market, our reach is global. We have extensive experience working with companies from the <strong>United States, United Kingdom, and the European Union</strong>, as well as our core clients in the <strong>GCC (Saudi Arabia, UAE, Qatar, Kuwait)</strong>. Our team understands the high standards expected by international businesses and delivers a service that is both reliable and professional.
+                </p>
+                <p>
+                    The "Remote-First" era has opened up incredible opportunities for global talent acquisition. Egypt, with its high density of tech talent and affordable cost of living, is a prime destination for companies looking to optimize their operations. Staffona is here to ensure that your journey into the Egyptian talent market is successful, safe, and sustainable.
+                </p>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="py-24 px-5 bg-slate-50 dark:bg-slate-900/50">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+                    <div class="space-y-6">
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                            <h3 class="text-xl font-bold mb-3">What is an Employer of Record (EOR) in Egypt?</h3>
+                            <p class="text-slate-600 dark:text-slate-400">An Employer of Record (EOR) is a third-party organization that becomes the legal employer of your workers in Egypt. They handle all HR, payroll, tax, and compliance tasks while you retain full control over the employee's work and performance.</p>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                            <h3 class="text-xl font-bold mb-3">Is it legal to hire in Egypt without a local entity?</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Yes, it is perfectly legal to hire through an EOR. The EOR acts as the local legal entity on your behalf, ensuring all statutory requirements are met under Egyptian law.</p>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                            <h3 class="text-xl font-bold mb-3">How does Staffona handle payroll and taxes?</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Staffona calculates the monthly payroll, including all taxes and social insurance contributions. We then invoice you for the total cost, pay the employees in their local currency, and remit the taxes to the Egyptian authorities.</p>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                            <h3 class="text-xl font-bold mb-3">What are the benefits for Egyptian employees?</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Employees hired through Staffona receive full legal protections under Egyptian law, including social insurance, medical coverage, and a formal employment contract, which is often preferred over freelance arrangements.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final CTA -->
+            <section class="py-24 px-5">
+                <div class="max-w-5xl mx-auto bg-gradient-to-r from-primary to-secondary rounded-[2.5rem] p-12 text-center text-white shadow-2xl relative overflow-hidden">
                     <div class="relative z-10">
-                        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mb-6">Ready to transform your business?</h2>
-                        <p class="text-blue-100 mb-10 max-w-xl mx-auto text-lg">Join hundreds of successful companies that have optimized their operations with Staffona.</p>
-                        <div class="flex justify-center"><a href="#/contact" class="bg-white text-primary px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition-colors shadow-xl">Book a Free Audit</a></div>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-6">Ready to Hire Your Team in Egypt?</h2>
+                        <p class="text-blue-100 mb-10 max-w-2xl mx-auto text-lg">Partner with Staffona for reliable, compliant, and scalable HR solutions. Let's build your offshore team together.</p>
+                        <div class="flex flex-col sm:flex-row justify-center gap-4">
+                            <a href="#/contact" class="bg-white text-primary px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition-colors shadow-xl">Speak to an Egypt Specialist</a>
+                            <a href="#/resources" class="bg-transparent border border-white/30 text-white px-10 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors">View Hiring Guides</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -591,6 +800,1453 @@
                 <button onclick="resetContactForm()" class="bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-opacity-90 transition-all">Send Another Message</button>
             </div>
         </section>
+
+        <!-- New Service Pages Placeholders -->
+        <section id="page-eor-egypt" class="page-section hidden">
+            <!-- Hero Section -->
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-20 px-5">
+                <div class="max-w-7xl mx-auto">
+                    <h1 class="font-display text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white mb-6">
+                        Employer of Record (EOR) in Egypt
+                    </h1>
+                    <p class="text-slate-600 dark:text-slate-400 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
+                        Hire employees in Egypt legally and quickly without the complexity of setting up a local subsidiary. Our EOR services manage everything from payroll and taxes to local compliance.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#/contact" class="bg-primary text-white px-8 py-4 rounded-xl font-bold shadow-xl">Get a Free Consultation</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <section class="py-24 px-5">
+                <div class="max-w-5xl mx-auto prose dark:prose-invert">
+                    <h2>What is an Employer of Record (EOR) in Egypt?</h2>
+                    <p>
+                        An <strong>Employer of Record (EOR) in Egypt</strong> is a service that allows foreign companies to hire Egyptian employees without having a locally registered company. The EOR provider (Staffona) acts as the legal employer, taking on all responsibilities for payroll, tax withholding, social insurance, and labor law compliance. Meanwhile, the foreign company retains the right to manage the employee's work, goals, and daily activities.
+                    </p>
+                    <p>
+                        This model is often referred to as "Employment Outsourcing" or "Professional Employer Organization (PEO)" in some contexts, although an EOR specifically takes on the full legal liability of employment. In Egypt, this is a highly effective way for international businesses to tap into the local talent market while remaining 100% compliant with local regulations.
+                    </p>
+
+                    <h3>The Legal Framework for EOR in Egypt</h3>
+                    <p>
+                        Employment in Egypt is primarily governed by <strong>Labor Law No. 12 of 2003</strong>. This comprehensive piece of legislation sets the standard for employment relationships across the country, covering everything from the recruitment process and initial onboarding to daily operations and eventual termination procedures. For a foreign company, complying with this law can be incredibly challenging due to the requirements for local physical representation, deep knowledge of Arabic legal terminology, and frequent interactions with various government bodies, including the Ministry of Labor and the Social Insurance Authority.
+                    </p>
+                    <p>
+                        Our EOR service provides the necessary legal framework to navigate these complexities. We ensure that every employee has a valid, legally-vetted employment contract that meets all the requirements of the Egyptian Ministry of Labor. These contracts are meticulously drafted to include specific clauses regarding working hours, salary structures, job descriptions, and employee rights, ensuring that both the employer and the employee are protected. We also manage the mandatory registration of contracts with the local labor office, a step that is often overlooked by foreign companies but is essential for legal compliance.
+                    </p>
+                    <p>
+                        Furthermore, the legal framework in Egypt is not static. Regular amendments and new circulars from the Ministry of Labor can change the requirements for minimum wage, insurance ceilings, and employee benefits. As your EOR partner, Staffona takes on the responsibility of monitoring these changes and implementing them immediately, ensuring that your business never falls out of compliance.
+                    </p>
+
+                    <h3>Egyptian Labor Law Reference</h3>
+                    <p>
+                        Key aspects of the Egyptian Labor Law that foreign employers must understand include:
+                    </p>
+                    <ul>
+                        <li><strong>Trial (Probation) Period:</strong> Maximum of 3 months. An employee cannot be placed on probation more than once with the same employer.</li>
+                        <li><strong>Working Hours:</strong> Maximum of 8 hours per day and 48 hours per week. Employees must have at least one full day of rest per week.</li>
+                        <li><strong>Overtime:</strong> Must be paid for any hours worked beyond the standard limit. Rates vary depending on whether the work is done during the day, at night, or on a public holiday.</li>
+                        <li><strong>Notice Period:</strong> Typically 2 months for employees with less than 10 years of service, and 3 months for those with more.</li>
+                    </ul>
+
+                    <h3>Social Insurance Compliance</h3>
+                    <p>
+                        In Egypt, social insurance is mandatory for all employees. It provides coverage for old age, disability, death, and work-related injuries. Under the <strong>Social Insurance and Pensions Law No. 148 of 2019</strong>, both the employer and the employee must contribute a percentage of the employee's "insurance salary" to the Social Insurance Authority.
+                    </p>
+                    <p>
+                        Staffona handles the registration of every employee with the Social Insurance Authority, ensures that monthly contributions are calculated correctly, and manages the remittance process. This is one of the most critical aspects of compliance in Egypt, as failure to pay social insurance can lead to severe penalties and legal action.
+                    </p>
+
+                    <h3>Income Tax Obligations</h3>
+                    <p>
+                        Every employee in Egypt is subject to progressive income tax. As the EOR, Staffona is responsible for calculating the correct amount of tax to be withheld from each employee's salary and remitting it to the <strong>Egyptian Tax Authority</strong> on a monthly basis. We also handle the annual tax reconciliation process, ensuring that the total tax paid throughout the year matches the employee's final liability.
+                    </p>
+
+                    <h3>Employment Contract Compliance</h3>
+                    <p>
+                        Under Egyptian law, all employment contracts must be written in Arabic and three copies must be made (one for the employer, one for the employee, and one for the Social Insurance Office). While Staffona can provide bilingual contracts (Arabic/English), the Arabic version remains the legally binding version in the event of a dispute. We ensure that your contracts are not only compliant with the law but also protect your intellectual property and confidential information.
+                    </p>
+
+                    <h3>Risks of Non-Compliance</h3>
+                    <p>
+                        The consequences of ignoring local labor laws in Egypt can be significant:
+                    </p>
+                    <ul>
+                        <li><strong>Fines:</strong> Regulatory bodies frequently audit companies and can impose heavy fines for missed social insurance payments or incorrect tax filings.</li>
+                        <li><strong>Legal Disputes:</strong> Employees in Egypt are well-protected by the law, and labor courts often favor the employee in disputes where the employer has not followed proper legal procedures.</li>
+                        <li><strong>Reputational Risk:</strong> Non-compliance can damage your brand's reputation in the local market, making it harder to attract and retain top talent.</li>
+                        <li><strong>Operational Disruptions:</strong> Legal issues can lead to delays in operations and even the suspension of business activities.</li>
+                    </ul>
+
+                    <h3>Cost Comparison Table: EOR vs. Local Entity</h3>
+                    <div class="overflow-x-auto my-8">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-800">
+                                    <th class="p-4 font-bold border">Category</th>
+                                    <th class="p-4 font-bold border">Employer of Record (EOR)</th>
+                                    <th class="p-4 font-bold border">Local Legal Entity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-4 border font-medium">Initial Setup Cost</td>
+                                    <td class="p-4 border text-green-600 font-bold">$0 - $500</td>
+                                    <td class="p-4 border">$10,000 - $30,000+</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border font-medium">Monthly Maintenance</td>
+                                    <td class="p-4 border">Fixed Service Fee</td>
+                                    <td class="p-4 border">$2,000+ (Office, Accountant, Legal)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border font-medium">Time to Market</td>
+                                    <td class="p-4 border text-green-600 font-bold">2-5 Days</td>
+                                    <td class="p-4 border">4-8 Months</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border font-medium">Compliance Management</td>
+                                    <td class="p-4 border">Handled by Staffona</td>
+                                    <td class="p-4 border">Company responsibility</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border font-medium">Liquidation / Exit</td>
+                                    <td class="p-4 border text-green-600 font-bold">30 Days Notice</td>
+                                    <td class="p-4 border">12-24 Months (Very difficult)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-slate-50 dark:bg-slate-800 p-10 rounded-[2rem] my-16 border border-slate-200 dark:border-slate-700 not-prose">
+                        <h2 class="text-3xl font-bold mb-8 dark:text-white">Why Foreign Companies Choose Staffona for Hiring in Egypt</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="font-bold text-primary dark:text-secondary-bright mb-2">Regulatory Expertise</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Deep knowledge of the latest labor laws and tax circulars ensures your business is always on the right side of the law.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary dark:text-secondary-bright mb-2">Local Legal Knowledge</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Our in-house legal team provides vetted contracts and represents you before the Ministry of Labor.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary dark:text-secondary-bright mb-2">Payroll Accuracy</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Precise calculations of taxes and social insurance, with guaranteed on-time payments to your team.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary dark:text-secondary-bright mb-2">Reduced Operational Risk</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">By acting as the EOR, we assume the legal liability of employment, protecting your headquarters from local risks.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Step-by-Step Onboarding Process with Staffona</h3>
+                    <p>
+                        We have streamlined the onboarding process to be as efficient as possible, allowing you to go from candidate selection to active work in a matter of days.
+                    </p>
+                    <ol>
+                        <li><strong>Step 1: Agreement & Talent Selection:</strong> You sign a Master Service Agreement (MSA) with Staffona and provide us with the details of the candidate you wish to hire, including their proposed salary and start date.</li>
+                        <li><strong>Step 2: Documentation & Background Checks:</strong> We collect all necessary documents from the employee, which typically include their national ID, education certificates, criminal record check (Fish), and military status certificate for male employees. We ensure all documents are authentic and meet legal requirements.</li>
+                        <li><strong>Step 3: Contract Drafting & Signing:</strong> Staffona issues a compliant employment contract in Arabic (with an English translation for your records). We handle the signing process, ensuring the employee understands their rights and obligations.</li>
+                        <li><strong>Step 4: Statutory Registration:</strong> We register the employee with the Social Insurance Authority and the local Labor Office. This includes setting up their insurance file and ensuring they are covered under the national health and pension schemes.</li>
+                        <li><strong>Step 5: Health & Safety Training:</strong> Where required by law, we provide basic health and safety orientations to ensure the employee is aware of local workplace regulations.</li>
+                        <li><strong>Step 6: Go-Live & Management:</strong> The employee begins their work under your direction. Staffona begins the monthly payroll cycle, managing time-tracking, expense reimbursements, and tax withholdings.</li>
+                    </ol>
+                    <p>
+                        This structured approach ensures that no detail is missed, providing you with the peace of mind that your Egyptian team is hired correctly from day one.
+                    </p>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="py-24 px-5 bg-slate-50 dark:bg-slate-900/50">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-12">Employer of Record (EOR) Egypt FAQ</h2>
+                    <div class="space-y-6">
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm">
+                            <h3 class="text-xl font-bold mb-3">Do I need a legal entity to hire in Egypt?</h3>
+                            <p class="text-slate-600 dark:text-slate-400">No. When you use Staffona's EOR service, we act as the legal entity in Egypt. You can hire as many employees as you need without the overhead of setting up your own company.</p>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm">
+                            <h3 class="text-xl font-bold mb-3">What are employer obligations in Egypt?</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Employers are obligated to pay at least the national minimum wage, contribute to social insurance, withhold and remit income tax, provide a safe working environment, and adhere to statutory leave and termination rules.</p>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm">
+                            <h3 class="text-xl font-bold mb-3">How long does it take to hire through EOR?</h3>
+                            <p class="text-slate-600 dark:text-slate-400">The entire process, from candidate selection to being fully onboarded and ready to work, typically takes between 2 and 5 business days.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="py-24 px-5">
+                <div class="max-w-5xl mx-auto bg-primary rounded-[2.5rem] p-12 text-center text-white shadow-2xl">
+                    <h2 class="text-3xl font-bold mb-8">Take the Next Step in Your Egypt Expansion</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <a href="#/contact" class="bg-white text-primary p-6 rounded-2xl font-bold hover:bg-blue-50 transition-all flex flex-col items-center gap-3">
+                            <span class="material-symbols-outlined">event_available</span>
+                            Book a Compliance Consultation
+                        </a>
+                        <a href="#/contact" class="bg-white/10 border border-white/20 text-white p-6 rounded-2xl font-bold hover:bg-white/20 transition-all flex flex-col items-center gap-3">
+                            <span class="material-symbols-outlined">calculate</span>
+                            Request Hiring Cost Breakdown
+                        </a>
+                        <a href="#/contact" class="bg-white/10 border border-white/20 text-white p-6 rounded-2xl font-bold hover:bg-white/20 transition-all flex flex-col items-center gap-3">
+                            <span class="material-symbols-outlined">support_agent</span>
+                            Speak to an Egypt Payroll Specialist
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section id="page-payroll-egypt" class="page-section hidden">
+            <!-- Hero Section -->
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-20 px-5">
+                <div class="max-w-7xl mx-auto">
+                    <h1 class="font-display text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white mb-6">
+                        Payroll Outsourcing Services in Egypt
+                    </h1>
+                    <p class="text-slate-600 dark:text-slate-400 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
+                        Expert payroll management for international employers. We ensure accuracy, transparency, and full compliance with Egyptian tax and social insurance laws.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#/contact" class="bg-primary text-white px-8 py-4 rounded-xl font-bold shadow-xl">Request Payroll Compliance Assessment</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <section class="py-24 px-5">
+                <div class="max-w-5xl mx-auto prose dark:prose-invert">
+                    <h2>Streamlined Payroll Management in Egypt</h2>
+                    <p>
+                        Managing payroll in Egypt requires navigating a complex landscape of tax brackets, social insurance contributions, and frequent regulatory updates. For international employers, the risk of error is high, and the penalties for non-compliance can be severe. Staffona's <strong>payroll outsourcing services in Egypt</strong> provide a reliable, end-to-end solution that handles everything from initial calculations to final tax filings.
+                    </p>
+                    <p>
+                        Our team of local payroll specialists ensures that your Egyptian workforce is paid accurately, on time, and in full compliance with the law. We act as an extension of your finance department, providing the transparency and reporting you need to manage your global budget effectively.
+                    </p>
+
+                    <h3>Understanding Income Tax Brackets in Egypt</h3>
+                    <p>
+                        Egypt uses a progressive income tax system. Taxable income is calculated after deducting the personal exemption and the employee's share of social insurance. The brackets are updated periodically by the Egyptian government. As of the latest regulations, the annual income tax brackets are as follows:
+                    </p>
+                    <div class="overflow-x-auto my-8">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-800">
+                                    <th class="p-4 font-bold border">Annual Income (EGP)</th>
+                                    <th class="p-4 font-bold border">Tax Rate</th>
+                                    <th class="p-4 font-bold border">Discount / Note</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-4 border">0 - 21,000</td>
+                                    <td class="p-4 border">0%</td>
+                                    <td class="p-4 border">Tax-Free Bracket</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border">21,001 - 30,000</td>
+                                    <td class="p-4 border">2.5%</td>
+                                    <td class="p-4 border">Personal Exemption applies</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border">30,001 - 45,000</td>
+                                    <td class="p-4 border">10%</td>
+                                    <td class="p-4 border">-</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border">45,001 - 60,000</td>
+                                    <td class="p-4 border">15%</td>
+                                    <td class="p-4 border">-</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border">60,001 - 200,000</td>
+                                    <td class="p-4 border">20%</td>
+                                    <td class="p-4 border">-</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border">200,001 - 400,000</td>
+                                    <td class="p-4 border">22.5%</td>
+                                    <td class="p-4 border">-</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border">Above 400,000</td>
+                                    <td class="p-4 border">25%</td>
+                                    <td class="p-4 border">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-sm italic">Note: Tax brackets are subject to change based on the latest Finance Law amendments. Staffona ensures all calculations use the most current rates.</p>
+
+                    <h3>Social Insurance Contributions</h3>
+                    <p>
+                        Social insurance is a major component of payroll in Egypt. Both the employer and the employee must contribute to the Social Insurance Authority.
+                    </p>
+                    <ul>
+                        <li><strong>Employer Contribution:</strong> 18.75% of the insurance salary.</li>
+                        <li><strong>Employee Contribution:</strong> 11% of the insurance salary.</li>
+                    </ul>
+                    <p>
+                        There is a minimum and maximum cap for the "insurance salary," which is adjusted annually in January. Calculating this correctly is essential, as the insurance salary may differ from the actual gross salary.
+                    </p>
+
+                    <h3>Monthly Payroll Reporting & Tax Filings</h3>
+                    <p>
+                        In the Egyptian regulatory environment, compliance is an ongoing process that extends far beyond the simple act of paying employees. The government requires a rigorous series of reports and filings to ensure that all social contributions and taxes are being handled correctly. Staffona takes full responsibility for these statutory requirements, providing you with a seamless experience.
+                    </p>
+                    <ul>
+                        <li><strong>Monthly Income Tax Filing:</strong> Every month, we calculate the total income tax withheld from your employees' salaries. This must be submitted to the Egyptian Tax Authority within the first 15 days of the following month. Our system ensures these payments are made precisely and on time, avoiding any potential interest charges.</li>
+                        <li><strong>Quarterly Salary Tax Returns (Form 4):</strong> Every quarter, employers must file a comprehensive return that summarizes all salaries paid, taxes withheld, and any exemptions applied. This is a critical document for the tax authority's auditing process, and we ensure it is perfectly reconciled with your monthly filings.</li>
+                        <li><strong>Social Insurance Monthly Report (Form 2):</strong> We manage the ongoing relationship with the Social Insurance Authority. This includes filing the monthly reports that detail any changes in your workforce, salary adjustments, and the corresponding contributions. This ensures that your employees' insurance coverage remains uninterrupted.</li>
+                        <li><strong>Annual Salary Tax Reconciliation:</strong> At the end of each fiscal year, a final reconciliation must be performed. This process compares the total tax withheld throughout the year against the employee's final annual liability, taking into account the full year's worth of exemptions and bracket movements. We handle this complex calculation and file the final settlement with the tax office.</li>
+                    </ul>
+                    <p>
+                        By managing these filings, we protect your company from the administrative burden and legal risks associated with Egyptian tax bureaucracy. You receive copies of all filings for your corporate records, ensuring total transparency.
+                    </p>
+
+                    <h3>Example Payroll Calculation Breakdown</h3>
+                    <p>
+                        To give you an idea of how payroll works in Egypt, here is a simplified example for an employee with a gross monthly salary of 20,000 EGP:
+                    </p>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl my-8">
+                        <ul class="space-y-2">
+                            <li class="flex justify-between"><span>Gross Salary:</span> <span class="font-bold">20,000.00 EGP</span></li>
+                            <li class="flex justify-between"><span>Employee Social Insurance (11% of cap):</span> <span class="text-red-500">- 1,200.00 EGP*</span></li>
+                            <li class="flex justify-between border-b pb-2"><span>Taxable Income:</span> <span class="font-bold">18,800.00 EGP</span></li>
+                            <li class="flex justify-between"><span>Income Tax (estimated):</span> <span class="text-red-500">- 2,500.00 EGP</span></li>
+                            <li class="flex justify-between border-t pt-2 font-bold text-lg"><span>Net Salary:</span> <span class="text-green-600">16,300.00 EGP</span></li>
+                        </ul>
+                        <p class="mt-4 text-xs text-slate-500">*Social insurance is calculated based on the statutory cap, not necessarily the full gross salary.</p>
+                        <ul class="mt-6 space-y-2 border-t pt-4">
+                            <li class="flex justify-between text-sm"><span>Employer Social Insurance (18.75% of cap):</span> <span>+ 2,050.00 EGP</span></li>
+                            <li class="flex justify-between font-bold"><span>Total Employer Cost:</span> <span>22,050.00 EGP</span></li>
+                        </ul>
+                    </div>
+
+                    <h3>Common Payroll Compliance Mistakes in Egypt</h3>
+                    <p>
+                        Foreign companies often encounter issues when trying to manage Egyptian payroll internally:
+                    </p>
+                    <ol>
+                        <li><strong>Incorrect Insurance Salary:</strong> Failing to adjust the insurance salary based on the annual caps or miscalculating the employer/employee shares.</li>
+                        <li><strong>Missing Tax Deadlines:</strong> The Egyptian Tax Authority is strict with deadlines; late filings result in automatic interest and penalties.</li>
+                        <li><strong>Inaccurate Benefit Valuation:</strong> Non-cash benefits or allowances must sometimes be included in the taxable income, a nuance that is often missed.</li>
+                        <li><strong>Poor Record Keeping:</strong> Failure to maintain original signed payslips or proper labor files can lead to significant problems during a Ministry of Labor audit.</li>
+                    </ol>
+
+                    <div class="bg-slate-50 dark:bg-slate-800 p-10 rounded-[2rem] my-16 border border-slate-200 dark:border-slate-700 not-prose">
+                        <h2 class="text-3xl font-bold mb-8 dark:text-white">Why Foreign Companies Choose Staffona for Hiring in Egypt</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="font-bold text-primary dark:text-secondary-bright mb-2">Regulatory Expertise</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Deep knowledge of the latest labor laws and tax circulars ensures your business is always on the right side of the law.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary dark:text-secondary-bright mb-2">Local Legal Knowledge</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Our in-house legal team provides vetted contracts and represents you before the Ministry of Labor.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary dark:text-secondary-bright mb-2">Payroll Accuracy</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Precise calculations of taxes and social insurance, with guaranteed on-time payments to your team.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary dark:text-secondary-bright mb-2">Reduced Operational Risk</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">By acting as the EOR, we assume the legal liability of employment, protecting your headquarters from local risks.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Risk Mitigation through Professional Outsourcing</h3>
+                    <p>
+                        The primary goal of our payroll service is to provide you with peace of mind. In a foreign jurisdiction like Egypt, the risks of non-compliance are not just financial—they can also be operational and legal. By partnering with Staffona, you effectively transfer the operational risk of payroll management to us.
+                    </p>
+                    <p>
+                        Our <strong>risk mitigation strategy</strong> includes:
+                    </p>
+                    <ul>
+                        <li><strong>Compliance Guarantee:</strong> We guarantee that all calculations are made according to the latest Egyptian laws. If there is a change in the law mid-year, we implement it immediately.</li>
+                        <li><strong>Data Security:</strong> We use secure, encrypted systems to manage sensitive employee data, ensuring compliance with both local and international data protection standards.</li>
+                        <li><strong>Expert Oversight:</strong> Every payroll run is reviewed by a senior payroll specialist with years of experience in the Egyptian market. This "four-eyes" principle minimizes the chance of human error.</li>
+                        <li><strong>Audit Support:</strong> In the event of a government audit, Staffona represents you. We provide all necessary documentation and explanations to the authorities, acting as your local compliance shield.</li>
+                    </ul>
+                    <p>
+                        Our <strong>risk mitigation explanation</strong> is simple: we provide a layer of professional local expertise between your global HQ and the Egyptian regulatory authorities. This ensures that your business remains in good standing, your employees remain happy, and your leadership team can focus on growth rather than administrative troubleshooting.
+                    </p>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="py-24 px-5">
+                <div class="max-w-5xl mx-auto bg-primary rounded-[2.5rem] p-12 text-center text-white shadow-2xl">
+                    <h2 class="text-3xl font-bold mb-8">Ensure Your Payroll is 100% Compliant</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <a href="#/contact" class="bg-white text-primary p-6 rounded-2xl font-bold hover:bg-blue-50 transition-all flex flex-col items-center gap-3">
+                            <span class="material-symbols-outlined">event_available</span>
+                            Book a Compliance Consultation
+                        </a>
+                        <a href="#/contact" class="bg-white/10 border border-white/20 text-white p-6 rounded-2xl font-bold hover:bg-white/20 transition-all flex flex-col items-center gap-3">
+                            <span class="material-symbols-outlined">calculate</span>
+                            Request Hiring Cost Breakdown
+                        </a>
+                        <a href="#/contact" class="bg-white/10 border border-white/20 text-white p-6 rounded-2xl font-bold hover:bg-white/20 transition-all flex flex-col items-center gap-3">
+                            <span class="material-symbols-outlined">support_agent</span>
+                            Speak to an Egypt Payroll Specialist
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detailed Content for SEO -->
+            <section class="py-24 px-5 max-w-5xl mx-auto prose dark:prose-invert">
+                <h3>The Importance of Local Expertise in Egyptian Payroll</h3>
+                <p>
+                    The Egyptian financial landscape is characterized by its dynamic nature. New laws are frequently introduced to align with international standards and to optimize the country's tax revenue. For an international HR director or CFO, keeping up with these changes while managing a global workforce is nearly impossible. This is where <strong>payroll outsourcing services in Egypt</strong> become invaluable.
+                </p>
+                <p>
+                    Staffona's team includes former tax auditors and labor law experts who understand the "hidden" requirements of the Egyptian system. We don't just run the numbers; we provide strategic advice on how to structure compensation packages to be both competitive for talent and efficient for your business.
+                </p>
+                <h3>Transparency and Reporting</h3>
+                <p>
+                    One of the biggest concerns for foreign employers is the lack of visibility into local spending. Our payroll platform provides detailed reporting in both EGP and your home currency (USD, EUR, SAR, AED). You receive a monthly payroll register that breaks down every cost, ensuring that you have a clear audit trail for your international accounting requirements.
+                </p>
+                <h3>Scale Your Business with Confidence</h3>
+                <p>
+                    Whether you are hiring your first remote employee in Egypt or managing a team of 100, our payroll services scale with you. We handle the administrative burden, allowing you to focus on what matters most: your business strategy and your people. With Staffona, you can rest assured that your <strong>Egypt payroll compliance</strong> is in safe hands.
+                </p>
+            </section>
+        </section>
+        <section id="page-recruitment-egypt" class="page-section hidden">
+            <!-- Hero Section -->
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-20 px-5">
+                <div class="max-w-7xl mx-auto">
+                    <h1 class="font-display text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white mb-6">
+                        Recruitment Services in Egypt
+                    </h1>
+                    <p class="text-slate-600 dark:text-slate-400 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
+                        Connecting international businesses with Egypt's top-tier talent. Specialized recruitment solutions for technology, engineering, and back-office operations.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#/contact" class="bg-primary text-white px-8 py-4 rounded-xl font-bold shadow-xl">Start Your Talent Search</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <section class="py-24 px-5">
+                <div class="max-w-5xl mx-auto prose dark:prose-invert">
+                    <h2>Tap Into Egypt's Vibrant Talent Market</h2>
+                    <p>
+                        Egypt is rapidly becoming one of the most attractive destinations for talent acquisition in the EMEA region. With a large, highly educated, and youthful population, the country offers a rich pool of skilled professionals across various industries, including software development, customer experience, engineering, and finance. Staffona's <strong>recruitment services in Egypt for foreign companies</strong> are designed to help you navigate this market and find the perfect match for your organization.
+                    </p>
+                    <p>
+                        Our local recruitment experts have a deep understanding of the Egyptian professional landscape. We don't just find candidates; we identify future leaders who align with your company culture and strategic goals. Whether you are looking for a single specialist or building an entire offshore team, we provide the insights and support needed to hire with confidence.
+                    </p>
+
+                    <h3>Egypt Talent Market Overview</h3>
+                    <p>
+                        The Egyptian labor market is characterized by several key strengths that make it ideal for international expansion:
+                    </p>
+                    <ul>
+                        <li><strong>Large Talent Pool:</strong> With over 500,000 graduates entering the workforce annually, the supply of fresh and hungry talent is constant.</li>
+                        <li><strong>Language Proficiency:</strong> Egypt has a high concentration of bilingual and trilingual professionals, with English being the primary business language, alongside strong proficiency in French, German, and Italian.</li>
+                        <li><strong>Tech Hub:</strong> Cairo is home to a thriving tech ecosystem, producing world-class software engineers, data scientists, and digital marketers.</li>
+                        <li><strong>Cost-to-Quality Ratio:</strong> Employers can access high-caliber talent at a cost that is significantly lower than in Europe or North America, without compromising on productivity or innovation.</li>
+                    </ul>
+
+                    <h3>Hiring Costs & Salary Benchmarks</h3>
+                    <p>
+                        Understanding the local salary landscape is crucial for attracting the best talent. While costs are competitive, expectations vary based on experience, skill set, and industry. Staffona provides detailed <strong>salary benchmarks in Egypt</strong> to ensure your offers are both attractive and cost-effective.
+                    </p>
+                    <div class="overflow-x-auto my-8">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-800">
+                                    <th class="p-4 font-bold border">Role</th>
+                                    <th class="p-4 font-bold border">Junior (Monthly Gross)</th>
+                                    <th class="p-4 font-bold border">Senior (Monthly Gross)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-4 border font-medium">Software Developer (Full Stack)</td>
+                                    <td class="p-4 border">15,000 - 25,000 EGP</td>
+                                    <td class="p-4 border">45,000 - 80,000+ EGP</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border font-medium">Customer Support (English)</td>
+                                    <td class="p-4 border">10,000 - 15,000 EGP</td>
+                                    <td class="p-4 border">20,000 - 30,000 EGP</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border font-medium">Digital Marketer</td>
+                                    <td class="p-4 border">12,000 - 20,000 EGP</td>
+                                    <td class="p-4 border">35,000 - 55,000 EGP</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border font-medium">Accountant / Financial Analyst</td>
+                                    <td class="p-4 border">10,000 - 18,000 EGP</td>
+                                    <td class="p-4 border">30,000 - 50,000 EGP</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-sm italic">Note: Benchmarks are indicative and can vary based on specific technical requirements and the current exchange rate.</p>
+
+                    <h3>Common Contract Types in Egypt</h3>
+                    <p>
+                        Choosing the right contract type is essential for both compliance and flexibility. Under Egyptian Labor Law, there are two primary types:
+                    </p>
+                    <ol>
+                        <li><strong>Fixed-Term Contracts:</strong> These specify a start and end date. They are highly flexible and common for project-based work. In Egypt, if a fixed-term contract is renewed beyond its original term, it may automatically convert to an indefinite term under certain conditions.</li>
+                        <li><strong>Indefinite-Term Contracts:</strong> These have no specified end date and provide the employee with greater job security. Termination of these contracts requires following strict legal procedures to avoid "arbitrary dismissal" claims.</li>
+                    </ol>
+                    <p>
+                        Staffona advises you on the best contract structure based on your business needs and the specific role you are hiring for.
+                    </p>
+
+                    <h3>Our Recruitment Fee Structure</h3>
+                    <p>
+                        We believe in transparent and performance-based pricing. Our <strong>recruitment fee structure</strong> is designed to align our interests with yours:
+                    </p>
+                    <ul>
+                        <li><strong>Success-Based Fee:</strong> A percentage of the candidate's first-year annual gross salary, payable only upon a successful hire.</li>
+                        <li><strong>Retained Search:</strong> For executive or highly specialized roles, we offer a retained model that provides dedicated resources and a deeper level of candidate assessment.</li>
+                        <li><strong>No Upfront Costs:</strong> For standard contingency searches, you only pay when we deliver results.</li>
+                    </ul>
+
+                    <h3>Executive Search & Specialist Roles</h3>
+                    <p>
+                        For leadership positions and niche technical roles, Staffona offers a dedicated <strong>executive search service in Egypt</strong>. We use a proactive headhunting approach, tapping into our extensive network of high-level professionals who may not be active on traditional job boards. Our process includes rigorous competency-based interviews and thorough background checks to ensure we present only the most exceptional candidates.
+                    </p>
+
+                    <h3>Our Replacement Guarantee</h3>
+                    <p>
+                        We stand by the quality of our placements. Every hire made through Staffona comes with a <strong>replacement guarantee</strong>. If a candidate leaves or is found to be unsuitable within the first 90 days of employment, we will find a replacement at no additional recruitment cost to you. This minimizes your hiring risk and demonstrates our commitment to long-term partnerships.
+                    </p>
+
+                    <div class="bg-slate-50 dark:bg-slate-800 p-10 rounded-[2rem] my-16 border border-slate-200 dark:border-slate-700">
+                        <h2 class="text-3xl font-bold mb-8">Why Foreign Companies Choose Staffona for Hiring in Egypt</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="font-bold text-primary dark:text-secondary-bright mb-2">Regulatory Expertise</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Deep knowledge of the latest labor laws and tax circulars ensures your business is always on the right side of the law.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary dark:text-secondary-bright mb-2">Local Legal Knowledge</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Our in-house legal team provides vetted contracts and represents you before the Ministry of Labor.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary dark:text-secondary-bright mb-2">Payroll Accuracy</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Precise calculations of taxes and social insurance, with guaranteed on-time payments to your team.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary dark:text-secondary-bright mb-2">Reduced Operational Risk</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">By acting as the EOR, we assume the legal liability of employment, protecting your headquarters from local risks.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Why Choose Staffona for Recruitment in Egypt?</h3>
+                    <p>
+                        Recruiting in a foreign market can be daunting. Staffona simplifies the process by providing:
+                    </p>
+                    <ul>
+                        <li><strong>Local Insight:</strong> We understand the cultural nuances and candidate expectations in Egypt.</li>
+                        <li><strong>Speed to Hire:</strong> Our extensive database and streamlined process allow us to present shortlisted candidates within days.</li>
+                        <li><strong>End-to-End Support:</strong> From sourcing and screening to offer negotiation and onboarding (through our EOR services), we handle the entire journey.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="py-24 px-5">
+                <div class="max-w-5xl mx-auto bg-primary rounded-[2.5rem] p-12 text-center text-white shadow-2xl">
+                    <h2 class="text-3xl font-bold mb-8">Hire Top Talent in Egypt with Zero Risk</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <a href="#/contact" class="bg-white text-primary p-6 rounded-2xl font-bold hover:bg-blue-50 transition-all flex flex-col items-center gap-3">
+                            <span class="material-symbols-outlined">event_available</span>
+                            Book a Compliance Consultation
+                        </a>
+                        <a href="#/contact" class="bg-white/10 border border-white/20 text-white p-6 rounded-2xl font-bold hover:bg-white/20 transition-all flex flex-col items-center gap-3">
+                            <span class="material-symbols-outlined">calculate</span>
+                            Request Hiring Cost Breakdown
+                        </a>
+                        <a href="#/contact" class="bg-white/10 border border-white/20 text-white p-6 rounded-2xl font-bold hover:bg-white/20 transition-all flex flex-col items-center gap-3">
+                            <span class="material-symbols-outlined">support_agent</span>
+                            Speak to an Egypt Payroll Specialist
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Long-form SEO Content Expansion -->
+            <section class="py-24 px-5 max-w-5xl mx-auto prose dark:prose-invert">
+                <h3>The Evolution of the Egyptian Professional Landscape</h3>
+                <p>
+                    In recent years, Egypt has undergone a significant digital transformation. The government's focus on "Digital Egypt" has spurred investment in infrastructure and education, resulting in a workforce that is tech-savvy and globally minded. This has made <strong>recruitment in Egypt</strong> a strategic priority for companies in the UAE, KSA, and Europe who are looking to scale their technical and operational capabilities.
+                </p>
+                <p>
+                    At Staffona, we have witnessed this shift firsthand. We see a growing trend of "Remote-First" hiring, where companies are no longer limited by their local geography. Our role is to ensure that these companies can access the best that Egypt has to offer, while providing candidates with opportunities to work for world-class international organizations.
+                </p>
+                <h3>Strategies for Attracting Top Talent in Cairo</h3>
+                <p>
+                    Competition for top talent in Cairo is fierce, particularly in the tech sector. To attract the best candidates, foreign companies must offer more than just a competitive salary. Factors such as professional development opportunities, clear career paths, and a positive, inclusive company culture are highly valued by Egyptian professionals.
+                </p>
+                <p>
+                    We help our clients position themselves as "Employers of Choice" in the Egyptian market. This includes advising on benefits packages that go beyond the statutory requirements—such as private medical insurance, performance bonuses, and remote work flexibility. By understanding what motivates local talent, we help you build a team that is not only skilled but also deeply committed to your company's success.
+                </p>
+                <h3>Ensuring a Seamless Recruitment Experience</h3>
+                <p>
+                    The recruitment process is the first interaction a potential employee has with your brand. A slow or disorganized process can lead to losing top-tier candidates to competitors. Staffona prioritizes a fast, transparent, and respectful candidate experience. We manage expectations on both sides, ensuring that every interview is productive and that every offer is structured for success.
+                </p>
+                <p>
+                    Our <strong>Egypt talent market overview</strong> and recruitment services are designed to be your competitive advantage. Whether you are looking for executive leadership or a team of junior developers, Staffona is the partner you need to succeed in one of the world's most dynamic emerging talent markets.
+                </p>
+                <h3>Building Long-Term Partnerships</h3>
+                <p>
+                    Staffona's approach to recruitment is built on the foundation of long-term partnership. We don't view our work as a one-off transaction; rather, we aim to be your ongoing talent advisor in Egypt. As your business grows and evolves, so do your talent needs. We stay in close contact with our clients, providing updates on market trends, salary shifts, and emerging talent pools. This proactive approach ensures that you are always ahead of the curve when it comes to hiring in Egypt. Our goal is to help you build a sustainable and high-performing team that contributes to your global success for years to come.
+                </p>
+            </section>
+        </section>
+
+        <!-- Resource Center Hub -->
+        <section id="page-resource-center" class="page-section hidden">
+            <!-- Hero Section -->
+            <div class="bg-primary pt-24 pb-20 px-5 text-white">
+                <div class="max-w-7xl mx-auto text-center">
+                    <h1 class="font-display text-4xl sm:text-6xl font-extrabold mb-6">
+                        Hiring in Egypt Resource Center
+                    </h1>
+                    <p class="text-blue-100 text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
+                        Your comprehensive guide to navigating the Egyptian labor market, compliance, and payroll. Expert insights for global HR leaders and business founders.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Hub Content -->
+            <section class="py-24 px-5">
+                <div class="max-w-7xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Article Cards -->
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all flex flex-col">
+                            <h3 class="text-xl font-bold mb-4">Complete Guide to Hiring Employees in Egypt (2026 Edition)</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">Everything you need to know about the recruitment, onboarding, and legal requirements for hiring in Egypt.</p>
+                            <a href="#/resources/hiring-guide" class="text-secondary font-bold inline-flex items-center">Read Article <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all flex flex-col">
+                            <h3 class="text-xl font-bold mb-4">Cost of Hiring an Employee in Egypt – Full Breakdown</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">A detailed analysis of salaries, taxes, social insurance, and hidden costs of employment in Egypt.</p>
+                            <a href="#/resources/hiring-cost" class="text-secondary font-bold inline-flex items-center">Read Article <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all flex flex-col">
+                            <h3 class="text-xl font-bold mb-4">Egypt Labor Law Explained for Foreign Employers</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">A legal deep dive into the Egyptian Labor Law No. 12 of 2003 and its implications for international firms.</p>
+                            <a href="#/resources/labor-law" class="text-secondary font-bold inline-flex items-center">Read Article <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all flex flex-col">
+                            <h3 class="text-xl font-bold mb-4">EOR vs PEO vs Opening a Company in Egypt</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">Compare the three most common ways to hire in Egypt and find the right strategy for your scale.</p>
+                            <a href="#/resources/eor-vs-peo" class="text-secondary font-bold inline-flex items-center">Read Article <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all flex flex-col">
+                            <h3 class="text-xl font-bold mb-4">Payroll Taxes in Egypt – Employer Guide</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">Understand your tax withholding and reporting obligations as an employer in the Egyptian market.</p>
+                            <a href="#/resources/payroll-taxes" class="text-secondary font-bold inline-flex items-center">Read Article <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all flex flex-col">
+                            <h3 class="text-xl font-bold mb-4">How GCC Companies Can Hire in Egypt Legally</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">A specialized guide for companies in UAE, KSA, and the wider GCC region on remote hiring in Egypt.</p>
+                            <a href="#/resources/gcc-hiring" class="text-secondary font-bold inline-flex items-center">Read Article <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all flex flex-col">
+                            <h3 class="text-xl font-bold mb-4">Social Insurance in Egypt Explained</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">Learn about the mandatory social insurance system, contribution rates, and employee registration.</p>
+                            <a href="#/resources/social-insurance" class="text-secondary font-bold inline-flex items-center">Read Article <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all flex flex-col">
+                            <h3 class="text-xl font-bold mb-4">Termination Rules in Egypt – Legal Guide</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">Navigate the complex regulations surrounding employment termination and risk of arbitrary dismissal.</p>
+                            <a href="#/resources/termination-rules" class="text-secondary font-bold inline-flex items-center">Read Article <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all flex flex-col">
+                            <h3 class="text-xl font-bold mb-4">Employee Benefits & Leave Entitlements in Egypt</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">A guide to statutory leave, public holidays, and common supplemental benefits in the Egyptian market.</p>
+                            <a href="#/resources/employee-benefits" class="text-secondary font-bold inline-flex items-center">Read Article <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all flex flex-col">
+                            <h3 class="text-xl font-bold mb-4">Risks of Misclassifying Contractors in Egypt</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">Understand the legal and financial dangers of using freelance contracts for full-time employees.</p>
+                            <a href="#/resources/misclassification-risks" class="text-secondary font-bold inline-flex items-center">Read Article <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter/CTA -->
+            <section class="py-24 px-5 bg-slate-50 dark:bg-slate-900/50">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-6">Stay Informed on Egypt Compliance</h2>
+                    <p class="text-slate-600 dark:text-slate-400 mb-10 text-lg">Our experts regularly publish updates on tax laws and labor regulations. Follow us on LinkedIn to stay up to date.</p>
+                    <a href="#" class="inline-flex items-center gap-3 bg-primary text-white px-10 py-4 rounded-xl font-bold shadow-lg">Follow Staffona on LinkedIn <span class="material-symbols-outlined">share</span></a>
+                </div>
+            </section>
+        </section>
+
+        <!-- Article Placeholders -->
+        <section id="page-article-hiring-guide" class="page-section hidden">
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-12 px-5">
+                <div class="max-w-4xl mx-auto">
+                    <nav class="mb-8"><a href="#/resources" class="text-secondary font-bold inline-flex items-center"><span class="material-symbols-outlined mr-2">arrow_back</span> Back to Resources</a></nav>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Complete Guide to Hiring Employees in Egypt (2026 Edition)</h1>
+                    <div class="flex items-center gap-4 text-slate-500 text-sm">
+                        <span>Updated: January 2026</span>
+                        <span>•</span>
+                        <span>12 min read</span>
+                    </div>
+                </div>
+            </div>
+            <div class="py-16 px-5">
+                <div class="max-w-4xl mx-auto prose dark:prose-invert">
+                    <p class="lead">Hiring in a new market is always a challenge, but Egypt offers unique opportunities for companies willing to navigate its regulatory landscape. This guide provides everything you need to know about hiring in Egypt in 2026.</p>
+
+                    <h2>Introduction to the Egyptian Labor Market</h2>
+                    <p>Egypt is the most populous country in the Arab world, with a workforce exceeding 30 million people. In 2026, the market has matured significantly, with a particular focus on digital services, engineering, and global business services (GBS). For foreign employers, Egypt represents a "Goldilocks" zone: high-quality talent, competitive costs, and a favorable timezone for both East and West.</p>
+
+                    <h2>Step 1: Understanding the Legal Options</h2>
+                    <p>Before you hire your first employee, you must decide on your legal structure. You have three main paths:</p>
+                    <ul>
+                        <li><strong>Employer of Record (EOR):</strong> The fastest way to hire. You use a partner like Staffona to legally employ your staff while you manage them.</li>
+                        <li><strong>Local Subsidiary:</strong> Ideal for large-scale, long-term investments. Requires significant capital and time (4-8 months) to set up.</li>
+                        <li><strong>Independent Contractors:</strong> Useful for short-term projects, but carries high risk of misclassification for long-term roles.</li>
+                    </ul>
+
+                    <h2>Step 2: Recruitment and Sourcing</h2>
+                    <p>The recruitment landscape in Egypt is dominated by digital platforms and professional networks. LinkedIn is the primary tool for white-collar roles, while local platforms like Wuzzuf and Forasna are essential for reaching a broader audience.</p>
+                    <h3>Top Sourcing Channels:</h3>
+                    <ul>
+                        <li><strong>LinkedIn:</strong> Best for tech, management, and specialized roles.</li>
+                        <li><strong>Wuzzuf:</strong> Egypt's leading job board for professional roles.</li>
+                        <li><strong>Referrals:</strong> The "social" nature of the Egyptian market makes referrals a highly effective channel.</li>
+                    </ul>
+
+                    <h2>Step 3: Navigating Egyptian Labor Law</h2>
+                    <p>The Egyptian Labor Law (Law No. 12 of 2003) is the bedrock of employment. Key compliance points include:</p>
+                    <ul>
+                        <li><strong>Mandatory Written Contracts:</strong> Must be in Arabic and registered with the Social Insurance Office.</li>
+                        <li><strong>Minimum Wage:</strong> Ensure your offers meet or exceed the national minimum wage, which is adjusted annually.</li>
+                        <li><strong>Social Insurance:</strong> Mandatory for all Egyptian nationals.</li>
+                    </ul>
+
+                    <h2>Step 4: Onboarding and Documentation</h2>
+                    <p>Egyptian onboarding requires specific paperwork. You will need to collect:</p>
+                    <ul>
+                        <li>National ID card copy.</li>
+                        <li>Original education certificates.</li>
+                        <li>Military service certificate (for males).</li>
+                        <li>Criminal record check (Fish).</li>
+                        <li>Social insurance number (Sinn).</li>
+                    </ul>
+
+                    <h2>Step 5: Managing Payroll and Taxes</h2>
+                    <p>Payroll in Egypt involves withholding income tax and social insurance. Taxes are progressive, ranging from 0% to 25%. Social insurance is a combined 29.75% of the insurance salary (18.75% employer, 11% employee).</p>
+
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="not-prose space-y-4 my-8">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Can I pay employees in USD?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">While you can agree on a USD-pegged salary, the actual payment within Egypt must typically be made in Egyptian Pounds (EGP) through a local payroll system to ensure compliance with central bank regulations.</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">What is the standard notice period?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">The standard notice period is 2 months for the first 10 years of service and 3 months thereafter.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-primary/5 border border-primary/10 p-8 rounded-2xl my-12">
+                        <h3 class="mt-0">Ready to hire in Egypt?</h3>
+                        <p>Staffona can help you onboard your team in as little as 48 hours with our EOR solution.</p>
+                        <a href="#/contact" class="text-primary font-bold inline-flex items-center">Talk to an expert <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-article-hiring-cost" class="page-section hidden">
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-12 px-5">
+                <div class="max-w-4xl mx-auto">
+                    <nav class="mb-8"><a href="#/resources" class="text-secondary font-bold inline-flex items-center"><span class="material-symbols-outlined mr-2">arrow_back</span> Back to Resources</a></nav>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Cost of Hiring an Employee in Egypt – Full Breakdown</h1>
+                    <div class="flex items-center gap-4 text-slate-500 text-sm">
+                        <span>Updated: January 2026</span>
+                        <span>•</span>
+                        <span>10 min read</span>
+                    </div>
+                </div>
+            </div>
+            <div class="py-16 px-5">
+                <div class="max-w-4xl mx-auto prose dark:prose-invert">
+                    <p class="lead">Budgeting for a global team requires more than just looking at the base salary. In Egypt, several statutory costs and common benefits must be factored into your total cost of employment (TCE).</p>
+
+                    <h2>The Components of Employment Cost</h2>
+                    <p>When you hire an employee in Egypt, your total cost consists of three main layers: Gross Salary, Statutory Employer Contributions, and Supplemental Benefits.</p>
+
+                    <h3>1. Gross Salary</h3>
+                    <p>The gross salary is the amount agreed upon with the employee before any deductions. In 2026, salary benchmarks have shifted due to global demand for Egyptian talent. Tech roles and bilingual roles command a premium.</p>
+
+                    <h3>2. Statutory Employer Contributions</h3>
+                    <p>This is the most critical part of your budget often missed by foreign firms. The primary cost here is <strong>Social Insurance</strong>. The employer must contribute 18.75% of the "insurance salary." It's important to note that the insurance salary has a cap, which is adjusted every January.</p>
+
+                    <h3>3. Supplemental Benefits (The "Market Standard")</h3>
+                    <p>To attract top talent, most international firms provide benefits beyond the legal minimum:</p>
+                    <ul>
+                        <li><strong>Private Medical Insurance:</strong> Highly valued, costing between $300 - $800 per employee per year.</li>
+                        <li><strong>Life Insurance:</strong> Often included in premium benefit packages.</li>
+                        <li><strong>Annual Bonuses:</strong> A 13th-month salary is not legally required but is a common market practice.</li>
+                    </ul>
+
+                    <h2>Example Budget Breakdown (Monthly)</h2>
+                    <div class="overflow-x-auto my-8">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-800">
+                                    <th class="p-4 font-bold border">Item</th>
+                                    <th class="p-4 font-bold border">Amount (EGP)</th>
+                                    <th class="p-4 font-bold border">Percentage of Gross</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-4 border">Base Gross Salary</td>
+                                    <td class="p-4 border">30,000.00</td>
+                                    <td class="p-4 border">100%</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border">Employer Social Insurance</td>
+                                    <td class="p-4 border">2,300.00*</td>
+                                    <td class="p-4 border">~7.6% (capped)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border">EOR Management Fee</td>
+                                    <td class="p-4 border">Variable</td>
+                                    <td class="p-4 border">-</td>
+                                </tr>
+                                <tr class="font-bold bg-slate-50 dark:bg-slate-800">
+                                    <td class="p-4 border">Total Employment Cost</td>
+                                    <td class="p-4 border">32,300.00 + Fee</td>
+                                    <td class="p-4 border">~108%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs">*Calculation assumes the 2026 insurance cap. Actual amounts vary based on individual salary levels.</p>
+
+                    <h2>Hidden Costs to Consider</h2>
+                    <ul>
+                        <li><strong>Equipment:</strong> Providing a high-end laptop and home-office setup.</li>
+                        <li><strong>Recruitment Fees:</strong> Typically 10% - 20% of the annual gross salary.</li>
+                        <li><strong>Training & Development:</strong> Budgeting for ongoing skill enhancement.</li>
+                    </ul>
+
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="not-prose space-y-4 my-8">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">How much is the personal income tax?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Income tax is progressive. For a 30,000 EGP salary, the effective tax rate is usually around 12-15% after exemptions.</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Are there any "hidden" taxes for employers?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">There are minor contributions like the Martyrs Fund and the Takaful & Karama contribution, which Staffona handles as part of our comprehensive payroll service.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-primary/5 border border-primary/10 p-8 rounded-2xl my-12 text-center">
+                        <h3 class="mt-0">Get a Custom Cost Breakdown</h3>
+                        <p>Planning to hire a specific role? We can provide a detailed quote including all statutory costs and fees.</p>
+                        <a href="#/contact" class="bg-primary text-white px-8 py-3 rounded-xl font-bold inline-block mt-4">Request a Quote</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="page-article-labor-law" class="page-section hidden">
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-12 px-5">
+                <div class="max-w-4xl mx-auto">
+                    <nav class="mb-8"><a href="#/resources" class="text-secondary font-bold inline-flex items-center"><span class="material-symbols-outlined mr-2">arrow_back</span> Back to Resources</a></nav>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Egypt Labor Law Explained for Foreign Employers</h1>
+                    <div class="flex items-center gap-4 text-slate-500 text-sm">
+                        <span>Updated: January 2026</span>
+                        <span>•</span>
+                        <span>15 min read</span>
+                    </div>
+                </div>
+            </div>
+            <div class="py-16 px-5">
+                <div class="max-w-4xl mx-auto prose dark:prose-invert">
+                    <p class="lead">Navigating the Egyptian legal system is a prerequisite for any business looking to hire locally. The Egyptian Labor Law (No. 12 of 2003) is the primary statute governing private sector employment. This guide breaks down its most important provisions for international employers.</p>
+
+                    <h2>Key Principles of the Egyptian Labor Law</h2>
+                    <p>The law is designed to be protective of employees, reflecting its social and economic goals. It covers all private sector employees, whether they are Egyptian or foreign (provided they have a valid work permit).</p>
+
+                    <h2>1. Employment Contracts</h2>
+                    <p>Every employment relationship must be formalized with a written contract. According to Article 32, the contract must be in Arabic. If a second language is used, the Arabic version prevails in local courts.</p>
+                    <ul>
+                        <li><strong>Fixed-Term:</strong> Ends on a specific date. Can be renewed.</li>
+                        <li><strong>Indefinite:</strong> No end date. Provides more stability for the employee.</li>
+                        <li><strong>Probation:</strong> Must be explicitly stated and cannot exceed 3 months.</li>
+                    </ul>
+
+                    <h2>2. Working Hours and Rest Periods</h2>
+                    <p>Standard work hours are 8 hours per day, totaling 48 hours per week (Article 80). During Ramadan, many businesses choose to reduce working hours, although this is not a statutory requirement for the private sector.</p>
+                    <ul>
+                        <li><strong>Weekly Rest:</strong> At least 24 consecutive hours after every 6 days of work.</li>
+                        <li><strong>Overtime:</strong> Daytime overtime is paid at 135% of the basic wage, and nighttime overtime at 170%.</li>
+                    </ul>
+
+                    <h2>3. Annual and Sick Leave</h2>
+                    <p>Employees are entitled to annual paid leave once they complete 6 months of service.</p>
+                    <ul>
+                        <li><strong>Standard Leave:</strong> 21 days per year.</li>
+                        <li><strong>Extended Leave:</strong> 30 days for employees over 50 years old or with 10 years of service.</li>
+                        <li><strong>Sick Leave:</strong> Entitlement varies depending on the length of service and is partially covered by social insurance.</li>
+                    </ul>
+
+                    <h2>4. Termination of Employment</h2>
+                    <p>Terminating an employee in Egypt is a complex process. "At-will" employment does not exist. Termination must be for a "just cause" as defined in Articles 69 and 70.</p>
+                    <ul>
+                        <li><strong>Just Causes:</strong> Including gross negligence, consistent poor performance (after warnings), or disclosure of trade secrets.</li>
+                        <li><strong>Labor Office Role:</strong> Disputes are often referred to a specialized committee at the Ministry of Labor before going to court.</li>
+                    </ul>
+
+                    <h2>5. Social Insurance and Taxes</h2>
+                    <p>Registration with the Social Insurance Authority is mandatory from day one of employment. Employers who fail to register their staff face significant fines and potential criminal liability in extreme cases.</p>
+
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="not-prose space-y-4 my-8">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Can we use a foreign law contract?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">While you can have a "side agreement" under foreign law, the local relationship will always be governed by the mandatory provisions of the Egyptian Labor Law.</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Are there special rules for female employees?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Yes, the law provides specific protections for female employees, including maternity leave (90 days) and nursing breaks.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-primary/5 border border-primary/10 p-8 rounded-2xl my-12">
+                        <h3>Stay Compliant with Staffona</h3>
+                        <p>Our EOR service ensures that every aspect of your employment in Egypt is 100% compliant with the latest labor regulations.</p>
+                        <a href="#/contact" class="text-primary font-bold inline-flex items-center">Consult our legal team <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-article-eor-vs-peo" class="page-section hidden">
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-12 px-5">
+                <div class="max-w-4xl mx-auto">
+                    <nav class="mb-8"><a href="#/resources" class="text-secondary font-bold inline-flex items-center"><span class="material-symbols-outlined mr-2">arrow_back</span> Back to Resources</a></nav>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">EOR vs PEO vs Opening a Company in Egypt</h1>
+                    <div class="flex items-center gap-4 text-slate-500 text-sm">
+                        <span>Updated: January 2026</span>
+                        <span>•</span>
+                        <span>10 min read</span>
+                    </div>
+                </div>
+            </div>
+            <div class="py-16 px-5">
+                <div class="max-w-4xl mx-auto prose dark:prose-invert">
+                    <p class="lead">How should you structure your presence in Egypt? The answer depends on your long-term goals, your budget, and how much administrative control you want to maintain. This article compares the three main models.</p>
+
+                    <h2>1. Employer of Record (EOR)</h2>
+                    <p>In the EOR model, the provider (like Staffona) is the legal employer of your staff. They handle all local compliance, payroll, and HR tasks.</p>
+                    <ul>
+                        <li><strong>Pros:</strong> No local entity required, fast setup (2-5 days), compliant contracts, zero administrative burden.</li>
+                        <li><strong>Cons:</strong> Service fee per employee.</li>
+                        <li><strong>Best for:</strong> Startups, remote teams, and testing the Egyptian market.</li>
+                    </ul>
+
+                    <h2>2. Professional Employer Organization (PEO)</h2>
+                    <p>A PEO model typically involves "co-employment." In many jurisdictions, this requires the client to have their own legal entity first. The PEO then manages the HR and payroll functions for that entity.</p>
+                    <ul>
+                        <li><strong>Pros:</strong> Professional HR management, often lower fees for large groups.</li>
+                        <li><strong>Cons:</strong> Requires you to have a local entity first, shared legal liability.</li>
+                        <li><strong>Best for:</strong> Established companies with 50+ employees in Egypt.</li>
+                    </ul>
+
+                    <h2>3. Opening a Local Legal Entity</h2>
+                    <p>Setting up your own company (LLC or Joint Stock Company) in Egypt under the Investment Law.</p>
+                    <ul>
+                        <li><strong>Pros:</strong> Full control, ability to hold local assets and sign direct commercial contracts.</li>
+                        <li><strong>Cons:</strong> High setup costs, slow process (4-8 months), requires local accountant, lawyer, and office space.</li>
+                        <li><strong>Best for:</strong> Large-scale operations, manufacturing, or long-term strategic hubs.</li>
+                    </ul>
+
+                    <h2>Model Comparison Table</h2>
+                    <div class="overflow-x-auto my-8">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-800">
+                                    <th class="p-4 font-bold border">Feature</th>
+                                    <th class="p-4 font-bold border">EOR</th>
+                                    <th class="p-4 font-bold border">Local Entity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-4 border font-medium">Speed to Hire</td>
+                                    <td class="p-4 border text-green-600 font-bold">Days</td>
+                                    <td class="p-4 border">Months</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border font-medium">Setup Cost</td>
+                                    <td class="p-4 border text-green-600 font-bold">Low/None</td>
+                                    <td class="p-4 border">High</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border font-medium">Compliance Risk</td>
+                                    <td class="p-4 border">Low (Transferred)</td>
+                                    <td class="p-4 border">High (Internal)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>Which Model is Right for You?</h2>
+                    <p>Most companies entering Egypt for the first time choose the <strong>EOR model</strong>. It provides a risk-free way to build a team and assess the talent market before committing to the heavy administrative burden of a local company. If the team grows beyond 20-30 people, many firms then transition to a local entity while continuing to use <strong>payroll outsourcing</strong> services.</p>
+
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="not-prose space-y-4 my-8">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Can an EOR sponsor work visas?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Yes, most EOR providers in Egypt can sponsor work permits for foreign nationals, though there are strict quotas on the number of expats per local employee.</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Is a PEO the same as an EOR?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">No. An EOR is the legal employer. A PEO is an HR partner for a company that already exists legally in the country.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-primary p-8 rounded-2xl my-12 text-white text-center">
+                        <h3 class="mt-0 text-white">Confused about the best path?</h3>
+                        <p>Our consultants can help you evaluate your options based on your specific business plan.</p>
+                        <a href="#/contact" class="bg-white text-primary px-8 py-3 rounded-xl font-bold inline-block mt-4">Book a Strategy Call</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="page-article-payroll-taxes" class="page-section hidden">
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-12 px-5">
+                <div class="max-w-4xl mx-auto">
+                    <nav class="mb-8"><a href="#/resources" class="text-secondary font-bold inline-flex items-center"><span class="material-symbols-outlined mr-2">arrow_back</span> Back to Resources</a></nav>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Payroll Taxes in Egypt – Employer Guide</h1>
+                    <div class="flex items-center gap-4 text-slate-500 text-sm">
+                        <span>Updated: January 2026</span>
+                        <span>•</span>
+                        <span>12 min read</span>
+                    </div>
+                </div>
+            </div>
+            <div class="py-16 px-5">
+                <div class="max-w-4xl mx-auto prose dark:prose-invert">
+                    <p class="lead">Understanding your tax obligations is a critical part of managing a team in Egypt. This guide provides a detailed overview of the different types of payroll taxes that employers must handle.</p>
+
+                    <h2>1. Personal Income Tax (Salary Tax)</h2>
+                    <p>In Egypt, salary tax is withheld by the employer at the source. It is a progressive tax applied to the employee's total income from employment.</p>
+                    <ul>
+                        <li><strong>Tax Residency:</strong> Employees spending more than 183 days in Egypt are considered tax residents.</li>
+                        <li><strong>Taxable Base:</strong> Includes base salary, bonuses, commissions, and most allowances.</li>
+                        <li><strong>Exemptions:</strong> There is a mandatory personal exemption (9,000 EGP per year) and a tax-free first bracket.</li>
+                    </ul>
+
+                    <h2>2. Social Insurance Contributions</h2>
+                    <p>While often viewed as a "benefit," social insurance is a statutory tax-like contribution that is mandatory for all Egyptian employees.</p>
+                    <ul>
+                        <li><strong>Employer Share:</strong> 18.75%</li>
+                        <li><strong>Employee Share:</strong> 11%</li>
+                        <li><strong>Base:</strong> Calculated on the "insurance salary" which has a statutory minimum and maximum.</li>
+                    </ul>
+
+                    <h2>3. Other Mandatory Contributions</h2>
+                    <p>Employers are also responsible for several smaller funds that support social and national initiatives:</p>
+                    <ul>
+                        <li><strong>Martyrs Fund (Takaful):</strong> A small percentage (typically 0.05%) of the total payroll.</li>
+                        <li><strong>Emergency Subsidy Fund:</strong> 1% of the basic salary, designed to support workers during industrial crises.</li>
+                    </ul>
+
+                    <h2>4. Monthly and Quarterly Compliance</h2>
+                    <p>Employers must not only pay the taxes but also file the correct documentation:</p>
+                    <ul>
+                        <li><strong>Monthly:</strong> Payment of withheld taxes and social insurance.</li>
+                        <li><strong>Quarterly:</strong> Filing of Form 4 (Salary Tax Return).</li>
+                        <li><strong>Annually:</strong> Filing of the final tax reconciliation.</li>
+                    </ul>
+
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="not-prose space-y-4 my-8">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Are there penalties for late payment?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Yes, the tax authority applies interest on any late payments, which is currently based on the discount rate set by the Central Bank of Egypt + 2%.</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Is the employer responsible for the employee's tax return?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">For salary income, the employer handles the withholding and the annual reconciliation. The employee only needs to file a personal return if they have other sources of income.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-primary/5 border border-primary/10 p-8 rounded-2xl my-12">
+                        <h3>Automate your Egyptian Payroll</h3>
+                        <p>Staffona's payroll engine is pre-configured with all Egyptian tax brackets and social insurance rules.</p>
+                        <a href="#/contact" class="text-primary font-bold inline-flex items-center">Learn more about our payroll services <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-article-gcc-hiring" class="page-section hidden">
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-12 px-5">
+                <div class="max-w-4xl mx-auto">
+                    <nav class="mb-8"><a href="#/resources" class="text-secondary font-bold inline-flex items-center"><span class="material-symbols-outlined mr-2">arrow_back</span> Back to Resources</a></nav>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">How GCC Companies Can Hire in Egypt Legally</h1>
+                    <div class="flex items-center gap-4 text-slate-500 text-sm">
+                        <span>Updated: January 2026</span>
+                        <span>•</span>
+                        <span>10 min read</span>
+                    </div>
+                </div>
+            </div>
+            <div class="py-16 px-5">
+                <div class="max-w-4xl mx-auto prose dark:prose-invert">
+                    <p class="lead">For companies in the UAE, Saudi Arabia, and other GCC nations, Egypt is the number one destination for offshore talent. This article explains how to build your Egyptian team while remaining fully compliant from your HQ.</p>
+
+                    <h2>Why Egypt is the Preferred Hub for the GCC</h2>
+                    <p>Proximity, cultural alignment, and a shared language make Egypt an ideal partner for GCC-based businesses. Whether it's for customer support, software development, or back-office operations, Egyptian professionals integrate seamlessly into GCC teams.</p>
+
+                    <h2>Challenges of Direct Cross-Border Hiring</h2>
+                    <p>Many GCC companies attempt to hire Egyptians as "independent contractors" or "freelancers." While simple, this carries several risks:</p>
+                    <ul>
+                        <li><strong>Labor Law Risk:</strong> If an individual works full-time, they may be legally considered an employee, regardless of the contract title.</li>
+                        <li><strong>Social Insurance Gaps:</strong> Egyptian employees value their statutory benefits. Hiring them as freelancers leaves them without a pension or medical coverage.</li>
+                        <li><strong>Payment Logistics:</strong> Sending international wire transfers every month is expensive and can be delayed by local banks.</li>
+                    </ul>
+
+                    <h2>The Solution: The EOR Model for GCC Firms</h2>
+                    <p>Using an <strong>Employer of Record (EOR)</strong> like Staffona is the most common strategy. It allows a UAE or KSA company to:</p>
+                    <ul>
+                        <li>Hire Egyptian staff on locally compliant contracts.</li>
+                        <li>Pay a single invoice in USD or AED/SAR to the EOR provider.</li>
+                        <li>Ensure all local taxes and social insurance are handled correctly in Cairo.</li>
+                    </ul>
+
+                    <h2>Regulatory Considerations for GCC Employers</h2>
+                    <p>When hiring in Egypt, GCC firms should be aware of:</p>
+                    <ul>
+                        <li><strong>Work Hours Alignment:</strong> Aligning Egyptian teams with GCC work weeks (e.g., Sunday-Thursday).</li>
+                        <li><strong>Currency Management:</strong> Pegging salaries to a stable currency while paying in EGP to ensure employee purchasing power.</li>
+                        <li><strong>Public Holidays:</strong> Managing the differences between Egyptian and GCC national holidays.</li>
+                    </ul>
+
+                    <h2>Case Study: A Dubai Tech Startup</h2>
+                    <p>A fast-growing fintech startup in Dubai needed 10 developers. By using Staffona's EOR service, they were able to hire the team in Cairo in 2 weeks, avoid the cost of a local office, and provide their team with full local benefits, leading to high retention rates.</p>
+
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="not-prose space-y-4 my-8">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Can we pay in Saudi Riyals?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">We can invoice you in SAR or AED, and we handle the conversion and payment to the employees in EGP, ensuring they receive the correct net amount.</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">How do we manage performance remotely?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">The EOR handles the legal side, but you maintain full management control over the employee's daily tasks and performance reviews.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-secondary p-8 rounded-2xl my-12 text-white text-center">
+                        <h3 class="mt-0 text-white">Serving the GCC is our specialty</h3>
+                        <p>We understand the specific needs and standards of companies in the UAE and Saudi Arabia.</p>
+                        <a href="#/contact" class="bg-white text-secondary px-8 py-3 rounded-xl font-bold inline-block mt-4">Talk to our GCC Desk</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="page-article-social-insurance" class="page-section hidden">
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-12 px-5">
+                <div class="max-w-4xl mx-auto">
+                    <nav class="mb-8"><a href="#/resources" class="text-secondary font-bold inline-flex items-center"><span class="material-symbols-outlined mr-2">arrow_back</span> Back to Resources</a></nav>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Social Insurance in Egypt Explained</h1>
+                    <div class="flex items-center gap-4 text-slate-500 text-sm">
+                        <span>Updated: January 2026</span>
+                        <span>•</span>
+                        <span>10 min read</span>
+                    </div>
+                </div>
+            </div>
+            <div class="py-16 px-5">
+                <div class="max-w-4xl mx-auto prose dark:prose-invert">
+                    <p class="lead">The social insurance system is the backbone of social security in Egypt. For employers, it is a mandatory legal obligation that requires monthly management and reporting.</p>
+
+                    <h2>Overview of the Social Insurance Law</h2>
+                    <p>The system is governed by Law No. 148 of 2019. It unified several previous funds into a single comprehensive system covering old-age pensions, disability, death, and work-related injuries.</p>
+
+                    <h2>Mandatory Contributions</h2>
+                    <p>Contributions are calculated as a percentage of the "subscription salary" (also known as the insurance salary).</p>
+                    <ul>
+                        <li><strong>Employer Share:</strong> 18.75% of the subscription salary.</li>
+                        <li><strong>Employee Share:</strong> 11% of the subscription salary.</li>
+                        <li><strong>Total Contribution:</strong> 29.75%</li>
+                    </ul>
+
+                    <h2>The Subscription Salary Caps</h2>
+                    <p>The subscription salary is not always equal to the employee's total gross salary. It is subject to a minimum and a maximum cap, which are increased by 15% every January.</p>
+                    <p>In 2026, it is essential to ensure that your payroll system is updated with the latest caps to avoid underpayment or overpayment of contributions.</p>
+
+                    <h2>Benefits Provided to Employees</h2>
+                    <p>By contributing to the system, employees gain access to several key benefits:</p>
+                    <ul>
+                        <li><strong>Pensions:</strong> Monthly payments upon reaching the retirement age.</li>
+                        <li><strong>Disability & Death:</strong> Financial support for the employee or their family in the event of disability or death.</li>
+                        <li><strong>Health Insurance:</strong> Access to the national health insurance scheme.</li>
+                        <li><strong>Unemployment Insurance:</strong> Temporary financial support in case of job loss.</li>
+                    </ul>
+
+                    <h2>Employer Responsibilities</h2>
+                    <ol>
+                        <li><strong>Registration:</strong> Every new employee must be registered using Form 1 within the first week of employment.</li>
+                        <li><strong>Monthly Payment:</strong> Contributions must be paid to the Social Insurance Authority by the 15th of the following month.</li>
+                        <li><strong>Deregistration:</strong> When an employee leaves, they must be deregistered using Form 6 to stop the contribution obligation.</li>
+                    </ol>
+
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="not-prose space-y-4 my-8">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Are foreign employees covered?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Generally, the mandatory scheme is for Egyptian nationals. Foreigners are only covered if there is a reciprocal social security agreement between Egypt and their home country.</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">What happens if we don't pay?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Non-payment leads to automatic fines and interest. It can also block the company from obtaining necessary licenses or permits.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-primary/5 border border-primary/10 p-8 rounded-2xl my-12">
+                        <h3>Compliance made simple</h3>
+                        <p>Staffona handles the entire social insurance lifecycle for your Egyptian team, from registration to monthly remittances.</p>
+                        <a href="#/contact" class="text-primary font-bold inline-flex items-center">Talk to a compliance expert <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-article-termination-rules" class="page-section hidden">
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-12 px-5">
+                <div class="max-w-4xl mx-auto">
+                    <nav class="mb-8"><a href="#/resources" class="text-secondary font-bold inline-flex items-center"><span class="material-symbols-outlined mr-2">arrow_back</span> Back to Resources</a></nav>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Termination Rules in Egypt – Legal Guide</h1>
+                    <div class="flex items-center gap-4 text-slate-500 text-sm">
+                        <span>Updated: January 2026</span>
+                        <span>•</span>
+                        <span>12 min read</span>
+                    </div>
+                </div>
+            </div>
+            <div class="py-16 px-5">
+                <div class="max-w-4xl mx-auto prose dark:prose-invert">
+                    <p class="lead">Terminating an employment relationship in Egypt is one of the most legally sensitive areas for any employer. This guide outlines the proper procedures and risks involved.</p>
+
+                    <h2>No "At-Will" Employment</h2>
+                    <p>It is important for foreign employers to understand that "at-will" employment, as practiced in the US, does not exist in Egypt. Termination must always be based on a valid legal reason, or it can be challenged as an "arbitrary dismissal."</p>
+
+                    <h2>Types of Termination</h2>
+                    <h3>1. Termination of Fixed-Term Contracts</h3>
+                    <p>A fixed-term contract naturally expires on its end date. If the employer does not wish to renew, they should provide notice as per the contract terms. However, if the contract is renewed several times, it may be treated as an indefinite contract by a labor court.</p>
+
+                    <h3>2. Resignation</h3>
+                    <p>An employee can resign by giving the required notice period. The resignation must be in writing and is subject to the employee's right to withdraw it within one week.</p>
+
+                    <h3>3. Dismissal for Just Cause (Article 69)</h3>
+                    <p>An employer can dismiss an employee for serious misconduct, including:</p>
+                    <ul>
+                        <li>Using a false identity or forged documents.</li>
+                        <li>Committing an error that causes substantial financial loss to the employer (must be reported to authorities within 24 hours).</li>
+                        <li>Repeated failure to follow safety instructions.</li>
+                        <li>Absence without valid reason for more than 20 intermittent days or 10 consecutive days in a year (after written warnings).</li>
+                        <li>Disclosure of trade secrets.</li>
+                    </ul>
+
+                    <h2>The Notice Period</h2>
+                    <p>For indefinite contracts, the mandatory notice period is:</p>
+                    <ul>
+                        <li><strong>2 Months:</strong> For employees with less than 10 years of service.</li>
+                        <li><strong>3 Months:</strong> For employees with 10 or more years of service.</li>
+                    </ul>
+
+                    <h2>Consequences of Arbitrary Dismissal</h2>
+                    <p>If a court finds a dismissal to be arbitrary, the employer may be ordered to pay compensation. The minimum compensation is usually <strong>two months of the full salary for each year of service</strong>, in addition to payment in lieu of notice and any accrued leave.</p>
+
+                    <h2>Best Practices for Risk Mitigation</h2>
+                    <ul>
+                        <li><strong>Document Everything:</strong> Maintain a clear file of performance reviews, warnings, and correspondence.</li>
+                        <li><strong>Follow the Process:</strong> Always conduct an internal investigation before dismissing for misconduct.</li>
+                        <li><strong>Seek Legal Advice:</strong> Never terminate an employee in Egypt without consulting a local labor law expert.</li>
+                    </ul>
+
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="not-prose space-y-4 my-8">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Can we pay a "buyout" instead of notice?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Yes, the employer can choose to pay the employee for the notice period and terminate the relationship immediately.</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">What is a Form 6?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Form 6 is the official document submitted to the Social Insurance Authority to signify the end of the employment relationship and stop the monthly contribution obligation.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-primary/5 border border-primary/10 p-8 rounded-2xl my-12 text-center">
+                        <h3 class="mt-0">Managing Employee Exits Safely</h3>
+                        <p>Staffona provides expert guidance on termination procedures to ensure your business is protected from legal claims.</p>
+                        <a href="#/contact" class="bg-primary text-white px-8 py-3 rounded-xl font-bold inline-block mt-4">Consult an HR Specialist</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="page-article-employee-benefits" class="page-section hidden">
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-12 px-5">
+                <div class="max-w-4xl mx-auto">
+                    <nav class="mb-8"><a href="#/resources" class="text-secondary font-bold inline-flex items-center"><span class="material-symbols-outlined mr-2">arrow_back</span> Back to Resources</a></nav>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Employee Benefits & Leave Entitlements in Egypt</h1>
+                    <div class="flex items-center gap-4 text-slate-500 text-sm">
+                        <span>Updated: January 2026</span>
+                        <span>•</span>
+                        <span>10 min read</span>
+                    </div>
+                </div>
+            </div>
+            <div class="py-16 px-5">
+                <div class="max-w-4xl mx-auto prose dark:prose-invert">
+                    <p class="lead">Attracting and retaining top talent in Egypt requires a competitive benefits package. This guide outlines the statutory requirements and the common market standards for employee leave and benefits.</p>
+
+                    <h2>Statutory Leave Entitlements</h2>
+                    <h3>1. Annual Leave</h3>
+                    <p>Under the Egyptian Labor Law, employees are entitled to annual paid leave as follows:</p>
+                    <ul>
+                        <li><strong>21 Days:</strong> For employees who have completed one full year of service.</li>
+                        <li><strong>30 Days:</strong> For employees who have completed 10 years of service (even with different employers) or those over the age of 50.</li>
+                        <li><strong>Accrual:</strong> Leave starts accruing after 6 months of service.</li>
+                    </ul>
+
+                    <h3>2. Sick Leave</h3>
+                    <p>Employees are entitled to sick leave if they provide a medical certificate from a recognized authority (usually the Social Insurance Authority). Payment during sick leave is partially covered by social insurance, often at 75% or 85% of the salary depending on the duration.</p>
+
+                    <h3>3. Maternity Leave</h3>
+                    <p>Female employees are entitled to 90 days of paid maternity leave, provided they have been registered with the Social Insurance Authority for at least 10 months. This can be taken up to twice during their service with the same employer.</p>
+
+                    <h3>4. Public Holidays</h3>
+                    <p>Egypt has approximately 13 to 15 official public holidays per year (including religious and national events). Employees are entitled to full pay during these days. If required to work, they must receive double pay.</p>
+
+                    <h2>Statutory Financial Benefits</h2>
+                    <ul>
+                        <li><strong>Social Insurance:</strong> As discussed in our other guides, this is the primary mandatory benefit, providing health and pension coverage.</li>
+                        <li><strong>Profit Sharing:</strong> For companies registered under the Companies Law, employees are legally entitled to a share of the annual profits (usually up to 10%, with certain caps).</li>
+                    </ul>
+
+                    <h2>Common Supplemental Benefits (The "Market Standard")</h2>
+                    <p>To be competitive, most international employers in Egypt provide additional benefits:</p>
+                    <ul>
+                        <li><strong>Private Medical Insurance:</strong> Providing access to high-quality private hospitals and clinics.</li>
+                        <li><strong>Meal Allowances:</strong> A common tax-efficient way to supplement income.</li>
+                        <li><strong>Transportation Allowance:</strong> Particularly for employees required to commute to an office.</li>
+                        <li><strong>Performance Bonuses:</strong> Annual or quarterly bonuses based on individual or company KPIs.</li>
+                    </ul>
+
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="not-prose space-y-4 my-8">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Can unused annual leave be carried over?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Yes, the law allows for a portion of leave to be carried over to the following year, or it can be "cashed out" upon termination.</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">What is the retirement age in Egypt?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">The retirement age is currently 60, but it is scheduled to gradually increase to 65 by 2040 under the new Social Insurance Law.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-primary/5 border border-primary/10 p-8 rounded-2xl my-12">
+                        <h3>Design a winning benefits package</h3>
+                        <p>Staffona's HR consultants can help you benchmark your benefits against the local market to ensure you attract the best talent.</p>
+                        <a href="#/contact" class="text-primary font-bold inline-flex items-center">Get a benchmarking report <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-article-misclassification-risks" class="page-section hidden">
+            <div class="bg-slate-50 dark:bg-slate-900/50 pt-24 pb-12 px-5">
+                <div class="max-w-4xl mx-auto">
+                    <nav class="mb-8"><a href="#/resources" class="text-secondary font-bold inline-flex items-center"><span class="material-symbols-outlined mr-2">arrow_back</span> Back to Resources</a></nav>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">Risks of Misclassifying Contractors in Egypt</h1>
+                    <div class="flex items-center gap-4 text-slate-500 text-sm">
+                        <span>Updated: January 2026</span>
+                        <span>•</span>
+                        <span>12 min read</span>
+                    </div>
+                </div>
+            </div>
+            <div class="py-16 px-5">
+                <div class="max-w-4xl mx-auto prose dark:prose-invert">
+                    <p class="lead">Hiring full-time workers as "independent contractors" or "freelancers" is a common mistake made by foreign companies entering the Egyptian market. This article explores the legal and financial risks of misclassification.</p>
+
+                    <h2>What is Employee Misclassification?</h2>
+                    <p>Misclassification occurs when a company treats a worker as an independent contractor for tax and legal purposes, even though the reality of the working relationship is that of an employer and employee.</p>
+
+                    <h2>How Egyptian Authorities Define an Employee</h2>
+                    <p>The Egyptian Ministry of Labor and the Tax Authority look at the substance of the relationship, not just the title of the contract. Key indicators of employment include:</p>
+                    <ul>
+                        <li><strong>Control:</strong> The employer directs when, where, and how the work is done.</li>
+                        <li><strong>Exclusivity:</strong> The worker is required to work only for that company.</li>
+                        <li><strong>Tools & Equipment:</strong> The company provides the necessary tools (e.g., laptop, software).</li>
+                        <li><strong>Integration:</strong> The worker's role is a core part of the business operations.</li>
+                    </ul>
+
+                    <h2>The Risks of Misclassification</h2>
+                    <h3>1. Back-Payment of Social Insurance</h3>
+                    <p>If a "contractor" is found to be an employee, the Social Insurance Authority can demand the back-payment of all employer and employee contributions, plus significant interest and late fees. This can amount to 30%+ of the total historical payments made to the worker.</p>
+
+                    <h3>2. Tax Liabilities and Penalties</h3>
+                    <p>The Tax Authority may claim unpaid salary taxes that should have been withheld. Again, this comes with automatic interest charges that can multiply the original debt.</p>
+
+                    <h3>3. Employment Rights Claims</h3>
+                    <p>A misclassified worker can file a claim for statutory benefits they missed out on, such as annual leave, end-of-service gratuity, and even compensation for arbitrary dismissal if the contract is terminated without following proper labor law procedures.</p>
+
+                    <h3>4. Reputation and Audit Risk</h3>
+                    <p>Once a company is flagged for misclassification, it is likely to be subject to more frequent audits by both the labor and tax authorities.</p>
+
+                    <h2>How to Protect Your Business</h2>
+                    <p>The safest way to hire in Egypt is to use a compliant <strong>Employer of Record (EOR)</strong> model. By hiring through Staffona, you ensure that every worker is correctly classified, registered with the proper authorities, and provided with all statutory benefits from day one.</p>
+
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="not-prose space-y-4 my-8">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Can we use a global PEO contract?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">A global contract is not enough. To be safe, the relationship must be governed by a local contract that is registered with the Egyptian Social Insurance office.</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">What if the worker prefers to be a freelancer?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">The preferences of the worker do not override the statutory requirements. The company remains liable for the misclassification regardless of any agreement signed by the worker.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-primary p-8 rounded-2xl my-12 text-white text-center">
+                        <h3 class="mt-0 text-white">Avoid the risks of misclassification</h3>
+                        <p>Staffona's EOR service provides the most secure legal framework for hiring in Egypt.</p>
+                        <a href="#/contact" class="bg-white text-primary px-8 py-3 rounded-xl font-bold inline-block mt-4">Audit your hiring model</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -609,12 +2265,20 @@
                     </div>
                 </div>
                 <div>
+                    <h4 class="font-bold text-sm uppercase tracking-widest mb-6 dark:text-white">Services</h4>
+                    <ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="#/eor-egypt" class="hover:text-primary transition-colors">EOR in Egypt</a></li>
+                        <li><a href="#/payroll-egypt" class="hover:text-primary transition-colors">Payroll Outsourcing</a></li>
+                        <li><a href="#/recruitment-egypt" class="hover:text-primary transition-colors">Recruitment Services</a></li>
+                        <li><a href="#/resources" class="hover:text-primary transition-colors">Hiring Resource Center</a></li>
+                    </ul>
+                </div>
+                <div>
                     <h4 class="font-bold text-sm uppercase tracking-widest mb-6 dark:text-white">Company</h4>
                     <ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
                         <li><a href="#/about" class="hover:text-primary transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Careers</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Insights</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Client Portal</a></li>
+                        <li><a href="#/why-us" class="hover:text-primary transition-colors">Why Staffona</a></li>
+                        <li><a href="#/contact" class="hover:text-primary transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
                 <div>

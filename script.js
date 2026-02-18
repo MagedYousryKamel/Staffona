@@ -4,7 +4,100 @@ const routes = {
     '/about': 'page-about',
     '/services': 'page-services',
     '/why-us': 'page-why-us',
-    '/contact': 'page-contact'
+    '/contact': 'page-contact',
+    '/eor-egypt': 'page-eor-egypt',
+    '/payroll-egypt': 'page-payroll-egypt',
+    '/recruitment-egypt': 'page-recruitment-egypt',
+    '/resources': 'page-resource-center',
+    '/resources/hiring-guide': 'page-article-hiring-guide',
+    '/resources/hiring-cost': 'page-article-hiring-cost',
+    '/resources/labor-law': 'page-article-labor-law',
+    '/resources/eor-vs-peo': 'page-article-eor-vs-peo',
+    '/resources/payroll-taxes': 'page-article-payroll-taxes',
+    '/resources/gcc-hiring': 'page-article-gcc-hiring',
+    '/resources/social-insurance': 'page-article-social-insurance',
+    '/resources/termination-rules': 'page-article-termination-rules',
+    '/resources/employee-benefits': 'page-article-employee-benefits',
+    '/resources/misclassification-risks': 'page-article-misclassification-risks'
+};
+
+const pageMetadata = {
+    '/': {
+        title: 'Employer of Record (EOR) & Payroll Outsourcing in Egypt | Staffona',
+        description: 'Employer of Record (EOR) Services in Egypt for Foreign Companies. Hire employees in Egypt without opening a company. Compliance, Payroll, and Recruitment.'
+    },
+    '/about': {
+        title: 'About Staffona | Your Strategic HR & Compliance Partner',
+        description: 'Learn about Staffona, a premier business support firm specializing in comprehensive HR management and compliance in Egypt.'
+    },
+    '/services': {
+        title: 'Our Services | HR Outsourcing, Payroll & Compliance in Egypt',
+        description: 'Explore our range of services including HR outsourcing, payroll management, recruitment, and back-office support in Egypt.'
+    },
+    '/why-us': {
+        title: 'Why Choose Staffona | Cross-Border HR Expertise in Egypt',
+        description: 'Discover why industry leaders choose Staffona for their HR and compliance needs in Egypt and across borders.'
+    },
+    '/contact': {
+        title: 'Contact Staffona | Get an HR & Compliance Consultation',
+        description: 'Reach out to our specialists for a consultation on EOR, payroll, and recruitment services in Egypt.'
+    },
+    '/eor-egypt': {
+        title: 'Employer of Record (EOR) in Egypt – Hire Employees Without Opening a Company',
+        description: 'Learn how to hire employees in Egypt without a legal entity. Our EOR services handle payroll, tax, and labor law compliance.'
+    },
+    '/payroll-egypt': {
+        title: 'Payroll Outsourcing Services in Egypt for International Employers',
+        description: 'Expert payroll outsourcing in Egypt. We handle income tax, social insurance, and compliance filings for your Egyptian workforce.'
+    },
+    '/recruitment-egypt': {
+        title: 'Recruitment Services in Egypt for Foreign Companies',
+        description: 'Find top talent in Egypt with Staffona. Specialized recruitment and executive search for international businesses.'
+    },
+    '/resources': {
+        title: 'Hiring in Egypt Resource Center | Staffona Insights',
+        description: 'Comprehensive guides and articles on labor law, payroll taxes, and hiring practices in Egypt for foreign employers.'
+    },
+    '/resources/hiring-guide': {
+        title: 'Complete Guide to Hiring Employees in Egypt (2026 Edition)',
+        description: 'Everything you need to know about hiring in Egypt: from recruitment to onboarding and compliance.'
+    },
+    '/resources/hiring-cost': {
+        title: 'Cost of Hiring an Employee in Egypt – Full Breakdown',
+        description: 'Detailed breakdown of employee costs in Egypt, including salaries, taxes, and social insurance.'
+    },
+    '/resources/labor-law': {
+        title: 'Egypt Labor Law Explained for Foreign Employers',
+        description: 'A comprehensive guide to Egyptian Labor Law, ensuring your business stays compliant with local regulations.'
+    },
+    '/resources/eor-vs-peo': {
+        title: 'EOR vs PEO vs Opening a Company in Egypt',
+        description: 'Compare different ways to hire in Egypt and find the best solution for your business expansion.'
+    },
+    '/resources/payroll-taxes': {
+        title: 'Payroll Taxes in Egypt – Employer Guide',
+        description: 'Understand employer tax obligations in Egypt, including income tax brackets and reporting requirements.'
+    },
+    '/resources/gcc-hiring': {
+        title: 'How GCC Companies Can Hire in Egypt Legally',
+        description: 'A guide for companies in UAE, KSA, and GCC on how to legally hire and manage teams in Egypt.'
+    },
+    '/resources/social-insurance': {
+        title: 'Social Insurance in Egypt Explained',
+        description: 'Detailed explanation of Egypt\'s social insurance system and employer contribution requirements.'
+    },
+    '/resources/termination-rules': {
+        title: 'Termination Rules in Egypt – Legal Guide',
+        description: 'Understanding the legal requirements and risks associated with employee termination in Egypt.'
+    },
+    '/resources/employee-benefits': {
+        title: 'Employee Benefits & Leave Entitlements in Egypt',
+        description: 'Guide to statutory and common employee benefits, leave entitlements, and holidays in Egypt.'
+    },
+    '/resources/misclassification-risks': {
+        title: 'Risks of Misclassifying Contractors in Egypt',
+        description: 'Learn about the legal and financial risks of misclassifying employees as independent contractors in Egypt.'
+    }
 };
 
 function router() {
@@ -20,6 +113,14 @@ function router() {
     const activePage = document.getElementById(pageId);
     if (activePage) {
         activePage.classList.remove('hidden');
+    }
+
+    // Update metadata
+    const metadata = pageMetadata[hash] || pageMetadata['/'];
+    document.title = metadata.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        metaDesc.setAttribute('content', metadata.description);
     }
 
     // Update nav links
