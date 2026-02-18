@@ -18,7 +18,9 @@ const routes = {
     '/resources/social-insurance': 'page-article-social-insurance',
     '/resources/termination-rules': 'page-article-termination-rules',
     '/resources/employee-benefits': 'page-article-employee-benefits',
-    '/resources/misclassification-risks': 'page-article-misclassification-risks'
+    '/resources/misclassification-risks': 'page-article-misclassification-risks',
+    '/privacy': 'page-privacy',
+    '/terms': 'page-terms'
 };
 
 const pageMetadata = {
@@ -97,6 +99,14 @@ const pageMetadata = {
     '/resources/misclassification-risks': {
         title: 'Risks of Misclassifying Contractors in Egypt',
         description: 'Learn about the legal and financial risks of misclassifying employees as independent contractors in Egypt.'
+    },
+    '/privacy': {
+        title: 'Privacy Policy | Staffona',
+        description: 'Staffona Privacy Policy. Learn how we handle your data.'
+    },
+    '/terms': {
+        title: 'Terms of Service | Staffona',
+        description: 'Staffona Terms of Service. Learn about our service agreement.'
     }
 };
 
