@@ -154,10 +154,9 @@ function initCookieBanner() {
    3. Replace 'G-XXXXXXXXXX' below with your actual ID
    4. That's it. Events are already tracked via trackEvent() calls.
 */
-const GA_ID = 'G-BG3DEQLHJF'; // ← Replace with your GA4 Measurement ID
+const GA_ID = 'G-BG3DEQLHJF';
 
 function loadAnalytics() {
-  if (GA_ID === 'G-BG3DEQLHJF') return; // skip until real ID added
   if (document.getElementById('ga-script')) return;
 
   const s = document.createElement('script');
@@ -202,7 +201,7 @@ function openCalendly(e) {
 }
 
 /* ── Formspree Contact Form ────────────────────────────────── */
-const FORMSPREE_ID = 'xkovjgaq';
+const FORMSPREE_ID = 'xreajrkr';
 
 async function submitContactForm(formEl, successElId) {
   const btn = formEl.querySelector('[type="submit"]');

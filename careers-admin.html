@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers Admin — Staffona</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="Favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --navy:    #0B1F3A;
+  --navy-m:  #112240;
+  --navy-lt: #1B3460;
+  --gold:    #C8973A;
+  --gold-lt: #E0AC56;
+  --white:   #FFFFFF;
+  --off:     #F8F7F5;
+  --border:  #E4E2DC;
+  --slate:   #475569;
+  --slate-lt:#94A3B8;
+  --text:    #1E293B;
+  --success: #16A34A;
+  --danger:  #DC2626;
+  --warn:    #D97706;
+
+  --fh: 'Playfair Display', Georgia, serif;
+  --fb: 'DM Sans', system-ui, sans-serif;
+  --r: 8px; --rm: 12px; --rl: 18px;
+  --sh: 0 4px 16px rgba(11,31,58,.09);
+  --ease: cubic-bezier(.4,0,.2,1);
+  --t: .22s;
+}
+[data-theme="dark"] {
+  --off:    #0D1B2E;
+  --border: rgba(255,255,255,.1);
+  --text:   rgba(255,255,255,.88);
+  --slate:  rgba(255,255,255,.52);
+  --white:  #0B1F3A;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fb);color:var(--text);background:var(--off);min-height:100vh;-webkit-font-smoothing:antialiased}
+
+/* ── Login Screen ──────────────────────────────────────────── */
+#loginScreen {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--navy);
+  background-image: linear-gradient(rgba(200,151,58,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(200,151,58,.04) 1px,transparent 1px);
+  background-size: 48px 48px;
+}
+.login-card {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px; padding: 44px 40px; width: 100%; max-width: 400px;
+  text-align: center;
+}
+.login-logo { font-family: var(--fh); font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.login-logo em { color: var(--gold); font-style: normal; }
+.login-sub { font-size: 13px; color: rgba(255,255,255,.4); margin-bottom: 32px; }
+.login-label { display: block; font-size: 11px; font-weight: 600; color: rgba(255,255,255,.46); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 5px; text-align: left; }
+.login-input {
+  width: 100%; padding: 11px 13px; background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12); border-radius: var(--r);
+  color: #fff; font-size: 14px; font-family: var(--fb); outline: none;
+  transition: border-color var(--t); margin-bottom: 14px;
+}
+.login-input:focus { border-color: var(--gold); }
+.login-btn {
+  width: 100%; padding: 12px; background: var(--gold); color: var(--navy);
+  border: none; border-radius: var(--r); font-size: 14px; font-weight: 700;
+  cursor: pointer; font-family: var(--fb); transition: all var(--t);
+}
+.login-btn:hover { background: var(--gold-lt); }
+.login-err { color: #f87171; font-size: 13px; margin-top: 8px; display: none; }
+
+/* ── Admin Layout ──────────────────────────────────────────── */
+#adminApp { display: none; min-height: 100vh; }
+
+.admin-bar {
+  background: var(--navy); height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+.admin-bar-logo { font-family: var(--fh); font-size: 18px; font-weight: 700; color: #fff; }
+.admin-bar-logo em { color: var(--gold); font-style: normal; }
+.admin-bar-logo span { font-size: 13px; font-weight: 400; color: rgba(255,255,255,.4); margin-left: 8px; font-family: var(--fb); }
+.admin-bar-right { display: flex; align-items: center; gap: 12px; }
+.admin-dm { background: none; border: 1px solid rgba(255,255,255,.15); border-radius: 50%; width: 34px; height: 34px; color: rgba(255,255,255,.6); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.admin-dm:hover { background: rgba(255,255,255,.08); }
+.admin-dm svg { width: 16px; height: 16px; }
+.logout-btn { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: var(--r); padding: 6px 14px; color: rgba(255,255,255,.6); font-size: 13px; cursor: pointer; font-family: var(--fb); transition: all var(--t); }
+.logout-btn:hover { background: rgba(255,0,0,.15); color: #f87171; border-color: rgba(255,0,0,.3); }
+
+.admin-layout { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 60px); }
+
+/* Sidebar */
+.admin-sidebar { background: var(--white); border-right: 1px solid var(--border); padding: 20px 0; }
+.sidebar-section { margin-bottom: 6px; }
+.sidebar-section-title { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--slate-lt); padding: 0 20px 8px; }
+.sidebar-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 20px; font-size: 13.5px; font-weight: 500; color: var(--slate);
+  cursor: pointer; border: none; background: none; width: 100%; text-align: left;
+  font-family: var(--fb); transition: all var(--t);
+}
+.sidebar-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+.sidebar-link:hover { color: var(--navy); background: var(--off); }
+.sidebar-link.active { color: var(--gold); background: rgba(200,151,58,.08); border-right: 2px solid var(--gold); font-weight: 600; }
+.sidebar-badge { background: var(--gold); color: var(--navy); font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 100px; margin-left: auto; }
+
+/* Main content */
+.admin-main { padding: 28px 32px; overflow: auto; }
+.view { display: none; }
+.view.active { display: block; }
+
+/* Page title */
+.page-title { font-family: var(--fh); font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.page-sub { font-size: 13.5px; color: var(--slate); margin-bottom: 28px; }
+
+/* Stats row */
+.stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 28px; }
+.stat-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--rl); padding: 20px 22px; }
+.stat-val { font-family: var(--fh); font-size: 32px; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 4px; }
+.stat-lbl { font-size: 13px; color: var(--slate); }
+.stat-card.gold .stat-val { color: var(--gold); }
+.stat-card.green .stat-val { color: var(--success); }
+.stat-card.warn .stat-val { color: var(--warn); }
+
+/* Table */
+.table-wrap { background: var(--white); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; }
+.table-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.table-head-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.table-actions { display: flex; gap: 8px; }
+table { width: 100%; border-collapse: collapse; }
+thead th { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--slate-lt); text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--border); background: var(--off); }
+tbody td { padding: 13px 16px; font-size: 13.5px; color: var(--text); border-bottom: 1px solid var(--border); vertical-align: middle; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: var(--off); }
+
+/* Status badges */
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 100px; font-size: 11.5px; font-weight: 600; }
+.badge-open { background: rgba(22,163,74,.1); color: #15803d; }
+.badge-paused { background: rgba(217,119,6,.1); color: #b45309; }
+.badge-closed { background: rgba(220,38,38,.1); color: #b91c1c; }
+.badge-new { background: rgba(200,151,58,.12); color: var(--gold); }
+.badge-reviewed { background: rgba(59,130,246,.1); color: #1d4ed8; }
+.badge-shortlisted { background: rgba(22,163,74,.1); color: #15803d; }
+.badge-rejected { background: rgba(220,38,38,.1); color: #b91c1c; }
+.badge-hired { background: var(--navy); color: var(--gold); }
+
+/* Action buttons */
+.act-btn { background: none; border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; font-family: var(--fb); color: var(--slate); transition: all var(--t); }
+.act-btn:hover { border-color: var(--gold); color: var(--gold); }
+.act-btn.danger:hover { border-color: var(--danger); color: var(--danger); }
+
+/* Job editor */
+.job-form { background: var(--white); border: 1px solid var(--border); border-radius: var(--rl); padding: 28px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fg { margin-bottom: 16px; }
+.fl { display: block; font-size: 11px; font-weight: 600; color: var(--slate); margin-bottom: 5px; letter-spacing: .05em; text-transform: uppercase; }
+.fi, .fsel, .fta {
+  width: 100%; padding: 10px 12px; background: var(--off);
+  border: 1px solid var(--border); border-radius: var(--r);
+  color: var(--text); font-size: 13.5px; font-family: var(--fb);
+  transition: border-color var(--t); outline: none;
+}
+.fi:focus, .fsel:focus, .fta:focus { border-color: var(--gold); }
+.fta { resize: vertical; min-height: 100px; }
+.form-actions { display: flex; gap: 10px; padding-top: 6px; }
+.btn-save { background: var(--gold); color: var(--navy); border: none; border-radius: var(--r); padding: 10px 22px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: var(--fb); transition: all var(--t); }
+.btn-save:hover { background: var(--gold-lt); }
+.btn-cancel { background: var(--off); color: var(--slate); border: 1px solid var(--border); border-radius: var(--r); padding: 10px 22px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--fb); transition: all var(--t); }
+.btn-cancel:hover { border-color: var(--slate); color: var(--text); }
+.btn-add { background: var(--navy); color: #fff; border: none; border-radius: var(--r); padding: 8px 18px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: var(--fb); display: flex; align-items: center; gap: 6px; transition: all var(--t); }
+.btn-add:hover { background: var(--navy-lt); }
+.btn-add svg { width: 14px; height: 14px; }
+
+/* Empty state */
+.empty { text-align: center; padding: 48px 24px; color: var(--slate); }
+.empty-icon { font-size: 40px; margin-bottom: 12px; }
+.empty-title { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.empty-desc { font-size: 13.5px; line-height: 1.65; max-width: 360px; margin: 0 auto; }
+
+/* Detail panel */
+.detail-panel { background: var(--white); border: 1px solid var(--border); border-radius: var(--rl); padding: 28px; margin-top: 16px; }
+.detail-row { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+.detail-label { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--slate-lt); width: 120px; flex-shrink: 0; padding-top: 2px; }
+.detail-val { font-size: 13.5px; color: var(--text); line-height: 1.6; }
+.detail-note { background: var(--off); border-left: 3px solid var(--gold); border-radius: 0 var(--r) var(--r) 0; padding: 14px 16px; font-size: 13.5px; color: var(--text); line-height: 1.65; margin-top: 14px; }
+
+/* Toast */
+.toast { position: fixed; bottom: 24px; right: 24px; background: var(--navy); color: #fff; padding: 12px 20px; border-radius: var(--rm); font-size: 13.5px; font-weight: 500; box-shadow: var(--sh); opacity: 0; transform: translateY(10px); transition: all .3s var(--ease); pointer-events: none; z-index: 9999; }
+.toast.show { opacity: 1; transform: none; }
+.toast.success { border-left: 3px solid var(--success); }
+.toast.error { border-left: 3px solid var(--danger); }
+
+@media(max-width:900px) { .admin-layout { grid-template-columns: 1fr; } .admin-sidebar { display: none; } .stats-row { grid-template-columns: 1fr 1fr; } .form-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- ════ LOGIN ════ -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">Staff<em>ona</em></div>
+    <div class="login-sub">Careers Admin Dashboard</div>
+    <label class="login-label" for="loginPass">Password</label>
+    <input type="password" class="login-input" id="loginPass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <div class="login-err" id="loginErr">Incorrect password. Please try again.</div>
+    <p style="font-size:11px;color:rgba(255,255,255,.2);margin-top:18px">
+      First time? Default password: <strong style="color:rgba(255,255,255,.35)">staffona2026</strong><br>
+      Change it in Settings after login.
+    </p>
+  </div>
+</div>
+
+<!-- ════ ADMIN APP ════ -->
+<div id="adminApp">
+
+  <!-- Top bar -->
+  <div class="admin-bar">
+    <div class="admin-bar-logo">Staff<em>ona</em><span>Careers Admin</span></div>
+    <div class="admin-bar-right">
+      <button class="admin-dm" id="dmToggle" aria-label="Toggle dark mode" onclick="toggleDM()">
+        <svg id="dmMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg id="dmSun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+      </button>
+      <button class="logout-btn" onclick="logout()">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <div class="admin-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Overview</div>
+        <button class="sidebar-link active" onclick="showView('dashboard',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </button>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Jobs</div>
+        <button class="sidebar-link" onclick="showView('jobs',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          Job Listings
+          <span class="sidebar-badge" id="jobsBadge">0</span>
+        </button>
+        <button class="sidebar-link" onclick="showView('add-job',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Add New Job
+        </button>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Applications</div>
+        <button class="sidebar-link" onclick="showView('applications',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          All Applications
+          <span class="sidebar-badge" id="appsBadge" style="background:#dc2626;color:#fff">0</span>
+        </button>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Settings</div>
+        <button class="sidebar-link" onclick="showView('settings',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </button>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="admin-main">
+
+      <!-- Dashboard -->
+      <div class="view active" id="view-dashboard">
+        <div class="page-title">Dashboard</div>
+        <div class="page-sub">Overview of your careers portal activity.</div>
+        <div class="stats-row">
+          <div class="stat-card gold"><div class="stat-val" id="statJobs">0</div><div class="stat-lbl">Active Job Listings</div></div>
+          <div class="stat-card"><div class="stat-val" id="statApps">0</div><div class="stat-lbl">Total Applications</div></div>
+          <div class="stat-card warn"><div class="stat-val" id="statNew">0</div><div class="stat-lbl">New (Unreviewed)</div></div>
+          <div class="stat-card green"><div class="stat-val" id="statShortlisted">0</div><div class="stat-lbl">Shortlisted</div></div>
+        </div>
+
+        <div class="table-wrap">
+          <div class="table-head">
+            <div class="table-head-title">Recent Applications</div>
+            <button class="btn-add" onclick="showView('applications',document.querySelector('.sidebar-link:nth-child(5)'))">
+              View All
+            </button>
+          </div>
+          <table>
+            <thead><tr><th>Name</th><th>Role</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="recentAppsTbl"><tr><td colspan="5" class="empty"><div class="empty-icon">📭</div><div class="empty-title">No applications yet</div><div class="empty-desc">Applications submitted via the careers page will appear here once you add them manually below.</div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Job Listings -->
+      <div class="view" id="view-jobs">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+          <div><div class="page-title">Job Listings</div><div class="page-sub">Manage open positions. Edit titles, descriptions, and status.</div></div>
+          <button class="btn-add" onclick="showView('add-job',null)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Job</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Job Title</th><th>Department</th><th>Type</th><th>Status</th><th>Applications</th><th>Actions</th></tr></thead>
+            <tbody id="jobsTbl"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Add / Edit Job -->
+      <div class="view" id="view-add-job">
+        <div class="page-title" id="jobFormTitle">Add New Job</div>
+        <div class="page-sub">Fill in the details below. The job will appear on the public careers page.</div>
+        <div class="job-form">
+          <input type="hidden" id="editingJobId">
+          <div class="form-grid">
+            <div class="fg">
+              <label class="fl" for="jTitle">Job Title *</label>
+              <input class="fi" type="text" id="jTitle" placeholder="e.g. HR & Payroll Specialist">
+            </div>
+            <div class="fg">
+              <label class="fl" for="jDept">Department</label>
+              <select class="fsel" id="jDept">
+                <option value="HR & Payroll">HR &amp; Payroll</option>
+                <option value="Recruitment">Recruitment</option>
+                <option value="Operations">Operations</option>
+                <option value="Sales">Sales</option>
+                <option value="Tech">Tech</option>
+                <option value="Management">Management</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="fl" for="jType">Employment Type</label>
+              <select class="fsel" id="jType">
+                <option value="Full-Time">Full-Time</option>
+                <option value="Part-Time">Part-Time</option>
+                <option value="Contract">Contract</option>
+                <option value="Internship">Internship</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="fl" for="jStatus">Status</label>
+              <select class="fsel" id="jStatus">
+                <option value="Open">Open</option>
+                <option value="Paused">Paused</option>
+                <option value="Closed">Closed</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="fl" for="jLocation">Location</label>
+              <input class="fi" type="text" id="jLocation" value="Alexandria, Egypt">
+            </div>
+            <div class="fg">
+              <label class="fl" for="jFeatured">Featured</label>
+              <select class="fsel" id="jFeatured">
+                <option value="false">No</option>
+                <option value="true">Yes (show as featured)</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg">
+            <label class="fl" for="jDesc">Job Description *</label>
+            <textarea class="fta" id="jDesc" style="min-height:120px" placeholder="Describe the role, responsibilities, and requirements..."></textarea>
+          </div>
+          <div class="fg">
+            <label class="fl" for="jSkills">Required Skills (comma-separated)</label>
+            <input class="fi" type="text" id="jSkills" placeholder="e.g. Egyptian Labor Law, Payroll Processing, Arabic, English">
+          </div>
+          <div class="form-actions">
+            <button class="btn-save" onclick="saveJob()">Save Job</button>
+            <button class="btn-cancel" onclick="showView('jobs',null)">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Applications -->
+      <div class="view" id="view-applications">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+          <div><div class="page-title">Applications</div><div class="page-sub">Track and manage all job applications. Update status as candidates progress.</div></div>
+          <button class="btn-add" onclick="showAddApp()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Manually</button>
+        </div>
+
+        <!-- Filters -->
+        <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+          <select class="fsel" id="filterRole" onchange="renderApps()" style="width:auto;padding:7px 12px;font-size:13px">
+            <option value="">All Roles</option>
+          </select>
+          <select class="fsel" id="filterStatus" onchange="renderApps()" style="width:auto;padding:7px 12px;font-size:13px">
+            <option value="">All Statuses</option>
+            <option value="New">New</option>
+            <option value="Reviewed">Reviewed</option>
+            <option value="Shortlisted">Shortlisted</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Hired">Hired</option>
+          </select>
+        </div>
+
+        <div class="table-wrap" style="margin-bottom:16px">
+          <table>
+            <thead><tr><th>Name</th><th>Role Applied</th><th>Email</th><th>Experience</th><th>Date Added</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="appsTbl"></tbody>
+          </table>
+        </div>
+
+        <!-- Add/Edit Application form -->
+        <div class="detail-panel" id="addAppPanel" style="display:none">
+          <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:18px" id="addAppTitle">Add Application</div>
+          <input type="hidden" id="editingAppId">
+          <div class="form-grid">
+            <div class="fg"><label class="fl" for="aName">Full Name *</label><input class="fi" type="text" id="aName" placeholder="Ahmed Hassan"></div>
+            <div class="fg"><label class="fl" for="aEmail">Email *</label><input class="fi" type="email" id="aEmail" placeholder="ahmed@email.com"></div>
+            <div class="fg"><label class="fl" for="aPhone">Phone</label><input class="fi" type="text" id="aPhone" placeholder="+20 10 XXXX XXXX"></div>
+            <div class="fg">
+              <label class="fl" for="aRole">Role Applied For</label>
+              <select class="fsel" id="aRole">
+                <option value="">Select...</option>
+                <option>HR &amp; Payroll Specialist</option>
+                <option>Recruitment Consultant</option>
+                <option>HR Operations Coordinator</option>
+                <option>Speculative Application</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="fl" for="aExp">Experience</label>
+              <select class="fsel" id="aExp">
+                <option value="">Select...</option>
+                <option value="0-1">0–1 years</option>
+                <option value="1-3">1–3 years</option>
+                <option value="3-5">3–5 years</option>
+                <option value="5-10">5–10 years</option>
+                <option value="10+">10+ years</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="fl" for="aStatus">Status</label>
+              <select class="fsel" id="aStatus">
+                <option value="New">New</option>
+                <option value="Reviewed">Reviewed</option>
+                <option value="Shortlisted">Shortlisted</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Hired">Hired</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg"><label class="fl" for="aLinkedin">LinkedIn / Portfolio URL</label><input class="fi" type="url" id="aLinkedin" placeholder="https://linkedin.com/in/..."></div>
+          <div class="fg"><label class="fl" for="aNotes">Cover Note / Internal Notes</label><textarea class="fta" id="aNotes" placeholder="Candidate's cover note or your internal notes..."></textarea></div>
+          <div class="form-actions">
+            <button class="btn-save" onclick="saveApp()">Save Application</button>
+            <button class="btn-cancel" onclick="document.getElementById('addAppPanel').style.display='none'">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div class="view" id="view-settings">
+        <div class="page-title">Settings</div>
+        <div class="page-sub">Admin preferences and security settings.</div>
+        <div class="job-form" style="max-width:480px">
+          <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:12px">🔑 Change Password</div>
+          <div class="fg"><label class="fl" for="currPass">Current Password</label><input class="fi" type="password" id="currPass" placeholder="Current password"></div>
+          <div class="fg"><label class="fl" for="newPass">New Password</label><input class="fi" type="password" id="newPass" placeholder="At least 8 characters"></div>
+          <div class="fg"><label class="fl" for="confPass">Confirm New Password</label><input class="fi" type="password" id="confPass" placeholder="Repeat new password"></div>
+          <button class="btn-save" onclick="changePassword()">Update Password</button>
+
+          <div style="font-size:15px;font-weight:600;color:var(--text);margin:28px 0 16px;border-bottom:1px solid var(--border);padding-bottom:12px">🗄️ Data Management</div>
+          <p style="font-size:13px;color:var(--slate);margin-bottom:14px">All data is stored locally in your browser. Export to back up, import to restore.</p>
+          <div class="form-actions">
+            <button class="btn-save" onclick="exportData()">Export Data (JSON)</button>
+            <button class="btn-cancel" onclick="document.getElementById('importFile').click()">Import Data</button>
+            <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+          </div>
+          <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+            <button onclick="clearAllData()" style="background:none;border:1px solid var(--danger);color:var(--danger);border-radius:var(--r);padding:9px 18px;font-size:13px;cursor:pointer;font-family:var(--fb)">⚠️ Clear All Data</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /admin-main -->
+  </div><!-- /admin-layout -->
+</div><!-- /adminApp -->
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+// ── Storage keys ─────────────────────────────────────────────
+const KEY_PASS = 'staffona_admin_pass';
+const KEY_JOBS = 'staffona_jobs';
+const KEY_APPS = 'staffona_apps';
+const DEFAULT_PASS = 'staffona2026';
+
+// ── Auth ─────────────────────────────────────────────────────
+function doLogin() {
+  const pass = document.getElementById('loginPass').value;
+  const stored = localStorage.getItem(KEY_PASS) || DEFAULT_PASS;
+  if (pass === stored) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminApp').style.display = 'block';
+    sessionStorage.setItem('staffona_admin_auth', '1');
+    initApp();
+  } else {
+    const err = document.getElementById('loginErr');
+    err.style.display = 'block';
+    setTimeout(() => err.style.display = 'none', 3000);
+  }
+}
+function logout() {
+  sessionStorage.removeItem('staffona_admin_auth');
+  location.reload();
+}
+
+// Check session
+if (sessionStorage.getItem('staffona_admin_auth') === '1') {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminApp').style.display = 'block';
+}
+
+// ── Dark mode ─────────────────────────────────────────────────
+const dm = localStorage.getItem('staffona-theme');
+if (dm === 'dark') applyDM(true);
+function applyDM(dark) {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('dmMoon').style.display = dark ? 'none' : 'block';
+  document.getElementById('dmSun').style.display = dark ? 'block' : 'none';
+}
+function toggleDM() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  applyDM(!isDark);
+  localStorage.setItem('staffona-theme', isDark ? 'light' : 'dark');
+}
+
+// ── Init ──────────────────────────────────────────────────────
+function initApp() {
+  seedDefaultJobs();
+  renderDashboard();
+  renderJobs();
+  renderApps();
+  updateBadges();
+}
+
+function getJobs() { try { return JSON.parse(localStorage.getItem(KEY_JOBS)) || []; } catch { return []; } }
+function getApps() { try { return JSON.parse(localStorage.getItem(KEY_APPS)) || []; } catch { return []; } }
+function saveJobs(j) { localStorage.setItem(KEY_JOBS, JSON.stringify(j)); }
+function saveAppsData(a) { localStorage.setItem(KEY_APPS, JSON.stringify(a)); }
+
+function seedDefaultJobs() {
+  if (getJobs().length > 0) return;
+  const defaults = [
+    { id: uid(), title: 'HR & Payroll Specialist', dept: 'HR & Payroll', type: 'Full-Time', status: 'Open', location: 'Alexandria, Egypt', featured: true, desc: 'Manage monthly payroll processing, social insurance, and labor law compliance for a growing client portfolio.', skills: 'Egyptian Labor Law, Payroll Processing, Social Insurance, Excel, Arabic, English', created: now() },
+    { id: uid(), title: 'Recruitment Consultant', dept: 'Recruitment', type: 'Full-Time', status: 'Open', location: 'Alexandria, Egypt', featured: false, desc: 'Source, screen, and place candidates across tech, finance, and operations roles for international clients.', skills: 'Sourcing, LinkedIn Recruiter, Interview Coordination, Client Management, Arabic, English', created: now() },
+    { id: uid(), title: 'HR Operations Coordinator', dept: 'Operations', type: 'Full-Time', status: 'Open', location: 'Alexandria, Egypt', featured: false, desc: 'Support client onboarding, manage employee records, and coordinate with government authorities.', skills: 'Documentation, Government Liaison, Record Management, Attention to Detail, Arabic', created: now() }
+  ];
+  saveJobs(defaults);
+}
+
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
+function now() { return new Date().toLocaleDateString('en-GB'); }
+function statusBadge(s) {
+  const map = { Open:'open', Paused:'paused', Closed:'closed', New:'new', Reviewed:'reviewed', Shortlisted:'shortlisted', Rejected:'rejected', Hired:'hired' };
+  return `<span class="badge badge-${map[s]||'new'}">${s}</span>`;
+}
+function toast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = `toast ${type} show`;
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── Navigation ────────────────────────────────────────────────
+function showView(name, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-'+name)?.classList.add('active');
+  if (btn) {
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  if (name === 'dashboard') renderDashboard();
+  if (name === 'jobs') renderJobs();
+  if (name === 'applications') renderApps();
+  if (name === 'add-job') {
+    document.getElementById('jobFormTitle').textContent = 'Add New Job';
+    document.getElementById('editingJobId').value = '';
+    ['jTitle','jSkills','jDesc'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('jDept').value = 'HR & Payroll';
+    document.getElementById('jType').value = 'Full-Time';
+    document.getElementById('jStatus').value = 'Open';
+    document.getElementById('jFeatured').value = 'false';
+    document.getElementById('jLocation').value = 'Alexandria, Egypt';
+  }
+}
+
+// ── Dashboard ─────────────────────────────────────────────────
+function renderDashboard() {
+  const jobs = getJobs(), apps = getApps();
+  const active = jobs.filter(j => j.status === 'Open').length;
+  const newApps = apps.filter(a => a.status === 'New').length;
+  const shortlisted = apps.filter(a => a.status === 'Shortlisted').length;
+  document.getElementById('statJobs').textContent = active;
+  document.getElementById('statApps').textContent = apps.length;
+  document.getElementById('statNew').textContent = newApps;
+  document.getElementById('statShortlisted').textContent = shortlisted;
+
+  const tbody = document.getElementById('recentAppsTbl');
+  const recent = [...apps].sort((a,b) => b.id.localeCompare(a.id)).slice(0,5);
+  if (!recent.length) { tbody.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="empty-icon">📭</div><div class="empty-title">No applications yet</div><div class="empty-desc">Add applications via the Applications section.</div></div></td></tr>'; return; }
+  tbody.innerHTML = recent.map(a => `<tr>
+    <td><strong>${esc(a.name)}</strong></td>
+    <td>${esc(a.role)}</td>
+    <td>${esc(a.date)}</td>
+    <td>${statusBadge(a.status)}</td>
+    <td><button class="act-btn" onclick="editApp('${a.id}')">View</button></td>
+  </tr>`).join('');
+}
+
+// ── Jobs ──────────────────────────────────────────────────────
+function renderJobs() {
+  const jobs = getJobs(), apps = getApps();
+  document.getElementById('jobsBadge').textContent = jobs.filter(j=>j.status==='Open').length;
+  const tbody = document.getElementById('jobsTbl');
+  if (!jobs.length) { tbody.innerHTML = '<tr><td colspan="6"><div class="empty"><div class="empty-icon">💼</div><div class="empty-title">No jobs yet</div><div class="empty-desc">Add your first job listing.</div></div></td></tr>'; return; }
+  tbody.innerHTML = jobs.map(j => {
+    const count = apps.filter(a => a.role === j.title).length;
+    return `<tr>
+      <td><strong>${esc(j.title)}</strong>${j.featured ? ' <span class="badge badge-new" style="font-size:10px">Featured</span>' : ''}</td>
+      <td>${esc(j.dept)}</td>
+      <td>${esc(j.type)}</td>
+      <td>${statusBadge(j.status)}</td>
+      <td>${count}</td>
+      <td style="display:flex;gap:6px">
+        <button class="act-btn" onclick="editJob('${j.id}')">Edit</button>
+        <button class="act-btn danger" onclick="deleteJob('${j.id}')">Delete</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function saveJob() {
+  const title = document.getElementById('jTitle').value.trim();
+  if (!title) { toast('Please enter a job title.', 'error'); return; }
+  const jobs = getJobs();
+  const editId = document.getElementById('editingJobId').value;
+  const job = {
+    id: editId || uid(),
+    title, dept: document.getElementById('jDept').value,
+    type: document.getElementById('jType').value,
+    status: document.getElementById('jStatus').value,
+    location: document.getElementById('jLocation').value,
+    featured: document.getElementById('jFeatured').value === 'true',
+    desc: document.getElementById('jDesc').value,
+    skills: document.getElementById('jSkills').value,
+    created: now()
+  };
+  if (editId) { const i = jobs.findIndex(j => j.id === editId); if (i>-1) jobs[i] = job; }
+  else jobs.unshift(job);
+  saveJobs(jobs);
+  toast(editId ? 'Job updated!' : 'Job added!');
+  showView('jobs', null);
+  renderJobs(); updateBadges();
+}
+
+function editJob(id) {
+  const job = getJobs().find(j => j.id === id);
+  if (!job) return;
+  showView('add-job', null);
+  document.getElementById('jobFormTitle').textContent = 'Edit Job';
+  document.getElementById('editingJobId').value = id;
+  document.getElementById('jTitle').value = job.title;
+  document.getElementById('jDept').value = job.dept;
+  document.getElementById('jType').value = job.type;
+  document.getElementById('jStatus').value = job.status;
+  document.getElementById('jLocation').value = job.location;
+  document.getElementById('jFeatured').value = job.featured ? 'true' : 'false';
+  document.getElementById('jDesc').value = job.desc;
+  document.getElementById('jSkills').value = job.skills;
+}
+
+function deleteJob(id) {
+  if (!confirm('Delete this job listing? This cannot be undone.')) return;
+  saveJobs(getJobs().filter(j => j.id !== id));
+  renderJobs(); renderDashboard(); updateBadges();
+  toast('Job deleted.');
+}
+
+// ── Applications ──────────────────────────────────────────────
+function renderApps() {
+  const apps = getApps();
+  const roleF = document.getElementById('filterRole')?.value || '';
+  const statF = document.getElementById('filterStatus')?.value || '';
+  
+  // Populate role filter options from current jobs + apps
+  const roles = [...new Set([...getJobs().map(j=>j.title), ...apps.map(a=>a.role)])].filter(Boolean);
+  const roleSelect = document.getElementById('filterRole');
+  if (roleSelect) {
+    const cur = roleSelect.value;
+    roleSelect.innerHTML = '<option value="">All Roles</option>' + roles.map(r=>`<option value="${esc(r)}" ${cur===r?'selected':''}>${esc(r)}</option>`).join('');
+  }
+
+  const filtered = apps.filter(a =>
+    (!roleF || a.role === roleF) && (!statF || a.status === statF)
+  ).sort((a,b) => b.id.localeCompare(a.id));
+
+  const newCount = apps.filter(a => a.status === 'New').length;
+  const badge = document.getElementById('appsBadge');
+  if (badge) { badge.textContent = newCount; badge.style.display = newCount ? 'inline-flex' : 'none'; }
+
+  const tbody = document.getElementById('appsTbl');
+  if (!filtered.length) {
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><div class="empty-icon">📂</div><div class="empty-title">No applications found</div><div class="empty-desc">Applications submitted via the careers page will appear here. You can also add them manually.</div></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = filtered.map(a => `<tr>
+    <td><strong>${esc(a.name)}</strong>${a.linkedin?` <a href="${esc(a.linkedin)}" target="_blank" style="color:var(--gold);font-size:11px;margin-left:4px">LinkedIn ↗</a>`:''}</td>
+    <td>${esc(a.role)}</td>
+    <td><a href="mailto:${esc(a.email)}" style="color:var(--gold)">${esc(a.email)}</a></td>
+    <td>${esc(a.experience||'—')}</td>
+    <td>${esc(a.date)}</td>
+    <td>
+      <select onchange="updateAppStatus('${a.id}',this.value)" style="padding:3px 8px;font-size:12px;border:1px solid var(--border);border-radius:6px;background:var(--off);color:var(--text);font-family:var(--fb)">
+        ${['New','Reviewed','Shortlisted','Rejected','Hired'].map(s=>`<option value="${s}" ${a.status===s?'selected':''}>${s}</option>`).join('')}
+      </select>
+    </td>
+    <td style="display:flex;gap:5px">
+      <button class="act-btn" onclick="editApp('${a.id}')">View</button>
+      <button class="act-btn danger" onclick="deleteApp('${a.id}')">✕</button>
+    </td>
+  </tr>`).join('');
+}
+
+function showAddApp() {
+  document.getElementById('addAppTitle').textContent = 'Add Application';
+  document.getElementById('editingAppId').value = '';
+  ['aName','aEmail','aPhone','aLinkedin','aNotes'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('aRole').value = '';
+  document.getElementById('aExp').value = '';
+  document.getElementById('aStatus').value = 'New';
+  document.getElementById('addAppPanel').style.display = 'block';
+  document.getElementById('addAppPanel').scrollIntoView({ behavior: 'smooth' });
+}
+
+function editApp(id) {
+  const app = getApps().find(a => a.id === id);
+  if (!app) return;
+  showView('applications', null);
+  document.getElementById('addAppTitle').textContent = 'Edit Application';
+  document.getElementById('editingAppId').value = id;
+  document.getElementById('aName').value = app.name;
+  document.getElementById('aEmail').value = app.email;
+  document.getElementById('aPhone').value = app.phone || '';
+  document.getElementById('aRole').value = app.role;
+  document.getElementById('aExp').value = app.experience || '';
+  document.getElementById('aStatus').value = app.status;
+  document.getElementById('aLinkedin').value = app.linkedin || '';
+  document.getElementById('aNotes').value = app.notes || '';
+  document.getElementById('addAppPanel').style.display = 'block';
+  setTimeout(() => document.getElementById('addAppPanel').scrollIntoView({ behavior: 'smooth' }), 100);
+}
+
+function saveApp() {
+  const name = document.getElementById('aName').value.trim();
+  const email = document.getElementById('aEmail').value.trim();
+  if (!name || !email) { toast('Name and email are required.', 'error'); return; }
+  const apps = getApps();
+  const editId = document.getElementById('editingAppId').value;
+  const app = {
+    id: editId || uid(),
+    name, email,
+    phone: document.getElementById('aPhone').value,
+    role: document.getElementById('aRole').value,
+    experience: document.getElementById('aExp').value,
+    status: document.getElementById('aStatus').value,
+    linkedin: document.getElementById('aLinkedin').value,
+    notes: document.getElementById('aNotes').value,
+    date: now()
+  };
+  if (editId) { const i = apps.findIndex(a => a.id === editId); if (i>-1) apps[i] = app; }
+  else apps.unshift(app);
+  saveAppsData(apps);
+  document.getElementById('addAppPanel').style.display = 'none';
+  renderApps(); renderDashboard(); updateBadges();
+  toast(editId ? 'Application updated!' : 'Application added!');
+}
+
+function updateAppStatus(id, status) {
+  const apps = getApps();
+  const i = apps.findIndex(a => a.id === id);
+  if (i > -1) { apps[i].status = status; saveAppsData(apps); updateBadges(); renderDashboard(); }
+  toast('Status updated to: ' + status);
+}
+
+function deleteApp(id) {
+  if (!confirm('Delete this application?')) return;
+  saveAppsData(getApps().filter(a => a.id !== id));
+  renderApps(); renderDashboard(); updateBadges();
+  toast('Application deleted.');
+}
+
+function updateBadges() {
+  const jobs = getJobs(), apps = getApps();
+  document.getElementById('jobsBadge').textContent = jobs.filter(j=>j.status==='Open').length;
+  const newApps = apps.filter(a=>a.status==='New').length;
+  const badge = document.getElementById('appsBadge');
+  badge.textContent = newApps;
+  badge.style.display = newApps ? 'inline-flex' : 'none';
+}
+
+// ── Settings ──────────────────────────────────────────────────
+function changePassword() {
+  const curr = document.getElementById('currPass').value;
+  const newP = document.getElementById('newPass').value;
+  const conf = document.getElementById('confPass').value;
+  const stored = localStorage.getItem(KEY_PASS) || DEFAULT_PASS;
+  if (curr !== stored) { toast('Current password is incorrect.', 'error'); return; }
+  if (newP.length < 6) { toast('New password must be at least 6 characters.', 'error'); return; }
+  if (newP !== conf) { toast('Passwords do not match.', 'error'); return; }
+  localStorage.setItem(KEY_PASS, newP);
+  ['currPass','newPass','confPass'].forEach(id => document.getElementById(id).value = '');
+  toast('Password updated successfully!');
+}
+
+function exportData() {
+  const data = { jobs: getJobs(), apps: getApps(), exported: new Date().toISOString() };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'staffona-careers-data-' + new Date().toISOString().slice(0,10) + '.json';
+  a.click(); toast('Data exported!');
+}
+
+function importData(e) {
+  const file = e.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (data.jobs) saveJobs(data.jobs);
+      if (data.apps) saveAppsData(data.apps);
+      renderDashboard(); renderJobs(); renderApps(); updateBadges();
+      toast('Data imported successfully!');
+    } catch { toast('Invalid JSON file.', 'error'); }
+  };
+  reader.readAsText(file);
+}
+
+function clearAllData() {
+  if (!confirm('This will delete ALL jobs and applications. Are you absolutely sure?')) return;
+  localStorage.removeItem(KEY_JOBS); localStorage.removeItem(KEY_APPS);
+  renderDashboard(); renderJobs(); renderApps(); updateBadges();
+  toast('All data cleared.');
+}
+
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// Init on page load if already authenticated
+window.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem('staffona_admin_auth') === '1') initApp();
+  document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+});
+</script>
+</body>
+</html>
