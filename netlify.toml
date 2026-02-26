@@ -1,29 +1,129 @@
+# ─────────────────────────────────────────────────────────────
+# netlify.toml — Staffona
+# Root of repo, same level as index.html
+# ─────────────────────────────────────────────────────────────
+
+[build]
+  publish = "."
+
+# ── Redirect old hash URLs → new clean paths ─────────────────
 [[redirects]]
   from = "/#/about"
-  to = "/about"
+  to   = "/about.html"
   status = 301
+  force  = true
 
 [[redirects]]
   from = "/#/contact"
-  to = "/contact"
+  to   = "/#contact"
   status = 301
+  force  = true
 
 [[redirects]]
   from = "/#/eor-egypt"
-  to = "/hr-outsourcing"
+  to   = "/hr-outsourcing.html"
   status = 301
+  force  = true
 
 [[redirects]]
   from = "/#/payroll-egypt"
-  to = "/payroll-egypt"
+  to   = "/payroll-egypt.html"
   status = 301
+  force  = true
 
 [[redirects]]
   from = "/#/recruitment-egypt"
-  to = "/recruitment-egypt"
+  to   = "/recruitment-egypt.html"
   status = 301
+  force  = true
 
 [[redirects]]
   from = "/#/resources"
-  to = "/resources"
+  to   = "/resources.html"
   status = 301
+  force  = true
+
+[[redirects]]
+  from = "/#/resources/hiring-guide"
+  to   = "/resources/hiring-guide.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/#/resources/hiring-cost"
+  to   = "/resources/hiring-cost.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/#/resources/labor-law"
+  to   = "/resources/labor-law.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/#/resources/eor-vs-peo"
+  to   = "/resources/eor-vs-peo.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/#/resources/payroll-taxes"
+  to   = "/resources/payroll-taxes.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/#/resources/gcc-hiring"
+  to   = "/resources/gcc-hiring.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/#/resources/social-insurance"
+  to   = "/resources/social-insurance.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/#/resources/termination-rules"
+  to   = "/resources/termination-rules.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/#/resources/employee-benefits"
+  to   = "/resources/employee-benefits.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/#/resources/misclassification-risks"
+  to   = "/resources/misclassification-risks.html"
+  status = 301
+  force  = true
+
+# ── Security headers ──────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "SAMEORIGIN"
+    X-XSS-Protection       = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+
+# ── Cache static assets ───────────────────────────────────────
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
