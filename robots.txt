@@ -1,4 +1,21 @@
 User-agent: *
 Allow: /
 
+# Block admin/private areas
+Disallow: /admin/
+Disallow: /careers-admin.html
+
+# Allow all crawlers including AI
+User-agent: GPTBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
 Sitemap: https://www.staffona.com/sitemap.xml

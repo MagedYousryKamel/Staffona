@@ -1,109 +1,34 @@
 # ─────────────────────────────────────────────────────────────
-# netlify.toml — Staffona
-# Root of repo, same level as index.html
+# netlify.toml — Staffona v3.0
+# Root of repo. Same level as index.html.
 # ─────────────────────────────────────────────────────────────
 
 [build]
   publish = "."
 
-# ── Redirect old hash URLs → new clean paths ─────────────────
-[[redirects]]
-  from = "/#/about"
-  to   = "/about.html"
-  status = 301
-  force  = true
+# ── Redirect old hash URLs → new clean .html paths ───────────
+[[redirects]] from = "/#/about"               to = "/about.html"              status = 301 force = true
+[[redirects]] from = "/#/contact"             to = "/#contact"                status = 301 force = true
+[[redirects]] from = "/#/eor-egypt"           to = "/hr-outsourcing.html"     status = 301 force = true
+[[redirects]] from = "/#/payroll-egypt"       to = "/payroll-egypt.html"      status = 301 force = true
+[[redirects]] from = "/#/recruitment-egypt"   to = "/recruitment-egypt.html"  status = 301 force = true
+[[redirects]] from = "/#/resources"           to = "/resources.html"          status = 301 force = true
+[[redirects]] from = "/#/resources/*"         to = "/resources/:splat.html"   status = 301 force = true
 
-[[redirects]]
-  from = "/#/contact"
-  to   = "/#contact"
-  status = 301
-  force  = true
+# ── Remove .html extension for clean URLs ────────────────────
+[[redirects]] from = "/about"          to = "/about.html"          status = 200
+[[redirects]] from = "/services"       to = "/services.html"       status = 200
+[[redirects]] from = "/careers"        to = "/careers.html"        status = 200
+[[redirects]] from = "/resources"      to = "/resources.html"      status = 200
+[[redirects]] from = "/laws"           to = "/laws.html"           status = 200
+[[redirects]] from = "/hr-outsourcing" to = "/hr-outsourcing.html" status = 200
+[[redirects]] from = "/payroll-egypt"  to = "/payroll-egypt.html"  status = 200
+[[redirects]] from = "/recruitment-egypt" to = "/recruitment-egypt.html" status = 200
+[[redirects]] from = "/compliance"     to = "/compliance.html"     status = 200
+[[redirects]] from = "/privacy"        to = "/privacy.html"        status = 200
+[[redirects]] from = "/terms"          to = "/terms.html"          status = 200
 
-[[redirects]]
-  from = "/#/eor-egypt"
-  to   = "/hr-outsourcing.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/payroll-egypt"
-  to   = "/payroll-egypt.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/recruitment-egypt"
-  to   = "/recruitment-egypt.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/resources"
-  to   = "/resources.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/resources/hiring-guide"
-  to   = "/resources/hiring-guide.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/resources/hiring-cost"
-  to   = "/resources/hiring-cost.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/resources/labor-law"
-  to   = "/resources/labor-law.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/resources/eor-vs-peo"
-  to   = "/resources/eor-vs-peo.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/resources/payroll-taxes"
-  to   = "/resources/payroll-taxes.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/resources/gcc-hiring"
-  to   = "/resources/gcc-hiring.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/resources/social-insurance"
-  to   = "/resources/social-insurance.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/resources/termination-rules"
-  to   = "/resources/termination-rules.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/resources/employee-benefits"
-  to   = "/resources/employee-benefits.html"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/#/resources/misclassification-risks"
-  to   = "/resources/misclassification-risks.html"
-  status = 301
-  force  = true
-
-# ── Security headers ──────────────────────────────────────────
+# ── Security & performance headers ───────────────────────────
 [[headers]]
   for = "/*"
   [headers.values]
@@ -111,8 +36,8 @@
     X-XSS-Protection       = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy        = "strict-origin-when-cross-origin"
+    Permissions-Policy     = "camera=(), microphone=(), geolocation=()"
 
-# ── Cache static assets ───────────────────────────────────────
 [[headers]]
   for = "*.css"
   [headers.values]
@@ -127,3 +52,8 @@
   for = "*.png"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
