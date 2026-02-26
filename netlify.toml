@@ -1,0 +1,29 @@
+[[redirects]]
+  from = "/#/about"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/#/contact"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/#/eor-egypt"
+  to = "/hr-outsourcing"
+  status = 301
+
+[[redirects]]
+  from = "/#/payroll-egypt"
+  to = "/payroll-egypt"
+  status = 301
+
+[[redirects]]
+  from = "/#/recruitment-egypt"
+  to = "/recruitment-egypt"
+  status = 301
+
+[[redirects]]
+  from = "/#/resources"
+  to = "/resources"
+  status = 301
