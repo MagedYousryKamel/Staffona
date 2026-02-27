@@ -26,15 +26,12 @@
 </head>
 <body>
 <div class="nav-wrap page" id="navbar">
-  <div class="w"><nav class="nav-inner" aria-label="Main navigation">
-    <a href="index.html" class="nav-logo" aria-label="Staffona home">
-      <img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <span class="nav-logo-fb">Staff<em>ona</em></span>
-    </a>
-    <ul class="nav-links" role="list">
+  <div class="w"><nav class="nav-in" aria-label="Main">
+    <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="nlf">Staff<em>ona</em></span></a>
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li class="nav-drop"><a href="services.html">Services ▾</a>
-        <div class="nav-drop-menu">
+      <li class="ndrop"><a href="services.html">Services ▾</a>
+        <div class="ndrop-menu">
           <a href="hr-outsourcing.html">HR Outsourcing</a>
           <a href="payroll-egypt.html">Payroll Management</a>
           <a href="recruitment-egypt.html">Recruitment</a>
@@ -49,27 +46,20 @@
     </ul>
     <div class="nav-r">
       <a href="mailto:info@staffona.com" class="nav-email">info@staffona.com</a>
-      <button class="dm-btn" id="dmBtn" aria-label="Toggle dark mode">
-        <svg id="dmMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg id="dmSun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+      <button class="dm-btn" aria-label="Toggle dark mode">
+        <svg class="dm-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="dm-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
       </button>
       <button class="btn btn-gold btn-sm" data-cal>Book Consultation</button>
-      <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false" style="display:none">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false" style="display:none"><span></span><span></span><span></span></button>
     </div>
   </nav></div>
 </div>
 <nav class="mob-nav" id="mobNav">
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-  <a href="hr-outsourcing.html">HR Outsourcing</a>
-  <a href="payroll-egypt.html">Payroll</a>
-  <a href="recruitment-egypt.html">Recruitment</a>
-  <a href="resources.html">Resources</a>
-  <a href="laws.html">Laws &amp; Guides</a>
-  <a href="careers.html">Careers</a>
-  <a href="about.html">About</a>
+  <a href="index.html">Home</a><a href="services.html">Services</a>
+  <a href="hr-outsourcing.html">HR Outsourcing</a><a href="payroll-egypt.html">Payroll</a>
+  <a href="recruitment-egypt.html">Recruitment</a><a href="resources.html">Resources</a>
+  <a href="laws.html">Laws</a><a href="careers.html">Careers</a><a href="about.html">About</a>
   <a href="mailto:info@staffona.com" style="color:var(--gold)">info@staffona.com</a>
   <div style="padding-top:12px"><button class="btn btn-gold" style="width:100%;justify-content:center" data-cal>Book Free Consultation</button></div>
 </nav>
@@ -110,19 +100,19 @@
 </section>
 <footer class="footer">
   <div class="w">
-    <div class="footer-g">
-      <div class="fl-brand">
-        <a href="index.html"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fl-logo-fb">Staff<em>ona</em></span></a>
+    <div class="ftg">
+      <div class="flb">
+        <a href="index.html"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="flb-fb">Staff<em>ona</em></span></a>
         <p>Egypt's trusted HR outsourcing and recruitment consultancy. Based in Alexandria, serving international and Egyptian businesses.</p>
-        <a href="mailto:info@staffona.com" class="fl-ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@staffona.com</a>
-        <a href="https://maps.google.com/?q=El-Horreya+Street+Mostafa+Kamel+Alexandria+Egypt" target="_blank" rel="noopener" class="fl-ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>El-Horreya St, Mostafa Kamel, Alexandria, Egypt</a>
-        <a href="https://www.linkedin.com/company/staffona" target="_blank" rel="noopener" class="fl-ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Staffona</a>
+        <a href="mailto:info@staffona.com" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@staffona.com</a>
+        <a href="https://maps.google.com/?q=El-Horreya+Street+Mostafa+Kamel+Alexandria+Egypt" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>El-Horreya St, Mostafa Kamel, Alexandria, Egypt</a>
+        <a href="https://www.linkedin.com/company/staffona" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Staffona</a>
       </div>
-      <div><div class="fl-ct">Services</div><ul class="fl-links"><li><a href="hr-outsourcing.html">HR Outsourcing</a></li><li><a href="payroll-egypt.html">Payroll</a></li><li><a href="recruitment-egypt.html">Recruitment</a></li><li><a href="compliance.html">HR Compliance</a></li><li><a href="services.html">All Services</a></li></ul></div>
-      <div><div class="fl-ct">Resources</div><ul class="fl-links"><li><a href="resources.html">All Resources</a></li><li><a href="laws.html">Egyptian Laws</a></li><li><a href="resources/hiring-guide.html">Hiring Guide</a></li><li><a href="resources/payroll-taxes.html">Payroll Tax Guide</a></li><li><a href="resources/gcc-hiring.html">GCC Hiring Guide</a></li></ul></div>
-      <div><div class="fl-ct">Company</div><ul class="fl-links"><li><a href="about.html">About Staffona</a></li><li><a href="careers.html">Careers</a></li><li><a href="index.html#contact">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+      <div><div class="flct">Services</div><ul class="flls"><li><a href="hr-outsourcing.html">HR Outsourcing</a></li><li><a href="payroll-egypt.html">Payroll</a></li><li><a href="recruitment-egypt.html">Recruitment</a></li><li><a href="compliance.html">HR Compliance</a></li><li><a href="services.html">All Services</a></li></ul></div>
+      <div><div class="flct">Resources</div><ul class="flls"><li><a href="resources.html">All Resources</a></li><li><a href="laws.html">Egyptian Laws</a></li><li><a href="resources/hiring-guide.html">Hiring Guide</a></li><li><a href="resources/payroll-taxes.html">Payroll Tax Guide</a></li><li><a href="resources/gcc-hiring.html">GCC Hiring Guide</a></li></ul></div>
+      <div><div class="flct">Company</div><ul class="flls"><li><a href="about.html">About Staffona</a></li><li><a href="careers.html">Careers</a></li><li><a href="index.html#contact">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
     </div>
-    <div class="footer-btm">
+    <div class="ftbtm">
       <div><div class="f-copy">© 2026 Staffona. All rights reserved. El-Horreya St, Mostafa Kamel, Alexandria, Egypt.</div><p class="f-disc">Staffona provides HR consultancy, payroll administration, and recruitment services. All managed employment arrangements are structured as HR outsourcing engagements in accordance with applicable Egyptian law.</p></div>
       <div class="fbl"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="sitemap.xml">Sitemap</a></div>
     </div>

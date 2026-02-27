@@ -186,6 +186,37 @@
   .svcg,.sg,.resg,.procg,.nbg,.frow{grid-template-columns:1fr}
   .hctas{flex-direction:column;align-items:flex-start}
 }
+
+/* ── Serve section ── */
+.serve-g{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:rgba(255,255,255,.04);border-radius:var(--rx);overflow:hidden}
+.sv{padding:52px 44px;background:var(--nvm);position:relative;overflow:hidden;transition:background var(--t)}
+.sv:hover{background:var(--nvl)}
+.sv::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.sv:hover::after{transform:scaleX(1)}
+.sv-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(200,151,58,.1);border:1px solid rgba(200,151,58,.22);border-radius:100px;padding:4px 12px;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.sv-t{font-family:var(--fh);font-size:22px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.25}
+.sv-d{font-size:14.5px;color:rgba(255,255,255,.56);line-height:1.75;margin-bottom:24px}
+/* ── Contact section ── */
+.cont-bg{background:var(--navy);position:relative;overflow:hidden}
+.cont-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50%,rgba(200,151,58,.065),transparent)}
+.cont-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.cont-t{font-family:var(--fh);font-size:clamp(26px,3.4vw,40px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:12px}
+.cont-t span{color:var(--gold)}
+.cont-d{font-size:15.5px;color:rgba(255,255,255,.54);line-height:1.75;margin-bottom:26px}
+/* ── Resources grid ── */
+.res-g{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.res-c{background:var(--off);border:1px solid var(--bd);border-radius:var(--rm);padding:22px 18px;display:block;transition:all var(--t)}
+.res-c:hover{border-color:var(--gold);box-shadow:var(--s2);transform:translateY(-3px)}
+[data-theme="dark"] .res-c{background:rgba(255,255,255,.03)}
+.res-tag{display:inline-block;background:var(--gpl);color:var(--gold);font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:4px;margin-bottom:10px}
+.res-t{font-size:14px;font-weight:600;color:var(--tx);margin-bottom:6px;line-height:1.4}
+.res-d{font-size:12.5px;color:var(--sl);line-height:1.6}
+.res-more{font-size:12.5px;font-weight:600;color:var(--gold);margin-top:12px;display:flex;align-items:center;gap:4px}
+.res-more svg{width:12px;height:12px;transition:transform .18s}.res-c:hover .res-more svg{transform:translateX(4px)}
+/* ── Contact panel ── */
+.cpanel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--rx);padding:32px}
+.cpanel-t{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px}
+.cpanel-d{font-size:12.5px;color:rgba(255,255,255,.38);margin-bottom:22px}
 </style>
 </head>
 <body>

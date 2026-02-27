@@ -223,3 +223,59 @@ button,input,select,textarea{font-family:var(--fb)}ul{list-style:none}
   .frow2{grid-template-columns:1fr}
   .cta-btns{flex-direction:column;align-items:center}
 }
+
+/* ── Legacy class aliases (from older page builds) ── */
+.f-copy{font-size:11.5px;color:rgba(255,255,255,.2);margin-bottom:4px}
+.f-disc{font-size:10.5px;color:rgba(255,255,255,.15);line-height:1.6;max-width:620px}
+.fbl{display:flex;gap:16px;flex-shrink:0}
+.fbl a{font-size:11.5px;color:rgba(255,255,255,.24);transition:color var(--t)}.fbl a:hover{color:var(--gold)}
+.breadcrumb{display:flex;align-items:center;gap:7px;font-size:12px;color:rgba(255,255,255,.38);margin-bottom:20px}
+.breadcrumb a{color:rgba(255,255,255,.38);transition:color var(--t)}.breadcrumb a:hover{color:var(--gold)}
+.desc{font-size:15px;color:var(--sl);line-height:1.8;max-width:600px}
+
+/* ── Page-specific classes (old naming scheme aliases) ── */
+.sh-c{text-align:center}.sh-c .sub,.sh-c .sub-c{margin:0 auto}
+.h2-c{text-align:center}.h2-w{color:#fff}.h2-c.h2-w,.h2-w.h2-c{color:#fff;text-align:center}
+.lbl-c{justify-content:center}.lbl-lt{color:var(--glt)}.lbl-lt::before{background:var(--glt)}
+.sub-c{text-align:center;margin:0 auto}.sub-w{color:rgba(255,255,255,.58)}
+.desc{font-size:15px;color:var(--sl);line-height:1.8;max-width:600px}
+/* resource cards */
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rc{display:block;background:var(--off);border:1px solid var(--bd);border-radius:var(--rl);padding:24px;transition:all var(--t);color:inherit}
+.rc:hover{box-shadow:var(--s3);transform:translateY(-4px);border-color:rgba(200,151,58,.4)}
+[data-theme="dark"] .rc{background:rgba(255,255,255,.03)}
+.rc-cat{display:inline-block;background:var(--gpl);color:var(--gold);font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:4px;margin-bottom:10px}
+.rc-title{font-size:15px;font-weight:700;color:var(--tx);margin-bottom:8px;line-height:1.4}
+.rc-desc{font-size:13px;color:var(--sl);line-height:1.65;margin-bottom:14px}
+.rc-meta{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--sll)}
+.rc-arrow{display:flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--gold)}
+.rc-arrow svg{width:12px;height:12px;transition:transform .18s}.rc:hover .rc-arrow svg{transform:translateX(4px)}
+/* services page */
+.svc-row{display:grid;grid-template-columns:1fr;gap:32px}
+.svc-big{background:var(--off);border:1px solid var(--bd);border-radius:var(--rx);overflow:hidden;transition:all var(--t)}
+.svc-big:hover{box-shadow:var(--s3);border-color:rgba(200,151,58,.3)}
+[data-theme="dark"] .svc-big{background:rgba(255,255,255,.03)}
+.svc-sml{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+/* about page feature/value cards */
+.feat{background:var(--off);border:1px solid var(--bd);border-radius:var(--rl);padding:22px;transition:all var(--t)}
+.feat:hover{box-shadow:var(--s2);border-color:rgba(200,151,58,.3)}
+[data-theme="dark"] .feat{background:rgba(255,255,255,.03)}
+.ic{width:40px;height:40px;border-radius:var(--r);background:var(--gpl);display:flex;align-items:center;justify-content:center;margin-bottom:12px;color:var(--navy);flex-shrink:0}
+.ic svg{width:20px;height:20px}
+.name{font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px}
+.tag{display:inline-block;padding:2px 9px;border-radius:100px;font-size:11px;font-weight:600;background:var(--gpl);color:var(--gold)}
+.lnk{font-size:13.5px;font-weight:600;color:var(--gold);display:inline-flex;align-items:center;gap:5px}
+/* pricing */
+.price-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.price-c{background:var(--off);border:1px solid var(--bd);border-radius:var(--rx);padding:32px;transition:all var(--t)}
+.price-c:hover{box-shadow:var(--s3);transform:translateY(-4px)}
+[data-theme="dark"] .price-c{background:rgba(255,255,255,.03)}
+/* responsive additions */
+@media(max-width:1024px){.res-grid,.svc-sml,.price-row{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.res-grid,.svc-sml,.price-row{grid-template-columns:1fr}}
+
+/* ── Contact form tab system (.tab/.pane used in index.html) ── */
+.tabs{display:flex;background:rgba(0,0,0,.22);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.tab{flex:1;padding:9px 12px;font-size:13px;font-weight:600;color:rgba(255,255,255,.4);cursor:pointer;text-align:center;border:none;background:none;font-family:var(--fb);transition:all var(--t)}
+.tab.on{background:var(--gold);color:var(--navy)}
+.pane{display:none}.pane.on{display:block}
