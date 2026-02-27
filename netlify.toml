@@ -1,111 +1,15 @@
-# netlify.toml — Staffona
-# Place in root of repo (same level as index.html)
-
 [build]
   publish = "."
 
-# ── Old hash URL redirects (fixes Google Search Console errors) ──
-
 [[redirects]]
-  from = "/#/about"
-  to = "/about.html"
+  from = "/index"
+  to = "/"
   status = 301
-  force = true
 
 [[redirects]]
-  from = "/#/contact"
-  to = "/#contact"
+  from = "/home"
+  to = "/"
   status = 301
-  force = true
-
-[[redirects]]
-  from = "/#/eor-egypt"
-  to = "/hr-outsourcing.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/#/payroll-egypt"
-  to = "/payroll-egypt.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/#/recruitment-egypt"
-  to = "/recruitment-egypt.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/#/resources"
-  to = "/resources.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/#/resources/*"
-  to = "/resources/:splat.html"
-  status = 301
-  force = true
-
-# ── Clean URLs (no .html needed) ──
-
-[[redirects]]
-  from = "/about"
-  to = "/about.html"
-  status = 200
-
-[[redirects]]
-  from = "/services"
-  to = "/services.html"
-  status = 200
-
-[[redirects]]
-  from = "/careers"
-  to = "/careers.html"
-  status = 200
-
-[[redirects]]
-  from = "/resources"
-  to = "/resources.html"
-  status = 200
-
-[[redirects]]
-  from = "/laws"
-  to = "/laws.html"
-  status = 200
-
-[[redirects]]
-  from = "/hr-outsourcing"
-  to = "/hr-outsourcing.html"
-  status = 200
-
-[[redirects]]
-  from = "/payroll-egypt"
-  to = "/payroll-egypt.html"
-  status = 200
-
-[[redirects]]
-  from = "/recruitment-egypt"
-  to = "/recruitment-egypt.html"
-  status = 200
-
-[[redirects]]
-  from = "/compliance"
-  to = "/compliance.html"
-  status = 200
-
-[[redirects]]
-  from = "/privacy"
-  to = "/privacy.html"
-  status = 200
-
-[[redirects]]
-  from = "/terms"
-  to = "/terms.html"
-  status = 200
-
-# ── Security headers ──
 
 [[headers]]
   for = "/*"
@@ -125,11 +29,6 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "*.png"
+  for = "*.html"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "*.pdf"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=3600"

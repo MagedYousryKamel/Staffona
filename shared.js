@@ -1,268 +1,120 @@
-/* ═══════════════════════════════════════════════════════════════
-   STAFFONA — shared.js  v3.0
-   ─────────────────────────────────────────────────────────────
-   Loaded by every page. Contains:
-   - Navigation (scroll state, mobile menu, active link)
-   - Dark mode (system preference + manual toggle, localStorage)
-   - Scroll reveal (IntersectionObserver)
-   - Back-to-top button
-   - Cookie consent banner
-   - Calendly popup helper
-   - Analytics event helpers (GA4)
-   - Form submission (Formspree)
-═══════════════════════════════════════════════════════════════ */
-
+/* STAFFONA shared.js v3 | GA: G-BG3DEQLHJF | Formspree: xreajrkr */
 'use strict';
+const SF={
+  GA:'G-BG3DEQLHJF',
+  FP:'xreajrkr',
+  CAL:'https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a'
+};
 
-/* ── Dark Mode ─────────────────────────────────────────────── */
-(function initDarkMode() {
-  const saved = localStorage.getItem('staffona-theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const theme = saved || (prefersDark ? 'dark' : 'light');
-  document.documentElement.setAttribute('data-theme', theme);
+/* Dark mode — runs immediately before paint */
+(function(){
+  const t=localStorage.getItem('sf-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  document.documentElement.setAttribute('data-theme',t);
 })();
 
-function toggleDarkMode() {
-  const current = document.documentElement.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('staffona-theme', next);
-  trackEvent('dark_mode_toggle', { theme: next });
-}
-
-/* ── Navigation ────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', function () {
-
-  const navbar   = document.getElementById('navbar');
-  const hamburger = document.getElementById('hamburger');
-  const mobNav   = document.getElementById('mobNav');
-  const dmToggle = document.querySelector('.dm-toggle');
-
-  // Scroll state
-  if (navbar) {
-    const isPageHero = navbar.classList.contains('nav-page');
-    if (!isPageHero) {
-      function onScroll() {
-        navbar.classList.toggle('nav-solid', window.scrollY > 24);
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-    }
-  }
-
-  // Mobile menu
-  if (hamburger && mobNav) {
-    hamburger.addEventListener('click', function () {
-      const open = mobNav.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', open);
-    });
-    // Close on outside click
-    document.addEventListener('click', function (e) {
-      if (mobNav.classList.contains('open') &&
-          !mobNav.contains(e.target) &&
-          !hamburger.contains(e.target)) {
-        mobNav.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', false);
-      }
-    });
-  }
-
-  // Dark mode toggle
-  if (dmToggle) {
-    dmToggle.addEventListener('click', toggleDarkMode);
-  }
-
-  // Active nav link (match current page)
-  const path = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a, .mob-nav a').forEach(function (a) {
-    const href = a.getAttribute('href');
-    if (href && (href === path || href === './' + path || href === path.replace('.html', ''))) {
-      a.classList.add('active');
-    }
-  });
-
-  // Scroll reveal
-  initScrollReveal();
-
-  // Back to top
-  initBackToTop();
-
-  // Cookie banner
-  initCookieBanner();
-
-});
-
-/* ── Scroll Reveal ─────────────────────────────────────────── */
-function initScrollReveal() {
-  const els = document.querySelectorAll('.rv, .rv-l, .rv-r');
-  if (!els.length) return;
-
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
-
-  els.forEach(function (el) { observer.observe(el); });
-}
-
-/* ── Back to Top ───────────────────────────────────────────── */
-function initBackToTop() {
-  const btn = document.querySelector('.back-top');
-  if (!btn) return;
-
-  window.addEventListener('scroll', function () {
-    btn.classList.toggle('show', window.scrollY > 400);
-  }, { passive: true });
-
-  btn.addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-/* ── Cookie Banner ─────────────────────────────────────────── */
-function initCookieBanner() {
-  if (localStorage.getItem('staffona-cookies-accepted')) return;
-
-  const banner = document.getElementById('cookieBanner');
-  if (!banner) return;
-
-  setTimeout(function () { banner.classList.add('show'); }, 1200);
-
-  document.getElementById('cookieAccept')?.addEventListener('click', function () {
-    localStorage.setItem('staffona-cookies-accepted', '1');
-    banner.classList.remove('show');
-    trackEvent('cookie_accepted');
-    // Load GA only after consent
-    loadAnalytics();
-  });
-
-  document.getElementById('cookieDecline')?.addEventListener('click', function () {
-    localStorage.setItem('staffona-cookies-accepted', 'declined');
-    banner.classList.remove('show');
-  });
-}
-
-/* ── Analytics (GA4) ───────────────────────────────────────── */
-/* 
-   SETUP INSTRUCTIONS:
-   1. Go to https://analytics.google.com → create account → property
-   2. Copy your Measurement ID (format: G-XXXXXXXXXX)
-   3. Replace 'G-XXXXXXXXXX' below with your actual ID
-   4. That's it. Events are already tracked via trackEvent() calls.
-*/
-const GA_ID = 'G-BG3DEQLHJF';
-
-function loadAnalytics() {
-  if (document.getElementById('ga-script')) return;
-
-  const s = document.createElement('script');
-  s.id = 'ga-script';
-  s.async = true;
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+/* GA4 */
+function loadGA(){
+  if(document.getElementById('ga-s'))return;
+  const s=document.createElement('script');s.id='ga-s';s.async=true;
+  s.src='https://www.googletagmanager.com/gtag/js?id='+SF.GA;
   document.head.appendChild(s);
-
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function(){ window.dataLayer.push(arguments); };
-  window.gtag('js', new Date());
-  window.gtag('config', GA_ID, {
-    page_title: document.title,
-    page_location: window.location.href,
-    send_page_view: true
-  });
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());gtag('config',SF.GA);window.gtag=gtag;
 }
+if(localStorage.getItem('sf-cookies')==='1')loadGA();
 
-function trackEvent(eventName, params) {
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', eventName, params || {});
+document.addEventListener('DOMContentLoaded',function(){
+  /* Nav scroll */
+  const nav=document.getElementById('navbar');
+  if(nav){
+    if(nav.classList.contains('page')){/* already solid */}
+    else window.addEventListener('scroll',function(){nav.classList.toggle('solid',scrollY>24);},{passive:true});
   }
-}
 
-// Auto-load if consent already given
-if (localStorage.getItem('staffona-cookies-accepted') === '1') {
-  document.addEventListener('DOMContentLoaded', loadAnalytics);
-}
-
-/* ── Calendly Popup ────────────────────────────────────────── */
-const CALENDLY_URL = 'https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
-
-function openCalendly(e) {
-  if (e) e.preventDefault();
-  if (typeof Calendly !== 'undefined') {
-    Calendly.initPopupWidget({ url: CALENDLY_URL });
-    trackEvent('calendly_opened', { source: e?.target?.dataset?.source || 'unknown' });
-  } else {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  }
-  return false;
-}
-
-/* ── Formspree Contact Form ────────────────────────────────── */
-const FORMSPREE_ID = 'xreajrkr';
-
-async function submitContactForm(formEl, successElId) {
-  const btn = formEl.querySelector('[type="submit"]');
-  const successEl = document.getElementById(successElId);
-  if (!btn) return;
-
-  const originalText = btn.textContent;
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
-
-  const data = {};
-  new FormData(formEl).forEach(function (v, k) { data[k] = v; });
-  data._subject = 'Staffona enquiry — ' + (data.firstName || '') + ' ' + (data.lastName || '');
-
-  try {
-    const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
+  /* Hamburger */
+  const hbg=document.getElementById('hbg'),mob=document.getElementById('mobNav');
+  if(hbg&&mob){
+    hbg.style.display='flex';
+    hbg.addEventListener('click',function(){
+      const o=mob.classList.toggle('open');
+      hbg.setAttribute('aria-expanded',o);
+      const sp=hbg.querySelectorAll('span');
+      sp[0].style.transform=o?'translateY(7px) rotate(45deg)':'';
+      sp[1].style.opacity=o?'0':'1';
+      sp[2].style.transform=o?'translateY(-7px) rotate(-45deg)':'';
     });
+  }
 
-    if (res.ok) {
-      formEl.style.display = 'none';
-      if (successEl) successEl.style.display = 'block';
-      trackEvent('form_submitted', { form: formEl.id || 'contact' });
-    } else {
-      throw new Error('Server error');
+  /* Dark mode toggle */
+  const dmBtn=document.getElementById('dmBtn');
+  if(dmBtn)dmBtn.addEventListener('click',function(){
+    const d=document.documentElement.getAttribute('data-theme')==='dark';
+    document.documentElement.setAttribute('data-theme',d?'light':'dark');
+    localStorage.setItem('sf-theme',d?'light':'dark');
+    const moon=document.getElementById('dmMoon'),sun=document.getElementById('dmSun');
+    if(moon)moon.style.display=d?'block':'none';
+    if(sun)sun.style.display=d?'none':'block';
+  });
+  /* Sync icon on load */
+  (function(){
+    const d=document.documentElement.getAttribute('data-theme')==='dark';
+    const moon=document.getElementById('dmMoon'),sun=document.getElementById('dmSun');
+    if(moon)moon.style.display=d?'none':'block';
+    if(sun)sun.style.display=d?'block':'none';
+  })();
+
+  /* Scroll reveal */
+  const io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.07,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(function(el){io.observe(el);});
+
+  /* Back to top */
+  const btt=document.getElementById('btt');
+  if(btt){
+    window.addEventListener('scroll',function(){btt.classList.toggle('show',scrollY>400);},{passive:true});
+    btt.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'});});
+  }
+
+  /* Cookie banner */
+  if(!localStorage.getItem('sf-cookies')){
+    const cb=document.getElementById('cookieBanner');
+    if(cb)setTimeout(function(){cb.classList.add('show');},1400);
+  }
+  const ca=document.getElementById('cookieAccept'),cd=document.getElementById('cookieDecline');
+  if(ca)ca.addEventListener('click',function(){localStorage.setItem('sf-cookies','1');loadGA();document.getElementById('cookieBanner').classList.remove('show');});
+  if(cd)cd.addEventListener('click',function(){localStorage.setItem('sf-cookies','0');document.getElementById('cookieBanner').classList.remove('show');});
+
+  /* Calendly popup */
+  window.openCal=function(e){if(e)e.preventDefault();if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:SF.CAL});else{document.getElementById('contact')?.scrollIntoView({behavior:'smooth'});}return false;};
+  document.querySelectorAll('[data-cal]').forEach(function(el){el.addEventListener('click',openCal);});
+
+  /* Tab switcher */
+  window.swTab=function(name,btn){
+    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
+    document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('on');});
+    btn.classList.add('on');
+    document.getElementById('p-'+name).classList.add('on');
+    if(name==='cal'&&typeof Calendly!=='undefined')Calendly.initInlineWidgets();
+  };
+
+  /* Contact form (homepage) */
+  const cform=document.getElementById('cform');
+  if(cform)cform.addEventListener('submit',async function(e){
+    e.preventDefault();
+    const btn=this.querySelector('[type=submit]');
+    btn.textContent='Sending…';btn.disabled=true;
+    const data={};new FormData(this).forEach(function(v,k){data[k]=v;});
+    data._subject='Staffona enquiry — '+(data.firstName||'')+' '+(data.lastName||'');
+    try{
+      const r=await fetch('https://formspree.io/f/'+SF.FP,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
+      if(r.ok){this.style.display='none';document.getElementById('fok').style.display='block';}
+      else throw new Error();
+    }catch{
+      const s=encodeURIComponent(data._subject),b=encodeURIComponent('Name: '+data.firstName+' '+data.lastName+'\nEmail: '+data.email+'\nCompany: '+data.company+'\nService: '+data.service+'\n\n'+data.message);
+      location.href='mailto:info@staffona.com?subject='+s+'&body='+b;
+      btn.textContent='Send Message';btn.disabled=false;
     }
-  } catch (err) {
-    // Mailto fallback
-    const subj = encodeURIComponent(data._subject);
-    const body = encodeURIComponent(
-      'Name: ' + (data.firstName || '') + ' ' + (data.lastName || '') +
-      '\nEmail: ' + (data.email || '') +
-      '\nCompany: ' + (data.company || '') +
-      '\nService: ' + (data.service || '') +
-      '\n\n' + (data.message || '')
-    );
-    window.location.href = 'mailto:info@staffona.com?subject=' + subj + '&body=' + body;
-    btn.textContent = originalText;
-    btn.disabled = false;
-  }
-}
-
-/* ── Tab switcher (contact form tabs) ──────────────────────── */
-function switchTab(name, btn) {
-  const container = btn.closest('[data-tabs]') || document;
-  container.querySelectorAll('.tab-btn').forEach(function (t) {
-    t.classList.remove('active');
-    t.setAttribute('aria-selected', 'false');
   });
-  container.querySelectorAll('.tab-pane').forEach(function (p) {
-    p.classList.remove('active');
-  });
-  btn.classList.add('active');
-  btn.setAttribute('aria-selected', 'true');
-  const pane = container.querySelector('#pane-' + name);
-  if (pane) pane.classList.add('active');
-
-  // Init Calendly inline widget when tab activated
-  if (name === 'calendly' && typeof Calendly !== 'undefined') {
-    Calendly.initInlineWidgets();
-  }
-}
+});
