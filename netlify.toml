@@ -32,3 +32,22 @@
   for = "*.html"
   [headers.values]
     Cache-Control = "public, max-age=3600"
+
+
+[[redirects]]
+  from = "http://staffona.com/*"
+  to = "https://www.staffona.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.staffona.com/*"
+  to = "https://www.staffona.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://staffona.com/*"
+  to = "https://www.staffona.com/:splat"
+  status = 301
+  force = true
