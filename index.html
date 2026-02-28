@@ -600,9 +600,10 @@ document.addEventListener('DOMContentLoaded', function(){
     btn.textContent='Sending…'; btn.disabled=true;
     const data={};
     new FormData(this).forEach((v,k)=>data[k]=v);
-    data._subject='Staffona enquiry — '+(data.firstName||'')+' '+(data.lastName||'');
+    data.subject='Staffona enquiry — '+(data.firstName||'')+' '+(data.lastName||'');
+    data.access_key='a37ce092-9f36-4462-a9bd-ee4a3ecc6fa7';
     try {
-      const res = await fetch('https://formspree.io/f/xreajrkr',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
+      const res = await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
       if(res.ok){this.style.display='none';document.getElementById('fok').style.display='block';}
       else throw new Error();
     } catch {

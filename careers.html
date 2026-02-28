@@ -459,6 +459,7 @@ document.getElementById('careerForm').addEventListener('submit', async function(
 
   // Collect screening answers into the payload as labelled fields
   const payload = new FormData();
+  payload.append('access_key', 'a37ce092-9f36-4462-a9bd-ee4a3ecc6fa7');
   payload.append('role', role);
   payload.append('firstName', firstName);
   payload.append('lastName', document.getElementById('aLast').value);
@@ -477,7 +478,7 @@ document.getElementById('careerForm').addEventListener('submit', async function(
   payload.append('cv', window._cvFile, window._cvFile.name);
 
   try {
-    const res = await fetch('https://formspree.io/f/xreajrkr', {
+    const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST', headers: { 'Accept': 'application/json' }, body: payload
     });
     if (res.ok) {
