@@ -1,7 +1,11 @@
+# netlify.toml — Staffona
+# Place in root of GitHub repo (same folder as index.html)
+
 [build]
   publish = "."
 
-# Enforce one canonical domain (no-www version)
+# Enforce staffona.com (no-www) as canonical domain
+# This prevents duplicate content between www and non-www
 [[redirects]]
   from = "https://www.staffona.com/*"
   to   = "https://staffona.com/:splat"
@@ -16,7 +20,7 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy        = "strict-origin-when-cross-origin"
 
-# Cache static assets
+# Cache static assets (1 year)
 [[headers]]
   for = "*.css"
   [headers.values]

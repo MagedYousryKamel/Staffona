@@ -5,331 +5,836 @@
 <title>Careers Admin | Staffona</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" type="image/png" href="Favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0B1F3A;--gold:#C8973A;--glt:#E0AC56;--off:#F8F7F5;--bd:#E4E2DC;--sl:#475569;--tx:#1E293B;--r:8px;--rm:12px;--rx:20px}
+:root{--navy:#0B1F3A;--gold:#C8973A;--glt:#E0AC56;--r:8px;--rm:12px;--rx:20px}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',system-ui,sans-serif;background:#0a1628;color:#fff;min-height:100vh;-webkit-font-smoothing:antialiased}
-.topbar{background:#06101E;border-bottom:1px solid rgba(255,255,255,.08);padding:14px 28px;display:flex;align-items:center;justify-content:space-between}
+/* ── TOP BAR ── */
+.topbar{background:#06101E;border-bottom:1px solid rgba(255,255,255,.08);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .tb-brand{display:flex;align-items:center;gap:10px}
-.tb-brand img{height:36px;filter:brightness(0) invert(1)}
-.tb-brand-fb{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;display:none}.tb-brand-fb em{color:var(--gold);font-style:normal}
+.tb-brand img{height:34px;filter:brightness(0) invert(1)}
 .tb-title{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)}
-.tb-r{display:flex;align-items:center;gap:12px}
-.tb-btn{padding:7px 14px;font-size:13px;font-weight:600;border-radius:var(--r);cursor:pointer;border:none;transition:all .2s}
+.tb-r{display:flex;gap:8px;flex-wrap:wrap}
+.tb-btn{padding:7px 13px;font-size:13px;font-weight:600;border-radius:var(--r);cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .2s}
 .btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover{background:var(--glt)}
-.btn-outline{background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6)}.btn-outline:hover{border-color:rgba(255,255,255,.5);color:#fff}
-.main{padding:32px 28px;max-width:1100px;margin:0 auto}
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
-.stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--rm);padding:20px}
-.stat-n{font-family:'Playfair Display',serif;font-size:36px;font-weight:800;color:#fff;line-height:1}
-.stat-l{font-size:12px;color:rgba(255,255,255,.4);margin-top:4px}
-.stat-card.gold{background:rgba(200,151,58,.1);border-color:rgba(200,151,58,.3)}
-.stat-card.gold .stat-n{color:var(--gold)}
-.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.sh-t{font-size:16px;font-weight:700;color:#fff}
-.sh-d{font-size:12.5px;color:rgba(255,255,255,.38);margin-top:2px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.flt-btn{padding:5px 13px;border-radius:100px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.15);background:transparent;color:rgba(255,255,255,.5);transition:all .2s}
-.flt-btn.on,.flt-btn:hover{background:rgba(200,151,58,.15);border-color:rgba(200,151,58,.4);color:var(--gold)}
-.table-wrap{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:var(--rx);overflow:hidden}
-.tbl{width:100%;border-collapse:collapse}
-.tbl th{padding:11px 16px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.28);border-bottom:1px solid rgba(255,255,255,.07);background:rgba(0,0,0,.2)}
-.tbl td{padding:13px 16px;font-size:13.5px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle}
-.tbl tr:last-child td{border-bottom:none}
-.tbl tr:hover td{background:rgba(255,255,255,.02)}
-.app-name{font-weight:600;color:#fff}
-.app-email{font-size:12px;color:rgba(255,255,255,.44);margin-top:2px}
-.app-role{color:rgba(255,255,255,.6)}
-.app-dept{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:rgba(200,151,58,.12);color:var(--gold)}
-.app-date{font-size:12px;color:rgba(255,255,255,.38)}
-.status-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:100px;font-size:11.5px;font-weight:600}
-.s-new{background:rgba(59,130,246,.15);color:#93c5fd}
-.s-review{background:rgba(234,179,8,.12);color:#fbbf24}
-.s-interview{background:rgba(16,185,129,.12);color:#6ee7b7}
-.s-hired{background:rgba(200,151,58,.15);color:var(--gold)}
+.btn-out{background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6)}.btn-out:hover{border-color:rgba(255,255,255,.4);color:#fff}
+/* ── TABS ── */
+.tabs-nav{display:flex;padding:0 24px;background:#06101E;border-bottom:1px solid rgba(255,255,255,.08)}
+.tn{padding:11px 18px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.4);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;transition:all .2s;font-family:'DM Sans',sans-serif}
+.tn.on{color:#fff;border-bottom-color:var(--gold)}
+.tab-pane{display:none;padding:24px;max-width:1180px;margin:0 auto}.tab-pane.on{display:block}
+/* ── STAT CARDS ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.sc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--rm);padding:16px}
+.sc.gold{background:rgba(200,151,58,.09);border-color:rgba(200,151,58,.28)}
+.sc-n{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;color:#fff;line-height:1}
+.sc.gold .sc-n{color:var(--gold)}
+.sc-l{font-size:11.5px;color:rgba(255,255,255,.38);margin-top:4px}
+/* ── SECTION HEAD ── */
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.sh-t{font-size:15px;font-weight:700;color:#fff}
+.sh-d{font-size:12px;color:rgba(255,255,255,.35);margin-top:2px}
+/* ── FILTER BAR ── */
+.fbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+.fb{padding:5px 11px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.14);background:transparent;color:rgba(255,255,255,.45);transition:all .2s;font-family:'DM Sans',sans-serif}
+.fb.on,.fb:hover{background:rgba(200,151,58,.14);border-color:rgba(200,151,58,.38);color:var(--gold)}
+.fb-sep{width:1px;height:20px;background:rgba(255,255,255,.1);margin:0 4px}
+.fbar select{padding:5px 10px;border-radius:100px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,.14);background:#0f1e35;color:rgba(255,255,255,.6);cursor:pointer;font-family:'DM Sans',sans-serif;outline:none}
+.fbar select:focus{border-color:var(--gold)}
+/* ── TABLE ── */
+.tbl-wrap{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--rx);overflow:hidden}
+table{width:100%;border-collapse:collapse}
+th{padding:10px 14px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.27);border-bottom:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.18)}
+td{padding:11px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.02)}
+.a-name{font-weight:600;color:#fff}
+.a-email{font-size:11.5px;color:rgba(255,255,255,.4);margin-top:2px}
+.a-role{font-size:13px;color:rgba(255,255,255,.55)}
+.dept-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:rgba(200,151,58,.12);color:var(--gold)}
+.date-cell{font-size:11.5px;color:rgba(255,255,255,.35)}
+.s-badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:100px;font-size:11px;font-weight:600}
+.s-new{background:rgba(59,130,246,.14);color:#93c5fd}
+.s-review{background:rgba(234,179,8,.11);color:#fbbf24}
+.s-interview{background:rgba(16,185,129,.11);color:#6ee7b7}
+.s-hired{background:rgba(200,151,58,.14);color:var(--gold)}
 .s-rejected{background:rgba(239,68,68,.1);color:#fca5a5}
-.act-btn{padding:5px 10px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:none;margin-right:4px;transition:all .2s}
-.view-btn{background:rgba(255,255,255,.07);color:rgba(255,255,255,.6)}.view-btn:hover{background:rgba(255,255,255,.12);color:#fff}
-.del-btn{background:rgba(239,68,68,.1);color:#fca5a5}.del-btn:hover{background:rgba(239,68,68,.2)}
-/* Modal */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;align-items:center;justify-content:center;padding:20px}
-.modal-bg.open{display:flex}
-.modal{background:#0f1e35;border:1px solid rgba(255,255,255,.1);border-radius:var(--rx);padding:32px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
-.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:20px;line-height:1;padding:4px}
-.modal-close:hover{color:#fff}
-.modal h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:20px}
-.det-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.det-item{background:rgba(255,255,255,.04);border-radius:var(--r);padding:12px}
-.det-label{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:4px}
-.det-value{font-size:14px;color:#fff}
-.det-full{grid-column:1/-1}
-.sel-status{width:100%;padding:8px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:var(--r);color:#fff;font-size:13.5px;outline:none}
-.sel-status option{background:#0f1e35}
-.save-btn{width:100%;padding:11px;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);font-size:14px;font-weight:700;cursor:pointer;margin-top:14px}
+.act{padding:4px 9px;border-radius:6px;font-size:11.5px;font-weight:600;cursor:pointer;border:none;margin-right:3px;transition:all .2s;font-family:'DM Sans',sans-serif}
+.a-view{background:rgba(255,255,255,.07);color:rgba(255,255,255,.55)}.a-view:hover{background:rgba(255,255,255,.12);color:#fff}
+.a-del{background:rgba(239,68,68,.09);color:#fca5a5}.a-del:hover{background:rgba(239,68,68,.18)}
+/* ── PANEL ── */
+.panel{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--rx);padding:22px;margin-bottom:20px;display:none}
+.panel.open{display:block}
+.panel h3{font-size:14px;font-weight:700;color:#fff;margin-bottom:16px}
+.fg{margin-bottom:11px}
+.fl{display:block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.34);margin-bottom:5px}
+.fi,.fsel,.fta{width:100%;padding:9px 11px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);color:#fff;font-size:13px;outline:none;font-family:'DM Sans',sans-serif}
+.fi:focus,.fsel:focus,.fta:focus{border-color:var(--gold)}.fi::placeholder,.fta::placeholder{color:rgba(255,255,255,.28)}
+.fsel option{background:#0f1e35}.fta{resize:vertical;min-height:72px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px}
+.btn-row{display:flex;gap:8px;margin-top:6px}
+.save-btn{padding:9px 18px;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
 .save-btn:hover{background:var(--glt)}
-/* Manual add form */
-.add-form{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:var(--rx);padding:24px;margin-bottom:32px;display:none}
-.add-form.open{display:block}
-.add-form h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:18px}
-.fg{margin-bottom:12px}
-.fl{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.36);margin-bottom:5px}
-.fi,.fsel{width:100%;padding:9px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);color:#fff;font-size:13.5px;outline:none}
-.fi:focus,.fsel:focus{border-color:var(--gold)}
-.fi::placeholder{color:rgba(255,255,255,.3)}
-.fsel option{background:#0f1e35}
-.fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.empty-state{text-align:center;padding:56px 20px}
-.empty-icon{font-size:40px;margin-bottom:12px}
-.empty-t{font-size:16px;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:6px}
-.empty-d{font-size:13.5px;color:rgba(255,255,255,.28)}
-.note-banner{background:rgba(200,151,58,.08);border:1px solid rgba(200,151,58,.2);border-radius:var(--rm);padding:14px 18px;font-size:13px;color:rgba(255,255,255,.6);margin-bottom:24px;line-height:1.6}
-.note-banner strong{color:var(--gold)}
-@media(max-width:768px){.stats-row{grid-template-columns:1fr 1fr}.tbl th:nth-child(3),.tbl td:nth-child(3),.tbl th:nth-child(5),.tbl td:nth-child(5){display:none}.det-row{grid-template-columns:1fr}}
+.cancel-btn{padding:9px 18px;background:transparent;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.45);border-radius:var(--r);font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+/* ── QUESTIONS BUILDER ── */
+.qb{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);border-radius:var(--rm);padding:16px;margin-top:10px}
+.qb-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.qb-title{font-size:13px;font-weight:700;color:var(--gold)}
+.q-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:12px;margin-bottom:8px;position:relative}
+.q-row{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:start}
+.q-fields{display:grid;grid-template-columns:1fr 120px;gap:8px;margin-bottom:6px}
+.q-opts-row{display:flex;gap:6px;align-items:center;margin-top:6px;flex-wrap:wrap}
+.q-opt-input{flex:1;min-width:120px;padding:6px 9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:6px;color:#fff;font-size:12px;font-family:'DM Sans',sans-serif;outline:none}
+.q-opt-input:focus{border-color:var(--gold)}
+.q-opt-input::placeholder{color:rgba(255,255,255,.25)}
+.q-del{width:28px;height:28px;border-radius:6px;background:rgba(239,68,68,.1);border:none;color:#fca5a5;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.q-del:hover{background:rgba(239,68,68,.2)}
+.q-req-label{display:flex;align-items:center;gap:5px;font-size:11.5px;color:rgba(255,255,255,.45);cursor:pointer;white-space:nowrap}
+.q-req-label input{accent-color:var(--gold)}
+.add-q-btn{padding:5px 12px;border-radius:6px;background:rgba(200,151,58,.1);border:1px solid rgba(200,151,58,.25);color:var(--gold);font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.add-q-btn:hover{background:rgba(200,151,58,.18)}
+/* ── JOB CARDS ── */
+.jobs-grid{display:grid;gap:12px}
+.jc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--rm);padding:18px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.jc.active-j{border-color:rgba(200,151,58,.28)}
+.jc.closed-j{opacity:.5}
+.jc-body{flex:1;min-width:200px}
+.jc-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px}
+.jc-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.jm{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.jm-dept{background:rgba(200,151,58,.12);color:var(--gold)}
+.jm-type{background:rgba(255,255,255,.07);color:rgba(255,255,255,.55)}
+.jm-loc{background:rgba(59,130,246,.1);color:#93c5fd}
+.jm-stat{display:inline-block;padding:2px 8px;border-radius:100px;font-size:11px;font-weight:600}
+.js-active{background:rgba(16,185,129,.11);color:#6ee7b7}
+.js-closed{background:rgba(239,68,68,.09);color:#fca5a5}
+.js-draft{background:rgba(234,179,8,.1);color:#fbbf24}
+.jc-qs{font-size:11.5px;color:rgba(200,151,58,.7);margin-top:5px}
+.jc-apps-count{font-size:11.5px;color:rgba(255,255,255,.3);margin-top:3px}
+.jc-actions{display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0}
+/* ── MODAL ── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.modal-bg.open{display:flex}
+.modal{background:#0f1e35;border:1px solid rgba(255,255,255,.1);border-radius:var(--rx);padding:28px;max-width:640px;width:100%;max-height:92vh;overflow-y:auto;position:relative}
+.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:20px;padding:4px;line-height:1}
+.modal-close:hover{color:#fff}
+.modal h2{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:#fff;margin-bottom:18px}
+.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+.det{background:rgba(255,255,255,.04);border-radius:var(--r);padding:11px}
+.det-l{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.27);margin-bottom:4px}
+.det-v{font-size:13px;color:#fff}
+.det.full{grid-column:1/-1}
+.ans-section{background:rgba(200,151,58,.06);border:1px solid rgba(200,151,58,.18);border-radius:var(--rm);padding:14px;margin-bottom:14px}
+.ans-section h4{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.ans-item{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.06)}
+.ans-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.ans-q{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:3px}
+.ans-a{font-size:13.5px;color:#fff;font-weight:500}
+.sel-status{width:100%;padding:8px 11px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--r);color:#fff;font-size:13px;outline:none;font-family:'DM Sans',sans-serif}
+.sel-status option{background:#0f1e35}
+/* ── MISC ── */
+.note-box{background:rgba(200,151,58,.07);border:1px solid rgba(200,151,58,.18);border-radius:var(--rm);padding:12px 16px;font-size:13px;color:rgba(255,255,255,.55);margin-bottom:18px;line-height:1.6}
+.note-box strong{color:var(--gold)}
+.empty{text-align:center;padding:44px 20px}
+.empty-ic{font-size:34px;margin-bottom:9px}
+.empty-t{font-size:14px;font-weight:600;color:rgba(255,255,255,.45);margin-bottom:5px}
+.empty-d{font-size:12.5px;color:rgba(255,255,255,.26)}
+@media(max-width:720px){.stats{grid-template-columns:1fr 1fr}.g2,.g3,.det-grid{grid-template-columns:1fr}th:nth-child(3),td:nth-child(3),th:nth-child(5),td:nth-child(5){display:none}}
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <div class="tb-brand">
-    <img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-    <span class="tb-brand-fb">Staff<em>ona</em></span>
-    <span class="tb-title">Careers Dashboard</span>
+    <img src="Logo.png" alt="Staffona" onerror="this.style.display='none'">
+    <span class="tb-title">Careers Admin</span>
   </div>
   <div class="tb-r">
-    <button class="tb-btn btn-outline" onclick="toggleAddForm()">+ Add Application</button>
-    <button class="tb-btn btn-outline" onclick="exportData()">Export CSV</button>
-    <button class="tb-btn btn-outline" onclick="if(confirm('Clear all data?')) clearAll()">Clear All</button>
-    <a href="careers.html" class="tb-btn btn-outline">← Public Page</a>
+    <button class="tb-btn btn-out" onclick="exportCSV()">⬇ Export CSV</button>
+    <button class="tb-btn btn-out" onclick="if(confirm('Clear ALL data?'))clearAll()">🗑 Clear All</button>
+    <a href="careers.html" target="_blank" class="tb-btn btn-out">↗ Public Page</a>
   </div>
 </div>
 
-<div class="main">
-  <div class="note-banner">
-    <strong>ℹ️ How this works:</strong> Applications submitted via the careers form are emailed to info@staffona.com via Formspree. To track them here, use the <strong>"+ Add Application"</strong> button to log each one manually. All data is stored locally in your browser — <strong>export regularly</strong> to back up.
+<div class="tabs-nav">
+  <button class="tn on" onclick="switchTab('apps',this)">📥 Applications</button>
+  <button class="tn" onclick="switchTab('jobs',this)">💼 Job Listings</button>
+</div>
+
+<!-- ═══════════════════════════════ APPLICATIONS TAB ═══════════════════════════════ -->
+<div class="tab-pane on" id="tab-apps">
+
+  <div class="stats">
+    <div class="sc"><div class="sc-n" id="st-total">0</div><div class="sc-l">Total Applications</div></div>
+    <div class="sc gold"><div class="sc-n" id="st-new">0</div><div class="sc-l">New</div></div>
+    <div class="sc"><div class="sc-n" id="st-interview">0</div><div class="sc-l">In Interview</div></div>
+    <div class="sc"><div class="sc-n" id="st-hired">0</div><div class="sc-l">Hired</div></div>
   </div>
 
-  <div class="stats-row" id="statsRow">
-    <div class="stat-card"><div class="stat-n" id="st-total">0</div><div class="stat-l">Total Applications</div></div>
-    <div class="stat-card gold"><div class="stat-n" id="st-new">0</div><div class="stat-l">New (Unreviewed)</div></div>
-    <div class="stat-card"><div class="stat-n" id="st-interview">0</div><div class="stat-l">In Interview</div></div>
-    <div class="stat-card"><div class="stat-n" id="st-hired">0</div><div class="stat-l">Hired</div></div>
+  <div class="note-box">
+    <strong>ℹ️ How applications arrive:</strong> When someone applies on the public careers page, the form submits to Formspree (info@staffona.com). Log each received application here with "+ Add Application". Custom screening question answers are stored per application and visible in the detail view.
   </div>
 
-  <!-- Add form -->
-  <div class="add-form" id="addForm">
+  <div class="sh">
+    <div><div class="sh-t">Applications</div><div class="sh-d" id="app-count">0 total</div></div>
+    <button class="tb-btn btn-gold" onclick="togglePanel('addAppPanel')">+ Add Application</button>
+  </div>
+
+  <!-- Add application panel -->
+  <div class="panel" id="addAppPanel">
     <h3>Log New Application</h3>
-    <div class="fg2">
+    <div class="g2">
       <div class="fg"><label class="fl">First Name *</label><input class="fi" id="af-fn" placeholder="Ahmed"></div>
-      <div class="fg"><label class="fl">Last Name *</label><input class="fi" id="af-ln" placeholder="Hassan"></div>
+      <div class="fg"><label class="fl">Last Name</label><input class="fi" id="af-ln" placeholder="Hassan"></div>
     </div>
-    <div class="fg2">
+    <div class="g2">
       <div class="fg"><label class="fl">Email *</label><input class="fi" id="af-em" type="email" placeholder="ahmed@email.com"></div>
       <div class="fg"><label class="fl">Phone</label><input class="fi" id="af-ph" placeholder="+20..."></div>
     </div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Role Applied For *</label><input class="fi" id="af-role" placeholder="Software Engineer"></div>
-      <div class="fg"><label class="fl">Department</label>
-        <select class="fsel" id="af-dept">
-          <option value="Tech">Tech &amp; Engineering</option>
-          <option value="Support">Customer Support</option>
-          <option value="Finance">Finance &amp; Accounting</option>
-          <option value="Operations">Operations</option>
-          <option value="HR">HR &amp; Admin</option>
-          <option value="Sales">Sales &amp; BD</option>
-          <option value="Other">Other</option>
+    <div class="g2">
+      <div class="fg"><label class="fl">Role Applied For *</label>
+        <select class="fsel" id="af-role" onchange="loadCustomAnswerFields()">
+          <option value="">— Select role —</option>
         </select>
       </div>
-    </div>
-    <div class="fg2">
       <div class="fg"><label class="fl">Experience</label><input class="fi" id="af-exp" placeholder="3 years"></div>
-      <div class="fg"><label class="fl">Location</label><input class="fi" id="af-loc" placeholder="Alexandria"></div>
     </div>
-    <div class="fg"><label class="fl">Cover Letter / Notes</label><input class="fi" id="af-notes" placeholder="Key notes from application..."></div>
-    <div style="display:flex;gap:10px;margin-top:4px">
-      <button class="tb-btn btn-gold" onclick="addApplication()" style="flex:1;padding:10px">Save Application</button>
-      <button class="tb-btn btn-outline" onclick="toggleAddForm()">Cancel</button>
+    <div class="fg"><label class="fl">LinkedIn</label><input class="fi" id="af-li" placeholder="https://linkedin.com/in/..."></div>
+    <div class="fg"><label class="fl">Source / Notes</label><input class="fi" id="af-notes" placeholder="Via careers form, referral, email CV..."></div>
+
+    <!-- Dynamic custom question answers -->
+    <div id="customAnswerFields"></div>
+
+    <div class="btn-row">
+      <button class="save-btn" onclick="addApplication()">Save Application</button>
+      <button class="cancel-btn" onclick="togglePanel('addAppPanel')">Cancel</button>
     </div>
   </div>
 
-  <!-- Table -->
-  <div>
-    <div class="section-head">
-      <div><div class="sh-t">Applications</div><div class="sh-d" id="app-count">0 total</div></div>
+  <!-- Filter bar -->
+  <div class="fbar">
+    <button class="fb on" onclick="setFilter('status','all',this)">All</button>
+    <button class="fb" onclick="setFilter('status','New',this)">🔵 New</button>
+    <button class="fb" onclick="setFilter('status','Under Review',this)">🟡 Review</button>
+    <button class="fb" onclick="setFilter('status','Interview',this)">🟢 Interview</button>
+    <button class="fb" onclick="setFilter('status','Hired',this)">⭐ Hired</button>
+    <button class="fb" onclick="setFilter('status','Rejected',this)">❌ Rejected</button>
+    <div class="fb-sep"></div>
+    <select id="roleFilter" onchange="setRoleFilter(this.value)">
+      <option value="">All Roles</option>
+    </select>
+  </div>
+
+  <!-- Applications table -->
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th>Applicant</th><th>Role</th><th>Dept</th><th>Status</th><th>Date</th><th>Actions</th>
+      </tr></thead>
+      <tbody id="appTbody"></tbody>
+    </table>
+    <div class="empty" id="appEmpty">
+      <div class="empty-ic">📭</div>
+      <div class="empty-t">No applications yet</div>
+      <div class="empty-d">Log applications received by email using "+ Add Application"</div>
     </div>
-    <div class="filters">
-      <button class="flt-btn on" onclick="filterApps('all',this)">All</button>
-      <button class="flt-btn" onclick="filterApps('New',this)">🔵 New</button>
-      <button class="flt-btn" onclick="filterApps('Under Review',this)">🟡 Review</button>
-      <button class="flt-btn" onclick="filterApps('Interview',this)">🟢 Interview</button>
-      <button class="flt-btn" onclick="filterApps('Hired',this)">⭐ Hired</button>
-      <button class="flt-btn" onclick="filterApps('Rejected',this)">❌ Rejected</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ JOB LISTINGS TAB ═══════════════════════════════ -->
+<div class="tab-pane" id="tab-jobs">
+
+  <div class="note-box">
+    <strong>💼 Job Listings + Screening Questions:</strong> Create job openings here. For each job you can add <strong>custom screening questions</strong> (text, yes/no, dropdown, number). These questions appear on the public careers page when someone applies for that specific role. Their answers are stored with each application and filterable.
+  </div>
+
+  <div class="sh">
+    <div><div class="sh-t">Job Openings</div><div class="sh-d" id="job-count">0 listings</div></div>
+    <button class="tb-btn btn-gold" onclick="openJobPanel()">+ New Job Opening</button>
+  </div>
+
+  <!-- Add / Edit job panel -->
+  <div class="panel" id="addJobPanel">
+    <h3 id="jobPanelTitle">New Job Opening</h3>
+    <div class="g2">
+      <div class="fg"><label class="fl">Job Title *</label><input class="fi" id="jf-title" placeholder="HR Operations Specialist"></div>
+      <div class="fg"><label class="fl">Department</label>
+        <select class="fsel" id="jf-dept">
+          <option>HR &amp; Admin</option><option>Tech &amp; Engineering</option><option>Customer Support</option>
+          <option>Finance &amp; Accounting</option><option>Operations</option><option>Sales &amp; BD</option>
+        </select>
+      </div>
     </div>
-    <div class="table-wrap">
-      <table class="tbl">
-        <thead><tr>
-          <th>Applicant</th>
-          <th>Role</th>
-          <th>Dept</th>
-          <th>Status</th>
-          <th>Date</th>
-          <th>Actions</th>
-        </tr></thead>
-        <tbody id="appTbody"></tbody>
-      </table>
-      <div class="empty-state" id="emptyState">
-        <div class="empty-icon">📭</div>
-        <div class="empty-t">No applications yet</div>
-        <div class="empty-d">Add applications manually using the button above, or wait for submissions via the careers form.</div>
+    <div class="g3">
+      <div class="fg"><label class="fl">Type</label>
+        <select class="fsel" id="jf-type"><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Internship</option></select>
+      </div>
+      <div class="fg"><label class="fl">Location</label><input class="fi" id="jf-loc" value="Alexandria, Egypt"></div>
+      <div class="fg"><label class="fl">Status</label>
+        <select class="fsel" id="jf-status"><option value="Active">Active</option><option value="Draft">Draft</option><option value="Closed">Closed</option></select>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Salary Range</label><input class="fi" id="jf-salary" placeholder="EGP 15,000–22,000/month"></div>
+      <div class="fg"><label class="fl">Featured?</label>
+        <select class="fsel" id="jf-feat"><option value="0">No</option><option value="1">Yes — highlighted</option></select>
+      </div>
+    </div>
+    <div class="fg"><label class="fl">Short Description (shown on listing card)</label><textarea class="fta" id="jf-desc" placeholder="Brief overview of the role..."></textarea></div>
+    <div class="fg"><label class="fl">Key Skills (comma-separated, shown as tags)</label><input class="fi" id="jf-skills" placeholder="Payroll, Labor Law, Arabic, Excel"></div>
+
+    <!-- ── SCREENING QUESTIONS BUILDER ── -->
+    <div class="qb">
+      <div class="qb-head">
+        <div class="qb-title">📋 Screening Questions for This Role</div>
+        <button class="add-q-btn" onclick="addQuestion()">+ Add Question</button>
+      </div>
+      <div id="questionsContainer">
+        <div style="font-size:12.5px;color:rgba(255,255,255,.35);text-align:center;padding:12px 0" id="qEmpty">No questions yet. Click "+ Add Question" to add custom screening questions for this role.</div>
+      </div>
+    </div>
+
+    <div class="btn-row" style="margin-top:14px">
+      <button class="save-btn" onclick="saveJob()">Save Job</button>
+      <button class="cancel-btn" onclick="cancelJobEdit()">Cancel</button>
+    </div>
+  </div>
+
+  <div class="jobs-grid" id="jobsGrid">
+    <div class="empty"><div class="empty-ic">💼</div><div class="empty-t">No job listings yet</div><div class="empty-d">Click "+ New Job Opening" to create your first role</div></div>
+  </div>
+</div>
+
+<!-- ═══ APPLICATION DETAIL MODAL ═══ -->
+<div class="modal-bg" id="appModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('appModal')">✕</button>
+    <h2 id="am-name">Applicant</h2>
+    <div class="det-grid">
+      <div class="det"><div class="det-l">Email</div><div class="det-v" id="am-email"></div></div>
+      <div class="det"><div class="det-l">Phone</div><div class="det-v" id="am-phone"></div></div>
+      <div class="det"><div class="det-l">Role</div><div class="det-v" id="am-role"></div></div>
+      <div class="det"><div class="det-l">Experience</div><div class="det-v" id="am-exp"></div></div>
+      <div class="det"><div class="det-l">LinkedIn</div><div class="det-v" id="am-li" style="word-break:break-all"></div></div>
+      <div class="det"><div class="det-l">Date</div><div class="det-v" id="am-date"></div></div>
+      <div class="det full"><div class="det-l">Source / Notes</div><div class="det-v" id="am-notes" style="white-space:pre-wrap"></div></div>
+    </div>
+    <!-- Custom answers section -->
+    <div class="ans-section" id="am-answers-section" style="display:none">
+      <h4>Screening Question Answers</h4>
+      <div id="am-answers"></div>
+    </div>
+    <div class="det-grid">
+      <div class="det full">
+        <div class="det-l" style="margin-bottom:8px">Update Status</div>
+        <select class="sel-status" id="am-status">
+          <option value="New">🔵 New</option>
+          <option value="Under Review">🟡 Under Review</option>
+          <option value="Interview">🟢 Interview Stage</option>
+          <option value="Hired">⭐ Hired</option>
+          <option value="Rejected">❌ Rejected</option>
+        </select>
+        <button class="save-btn" style="margin-top:9px;width:100%" onclick="saveAppStatus()">Save Status</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Detail modal -->
-<div class="modal-bg" id="modal">
+<!-- ═══ JOB DETAIL MODAL ═══ -->
+<div class="modal-bg" id="jobModal">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <h2 id="m-name">Applicant Name</h2>
-    <div class="det-row">
-      <div class="det-item"><div class="det-label">Email</div><div class="det-value" id="m-email"></div></div>
-      <div class="det-item"><div class="det-label">Phone</div><div class="det-value" id="m-phone"></div></div>
-      <div class="det-item"><div class="det-label">Role</div><div class="det-value" id="m-role"></div></div>
-      <div class="det-item"><div class="det-label">Department</div><div class="det-value" id="m-dept"></div></div>
-      <div class="det-item"><div class="det-label">Experience</div><div class="det-value" id="m-exp"></div></div>
-      <div class="det-item"><div class="det-label">Location</div><div class="det-value" id="m-loc"></div></div>
-      <div class="det-item det-full"><div class="det-label">Notes</div><div class="det-value" id="m-notes" style="white-space:pre-wrap"></div></div>
-      <div class="det-item det-full"><div class="det-label">Update Status</div>
-        <select class="sel-status" id="m-status">
-          <option value="New">New</option>
-          <option value="Under Review">Under Review</option>
-          <option value="Interview">Interview</option>
-          <option value="Hired">Hired</option>
-          <option value="Rejected">Rejected</option>
-        </select>
-      </div>
+    <button class="modal-close" onclick="closeModal('jobModal')">✕</button>
+    <h2 id="jm-title"></h2>
+    <div class="det-grid">
+      <div class="det"><div class="det-l">Department</div><div class="det-v" id="jm-dept"></div></div>
+      <div class="det"><div class="det-l">Type</div><div class="det-v" id="jm-type"></div></div>
+      <div class="det"><div class="det-l">Location</div><div class="det-v" id="jm-loc"></div></div>
+      <div class="det"><div class="det-l">Salary</div><div class="det-v" id="jm-salary"></div></div>
+      <div class="det full"><div class="det-l">Description</div><div class="det-v" id="jm-desc" style="white-space:pre-wrap;line-height:1.65"></div></div>
+      <div class="det full"><div class="det-l">Skills / Tags</div><div class="det-v" id="jm-skills"></div></div>
     </div>
-    <button class="save-btn" onclick="saveStatus()">Save Status</button>
+    <div class="ans-section" id="jm-qs-section" style="display:none">
+      <h4>Screening Questions for Applicants</h4>
+      <div id="jm-qs"></div>
+    </div>
+    <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:12px">To show this job on the public careers page, the page dynamically reads active jobs from storage — just mark the status as <strong>Active</strong> and it will appear automatically.</p>
   </div>
 </div>
 
 <script>
-const STORE_KEY = 'sf-careers-v3';
-let apps = [], currentFilter = 'all', editId = null;
+/* ══════════════════════════════════════
+   DATA STORAGE
+══════════════════════════════════════ */
+const APPS_KEY = 'sf-apps-v4';
+const JOBS_KEY = 'sf-jobs-v2';
+let apps = [], jobs = [], editAppId = null, editJobId = null;
+let filterStatus = 'all', filterRole = '';
+// Temporary questions array while building a job
+let draftQuestions = [];
 
-function load(){ try { apps = JSON.parse(localStorage.getItem(STORE_KEY)||'[]'); } catch(e){ apps=[]; } render(); }
-function save(){ try { localStorage.setItem(STORE_KEY, JSON.stringify(apps)); } catch(e){ alert('Storage full — please export and clear data.'); } }
+function loadAll() {
+  try { apps = JSON.parse(localStorage.getItem(APPS_KEY) || '[]'); } catch { apps = []; }
+  try { jobs = JSON.parse(localStorage.getItem(JOBS_KEY) || '[]'); } catch { jobs = []; }
+  renderApps(); renderJobs(); populateRoleFilters(); populateRoleSelect();
+}
+function saveApps() { try { localStorage.setItem(APPS_KEY, JSON.stringify(apps)); } catch { alert('Storage full — export CSV.'); } }
+function saveJobs() { try { localStorage.setItem(JOBS_KEY, JSON.stringify(jobs)); } catch { alert('Storage full.'); } }
 
-function toggleAddForm(){
-  const f = document.getElementById('addForm');
-  f.classList.toggle('open');
-  if(f.classList.contains('open')) document.getElementById('af-fn').focus();
+/* ══════════════════════════════════════
+   TAB SWITCHING
+══════════════════════════════════════ */
+function switchTab(name, btn) {
+  document.querySelectorAll('.tn').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('tab-' + name).classList.add('on');
+}
+function togglePanel(id) { document.getElementById(id).classList.toggle('open'); }
+
+/* ══════════════════════════════════════
+   APPLICATIONS
+══════════════════════════════════════ */
+function populateRoleSelect() {
+  const sel = document.getElementById('af-role');
+  const prev = sel.value;
+  sel.innerHTML = '<option value="">— Select role —</option>';
+  jobs.filter(j => j.status === 'Active').forEach(j => {
+    const o = document.createElement('option');
+    o.value = j.title; o.textContent = j.title;
+    sel.appendChild(o);
+  });
+  // Also always offer speculative
+  const sp = document.createElement('option');
+  sp.value = 'Speculative Application'; sp.textContent = 'Speculative Application';
+  sel.appendChild(sp);
+  if (prev) sel.value = prev;
 }
 
-function addApplication(){
-  const fn = document.getElementById('af-fn').value.trim();
-  const ln = document.getElementById('af-ln').value.trim();
-  const em = document.getElementById('af-em').value.trim();
-  const role = document.getElementById('af-role').value.trim();
-  if(!fn||!em||!role){ alert('First name, email, and role are required.'); return; }
+function populateRoleFilters() {
+  const sel = document.getElementById('roleFilter');
+  const prev = sel.value;
+  sel.innerHTML = '<option value="">All Roles</option>';
+  const roles = [...new Set(apps.map(a => a.role).filter(Boolean))];
+  roles.forEach(r => {
+    const o = document.createElement('option');
+    o.value = r; o.textContent = r;
+    sel.appendChild(o);
+  });
+  if (prev) sel.value = prev;
+}
+
+function loadCustomAnswerFields() {
+  const roleName = document.getElementById('af-role').value;
+  const job = jobs.find(j => j.title === roleName);
+  const container = document.getElementById('customAnswerFields');
+  container.innerHTML = '';
+  if (!job || !job.questions || !job.questions.length) return;
+  const heading = document.createElement('div');
+  heading.style.cssText = 'font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin:14px 0 10px;';
+  heading.textContent = 'Screening Questions for This Role';
+  container.appendChild(heading);
+  job.questions.forEach((q, i) => {
+    const fg = document.createElement('div');
+    fg.className = 'fg';
+    const lbl = document.createElement('label');
+    lbl.className = 'fl';
+    lbl.textContent = q.text + (q.required ? ' *' : '');
+    lbl.setAttribute('for', 'cq_' + i);
+    fg.appendChild(lbl);
+    let inp;
+    if (q.type === 'text') {
+      inp = document.createElement('input');
+      inp.className = 'fi'; inp.type = 'text'; inp.placeholder = 'Answer...';
+    } else if (q.type === 'yesno') {
+      inp = document.createElement('select');
+      inp.className = 'fsel';
+      inp.innerHTML = '<option value="">Select...</option><option value="Yes">Yes</option><option value="No">No</option>';
+    } else if (q.type === 'dropdown' && q.options) {
+      inp = document.createElement('select');
+      inp.className = 'fsel';
+      inp.innerHTML = '<option value="">Select...</option>';
+      q.options.forEach(opt => { const o = document.createElement('option'); o.value = opt; o.textContent = opt; inp.appendChild(o); });
+    } else if (q.type === 'number') {
+      inp = document.createElement('input');
+      inp.className = 'fi'; inp.type = 'number'; inp.placeholder = '0';
+    } else {
+      inp = document.createElement('input');
+      inp.className = 'fi'; inp.type = 'text'; inp.placeholder = 'Answer...';
+    }
+    inp.id = 'cq_' + i;
+    inp.dataset.qIndex = i;
+    fg.appendChild(inp);
+    container.appendChild(fg);
+  });
+}
+
+function addApplication() {
+  const fn = v('af-fn'), em = v('af-em'), role = v2('af-role');
+  if (!fn || !em || !role) { alert('First name, email, and role are required.'); return; }
+  const job = jobs.find(j => j.title === role);
+  // Collect custom answers
+  const customAnswers = [];
+  if (job && job.questions) {
+    job.questions.forEach((q, i) => {
+      const el = document.getElementById('cq_' + i);
+      customAnswers.push({ question: q.text, type: q.type, answer: el ? el.value.trim() : '' });
+    });
+  }
   const app = {
     id: Date.now(),
-    firstName: fn, lastName: ln, email: em,
-    phone: document.getElementById('af-ph').value.trim(),
-    role, dept: document.getElementById('af-dept').value,
-    experience: document.getElementById('af-exp').value.trim(),
-    location: document.getElementById('af-loc').value.trim(),
-    notes: document.getElementById('af-notes').value.trim(),
-    status: 'New',
-    date: new Date().toISOString()
+    firstName: fn, lastName: v('af-ln'), email: em, phone: v('af-ph'),
+    role, dept: job ? job.dept : 'Other',
+    experience: v('af-exp'), linkedin: v('af-li'), notes: v('af-notes'),
+    customAnswers,
+    status: 'New', date: new Date().toISOString()
   };
   apps.unshift(app);
-  save();
-  // Clear form
-  ['af-fn','af-ln','af-em','af-ph','af-role','af-exp','af-loc','af-notes'].forEach(id => document.getElementById(id).value='');
-  document.getElementById('addForm').classList.remove('open');
-  render();
+  saveApps();
+  // Reset form
+  ['af-fn','af-ln','af-em','af-ph','af-exp','af-li','af-notes'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('af-role').value = '';
+  document.getElementById('customAnswerFields').innerHTML = '';
+  document.getElementById('addAppPanel').classList.remove('open');
+  populateRoleFilters();
+  renderApps();
 }
 
-function filterApps(f, btn){
-  currentFilter = f;
-  document.querySelectorAll('.flt-btn').forEach(b => b.classList.remove('on'));
+function setFilter(type, val, btn) {
+  filterStatus = val;
+  document.querySelectorAll('.fb').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
-  render();
+  renderApps();
 }
+function setRoleFilter(val) { filterRole = val; renderApps(); }
 
-const STATUS_CLASS = {'New':'s-new','Under Review':'s-review','Interview':'s-interview','Hired':'s-hired','Rejected':'s-rejected'};
+const SC = { 'New':'s-new','Under Review':'s-review','Interview':'s-interview','Hired':'s-hired','Rejected':'s-rejected' };
 
-function render(){
-  const filtered = currentFilter === 'all' ? apps : apps.filter(a => a.status === currentFilter);
-  const tbody = document.getElementById('appTbody');
-  const empty = document.getElementById('emptyState');
-  document.getElementById('app-count').textContent = `${filtered.length} of ${apps.length} total`;
-  // Stats
+function renderApps() {
+  let filtered = [...apps];
+  if (filterStatus !== 'all') filtered = filtered.filter(a => a.status === filterStatus);
+  if (filterRole) filtered = filtered.filter(a => a.role === filterRole);
+
+  document.getElementById('app-count').textContent = `${filtered.length} of ${apps.length}`;
   document.getElementById('st-total').textContent = apps.length;
-  document.getElementById('st-new').textContent = apps.filter(a=>a.status==='New').length;
-  document.getElementById('st-interview').textContent = apps.filter(a=>a.status==='Interview').length;
-  document.getElementById('st-hired').textContent = apps.filter(a=>a.status==='Hired').length;
-  
-  if(!filtered.length){ tbody.innerHTML=''; empty.style.display='block'; return; }
-  empty.style.display='none';
+  document.getElementById('st-new').textContent = apps.filter(a => a.status === 'New').length;
+  document.getElementById('st-interview').textContent = apps.filter(a => a.status === 'Interview').length;
+  document.getElementById('st-hired').textContent = apps.filter(a => a.status === 'Hired').length;
+
+  const tbody = document.getElementById('appTbody');
+  const empty = document.getElementById('appEmpty');
+  if (!filtered.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
   tbody.innerHTML = filtered.map(a => {
-    const sc = STATUS_CLASS[a.status]||'s-new';
-    const dt = new Date(a.date).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+    const sc = SC[a.status] || 's-new';
+    const dt = new Date(a.date).toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
+    const hasAnswers = a.customAnswers && a.customAnswers.some(x => x.answer);
     return `<tr>
-      <td><div class="app-name">${esc(a.firstName)} ${esc(a.lastName)}</div><div class="app-email">${esc(a.email)}</div></td>
-      <td class="app-role">${esc(a.role)}</td>
-      <td><span class="app-dept">${esc(a.dept)}</span></td>
-      <td><span class="status-badge ${sc}">${esc(a.status)}</span></td>
-      <td class="app-date">${dt}</td>
-      <td><button class="act-btn view-btn" onclick="openModal(${a.id})">View</button><button class="act-btn del-btn" onclick="deleteApp(${a.id})">Del</button></td>
+      <td><div class="a-name">${esc(a.firstName)} ${esc(a.lastName)}</div><div class="a-email">${esc(a.email)}</div></td>
+      <td><div class="a-role">${esc(a.role)}</div>${hasAnswers ? '<div style="font-size:10.5px;color:rgba(200,151,58,.6);margin-top:2px">📋 Has answers</div>' : ''}</td>
+      <td><span class="dept-tag">${esc(a.dept||'—')}</span></td>
+      <td><span class="s-badge ${sc}">${esc(a.status)}</span></td>
+      <td class="date-cell">${dt}</td>
+      <td><button class="act a-view" onclick="openAppModal(${a.id})">View</button><button class="act a-del" onclick="deleteApp(${a.id})">Del</button></td>
     </tr>`;
   }).join('');
 }
 
-function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-function openModal(id){
-  const a = apps.find(x=>x.id===id); if(!a) return;
-  editId = id;
-  document.getElementById('m-name').textContent = `${a.firstName} ${a.lastName}`;
-  document.getElementById('m-email').textContent = a.email||'—';
-  document.getElementById('m-phone').textContent = a.phone||'—';
-  document.getElementById('m-role').textContent = a.role||'—';
-  document.getElementById('m-dept').textContent = a.dept||'—';
-  document.getElementById('m-exp').textContent = a.experience||'—';
-  document.getElementById('m-loc').textContent = a.location||'—';
-  document.getElementById('m-notes').textContent = a.notes||'—';
-  document.getElementById('m-status').value = a.status;
-  document.getElementById('modal').classList.add('open');
+function openAppModal(id) {
+  const a = apps.find(x => x.id === id); if (!a) return;
+  editAppId = id;
+  setText('am-name', `${a.firstName} ${a.lastName}`);
+  setText('am-email', a.email || '—'); setText('am-phone', a.phone || '—');
+  setText('am-role', a.role || '—'); setText('am-exp', a.experience || '—');
+  setText('am-li', a.linkedin || '—'); setText('am-notes', a.notes || '—');
+  setText('am-date', new Date(a.date).toLocaleDateString('en-GB', { weekday:'long', day:'2-digit', month:'long', year:'numeric' }));
+  document.getElementById('am-status').value = a.status;
+  // Custom answers
+  const ansSection = document.getElementById('am-answers-section');
+  const ansContainer = document.getElementById('am-answers');
+  ansContainer.innerHTML = '';
+  if (a.customAnswers && a.customAnswers.some(x => x.answer)) {
+    ansSection.style.display = 'block';
+    a.customAnswers.forEach(ans => {
+      if (!ans.answer) return;
+      const div = document.createElement('div');
+      div.className = 'ans-item';
+      div.innerHTML = `<div class="ans-q">${esc(ans.question)}</div><div class="ans-a">${esc(ans.answer)}</div>`;
+      ansContainer.appendChild(div);
+    });
+  } else {
+    ansSection.style.display = 'none';
+  }
+  document.getElementById('appModal').classList.add('open');
 }
-function closeModal(){ document.getElementById('modal').classList.remove('open'); editId=null; }
-function saveStatus(){
-  const a = apps.find(x=>x.id===editId); if(!a) return;
-  a.status = document.getElementById('m-status').value;
-  save(); render(); closeModal();
-}
-function deleteApp(id){ if(!confirm('Delete this application?')) return; apps=apps.filter(x=>x.id!==id); save(); render(); }
-function clearAll(){ apps=[]; save(); render(); }
 
-function exportData(){
-  if(!apps.length){ alert('No data to export.'); return; }
-  const headers = ['ID','First Name','Last Name','Email','Phone','Role','Department','Experience','Location','Status','Date','Notes'];
-  const rows = apps.map(a => [a.id,a.firstName,a.lastName,a.email,a.phone,a.role,a.dept,a.experience,a.location,a.status,new Date(a.date).toLocaleDateString('en-GB'),a.notes].map(v=>`"${(v||'').toString().replace(/"/g,'""')}"`).join(','));
-  const csv = [headers.join(','),...rows].join('\n');
-  const blob = new Blob([csv],{type:'text/csv'});
+function saveAppStatus() {
+  const a = apps.find(x => x.id === editAppId); if (!a) return;
+  a.status = document.getElementById('am-status').value;
+  saveApps(); renderApps(); closeModal('appModal');
+}
+function deleteApp(id) {
+  if (!confirm('Delete this application?')) return;
+  apps = apps.filter(x => x.id !== id);
+  saveApps(); populateRoleFilters(); renderApps();
+}
+
+/* ══════════════════════════════════════
+   QUESTIONS BUILDER
+══════════════════════════════════════ */
+function addQuestion(q = null) {
+  // Hide the "no questions yet" text
+  document.getElementById('qEmpty').style.display = 'none';
+  const container = document.getElementById('questionsContainer');
+  const idx = container.querySelectorAll('.q-item').length;
+  const item = document.createElement('div');
+  item.className = 'q-item';
+  item.dataset.idx = idx;
+  item.innerHTML = `
+    <div class="q-fields">
+      <div><label class="fl">Question Text *</label>
+        <input class="fi q-text" type="text" placeholder="e.g. Do you have experience with NOSI registration?" value="${esc(q ? q.text : '')}"></div>
+      <div><label class="fl">Answer Type</label>
+        <select class="fsel q-type" onchange="toggleOptsRow(this)">
+          <option value="text" ${(!q||q.type==='text')?'selected':''}>Text answer</option>
+          <option value="yesno" ${q&&q.type==='yesno'?'selected':''}>Yes / No</option>
+          <option value="dropdown" ${q&&q.type==='dropdown'?'selected':''}>Dropdown choices</option>
+          <option value="number" ${q&&q.type==='number'?'selected':''}>Number</option>
+        </select>
+      </div>
+    </div>
+    <div class="q-opts-row" style="display:${q&&q.type==='dropdown'?'flex':'none'}">
+      <input class="q-opt-input q-opts" type="text" placeholder="Option 1, Option 2, Option 3 (comma-separated)" value="${esc(q&&q.options?q.options.join(', '):'')}">
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
+      <label class="q-req-label">
+        <input type="checkbox" class="q-req" ${q&&q.required?'checked':''}> Required
+      </label>
+      <button class="q-del" onclick="removeQuestion(this)" title="Remove question">✕</button>
+    </div>`;
+  container.appendChild(item);
+}
+
+function toggleOptsRow(sel) {
+  const optsRow = sel.closest('.q-item').querySelector('.q-opts-row');
+  optsRow.style.display = sel.value === 'dropdown' ? 'flex' : 'none';
+}
+
+function removeQuestion(btn) {
+  btn.closest('.q-item').remove();
+  if (!document.querySelector('.q-item')) document.getElementById('qEmpty').style.display = 'block';
+}
+
+function collectQuestions() {
+  const items = document.querySelectorAll('.q-item');
+  const qs = [];
+  items.forEach(item => {
+    const text = item.querySelector('.q-text').value.trim();
+    if (!text) return;
+    const type = item.querySelector('.q-type').value;
+    const required = item.querySelector('.q-req').checked;
+    const q = { text, type, required };
+    if (type === 'dropdown') {
+      const optsRaw = item.querySelector('.q-opts').value;
+      q.options = optsRaw.split(',').map(o => o.trim()).filter(Boolean);
+    }
+    qs.push(q);
+  });
+  return qs;
+}
+
+/* ══════════════════════════════════════
+   JOB LISTINGS
+══════════════════════════════════════ */
+function openJobPanel(jobId = null) {
+  editJobId = jobId;
+  const j = jobId ? jobs.find(x => x.id === jobId) : null;
+  document.getElementById('jobPanelTitle').textContent = j ? 'Edit Job Opening' : 'New Job Opening';
+  document.getElementById('jf-title').value = j ? j.title : '';
+  document.getElementById('jf-dept').value = j ? j.dept : 'HR & Admin';
+  document.getElementById('jf-type').value = j ? j.type : 'Full-time';
+  document.getElementById('jf-loc').value = j ? j.location : 'Alexandria, Egypt';
+  document.getElementById('jf-status').value = j ? j.status : 'Active';
+  document.getElementById('jf-salary').value = j ? (j.salary || '') : '';
+  document.getElementById('jf-feat').value = j && j.featured ? '1' : '0';
+  document.getElementById('jf-desc').value = j ? (j.description || '') : '';
+  document.getElementById('jf-skills').value = j && j.skills ? j.skills.join(', ') : '';
+  // Rebuild questions
+  const container = document.getElementById('questionsContainer');
+  container.innerHTML = '';
+  document.getElementById('qEmpty').style.display = 'block';
+  if (j && j.questions && j.questions.length) {
+    j.questions.forEach(q => addQuestion(q));
+  }
+  document.getElementById('addJobPanel').classList.add('open');
+  document.getElementById('addJobPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function saveJob() {
+  const title = v('jf-title');
+  if (!title) { alert('Job title is required.'); return; }
+  const questions = collectQuestions();
+  const skillsRaw = v('jf-skills');
+  const job = {
+    id: editJobId || Date.now(),
+    title,
+    dept: document.getElementById('jf-dept').value,
+    type: document.getElementById('jf-type').value,
+    location: v('jf-loc'),
+    status: document.getElementById('jf-status').value,
+    salary: v('jf-salary'),
+    featured: document.getElementById('jf-feat').value === '1',
+    description: v('jf-desc'),
+    skills: skillsRaw ? skillsRaw.split(',').map(s => s.trim()).filter(Boolean) : [],
+    questions,
+    date: editJobId ? (jobs.find(j => j.id === editJobId)?.date || new Date().toISOString()) : new Date().toISOString()
+  };
+  if (editJobId) {
+    const i = jobs.findIndex(j => j.id === editJobId);
+    if (i >= 0) jobs[i] = job;
+  } else {
+    jobs.unshift(job);
+  }
+  saveJobs();
+  cancelJobEdit();
+  renderJobs();
+  populateRoleSelect();
+}
+
+function cancelJobEdit() {
+  editJobId = null;
+  document.getElementById('addJobPanel').classList.remove('open');
+  document.getElementById('jobPanelTitle').textContent = 'New Job Opening';
+}
+
+function toggleJobStatus(id) {
+  const j = jobs.find(x => x.id === id); if (!j) return;
+  j.status = j.status === 'Active' ? 'Closed' : 'Active';
+  saveJobs(); renderJobs(); populateRoleSelect();
+}
+function deleteJob(id) {
+  if (!confirm('Delete this job opening?')) return;
+  jobs = jobs.filter(x => x.id !== id);
+  saveJobs(); renderJobs(); populateRoleSelect();
+}
+
+function viewJob(id) {
+  const j = jobs.find(x => x.id === id); if (!j) return;
+  setText('jm-title', j.title);
+  setText('jm-dept', j.dept); setText('jm-type', j.type);
+  setText('jm-loc', j.location); setText('jm-salary', j.salary || 'Not specified');
+  setText('jm-desc', j.description || '—');
+  setText('jm-skills', j.skills ? j.skills.join(' · ') : '—');
+  const qsSection = document.getElementById('jm-qs-section');
+  const qsContainer = document.getElementById('jm-qs');
+  qsContainer.innerHTML = '';
+  if (j.questions && j.questions.length) {
+    qsSection.style.display = 'block';
+    j.questions.forEach((q, i) => {
+      const div = document.createElement('div');
+      div.className = 'ans-item';
+      let typeLabel = { text:'Text answer', yesno:'Yes / No', dropdown:'Dropdown', number:'Number' }[q.type] || q.type;
+      let optStr = q.type === 'dropdown' && q.options ? ` (${q.options.join(', ')})` : '';
+      div.innerHTML = `<div class="ans-q">Q${i+1}: ${esc(q.text)} ${q.required ? '<span style="color:#fca5a5">*required</span>' : ''}</div><div class="ans-a" style="font-size:12px;color:rgba(255,255,255,.4)">${typeLabel}${esc(optStr)}</div>`;
+      qsContainer.appendChild(div);
+    });
+  } else {
+    qsSection.style.display = 'none';
+  }
+  document.getElementById('jobModal').classList.add('open');
+}
+
+function renderJobs() {
+  const grid = document.getElementById('jobsGrid');
+  document.getElementById('job-count').textContent = `${jobs.length} listing${jobs.length !== 1 ? 's' : ''}`;
+  if (!jobs.length) {
+    grid.innerHTML = `<div class="empty"><div class="empty-ic">💼</div><div class="empty-t">No job listings yet</div><div class="empty-d">Click "+ New Job Opening"</div></div>`;
+    return;
+  }
+  const appsByJob = {};
+  apps.forEach(a => { const k = (a.role || '').toLowerCase().trim(); appsByJob[k] = (appsByJob[k] || 0) + 1; });
+  grid.innerHTML = jobs.map(j => {
+    const sc = j.status === 'Active' ? 'js-active' : j.status === 'Draft' ? 'js-draft' : 'js-closed';
+    const cc = j.status === 'Active' ? 'active-j' : j.status === 'Closed' ? 'closed-j' : '';
+    const cnt = appsByJob[j.title.toLowerCase().trim()] || 0;
+    const qCount = j.questions ? j.questions.length : 0;
+    return `<div class="jc ${cc}">
+      <div class="jc-body">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px">
+          <div class="jc-title">${esc(j.title)}</div>
+          ${j.featured ? '<span style="background:var(--gold);color:var(--navy);font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px">★ Featured</span>' : ''}
+        </div>
+        <div class="jc-meta">
+          <span class="jm jm-dept">${esc(j.dept)}</span>
+          <span class="jm jm-type">${esc(j.type)}</span>
+          <span class="jm jm-loc">📍 ${esc(j.location)}</span>
+          <span class="jm-stat ${sc}">${esc(j.status)}</span>
+        </div>
+        ${j.salary ? `<div style="font-size:12px;color:var(--gold);margin-bottom:4px">💰 ${esc(j.salary)}</div>` : ''}
+        <div class="jc-qs">${qCount ? `📋 ${qCount} screening question${qCount !== 1 ? 's' : ''}` : '📋 No screening questions'}</div>
+        <div class="jc-apps-count">${cnt} application${cnt !== 1 ? 's' : ''} logged</div>
+      </div>
+      <div class="jc-actions">
+        <button class="act a-view" onclick="viewJob(${j.id})">View</button>
+        <button class="act a-view" onclick="openJobPanel(${j.id})">Edit</button>
+        <button class="act a-view" onclick="toggleJobStatus(${j.id})">${j.status === 'Active' ? 'Close' : 'Reopen'}</button>
+        <button class="act a-del" onclick="deleteJob(${j.id})">Del</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ══════════════════════════════════════
+   MODALS
+══════════════════════════════════════ */
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  if (id === 'appModal') editAppId = null;
+  if (id === 'jobModal') {}
+}
+document.querySelectorAll('.modal-bg').forEach(mb => {
+  mb.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('open'); });
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.modal-bg.open').forEach(m => m.classList.remove('open')); });
+
+/* ══════════════════════════════════════
+   EXPORT
+══════════════════════════════════════ */
+function exportCSV() {
+  if (!apps.length) { alert('No applications to export.'); return; }
+  // Gather all possible custom question texts
+  const allQs = [];
+  apps.forEach(a => { if (a.customAnswers) a.customAnswers.forEach(cq => { if (!allQs.includes(cq.question)) allQs.push(cq.question); }); });
+  const headers = ['Date','First Name','Last Name','Email','Phone','Role','Department','Experience','LinkedIn','Status','Notes',...allQs];
+  const rows = apps.map(a => {
+    const base = [
+      new Date(a.date).toLocaleDateString('en-GB'),
+      a.firstName, a.lastName, a.email, a.phone,
+      a.role, a.dept, a.experience, a.linkedin, a.status, a.notes
+    ];
+    const ansMap = {};
+    if (a.customAnswers) a.customAnswers.forEach(cq => { ansMap[cq.question] = cq.answer; });
+    allQs.forEach(q => base.push(ansMap[q] || ''));
+    return base.map(v => `"${(v || '').toString().replace(/"/g, '""')}"`).join(',');
+  });
+  const blob = new Blob([[headers.map(h => `"${h}"`).join(','), ...rows].join('\n')], { type: 'text/csv' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `staffona-careers-${new Date().toISOString().slice(0,10)}.csv`;
+  a.download = `staffona-applications-${new Date().toISOString().slice(0,10)}.csv`;
   a.click();
 }
+function clearAll() { apps = []; jobs = []; saveApps(); saveJobs(); renderApps(); renderJobs(); populateRoleSelect(); populateRoleFilters(); }
 
-document.getElementById('modal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+/* ══════════════════════════════════════
+   UTILS
+══════════════════════════════════════ */
+function v(id) { return document.getElementById(id).value.trim(); }
+function v2(id) { return document.getElementById(id).value; }
+function setText(id, val) { const el = document.getElementById(id); if (el) el.textContent = val; }
+function esc(s) { return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-load();
+loadAll();
 </script>
 </body>
 </html>

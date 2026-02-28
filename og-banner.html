@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1200px;height:630px;overflow:hidden;font-family:'DM Sans','Segoe UI',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+.banner{
+  width:1200px;height:630px;
+  background:#0B1F3A;
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+  padding:0 80px;
+}
+/* Grid lines */
+.banner::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(200,151,58,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(200,151,58,.05) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+/* Gold glow top-right */
+.glow{
+  position:absolute;width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,151,58,.12) 0%,transparent 65%);
+  top:-200px;right:-120px;
+}
+/* Navy glow bottom-left */
+.glow2{
+  position:absolute;width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(26,52,96,.8) 0%,transparent 70%);
+  bottom:-100px;left:-80px;
+}
+/* Left accent bar */
+.accent{
+  position:absolute;left:0;top:80px;bottom:80px;
+  width:4px;background:linear-gradient(to bottom,transparent,#C8973A,transparent);
+}
+.content{position:relative;z-index:2;flex:1}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(200,151,58,.12);border:1px solid rgba(200,151,58,.3);
+  border-radius:100px;padding:6px 16px;margin-bottom:28px;
+}
+.pill-dot{width:8px;height:8px;border-radius:50%;background:#C8973A}
+.pill-text{font-size:13px;font-weight:600;color:#C8973A;letter-spacing:.1em;text-transform:uppercase}
+h1{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:52px;font-weight:800;line-height:1.08;
+  color:#fff;margin-bottom:20px;letter-spacing:-.02em;
+}
+h1 span{color:#C8973A}
+.desc{font-size:18px;color:rgba(255,255,255,.6);line-height:1.6;max-width:580px;margin-bottom:32px}
+.tags{display:flex;gap:10px;flex-wrap:wrap}
+.tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:6px;padding:7px 14px;font-size:13px;font-weight:500;color:rgba(255,255,255,.7);
+}
+.tag svg{width:14px;height:14px;color:#C8973A;flex-shrink:0}
+.right{
+  position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-end;gap:20px;
+  margin-left:60px;flex-shrink:0;
+}
+.brand{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;padding:16px 22px;
+}
+.brand-name{font-family:'Playfair Display',Georgia,serif;font-size:26px;font-weight:800;color:#fff}
+.brand-name em{color:#C8973A;font-style:normal}
+.url{font-size:14px;color:rgba(255,255,255,.35);font-weight:500}
+.stats{display:grid;gap:12px}
+.stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px 22px;text-align:center;min-width:130px}
+.stat-n{font-family:'Playfair Display',Georgia,serif;font-size:28px;font-weight:800;color:#C8973A;line-height:1}
+.stat-l{font-size:12px;color:rgba(255,255,255,.4);margin-top:4px}
+.stat-row{display:flex;gap:12px}
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="glow"></div>
+  <div class="glow2"></div>
+  <div class="accent"></div>
+
+  <div class="content">
+    <div class="pill"><div class="pill-dot"></div><span class="pill-text">Egypt HR Outsourcing</span></div>
+    <h1>Build Your Team<br>in <span>Egypt.</span><br>Without the Complexity.</h1>
+    <p class="desc">Payroll, compliance & recruitment — fully managed for companies hiring in Egypt.</p>
+    <div class="tags">
+      <div class="tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2z"/></svg>
+        Labor Law Compliant
+      </div>
+      <div class="tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        48–72hr Onboarding
+      </div>
+      <div class="tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        $0 Entity Setup
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="brand">
+      <div class="brand-name">Staff<em>ona</em></div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n">6+</div><div class="stat-l">Markets</div></div>
+      <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Compliance</div></div>
+    </div>
+    <div class="url">staffona.com</div>
+  </div>
+</div>
+</body>
+</html>

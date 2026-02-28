@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Careers at Staffona — Join Egypt's HR Outsourcing Team | Alexandria</title>
-<meta name="description" content="Join Staffona — Egypt's growing HR outsourcing and recruitment consultancy in Alexandria. Open roles in HR, payroll, and recruitment. Apply with your CV.">
-<link rel="canonical" href="https://www.staffona.com/careers.html">
+<title>Careers at Staffona — Join Egypt's HR Outsourcing Team</title>
+<meta name="description" content="Join Staffona — Egypt's growing HR outsourcing and recruitment consultancy. Open roles in HR, payroll, and recruitment. Apply with your CV.">
+<link rel="canonical" href="https://staffona.com/careers">
 <link rel="icon" type="image/png" href="Favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-.job-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:28px 26px;transition:all var(--t) var(--ease);cursor:pointer}
-.job-card:hover,.job-card.open{border-color:var(--gold);box-shadow:var(--sh2)}
+/* ── JOB CARDS ── */
+.job-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:28px 26px;transition:all var(--t) var(--ease)}
+.job-card:hover{border-color:var(--gold);box-shadow:var(--sh2)}
 .job-card.featured{border-color:var(--gold);background:var(--gold-pl)}
 .jc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
 .jc-badges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
@@ -21,7 +22,7 @@
 .badge-loc{background:rgba(71,85,105,.08);color:var(--slate)}
 .jc-title{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--text);margin-bottom:6px}
 .jc-dept{font-size:13px;color:var(--slate-l);margin-bottom:12px}
-.jc-desc{font-size:13.5px;color:var(--slate);line-height:1.7;margin-bottom:16px}
+.jc-desc{font-size:13.5px;color:var(--slate);line-height:1.7;margin-bottom:14px}
 .jc-skills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
 .skill-tag{background:var(--off);border:1px solid var(--border);border-radius:var(--r);padding:4px 10px;font-size:11.5px;color:var(--slate)}
 .job-card.featured .skill-tag{background:rgba(200,151,58,.08);border-color:rgba(200,151,58,.2)}
@@ -29,7 +30,10 @@
 .jc-btn:hover{background:var(--navy-lt)}
 .job-card.featured .jc-btn{background:var(--gold);color:var(--navy)}
 .job-card.featured .jc-btn:hover{background:var(--gold-lt)}
-/* Application form */
+.no-jobs-msg{text-align:center;padding:52px 20px;background:var(--off);border:1px solid var(--border);border-radius:var(--rl)}
+.no-jobs-msg p{font-size:15px;color:var(--slate);margin-bottom:14px}
+
+/* ── APPLICATION FORM ── */
 .app-wrap{background:var(--navy);border-radius:var(--rx);padding:40px;max-width:700px;margin:0 auto}
 .app-title{font-family:var(--fh);font-size:26px;font-weight:700;color:#fff;margin-bottom:6px}
 .app-sub{font-size:13.5px;color:rgba(255,255,255,.44);margin-bottom:28px}
@@ -54,6 +58,12 @@
 .app-ok-icon{font-size:44px;margin-bottom:12px}
 .app-ok-title{font-size:20px;font-weight:700;color:#fff;margin-bottom:6px}
 .app-ok-desc{font-size:14px;color:rgba(255,255,255,.5)}
+
+/* ── CUSTOM SCREENING QUESTIONS (injected per role) ── */
+.screening-section{margin-top:4px;margin-bottom:4px}
+.screening-heading{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(200,151,58,.2)}
+.screening-section .fsel{color:rgba(255,255,255,.7)}
+
 @media(max-width:600px){.frow{grid-template-columns:1fr}.app-wrap{padding:24px 18px}}
 </style>
 </head>
@@ -74,15 +84,12 @@
       </li>
       <li><a href="resources.html">Resources</a></li>
       <li><a href="laws.html">Laws &amp; Guides</a></li>
-      <li><a href="careers.html">Careers</a></li>
+      <li><a href="careers.html" class="active">Careers</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
     <div class="nav-r">
       <a href="mailto:info@staffona.com" class="nav-email">info@staffona.com</a>
-      <button class="dm-btn" aria-label="Toggle dark mode">
-        <svg class="dm-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="dm-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
-      </button>
+      <button class="dm-btn" aria-label="Toggle dark mode"><svg class="dm-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="dm-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg></button>
       <button class="btn btn-gold btn-sm" data-cal>Book Consultation</button>
       <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false" style="display:none"><span></span><span></span><span></span></button>
     </div>
@@ -96,103 +103,64 @@
   <a href="mailto:info@staffona.com" style="color:var(--gold)">info@staffona.com</a>
   <div style="padding-top:12px"><button class="btn btn-gold" style="width:100%;justify-content:center" data-cal>Book Free Consultation</button></div>
 </nav>
+
 <section class="ph">
   <div class="ph-glow"></div>
   <div class="w ph-in">
-    <div class="breadcrumb"><a href="index.html">Home</a><span class="bc-sep">›</span><span>Careers</span></div>
+    <div class="bc"><a href="index.html">Home</a><span class="bc-sep">›</span><span>Careers</span></div>
     <div class="ph-pill">Join the Team</div>
     <h1>Build Your Career in<br><span>Egypt's HR Industry</span></h1>
-    <p class="sub">We're a fast-growing, Alexandria-based HR consultancy. Join a team that combines deep local expertise with international client exposure.</p>
+    <p class="sub">We're a fast-growing HR consultancy. Join a team that combines deep local expertise with international client exposure.</p>
   </div>
 </section>
 
 <!-- VALUES -->
 <section class="sec" style="background:var(--off)">
   <div class="w">
-    <div class="sh sh-c rv"><div class="lbl lbl-c">Why Staffona</div><h2 class="h2 h2-c">What It's Like to <span>Work Here</span></h2></div>
+    <div class="sh shc rv"><div class="lbl lblc">Why Staffona</div><h2 class="h2 h2c">What It's Like to <span>Work Here</span></h2></div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
       <div class="rv" style="background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:26px;text-align:center">
         <div style="font-size:32px;margin-bottom:12px">🚀</div>
-        <div style="font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text)">Fast-Moving &amp; Growing</div>
-        <p style="font-size:13px;color:var(--slate);line-height:1.65">You'll grow fast, take on real responsibility early, and work with international clients from day one.</p>
+        <div style="font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:8px;color:var(--tx)">Fast-Moving &amp; Growing</div>
+        <p style="font-size:13px;color:var(--sl);line-height:1.65">Real responsibility early, fast learning, and direct exposure to international clients from day one.</p>
       </div>
       <div class="rv d1" style="background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:26px;text-align:center">
         <div style="font-size:32px;margin-bottom:12px">📚</div>
-        <div style="font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text)">Deep HR Expertise</div>
-        <p style="font-size:13px;color:var(--slate);line-height:1.65">You'll become an expert in Egyptian HR law, payroll, and compliance — some of the most valuable skills in the market.</p>
+        <div style="font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:8px;color:var(--tx)">Deep HR Expertise</div>
+        <p style="font-size:13px;color:var(--sl);line-height:1.65">Become an expert in Egyptian HR law, payroll, and compliance — highly valuable skills in the market.</p>
       </div>
       <div class="rv d2" style="background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:26px;text-align:center">
         <div style="font-size:32px;margin-bottom:12px">🌍</div>
-        <div style="font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text)">International Exposure</div>
-        <p style="font-size:13px;color:var(--slate);line-height:1.65">Work directly with clients in UAE, Saudi Arabia, UK, and US — building a truly global professional perspective.</p>
+        <div style="font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:8px;color:var(--tx)">International Exposure</div>
+        <p style="font-size:13px;color:var(--sl);line-height:1.65">Work directly with clients in UAE, Saudi Arabia, UK, and US — building a truly global perspective.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- OPEN ROLES -->
+<!-- OPEN ROLES — dynamically rendered -->
 <section class="sec" id="openRoles">
   <div class="w">
-    <div class="sh rv"><div class="lbl">Open Positions</div><h2 class="h2">Current <span>Opportunities</span></h2><p class="sub">All roles are based in Alexandria, Egypt. We work standard business hours with flexibility.</p></div>
-    <div style="display:grid;gap:16px;margin-bottom:52px">
-      <div class="job-card featured rv" id="job1">
-        <div class="jc-top">
-          <div>
-            <div class="jc-badges"><span class="badge badge-feat">⭐ Featured</span><span class="badge badge-ft">Full-Time</span><span class="badge badge-loc">📍 Alexandria</span></div>
-            <div class="jc-title">HR &amp; Payroll Specialist</div>
-            <div class="jc-dept">HR &amp; Payroll Department</div>
-          </div>
-        </div>
-        <p class="jc-desc">Lead payroll processing and HR administration for a portfolio of international clients. You'll be the primary specialist ensuring monthly compliance, accurate filings, and smooth client relationships.</p>
-        <div class="jc-skills">
-          <span class="skill-tag">Egyptian Labor Law</span><span class="skill-tag">Payroll Processing</span><span class="skill-tag">Social Insurance</span><span class="skill-tag">Excel</span><span class="skill-tag">Arabic</span><span class="skill-tag">English</span>
-        </div>
-        <button class="jc-btn" onclick="applyFor('HR &amp; Payroll Specialist')">Apply for This Role →</button>
-      </div>
-
-      <div class="job-card rv d1" id="job2">
-        <div class="jc-top"><div>
-          <div class="jc-badges"><span class="badge badge-ft">Full-Time</span><span class="badge badge-loc">📍 Alexandria</span></div>
-          <div class="jc-title">Recruitment Consultant</div>
-          <div class="jc-dept">Recruitment Department</div>
-        </div></div>
-        <p class="jc-desc">Source, screen, and place candidates across tech, finance, and operations roles for our international client base. You'll manage end-to-end recruitment processes and build lasting client relationships.</p>
-        <div class="jc-skills">
-          <span class="skill-tag">Sourcing</span><span class="skill-tag">LinkedIn Recruiter</span><span class="skill-tag">Interview Coordination</span><span class="skill-tag">Client Management</span><span class="skill-tag">English</span>
-        </div>
-        <button class="jc-btn" onclick="applyFor('Recruitment Consultant')">Apply for This Role →</button>
-      </div>
-
-      <div class="job-card rv d2" id="job3">
-        <div class="jc-top"><div>
-          <div class="jc-badges"><span class="badge badge-ft">Full-Time</span><span class="badge badge-loc">📍 Alexandria</span></div>
-          <div class="jc-title">HR Operations Coordinator</div>
-          <div class="jc-dept">Operations Department</div>
-        </div></div>
-        <p class="jc-desc">Support client onboarding, manage employee records, coordinate with government authorities (NOSI, Labor Office), and ensure documentation accuracy across all managed accounts.</p>
-        <div class="jc-skills">
-          <span class="skill-tag">Documentation</span><span class="skill-tag">Government Liaison</span><span class="skill-tag">Record Management</span><span class="skill-tag">Arabic</span><span class="skill-tag">Attention to Detail</span>
-        </div>
-        <button class="jc-btn" onclick="applyFor('HR Operations Coordinator')">Apply for This Role →</button>
-      </div>
+    <div class="sh rv"><div class="lbl">Open Positions</div><h2 class="h2">Current <span>Opportunities</span></h2><p class="sub">All roles are based in Alexandria, Egypt. Standard business hours with flexibility.</p></div>
+    <div style="display:grid;gap:16px;margin-bottom:52px" id="jobCards">
+      <!-- populated by JS -->
     </div>
 
     <!-- APPLICATION FORM -->
     <div class="app-wrap rv" id="appSection">
-      <div id="appForm">
+      <div id="appFormWrap">
         <div class="app-title" id="appTitle">Apply Now</div>
-        <div class="app-sub">Fill in the form below. We review every application and reply within 3 business days.</div>
+        <div class="app-sub">Fill in the form. We review every application and reply within 3 business days.</div>
         <form id="careerForm" novalidate>
+
           <div class="fg">
             <label class="fl" for="aRole">Role Applying For *</label>
-            <select class="fsel" id="aRole" name="role" required>
+            <select class="fsel" id="aRole" name="role" required onchange="onRoleChange()">
               <option value="">Select a role...</option>
-              <option>HR &amp; Payroll Specialist</option>
-              <option>Recruitment Consultant</option>
-              <option>HR Operations Coordinator</option>
-              <option>Speculative Application</option>
+              <!-- options injected by JS -->
             </select>
           </div>
+
           <div class="frow">
             <div class="fg"><label class="fl" for="aFirst">First Name *</label><input class="fi" type="text" id="aFirst" name="firstName" placeholder="Ahmed" required autocomplete="given-name"></div>
             <div class="fg"><label class="fl" for="aLast">Last Name *</label><input class="fi" type="text" id="aLast" name="lastName" placeholder="Hassan" required autocomplete="family-name"></div>
@@ -213,6 +181,10 @@
             </select>
           </div>
           <div class="fg"><label class="fl" for="aLinkedin">LinkedIn Profile URL</label><input class="fi" type="url" id="aLinkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile"></div>
+
+          <!-- ── CUSTOM SCREENING QUESTIONS — injected here per role ── -->
+          <div id="screeningQs"></div>
+
           <div class="fg">
             <label class="fl">Upload Your CV *</label>
             <div class="cv-upload" id="cvZone" onclick="document.getElementById('cvFile').click()" ondragover="cvDragOver(event)" ondragleave="cvDragLeave(event)" ondrop="cvDrop(event)">
@@ -224,7 +196,6 @@
             </div>
           </div>
           <div class="fg"><label class="fl" for="aCover">Cover Note / Why Staffona?</label><textarea class="fta" id="aCover" name="coverNote" placeholder="Tell us why you're interested and what makes you a great fit..."></textarea></div>
-          <input type="hidden" name="_subject" value="Career Application — Staffona">
           <button type="submit" class="fsub" id="appSubmit">Send Application →</button>
         </form>
         <div class="app-ok" id="appOk">
@@ -236,83 +207,13 @@
     </div>
 
     <div style="text-align:center;margin-top:32px;padding:28px;background:var(--off);border:1px solid var(--border);border-radius:var(--rl)" class="rv">
-      <div style="font-family:var(--fh);font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px">Don't See the Right Role?</div>
-      <p style="font-size:14px;color:var(--slate);max-width:500px;margin:0 auto 18px">We're always looking for talented HR professionals. Send a speculative application and we'll keep you in mind for future openings.</p>
+      <div style="font-family:var(--fh);font-size:20px;font-weight:700;color:var(--tx);margin-bottom:8px">Don't See the Right Role?</div>
+      <p style="font-size:14px;color:var(--sl);max-width:500px;margin:0 auto 18px">We're always looking for talented HR professionals. Send a speculative application and we'll keep you in mind.</p>
       <button class="btn btn-navy" onclick="applyFor('Speculative Application')">Send Speculative Application</button>
     </div>
   </div>
 </section>
 
-<script>
-function applyFor(role) {
-  const sel = document.getElementById('aRole');
-  if (sel) {
-    for (let i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].text.replace(/&amp;/g,'&') === role.replace(/&amp;/g,'&') || sel.options[i].value === role) {
-        sel.selectedIndex = i; break;
-      }
-    }
-  }
-  document.getElementById('appTitle').textContent = 'Apply: ' + role.replace(/&amp;/g,'&');
-  document.getElementById('appSection').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-// CV upload
-function cvDragOver(e){e.preventDefault();document.getElementById('cvZone').classList.add('over');}
-function cvDragLeave(e){document.getElementById('cvZone').classList.remove('over');}
-function cvDrop(e){e.preventDefault();document.getElementById('cvZone').classList.remove('over');const f=e.dataTransfer.files[0];if(f)setCV(f);}
-function cvSelected(inp){if(inp.files[0])setCV(inp.files[0]);}
-function setCV(f){
-  if(f.size>5*1024*1024){alert('File too large. Max 5MB.');return;}
-  const el=document.getElementById('cvChosen');
-  el.textContent='✅ '+f.name;el.style.display='block';
-  window._cvFile=f;
-}
-
-document.getElementById('careerForm').addEventListener('submit',async function(e){
-  e.preventDefault();
-  const btn=document.getElementById('appSubmit');
-  const role=document.getElementById('aRole').value;
-  const firstName=document.getElementById('aFirst').value.trim();
-  const email=document.getElementById('aEmail').value.trim();
-  if(!role){alert('Please select a role.');return;}
-  if(!firstName||!email){alert('Please fill in your name and email.');return;}
-  if(!window._cvFile){alert('Please upload your CV.');return;}
-
-  btn.textContent='Sending…';btn.disabled=true;
-
-  // Use FormData (multipart) so CV file is actually uploaded to Formspree
-  const payload=new FormData();
-  payload.append('role',role);
-  payload.append('firstName',firstName);
-  payload.append('lastName',document.getElementById('aLast').value);
-  payload.append('email',email);
-  payload.append('phone',document.getElementById('aPhone').value);
-  payload.append('experience',document.getElementById('aExp').value);
-  payload.append('linkedin',document.getElementById('aLinkedin').value);
-  payload.append('coverNote',document.getElementById('aCover').value);
-  payload.append('_subject','Career Application: '+role+' — '+firstName);
-  if(window._cvFile) payload.append('cv',window._cvFile,window._cvFile.name);
-  const doSubmit=async function(){
-    try{
-      const res=await fetch('https://formspree.io/f/xreajrkr',{
-        method:'POST',headers:{'Accept':'application/json'},
-        body:payload
-      });
-      if(res.ok){
-        document.getElementById('careerForm').style.display='none';
-        document.getElementById('appOk').style.display='block';
-      } else throw new Error();
-    }catch{
-      // Fallback mailto with details
-      const body=encodeURIComponent('Role: '+role+'\nName: '+firstName+' '+document.getElementById('aLast').value+'\nEmail: '+email+'\nPhone: '+document.getElementById('aPhone').value+'\nExperience: '+document.getElementById('aExp').value+'\nLinkedIn: '+document.getElementById('aLinkedin').value+'\n\nCover Note:\n'+document.getElementById('aCover').value+'\n\nNote: CV could not be attached automatically. Please send separately.');
-      location.href='mailto:info@staffona.com?subject='+encodeURIComponent('Career Application: '+role+' — '+firstName)+'&body='+body;
-      btn.textContent='Send Application →';btn.disabled=false;
-    }
-  };
-  doSubmit();
-});
-</script>
 <footer class="footer">
   <div class="w">
     <div class="ftg">
@@ -320,22 +221,312 @@ document.getElementById('careerForm').addEventListener('submit',async function(e
         <a href="index.html"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="flb-fb">Staff<em>ona</em></span></a>
         <p>Egypt's trusted HR outsourcing and recruitment consultancy. Based in Alexandria, serving international and Egyptian businesses.</p>
         <a href="mailto:info@staffona.com" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@staffona.com</a>
-        <a href="https://maps.google.com/?q=El-Horreya+Street+Mostafa+Kamel+Alexandria+Egypt" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>El-Horreya St, Mostafa Kamel, Alexandria, Egypt</a>
         <a href="https://www.linkedin.com/company/staffona" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Staffona</a>
       </div>
       <div><div class="flct">Services</div><ul class="flls"><li><a href="hr-outsourcing.html">HR Outsourcing</a></li><li><a href="payroll-egypt.html">Payroll</a></li><li><a href="recruitment-egypt.html">Recruitment</a></li><li><a href="compliance.html">HR Compliance</a></li><li><a href="services.html">All Services</a></li></ul></div>
-      <div><div class="flct">Resources</div><ul class="flls"><li><a href="resources.html">All Resources</a></li><li><a href="laws.html">Egyptian Laws</a></li><li><a href="resources/hiring-guide.html">Hiring Guide</a></li><li><a href="resources/payroll-taxes.html">Payroll Tax Guide</a></li><li><a href="resources/gcc-hiring.html">GCC Hiring Guide</a></li></ul></div>
+      <div><div class="flct">Resources</div><ul class="flls"><li><a href="resources.html">All Resources</a></li><li><a href="laws.html">Egyptian Laws</a></li><li><a href="resources/hiring-guide.html">Hiring Guide</a></li><li><a href="resources/payroll-taxes.html">Payroll Tax Guide</a></li></ul></div>
       <div><div class="flct">Company</div><ul class="flls"><li><a href="about.html">About Staffona</a></li><li><a href="careers.html">Careers</a></li><li><a href="index.html#contact">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
     </div>
     <div class="ftbtm">
-      <div><div class="f-copy">© 2026 Staffona. All rights reserved. El-Horreya St, Mostafa Kamel, Alexandria, Egypt.</div><p class="f-disc">Staffona provides HR consultancy, payroll administration, and recruitment services. All managed employment arrangements are structured as HR outsourcing engagements in accordance with applicable Egyptian law.</p></div>
+      <div><div class="ftcopy">© 2026 Staffona. All rights reserved.</div><p class="ftdisc">Staffona provides HR consultancy, payroll administration, and recruitment services. All managed employment arrangements are structured as HR outsourcing engagements in accordance with applicable Egyptian law.</p></div>
       <div class="fbl"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="sitemap.xml">Sitemap</a></div>
     </div>
   </div>
 </footer>
 <div class="cookie" id="cookieBanner"><p>We use cookies to improve your experience. <a href="privacy.html">Privacy Policy</a></p><div class="cb-btns"><button class="btn btn-gold btn-sm" id="cookieAccept">Accept</button><button style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.4);border-radius:var(--r);padding:7px 14px;font-size:13px;cursor:pointer" id="cookieDecline">Decline</button></div></div>
 <button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg></button>
-<script async src="https://assets.calendly.com/assets/external/widget.css"></script>
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
 <script src="shared.js"></script>
-</body></html>
+
+<script>
+/* ══════════════════════════════════════
+   LOAD JOBS FROM ADMIN STORAGE
+══════════════════════════════════════ */
+const JOBS_KEY = 'sf-jobs-v2';
+let jobs = [];
+
+function loadJobs() {
+  try { jobs = JSON.parse(localStorage.getItem(JOBS_KEY) || '[]'); } catch { jobs = []; }
+  renderJobCards();
+  populateRoleDropdown();
+}
+
+/* ══════════════════════════════════════
+   RENDER JOB CARDS DYNAMICALLY
+══════════════════════════════════════ */
+function renderJobCards() {
+  const container = document.getElementById('jobCards');
+  const active = jobs.filter(j => j.status === 'Active');
+
+  if (!active.length) {
+    // Fallback static cards when no jobs in storage
+    container.innerHTML = `
+      <div class="job-card featured rv">
+        <div class="jc-top"><div>
+          <div class="jc-badges"><span class="badge badge-feat">⭐ Featured</span><span class="badge badge-ft">Full-Time</span><span class="badge badge-loc">📍 Alexandria</span></div>
+          <div class="jc-title">HR &amp; Payroll Specialist</div>
+          <div class="jc-dept">HR &amp; Payroll Department</div>
+        </div></div>
+        <p class="jc-desc">Lead payroll processing and HR administration for a portfolio of international clients. Monthly compliance, accurate filings, and smooth client relationships.</p>
+        <div class="jc-skills"><span class="skill-tag">Egyptian Labor Law</span><span class="skill-tag">Payroll Processing</span><span class="skill-tag">Social Insurance</span><span class="skill-tag">Excel</span><span class="skill-tag">Arabic</span><span class="skill-tag">English</span></div>
+        <button class="jc-btn" onclick="applyFor('HR &amp; Payroll Specialist')">Apply for This Role →</button>
+      </div>
+      <div class="job-card rv d1">
+        <div class="jc-top"><div>
+          <div class="jc-badges"><span class="badge badge-ft">Full-Time</span><span class="badge badge-loc">📍 Alexandria</span></div>
+          <div class="jc-title">Recruitment Consultant</div>
+          <div class="jc-dept">Recruitment Department</div>
+        </div></div>
+        <p class="jc-desc">Source, screen, and place candidates across tech, finance, and operations for our international client base. Manage end-to-end recruitment and build client relationships.</p>
+        <div class="jc-skills"><span class="skill-tag">Sourcing</span><span class="skill-tag">LinkedIn Recruiter</span><span class="skill-tag">Interview Coordination</span><span class="skill-tag">English</span></div>
+        <button class="jc-btn" onclick="applyFor('Recruitment Consultant')">Apply for This Role →</button>
+      </div>
+      <div class="job-card rv d2">
+        <div class="jc-top"><div>
+          <div class="jc-badges"><span class="badge badge-ft">Full-Time</span><span class="badge badge-loc">📍 Alexandria</span></div>
+          <div class="jc-title">HR Operations Coordinator</div>
+          <div class="jc-dept">Operations Department</div>
+        </div></div>
+        <p class="jc-desc">Support client onboarding, manage employee records, coordinate with NOSI and the Labor Office, and ensure documentation accuracy across all managed accounts.</p>
+        <div class="jc-skills"><span class="skill-tag">Documentation</span><span class="skill-tag">Government Liaison</span><span class="skill-tag">Record Management</span><span class="skill-tag">Arabic</span></div>
+        <button class="jc-btn" onclick="applyFor('HR Operations Coordinator')">Apply for This Role →</button>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = active.map((j, i) => {
+    const skillTags = j.skills ? j.skills.map(s => `<span class="skill-tag">${esc(s)}</span>`).join('') : '';
+    const qNote = j.questions && j.questions.length
+      ? `<div style="font-size:12px;color:rgba(200,151,58,.75);margin-bottom:12px">📋 ${j.questions.length} screening question${j.questions.length !== 1 ? 's' : ''} for this role</div>`
+      : '';
+    return `<div class="job-card ${j.featured ? 'featured' : ''} rv ${i > 0 ? 'd' + Math.min(i, 4) : ''}">
+      <div class="jc-top"><div>
+        <div class="jc-badges">
+          ${j.featured ? '<span class="badge badge-feat">⭐ Featured</span>' : ''}
+          <span class="badge badge-ft">${esc(j.type || 'Full-Time')}</span>
+          <span class="badge badge-loc">📍 ${esc(j.location || 'Alexandria')}</span>
+          ${j.salary ? `<span class="badge badge-ft">💰 ${esc(j.salary)}</span>` : ''}
+        </div>
+        <div class="jc-title">${esc(j.title)}</div>
+        <div class="jc-dept">${esc(j.dept)}</div>
+      </div></div>
+      ${j.description ? `<p class="jc-desc">${esc(j.description)}</p>` : ''}
+      ${skillTags ? `<div class="jc-skills">${skillTags}</div>` : ''}
+      ${qNote}
+      <button class="jc-btn" onclick="applyFor('${esc(j.title)}')">Apply for This Role →</button>
+    </div>`;
+  }).join('');
+}
+
+/* ══════════════════════════════════════
+   POPULATE ROLE DROPDOWN
+══════════════════════════════════════ */
+function populateRoleDropdown() {
+  const sel = document.getElementById('aRole');
+  sel.innerHTML = '<option value="">Select a role...</option>';
+  const active = jobs.filter(j => j.status === 'Active');
+  if (active.length) {
+    active.forEach(j => {
+      const o = document.createElement('option');
+      o.value = j.title; o.textContent = j.title;
+      sel.appendChild(o);
+    });
+  } else {
+    // Fallback static roles
+    ['HR & Payroll Specialist', 'Recruitment Consultant', 'HR Operations Coordinator'].forEach(r => {
+      const o = document.createElement('option');
+      o.value = r; o.textContent = r;
+      sel.appendChild(o);
+    });
+  }
+  const sp = document.createElement('option');
+  sp.value = 'Speculative Application'; sp.textContent = 'Speculative Application';
+  sel.appendChild(sp);
+}
+
+/* ══════════════════════════════════════
+   ROLE CHANGE — INJECT SCREENING QUESTIONS
+══════════════════════════════════════ */
+function onRoleChange() {
+  const roleName = document.getElementById('aRole').value;
+  const container = document.getElementById('screeningQs');
+  container.innerHTML = '';
+  window._screeningAnswers = [];
+
+  const job = jobs.find(j => j.title === roleName);
+  if (!job || !job.questions || !job.questions.length) return;
+
+  const section = document.createElement('div');
+  section.className = 'screening-section';
+
+  const heading = document.createElement('div');
+  heading.className = 'screening-heading';
+  heading.textContent = 'Role-Specific Questions';
+  section.appendChild(heading);
+
+  job.questions.forEach((q, i) => {
+    const fg = document.createElement('div');
+    fg.className = 'fg';
+
+    const lbl = document.createElement('label');
+    lbl.className = 'fl';
+    lbl.setAttribute('for', 'sq_' + i);
+    lbl.textContent = q.text + (q.required ? ' *' : '');
+    fg.appendChild(lbl);
+
+    let inp;
+    if (q.type === 'yesno') {
+      inp = document.createElement('select');
+      inp.className = 'fsel';
+      inp.innerHTML = '<option value="">Select...</option><option value="Yes">Yes</option><option value="No">No</option>';
+    } else if (q.type === 'dropdown' && q.options && q.options.length) {
+      inp = document.createElement('select');
+      inp.className = 'fsel';
+      inp.innerHTML = '<option value="">Select...</option>';
+      q.options.forEach(opt => {
+        const o = document.createElement('option');
+        o.value = opt; o.textContent = opt;
+        inp.appendChild(o);
+      });
+    } else if (q.type === 'number') {
+      inp = document.createElement('input');
+      inp.className = 'fi'; inp.type = 'number'; inp.placeholder = 'Enter a number';
+    } else {
+      inp = document.createElement('input');
+      inp.className = 'fi'; inp.type = 'text'; inp.placeholder = 'Your answer...';
+    }
+    inp.id = 'sq_' + i;
+    inp.dataset.qText = q.text;
+    inp.dataset.required = q.required ? '1' : '0';
+    fg.appendChild(inp);
+    section.appendChild(fg);
+  });
+
+  container.appendChild(section);
+}
+
+function applyFor(role) {
+  const sel = document.getElementById('aRole');
+  for (let i = 0; i < sel.options.length; i++) {
+    if (sel.options[i].value === role || sel.options[i].text === role) {
+      sel.selectedIndex = i; break;
+    }
+  }
+  onRoleChange(); // Inject questions for this role
+  document.getElementById('appTitle').textContent = 'Apply: ' + role.replace(/&amp;/g, '&');
+  document.getElementById('appSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ══════════════════════════════════════
+   CV UPLOAD
+══════════════════════════════════════ */
+function cvDragOver(e) { e.preventDefault(); document.getElementById('cvZone').classList.add('over'); }
+function cvDragLeave(e) { document.getElementById('cvZone').classList.remove('over'); }
+function cvDrop(e) { e.preventDefault(); document.getElementById('cvZone').classList.remove('over'); const f = e.dataTransfer.files[0]; if (f) setCV(f); }
+function cvSelected(inp) { if (inp.files[0]) setCV(inp.files[0]); }
+function setCV(f) {
+  if (f.size > 5 * 1024 * 1024) { alert('File too large. Max 5MB.'); return; }
+  const el = document.getElementById('cvChosen');
+  el.textContent = '✅ ' + f.name; el.style.display = 'block';
+  window._cvFile = f;
+}
+
+/* ══════════════════════════════════════
+   FORM SUBMIT
+══════════════════════════════════════ */
+document.getElementById('careerForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('appSubmit');
+  const role = document.getElementById('aRole').value;
+  const firstName = document.getElementById('aFirst').value.trim();
+  const email = document.getElementById('aEmail').value.trim();
+
+  if (!role) { alert('Please select a role.'); return; }
+  if (!firstName || !email) { alert('Please fill in your name and email.'); return; }
+  if (!window._cvFile) { alert('Please upload your CV.'); return; }
+
+  // Validate required screening questions
+  const screeningInputs = document.querySelectorAll('#screeningQs [id^="sq_"]');
+  for (const inp of screeningInputs) {
+    if (inp.dataset.required === '1' && !inp.value.trim()) {
+      alert('Please answer: ' + inp.dataset.qText);
+      inp.focus(); return;
+    }
+  }
+
+  btn.textContent = 'Sending…'; btn.disabled = true;
+
+  // Collect screening answers into the payload as labelled fields
+  const payload = new FormData();
+  payload.append('role', role);
+  payload.append('firstName', firstName);
+  payload.append('lastName', document.getElementById('aLast').value);
+  payload.append('email', email);
+  payload.append('phone', document.getElementById('aPhone').value);
+  payload.append('experience', document.getElementById('aExp').value);
+  payload.append('linkedin', document.getElementById('aLinkedin').value);
+  payload.append('coverNote', document.getElementById('aCover').value);
+  payload.append('_subject', 'Application: ' + role + ' — ' + firstName);
+
+  // Append each screening answer as a named field
+  screeningInputs.forEach(inp => {
+    if (inp.value.trim()) payload.append('Q: ' + inp.dataset.qText, inp.value.trim());
+  });
+
+  payload.append('cv', window._cvFile, window._cvFile.name);
+
+  try {
+    const res = await fetch('https://formspree.io/f/xreajrkr', {
+      method: 'POST', headers: { 'Accept': 'application/json' }, body: payload
+    });
+    if (res.ok) {
+      document.getElementById('careerForm').style.display = 'none';
+      document.getElementById('appOk').style.display = 'block';
+      return;
+    }
+  } catch (err) { console.log('Formspree error', err); }
+
+  // Fallback: mailto with all data pre-filled (screening answers included)
+  let bodyLines = [
+    'CAREER APPLICATION',
+    '==================',
+    'Role: ' + role,
+    'Name: ' + firstName + ' ' + document.getElementById('aLast').value,
+    'Email: ' + email,
+    'Phone: ' + (document.getElementById('aPhone').value || '—'),
+    'Experience: ' + (document.getElementById('aExp').value || '—'),
+    'LinkedIn: ' + (document.getElementById('aLinkedin').value || '—'),
+  ];
+  if (screeningInputs.length) {
+    bodyLines.push('', 'SCREENING QUESTIONS:', '--------------------');
+    screeningInputs.forEach(inp => {
+      if (inp.value.trim()) bodyLines.push(inp.dataset.qText + ': ' + inp.value.trim());
+    });
+  }
+  bodyLines.push('', 'Cover Note:', document.getElementById('aCover').value || '—');
+  bodyLines.push('', '⚠️ Please attach CV: ' + window._cvFile.name);
+
+  document.getElementById('careerForm').style.display = 'none';
+  document.getElementById('appOk').innerHTML = `
+    <div class="app-ok-icon">📧</div>
+    <div class="app-ok-title">Almost There!</div>
+    <div class="app-ok-desc">Your email client is opening with everything pre-filled. Please attach <strong style="color:var(--gold)">${window._cvFile.name}</strong> and send.</div>`;
+  document.getElementById('appOk').style.display = 'block';
+
+  setTimeout(() => {
+    const subject = encodeURIComponent('Application: ' + role + ' — ' + firstName);
+    const body = encodeURIComponent(bodyLines.join('\n'));
+    location.href = 'mailto:info@staffona.com?subject=' + subject + '&body=' + body;
+  }, 500);
+
+  btn.textContent = 'Send Application →'; btn.disabled = false;
+});
+
+function esc(s) { return (s || '').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// Init
+loadJobs();
+</script>
+</body>
+</html>
