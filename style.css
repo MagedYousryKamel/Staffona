@@ -9,6 +9,11 @@
   --s3:0 12px 40px rgba(11,31,58,.11);--s4:0 24px 64px rgba(11,31,58,.14);--s5:0 40px 100px rgba(11,31,58,.18);
   --r:8px;--rm:12px;--rl:20px;--rx:28px;
   --ease:cubic-bezier(.4,0,.2,1);--t:.24s;--nh:70px;
+  /* Legacy aliases — maps older page variable names to current values */
+  --border:var(--bd);--slate:var(--sl);--slate-l:var(--sll);--text:var(--tx);
+  --navy-m:var(--nvm);--navy-lt:var(--nvl);--gold-lt:var(--glt);--gold-pl:var(--gpl);
+  --sh1:var(--s1);--sh2:var(--s2);--sh3:var(--s3);--sh4:var(--s4);--sh5:var(--s5);
+  --white:#FFFFFF;
 }
 [data-theme="dark"]{
   --off:#0D1B2E;--white:#091525;--bd:rgba(255,255,255,.1);--bdk:rgba(255,255,255,.18);
