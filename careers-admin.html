@@ -174,7 +174,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
   </div>
 
   <div class="note-box">
-    <strong>ℹ️ How applications arrive:</strong> When someone applies on the public careers page, the form submits to Formspree (info@staffona.com). Log each received application here with "+ Add Application". Custom screening question answers are stored per application and visible in the detail view.
+    <strong>ℹ️ How applications arrive:</strong> When someone applies, the form (via FormSubmit.co) delivers their data AND CV directly to <strong>careers@staffona.com</strong>. Log each received application here to track status. Screening question answers are included in the email and stored per application. Custom screening question answers are stored per application and visible in the detail view.
   </div>
 
   <div class="sh">
@@ -667,8 +667,9 @@ function openJobPanel(jobId = null) {
   if (j && j.questions && j.questions.length) {
     j.questions.forEach(q => addQuestion(q));
   }
-  document.getElementById('addJobPanel').classList.add('open');
-  document.getElementById('addJobPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const panel = document.getElementById('addJobPanel');
+  panel.classList.remove('open');
+  requestAnimationFrame(() => { panel.classList.add('open'); panel.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
 }
 
 function saveJob() {
@@ -700,6 +701,8 @@ function saveJob() {
   cancelJobEdit();
   renderJobs();
   populateRoleSelect();
+  /* Show save toast */
+  showToast(editJobId ? 'Job updated — now visible on careers page ✓' : 'Job created — now visible on careers page ✓');
 }
 
 function cancelJobEdit() {
@@ -833,6 +836,20 @@ function v(id) { return document.getElementById(id).value.trim(); }
 function v2(id) { return document.getElementById(id).value; }
 function setText(id, val) { const el = document.getElementById(id); if (el) el.textContent = val; }
 function esc(s) { return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function showToast(msg) {
+  let t = document.getElementById('sf-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'sf-toast';
+    t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--gold);color:var(--navy);padding:11px 22px;border-radius:100px;font-size:13px;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.4);opacity:0;transition:all .3s;z-index:9999;white-space:nowrap';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(20px)'; }, 3000);
+}
 
 loadAll();
 </script>
