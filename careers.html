@@ -5,6 +5,13 @@
 <title>Careers at Staffona — Join Egypt's HR Outsourcing Team</title>
 <meta name="description" content="Join Staffona — Egypt's growing HR outsourcing and recruitment consultancy. Open roles in HR, payroll, and recruitment. Apply with your CV.">
 <link rel="canonical" href="https://staffona.com/careers">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://staffona.com/careers">
+<meta property="og:title" content="Careers at Staffona — Join Egypt's HR Outsourcing Team">
+<meta property="og:description" content="Open roles in HR, payroll, and recruitment at Staffona — Egypt's growing HR outsourcing consultancy in Alexandria.">
+<meta property="og:image" content="https://staffona.com/og-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="icon" type="image/png" href="Favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,7 +20,7 @@
 /* ── JOB CARDS ── */
 .job-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:28px 26px;transition:all var(--t) var(--ease)}
 .job-card:hover{border-color:var(--gold);box-shadow:var(--sh2)}
-.job-card.featured{border-color:var(--gold);background:var(--gold-pl)}
+.job-card.featured{border-color:var(--gold);background:var(--navy);color:#fff}
 .jc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
 .jc-badges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
 .badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11.5px;font-weight:600}
@@ -22,10 +29,13 @@
 .badge-loc{background:rgba(71,85,105,.08);color:var(--slate)}
 .jc-title{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--text);margin-bottom:6px}
 .jc-dept{font-size:13px;color:var(--slate-l);margin-bottom:12px}
+.job-card.featured .jc-title{color:#fff}
+.job-card.featured .jc-dept{color:rgba(255,255,255,.5)}
+.job-card.featured .jc-desc{color:rgba(255,255,255,.7)}
 .jc-desc{font-size:13.5px;color:var(--slate);line-height:1.7;margin-bottom:14px}
 .jc-skills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
 .skill-tag{background:var(--off);border:1px solid var(--border);border-radius:var(--r);padding:4px 10px;font-size:11.5px;color:var(--slate)}
-.job-card.featured .skill-tag{background:rgba(200,151,58,.08);border-color:rgba(200,151,58,.2)}
+.job-card.featured .skill-tag{background:rgba(200,151,58,.15);border-color:rgba(200,151,58,.35);color:rgba(255,255,255,.8)}
 .jc-btn{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;border:none;border-radius:var(--r);padding:9px 18px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--fb);transition:all var(--t)}
 .jc-btn:hover{background:var(--navy-lt)}
 .job-card.featured .jc-btn{background:var(--gold);color:var(--navy)}
@@ -66,6 +76,7 @@
 
 @media(max-width:600px){.frow{grid-template-columns:1fr}.app-wrap{padding:24px 18px}}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"JobPosting","title":"HR & Payroll Specialist","description":"Lead payroll processing and HR administration for a portfolio of international clients. Ensure monthly compliance, accurate filings, and smooth client relationships.","datePosted":"2026-02-01","validThrough":"2026-06-30","employmentType":"FULL_TIME","hiringOrganization":{"@type":"Organization","name":"Staffona","sameAs":"https://staffona.com","logo":"https://staffona.com/Logo.png"},"jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","streetAddress":"El-Horreya Street, Mostafa Kamel","addressLocality":"Alexandria","addressRegion":"Alexandria Governorate","postalCode":"21523","addressCountry":"EG"}},"baseSalary":{"@type":"MonetaryAmount","currency":"EGP","value":{"@type":"QuantitativeValue","minValue":12000,"maxValue":20000,"unitText":"MONTH"}},"skills":"Egyptian Labor Law, Payroll Processing, Social Insurance, Excel, Arabic, English","qualifications":"1-3 years HR or payroll experience in Egypt. Strong knowledge of Egyptian tax and social insurance regulations.","url":"https://staffona.com/careers"},{"@type":"JobPosting","title":"Recruitment Consultant","description":"Source, screen, and place candidates across tech, finance, and operations roles for our international client base. Manage end-to-end recruitment and build client relationships.","datePosted":"2026-02-01","validThrough":"2026-06-30","employmentType":"FULL_TIME","hiringOrganization":{"@type":"Organization","name":"Staffona","sameAs":"https://staffona.com","logo":"https://staffona.com/Logo.png"},"jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","streetAddress":"El-Horreya Street, Mostafa Kamel","addressLocality":"Alexandria","addressRegion":"Alexandria Governorate","postalCode":"21523","addressCountry":"EG"}},"skills":"Candidate Sourcing, LinkedIn Recruiter, Interview Coordination, Client Management, English","qualifications":"1+ year recruitment experience. Experience with tech or finance roles preferred.","url":"https://staffona.com/careers"}]}</script>
 </head>
 <body>
 <div class="nav-wrap page" id="navbar">
@@ -80,6 +91,7 @@
           <a href="recruitment-egypt.html">Recruitment</a>
           <a href="compliance.html">HR Compliance</a>
           <a href="services.html">All Services →</a>
+          <a href="pricing.html">Pricing</a>
         </div>
       </li>
       <li><a href="resources.html">Resources</a></li>
@@ -89,6 +101,7 @@
     </ul>
     <div class="nav-r">
       <a href="mailto:info@staffona.com" class="nav-email">info@staffona.com</a>
+            <a href="ar.html" class="lang-btn" title="Arabic / العربية">🌐 AR</a>
       <button class="dm-btn" aria-label="Toggle dark mode"><svg class="dm-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="dm-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg></button>
       <button class="btn btn-gold btn-sm" data-cal>Book Consultation</button>
       <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false" style="display:none"><span></span><span></span><span></span></button>
@@ -223,7 +236,7 @@
         <a href="mailto:info@staffona.com" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@staffona.com</a>
         <a href="https://www.linkedin.com/company/staffona" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Staffona</a>
       </div>
-      <div><div class="flct">Services</div><ul class="flls"><li><a href="hr-outsourcing.html">HR Outsourcing</a></li><li><a href="payroll-egypt.html">Payroll</a></li><li><a href="recruitment-egypt.html">Recruitment</a></li><li><a href="compliance.html">HR Compliance</a></li><li><a href="services.html">All Services</a></li></ul></div>
+      <div><div class="flct">Services</div><ul class="flls"><li><a href="hr-outsourcing.html">HR Outsourcing</a></li><li><a href="payroll-egypt.html">Payroll</a></li><li><a href="recruitment-egypt.html">Recruitment</a></li><li><a href="compliance.html">HR Compliance</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="services.html">All Services</a></li></ul></div>
       <div><div class="flct">Resources</div><ul class="flls"><li><a href="resources.html">All Resources</a></li><li><a href="laws.html">Egyptian Laws</a></li><li><a href="resources/hiring-guide.html">Hiring Guide</a></li><li><a href="resources/payroll-taxes.html">Payroll Tax Guide</a></li></ul></div>
       <div><div class="flct">Company</div><ul class="flls"><li><a href="about.html">About Staffona</a></li><li><a href="careers.html">Careers</a></li><li><a href="index.html#contact">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
     </div>
@@ -444,7 +457,7 @@ document.getElementById('careerForm').addEventListener('submit', async function(
 
   if (!role) { alert('Please select a role.'); return; }
   if (!firstName || !email) { alert('Please fill in your name and email.'); return; }
-  if (!window._cvFile) { alert('Please upload your CV.'); return; }
+  // CV is optional but encouraged
 
   // Validate required screening questions
   const screeningInputs = document.querySelectorAll('#screeningQs [id^="sq_"]');
@@ -457,69 +470,104 @@ document.getElementById('careerForm').addEventListener('submit', async function(
 
   btn.textContent = 'Sending…'; btn.disabled = true;
 
-  // Collect screening answers into the payload as labelled fields
-  const payload = new FormData();
-  payload.append('access_key', 'a37ce092-9f36-4462-a9bd-ee4a3ecc6fa7');
-  payload.append('role', role);
-  payload.append('firstName', firstName);
-  payload.append('lastName', document.getElementById('aLast').value);
-  payload.append('email', email);
-  payload.append('phone', document.getElementById('aPhone').value);
-  payload.append('experience', document.getElementById('aExp').value);
-  payload.append('linkedin', document.getElementById('aLinkedin').value);
-  payload.append('coverNote', document.getElementById('aCover').value);
-  payload.append('_subject', 'Application: ' + role + ' — ' + firstName);
-
-  // Append each screening answer as a named field
+  // Build screening answers summary
+  const screeningLines = [];
   screeningInputs.forEach(inp => {
-    if (inp.value.trim()) payload.append('Q: ' + inp.dataset.qText, inp.value.trim());
+    if (inp.value.trim()) screeningLines.push(inp.dataset.qText + ': ' + inp.value.trim());
   });
 
-  payload.append('cv', window._cvFile, window._cvFile.name);
+  // Build full message (CV sent separately by applicant as reply)
+  const lastName = document.getElementById('aLast').value;
+  const fullName = firstName + (lastName ? ' ' + lastName : '');
+  const msgLines = [
+    '📋 ROLE: ' + role,
+    '👤 NAME: ' + fullName,
+    '📧 EMAIL: ' + email,
+    '📞 PHONE: ' + (document.getElementById('aPhone').value || '—'),
+    '💼 EXPERIENCE: ' + (document.getElementById('aExp').value || '—'),
+    '🔗 LINKEDIN: ' + (document.getElementById('aLinkedin').value || '—'),
+    '',
+  ];
+  if (screeningLines.length) {
+    msgLines.push('--- SCREENING QUESTIONS ---');
+    screeningLines.forEach(l => msgLines.push(l));
+    msgLines.push('');
+  }
+  msgLines.push('--- COVER NOTE ---');
+  msgLines.push(document.getElementById('aCover').value || '—');
+  if (window._cvFile) {
+    msgLines.push('');
+    msgLines.push('📎 CV FILE: ' + window._cvFile.name + ' (applicant will send as attachment)');
+  }
+
+  // Send via Web3Forms (no file — free plan limitation)
+  const payload = {
+    access_key: 'a37ce092-9f36-4462-a9bd-ee4a3ecc6fa7',
+    name: fullName,
+    email: email,
+    subject: 'Application: ' + role + ' — ' + fullName,
+    message: msgLines.join('\n'),
+    from_name: 'Staffona Careers',
+    to_email: 'careers@staffona.com',
+  };
 
   try {
     const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST', headers: { 'Accept': 'application/json' }, body: payload
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
     });
-    if (res.ok) {
+    const json = await res.json();
+    if (json.success) {
       document.getElementById('careerForm').style.display = 'none';
+      document.getElementById('appOk').innerHTML = `
+        <div class="app-ok-icon">🎉</div>
+        <div class="app-ok-title">Application Received!</div>
+        <div class="app-ok-desc">
+          Thank you, <strong style="color:var(--gold)">${fullName}</strong>! We've received your application for <strong>${role}</strong>.<br><br>
+          ${window._cvFile ? `<span style="background:rgba(200,151,58,.12);border:1px solid rgba(200,151,58,.3);border-radius:8px;padding:8px 14px;display:inline-block;margin-top:6px">📎 Please reply to our confirmation email with your CV: <strong>${window._cvFile.name}</strong></span>` : ''}
+          <br><br>We review every application and reply within 3 business days.
+        </div>`;
       document.getElementById('appOk').style.display = 'block';
       return;
     }
-  } catch (err) { console.log('Formspree error', err); }
+    throw new Error(json.message || 'Submit failed');
+  } catch (err) {
+    console.log('Web3Forms error:', err);
+    // Fallback: open mailto with all data pre-filled
+    const bodyLines = [
+      'CAREER APPLICATION',
+      '==================',
+      'Role: ' + role,
+      'Name: ' + firstName + ' ' + document.getElementById('aLast').value,
+      'Email: ' + email,
+      'Phone: ' + (document.getElementById('aPhone').value || '—'),
+      'Experience: ' + (document.getElementById('aExp').value || '—'),
+      'LinkedIn: ' + (document.getElementById('aLinkedin').value || '—'),
+    ];
+    if (screeningInputs.length) {
+      bodyLines.push('', 'SCREENING QUESTIONS:', '--------------------');
+      screeningInputs.forEach(inp => {
+        if (inp.value.trim()) bodyLines.push(inp.dataset.qText + ': ' + inp.value.trim());
+      });
+    }
+    bodyLines.push('', 'Cover Note:', document.getElementById('aCover').value || '—');
+    if (window._cvFile) bodyLines.push('', '⚠️ Please attach CV: ' + window._cvFile.name);
 
-  // Fallback: mailto with all data pre-filled (screening answers included)
-  let bodyLines = [
-    'CAREER APPLICATION',
-    '==================',
-    'Role: ' + role,
-    'Name: ' + firstName + ' ' + document.getElementById('aLast').value,
-    'Email: ' + email,
-    'Phone: ' + (document.getElementById('aPhone').value || '—'),
-    'Experience: ' + (document.getElementById('aExp').value || '—'),
-    'LinkedIn: ' + (document.getElementById('aLinkedin').value || '—'),
-  ];
-  if (screeningInputs.length) {
-    bodyLines.push('', 'SCREENING QUESTIONS:', '--------------------');
-    screeningInputs.forEach(inp => {
-      if (inp.value.trim()) bodyLines.push(inp.dataset.qText + ': ' + inp.value.trim());
-    });
+    document.getElementById('careerForm').style.display = 'none';
+    const cvName = window._cvFile ? window._cvFile.name : null;
+    document.getElementById('appOk').innerHTML = `
+      <div class="app-ok-icon">📧</div>
+      <div class="app-ok-title">One More Step</div>
+      <div class="app-ok-desc">Your email client is opening with everything pre-filled. ${cvName ? `Please attach <strong style="color:var(--gold)">${cvName}</strong> and send.` : 'Review and send to complete your application.'}</div>`;
+    document.getElementById('appOk').style.display = 'block';
+
+    setTimeout(() => {
+      const subject = encodeURIComponent('Application: ' + role + ' — ' + firstName);
+      const body = encodeURIComponent(bodyLines.join('\n'));
+      location.href = 'mailto:careers@staffona.com?subject=' + subject + '&body=' + body;
+    }, 500);
   }
-  bodyLines.push('', 'Cover Note:', document.getElementById('aCover').value || '—');
-  bodyLines.push('', '⚠️ Please attach CV: ' + window._cvFile.name);
-
-  document.getElementById('careerForm').style.display = 'none';
-  document.getElementById('appOk').innerHTML = `
-    <div class="app-ok-icon">📧</div>
-    <div class="app-ok-title">Almost There!</div>
-    <div class="app-ok-desc">Your email client is opening with everything pre-filled. Please attach <strong style="color:var(--gold)">${window._cvFile.name}</strong> and send.</div>`;
-  document.getElementById('appOk').style.display = 'block';
-
-  setTimeout(() => {
-    const subject = encodeURIComponent('Application: ' + role + ' — ' + firstName);
-    const body = encodeURIComponent(bodyLines.join('\n'));
-    location.href = 'mailto:info@staffona.com?subject=' + subject + '&body=' + body;
-  }, 500);
 
   btn.textContent = 'Send Application →'; btn.disabled = false;
 });

@@ -231,6 +231,34 @@
 .cpanel-t{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px}
 .cpanel-d{font-size:12.5px;color:rgba(255,255,255,.38);margin-bottom:22px}
 </style>
+<script>
+/* ── Legacy hash-route redirect (old SPA links) ── */
+(function(){
+  var h = window.location.hash;
+  if (!h || h.indexOf('#/') !== 0) return;
+  var route = h.slice(2).split('?')[0].toLowerCase();
+  var map = {
+    'about':          '/about',
+    'services':       '/services',
+    'hr-outsourcing': '/hr-outsourcing',
+    'eor-egypt':      '/hr-outsourcing',
+    'eor':            '/hr-outsourcing',
+    'payroll':        '/payroll-egypt',
+    'payroll-egypt':  '/payroll-egypt',
+    'recruitment':    '/recruitment-egypt',
+    'compliance':     '/compliance',
+    'resources':      '/resources',
+    'laws':           '/laws',
+    'careers':        '/careers',
+    'pricing':        '/pricing',
+    'contact':        '/#contact',
+    'privacy':        '/privacy',
+    'terms':          '/terms',
+  };
+  var dest = map[route];
+  if (dest) window.location.replace(dest);
+})();
+</script>
 </head>
 <body>
 
@@ -256,6 +284,7 @@
     </ul>
     <div class="nav-r">
       <a href="mailto:info@staffona.com" class="nav-email">info@staffona.com</a>
+            <a href="ar.html" class="lang-btn" title="Arabic / العربية">🌐 AR</a>
       <button class="dm-btn" aria-label="Toggle dark mode">
         <svg class="dm-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="dm-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>

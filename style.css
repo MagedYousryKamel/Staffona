@@ -67,10 +67,16 @@ button,input,select,textarea{font-family:var(--fb)}ul{list-style:none}
 .nav-links a{display:block;padding:7px 11px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,.72);border-radius:6px;transition:all var(--t)}
 .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.08)}
 .ndrop{position:relative}
-.ndrop-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-6px);background:var(--nvm);border:1px solid rgba(255,255,255,.1);border-radius:var(--rm);padding:8px;min-width:210px;box-shadow:var(--s4);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
-.ndrop:hover .ndrop-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+/* Invisible bridge fills the 8px gap so mouse moving down doesn't close menu */
+.ndrop::after{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:16px;display:none}
+.ndrop:hover::after{display:block}
+.ndrop-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-6px);background:var(--nvm);border:1px solid rgba(255,255,255,.1);border-radius:var(--rm);padding:8px;min-width:210px;box-shadow:var(--s4);opacity:0;pointer-events:none;transition:opacity .25s .05s,transform .25s .05s}
+.ndrop:hover .ndrop-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);transition-delay:0s}
+.ndrop-menu::before{content:'';position:absolute;top:-16px;left:0;right:0;height:16px}
 .ndrop-menu a{display:block;padding:9px 14px;font-size:13px;color:rgba(255,255,255,.7);border-radius:6px;transition:all .18s}
 .ndrop-menu a:hover{background:rgba(255,255,255,.07);color:#fff;padding-left:18px}
+.lang-btn{padding:5px 11px;border-radius:6px;font-size:12px;font-weight:700;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);transition:all var(--t)}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold)}
 .nav-r{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .nav-email{font-size:12.5px;color:rgba(255,255,255,.44);transition:color var(--t)}.nav-email:hover{color:var(--gold)}
 .dm-btn{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);transition:all var(--t);flex-shrink:0;cursor:pointer}
