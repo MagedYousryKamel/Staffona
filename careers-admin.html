@@ -161,6 +161,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
 <div class="tabs-nav">
   <button class="tn on" onclick="switchTab('apps',this)">📥 Applications</button>
   <button class="tn" onclick="switchTab('jobs',this)">💼 Job Listings</button>
+  <button class="tn" onclick="switchTab('reviews',this)">⭐ Reviews</button>
 </div>
 
 <!-- ═══════════════════════════════ APPLICATIONS TAB ═══════════════════════════════ -->
@@ -369,7 +370,8 @@ tr:hover td{background:rgba(255,255,255,.02)}
 ══════════════════════════════════════ */
 const APPS_KEY = 'sf-apps-v4';
 const JOBS_KEY = 'sf-jobs-v2';
-let apps = [], jobs = [], editAppId = null, editJobId = null;
+const REVS_KEY = 'sf-reviews-v1';
+let apps = [], jobs = [], reviews = [], editAppId = null, editJobId = null;
 let filterStatus = 'all', filterRole = '';
 // Temporary questions array while building a job
 let draftQuestions = [];
@@ -377,7 +379,28 @@ let draftQuestions = [];
 function loadAll() {
   try { apps = JSON.parse(localStorage.getItem(APPS_KEY) || '[]'); } catch { apps = []; }
   try { jobs = JSON.parse(localStorage.getItem(JOBS_KEY) || '[]'); } catch { jobs = []; }
-  renderApps(); renderJobs(); populateRoleFilters(); populateRoleSelect();
+  // Seed default jobs if localStorage is empty (first time opening admin)
+  if (!jobs.length) {
+    jobs = [
+      { id: 1000, title: 'HR & Payroll Specialist', dept: 'HR & Admin', type: 'Full-time',
+        location: 'Alexandria, Egypt', status: 'Active', salary: '', featured: true,
+        description: 'Lead payroll processing and HR administration for a portfolio of international clients. Monthly compliance, accurate filings, and smooth client relationships.',
+        skills: ['Egyptian Labor Law','Payroll Processing','Social Insurance','Excel','Arabic','English'],
+        questions: [], date: new Date().toISOString() },
+      { id: 1001, title: 'Recruitment Consultant', dept: 'HR & Admin', type: 'Full-time',
+        location: 'Alexandria, Egypt', status: 'Active', salary: '', featured: false,
+        description: 'Source, screen, and place candidates across tech, finance, and operations for our international client base. Manage end-to-end recruitment and build client relationships.',
+        skills: ['Sourcing','LinkedIn Recruiter','Interview Coordination','English'],
+        questions: [], date: new Date().toISOString() },
+      { id: 1002, title: 'HR Operations Coordinator', dept: 'Operations', type: 'Full-time',
+        location: 'Alexandria, Egypt', status: 'Active', salary: '', featured: false,
+        description: 'Support daily HR operations including onboarding, contract management, and employee records for our growing client portfolio.',
+        skills: ['HR Admin','Onboarding','Labor Office','Arabic','English'],
+        questions: [], date: new Date().toISOString() }
+    ];
+    saveJobs();
+  }
+  renderApps(); renderJobs(); renderReviews(); populateRoleFilters(); populateRoleSelect();
 }
 function saveApps() { try { localStorage.setItem(APPS_KEY, JSON.stringify(apps)); } catch { alert('Storage full — export CSV.'); } }
 function saveJobs() { try { localStorage.setItem(JOBS_KEY, JSON.stringify(jobs)); } catch { alert('Storage full.'); } }
@@ -668,8 +691,8 @@ function openJobPanel(jobId = null) {
     j.questions.forEach(q => addQuestion(q));
   }
   const panel = document.getElementById('addJobPanel');
-  panel.classList.remove('open');
-  requestAnimationFrame(() => { panel.classList.add('open'); panel.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  panel.classList.add('open');
+  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
 }
 
 function saveJob() {
@@ -837,6 +860,75 @@ function v2(id) { return document.getElementById(id).value; }
 function setText(id, val) { const el = document.getElementById(id); if (el) el.textContent = val; }
 function esc(s) { return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+
+/* ══════════════════════════════════════
+   REVIEWS
+══════════════════════════════════════ */
+function saveRevs() { try { localStorage.setItem(REVS_KEY, JSON.stringify(reviews)); } catch { alert('Storage full.'); } }
+
+function openRevPanel() {
+  ['rf-name','rf-role','rf-country','rf-quote'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('rf-stars').value = '5';
+  document.getElementById('rf-status').value = 'Published';
+  document.getElementById('addRevPanel').classList.add('open');
+  setTimeout(() => document.getElementById('addRevPanel').scrollIntoView({ behavior:'smooth', block:'start' }), 50);
+}
+
+function saveReview() {
+  const name = document.getElementById('rf-name').value.trim();
+  const role = document.getElementById('rf-role').value.trim();
+  const quote = document.getElementById('rf-quote').value.trim();
+  if (!name || !role || !quote) { alert('Name, role, and quote are required.'); return; }
+  reviews.unshift({
+    id: Date.now(), name, role,
+    country: document.getElementById('rf-country').value.trim(),
+    service: document.getElementById('rf-service').value,
+    quote, stars: document.getElementById('rf-stars').value,
+    status: document.getElementById('rf-status').value,
+    date: new Date().toISOString()
+  });
+  saveRevs(); renderReviews();
+  document.getElementById('addRevPanel').classList.remove('open');
+  showToast('Review saved ✓');
+}
+
+function deleteReview(id) {
+  if (!confirm('Delete this review?')) return;
+  reviews = reviews.filter(r => r.id !== id);
+  saveRevs(); renderReviews();
+}
+
+function renderReviews() {
+  try { reviews = JSON.parse(localStorage.getItem(REVS_KEY) || '[]'); } catch { reviews = []; }
+  const grid = document.getElementById('revsGrid');
+  document.getElementById('rev-count').textContent = reviews.length + ' review' + (reviews.length !== 1 ? 's' : '');
+  if (!reviews.length) {
+    grid.innerHTML = '<div class="empty"><div class="empty-ic">⭐</div><div class="empty-t">No reviews logged yet</div><div class="empty-d">Click "+ Add Review" to log a client testimonial</div></div>';
+    return;
+  }
+  const stars = n => '★'.repeat(Number(n)) + '☆'.repeat(5-Number(n));
+  grid.innerHTML = reviews.map(r => `
+    <div class="jc ${r.status==='Published'?'active-j':''}">
+      <div class="jc-body">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <div class="jc-title" style="font-size:14px">${esc(r.name)}</div>
+          <span class="jm-stat ${r.status==='Published'?'js-active':'js-draft'}" style="font-size:11px">${esc(r.status)}</span>
+        </div>
+        <div class="jc-meta">
+          <span class="jm jm-dept">${esc(r.role)}</span>
+          ${r.country ? `<span class="jm jm-loc">${esc(r.country)}</span>` : ''}
+          <span class="jm jm-type">${esc(r.service)}</span>
+        </div>
+        <div style="font-size:16px;color:var(--gold);margin:6px 0 4px">${stars(r.stars)}</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;font-style:italic">"${esc(r.quote.slice(0,200))}${r.quote.length>200?'…':''}"</p>
+        <div style="font-size:11px;color:rgba(255,255,255,.25);margin-top:6px">${new Date(r.date).toLocaleDateString('en-GB')}</div>
+      </div>
+      <div class="jc-actions">
+        <button class="act a-del" onclick="deleteReview(${r.id})">Del</button>
+      </div>
+    </div>`).join('');
+}
+
 function showToast(msg) {
   let t = document.getElementById('sf-toast');
   if (!t) {
@@ -853,5 +945,52 @@ function showToast(msg) {
 
 loadAll();
 </script>
+
+<!-- ═══════════════════════════════ REVIEWS TAB ═══════════════════════════════ -->
+<div class="tab-pane" id="tab-reviews">
+
+  <div class="note-box">
+    <strong>⭐ Client Reviews / Testimonials:</strong> Add real reviews here. They will be saved locally for reference. To publish them on the website, copy the name, role, and quote into the testimonials section of <strong>index.html</strong>, <strong>about.html</strong>, and <strong>services.html</strong> (search for <code>tst-card</code>). Each review needs: Name, Role + Company, Country, Service Type, and Quote.
+  </div>
+
+  <div class="sh">
+    <div><div class="sh-t">Client Reviews</div><div class="sh-d" id="rev-count">0 reviews</div></div>
+    <button class="tb-btn btn-gold" onclick="openRevPanel()">+ Add Review</button>
+  </div>
+
+  <div class="panel" id="addRevPanel">
+    <h3>Add Client Review</h3>
+    <div class="g2">
+      <div class="fg"><label class="fl">Client Name *</label><input class="fi" id="rf-name" placeholder="James Thornton"></div>
+      <div class="fg"><label class="fl">Role &amp; Company *</label><input class="fi" id="rf-role" placeholder="CEO · DataBridge Ltd"></div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Country / Flag</label><input class="fi" id="rf-country" placeholder="🇬🇧 London, UK"></div>
+      <div class="fg"><label class="fl">Service Used</label>
+        <select class="fsel" id="rf-service">
+          <option>HR Outsourcing</option><option>Payroll Management</option><option>Recruitment</option>
+          <option>Compliance &amp; Labor</option><option>Managed Employment (EOR)</option><option>Multiple Services</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg"><label class="fl">Review / Quote *</label>
+      <textarea class="fta" id="rf-quote" placeholder="What did the client say? Write their exact words or a close paraphrase..." style="min-height:110px"></textarea></div>
+    <div class="fg"><label class="fl">Star Rating</label>
+      <select class="fsel" id="rf-stars"><option value="5">★★★★★ — 5 stars</option><option value="4">★★★★☆ — 4 stars</option><option value="3">★★★☆☆ — 3 stars</option></select>
+    </div>
+    <div class="fg"><label class="fl">Status</label>
+      <select class="fsel" id="rf-status"><option value="Published">Published (on site)</option><option value="Pending">Pending (saved, not on site yet)</option></select>
+    </div>
+    <div class="btn-row">
+      <button class="save-btn" onclick="saveReview()">Save Review</button>
+      <button class="cancel-btn" onclick="document.getElementById('addRevPanel').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+
+  <div class="jobs-grid" id="revsGrid">
+    <div class="empty"><div class="empty-ic">⭐</div><div class="empty-t">No reviews logged yet</div><div class="empty-d">Click "+ Add Review" to log a client testimonial</div></div>
+  </div>
+</div>
+
 </body>
 </html>
