@@ -453,11 +453,12 @@ document.getElementById('careerForm').addEventListener('submit', async function(
   const btn = document.getElementById('appSubmit');
   const role = document.getElementById('aRole').value;
   const firstName = document.getElementById('aFirst').value.trim();
+  const lastName = document.getElementById('aLast').value.trim();
   const email = document.getElementById('aEmail').value.trim();
+  const fullName = firstName + (lastName ? ' ' + lastName : '');
 
   if (!role) { alert('Please select a role.'); return; }
   if (!firstName || !email) { alert('Please fill in your name and email.'); return; }
-  // CV is optional but encouraged
 
   // Validate required screening questions
   const screeningInputs = document.querySelectorAll('#screeningQs [id^="sq_"]');
@@ -468,109 +469,86 @@ document.getElementById('careerForm').addEventListener('submit', async function(
     }
   }
 
-  btn.textContent = 'Sending…'; btn.disabled = true;
+  btn.textContent = 'Opening email…'; btn.disabled = true;
 
-  // Build screening answers summary
+  // Build full email body
   const screeningLines = [];
   screeningInputs.forEach(inp => {
     if (inp.value.trim()) screeningLines.push(inp.dataset.qText + ': ' + inp.value.trim());
   });
 
-  // Build full message (CV sent separately by applicant as reply)
-  const lastName = document.getElementById('aLast').value;
-  const fullName = firstName + (lastName ? ' ' + lastName : '');
-  const msgLines = [
-    '📋 ROLE: ' + role,
-    '👤 NAME: ' + fullName,
-    '📧 EMAIL: ' + email,
-    '📞 PHONE: ' + (document.getElementById('aPhone').value || '—'),
-    '💼 EXPERIENCE: ' + (document.getElementById('aExp').value || '—'),
-    '🔗 LINKEDIN: ' + (document.getElementById('aLinkedin').value || '—'),
-    '',
+  const bodyLines = [
+    'CAREER APPLICATION — Staffona',
+    '================================',
+    'Role:       ' + role,
+    'Name:       ' + fullName,
+    'Email:      ' + email,
+    'Phone:      ' + (document.getElementById('aPhone').value.trim() || '—'),
+    'Experience: ' + (document.getElementById('aExp').value || '—'),
+    'LinkedIn:   ' + (document.getElementById('aLinkedin').value.trim() || '—'),
   ];
+
   if (screeningLines.length) {
-    msgLines.push('--- SCREENING QUESTIONS ---');
-    screeningLines.forEach(l => msgLines.push(l));
-    msgLines.push('');
+    bodyLines.push('', '--- SCREENING QUESTIONS ---');
+    screeningLines.forEach(l => bodyLines.push(l));
   }
-  msgLines.push('--- COVER NOTE ---');
-  msgLines.push(document.getElementById('aCover').value || '—');
+
+  const cover = document.getElementById('aCover').value.trim();
+  if (cover) bodyLines.push('', '--- COVER NOTE ---', cover);
+
   if (window._cvFile) {
-    msgLines.push('');
-    msgLines.push('📎 CV FILE: ' + window._cvFile.name + ' (applicant will send as attachment)');
+    bodyLines.push('', '--- CV ---', 'Attached: ' + window._cvFile.name);
+  } else {
+    bodyLines.push('', '--- CV ---', 'Please attach your CV to this email before sending.');
   }
 
-  // Send via Web3Forms (no file — free plan limitation)
-  const payload = {
-    access_key: 'a37ce092-9f36-4462-a9bd-ee4a3ecc6fa7',
-    name: fullName,
-    email: email,
-    subject: 'Application: ' + role + ' — ' + fullName,
-    message: msgLines.join('\n'),
-    from_name: 'Staffona Careers',
-    to_email: 'careers@staffona.com',
-  };
-
+  // STEP 1: Fire Web3Forms silently in background as a notification copy
+  // Note: delivers text only (no file), goes to account email — silent, no await
   try {
-    const res = await fetch('https://api.web3forms.com/submit', {
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        access_key: 'a37ce092-9f36-4462-a9bd-ee4a3ecc6fa7',
+        name: fullName,
+        email: email,
+        subject: '[Application] ' + role + ' — ' + fullName,
+        message: bodyLines.join('\n'),
+        from_name: 'Staffona Careers Form',
+      })
     });
-    const json = await res.json();
-    if (json.success) {
-      document.getElementById('careerForm').style.display = 'none';
-      document.getElementById('appOk').innerHTML = `
-        <div class="app-ok-icon">🎉</div>
-        <div class="app-ok-title">Application Received!</div>
-        <div class="app-ok-desc">
-          Thank you, <strong style="color:var(--gold)">${fullName}</strong>! We've received your application for <strong>${role}</strong>.<br><br>
-          ${window._cvFile ? `<span style="background:rgba(200,151,58,.12);border:1px solid rgba(200,151,58,.3);border-radius:8px;padding:8px 14px;display:inline-block;margin-top:6px">📎 Please reply to our confirmation email with your CV: <strong>${window._cvFile.name}</strong></span>` : ''}
-          <br><br>We review every application and reply within 3 business days.
-        </div>`;
-      document.getElementById('appOk').style.display = 'block';
-      return;
-    }
-    throw new Error(json.message || 'Submit failed');
-  } catch (err) {
-    console.log('Web3Forms error:', err);
-    // Fallback: open mailto with all data pre-filled
-    const bodyLines = [
-      'CAREER APPLICATION',
-      '==================',
-      'Role: ' + role,
-      'Name: ' + firstName + ' ' + document.getElementById('aLast').value,
-      'Email: ' + email,
-      'Phone: ' + (document.getElementById('aPhone').value || '—'),
-      'Experience: ' + (document.getElementById('aExp').value || '—'),
-      'LinkedIn: ' + (document.getElementById('aLinkedin').value || '—'),
-    ];
-    if (screeningInputs.length) {
-      bodyLines.push('', 'SCREENING QUESTIONS:', '--------------------');
-      screeningInputs.forEach(inp => {
-        if (inp.value.trim()) bodyLines.push(inp.dataset.qText + ': ' + inp.value.trim());
-      });
-    }
-    bodyLines.push('', 'Cover Note:', document.getElementById('aCover').value || '—');
-    if (window._cvFile) bodyLines.push('', '⚠️ Please attach CV: ' + window._cvFile.name);
+  } catch(err) { /* silent — mailto is the primary delivery */ }
 
-    document.getElementById('careerForm').style.display = 'none';
-    const cvName = window._cvFile ? window._cvFile.name : null;
-    document.getElementById('appOk').innerHTML = `
-      <div class="app-ok-icon">📧</div>
-      <div class="app-ok-title">One More Step</div>
-      <div class="app-ok-desc">Your email client is opening with everything pre-filled. ${cvName ? `Please attach <strong style="color:var(--gold)">${cvName}</strong> and send.` : 'Review and send to complete your application.'}</div>`;
-    document.getElementById('appOk').style.display = 'block';
+  // STEP 2: PRIMARY delivery — open applicant's email client
+  // This is the only path that reliably delivers CV + goes to careers@staffona.com
+  const subject = encodeURIComponent('Application: ' + role + ' — ' + fullName);
+  const body    = encodeURIComponent(bodyLines.join('\n'));
+  const mailto  = 'mailto:careers@staffona.com?subject=' + subject + '&body=' + body;
 
-    setTimeout(() => {
-      const subject = encodeURIComponent('Application: ' + role + ' — ' + firstName);
-      const body = encodeURIComponent(bodyLines.join('\n'));
-      location.href = 'mailto:careers@staffona.com?subject=' + subject + '&body=' + body;
-    }, 500);
-  }
+  // Show confirmation state
+  document.getElementById('careerForm').style.display = 'none';
+
+  const cvReminder = window._cvFile
+    ? '<span style="background:rgba(200,151,58,.12);border:1px solid rgba(200,151,58,.3);border-radius:8px;padding:10px 16px;display:inline-block;margin-top:8px">📎 Attach <strong>' + window._cvFile.name + '</strong> before hitting Send</span>'
+    : '<span style="background:rgba(200,151,58,.12);border:1px solid rgba(200,151,58,.3);border-radius:8px;padding:10px 16px;display:inline-block;margin-top:8px">📎 Attach your CV to the email before hitting Send</span>';
+
+  document.getElementById('appOk').innerHTML =
+    '<div class="app-ok-icon">📬</div>' +
+    '<div class="app-ok-title">One last step — check your email app</div>' +
+    '<div class="app-ok-desc">Your email client is opening with your application for <strong>' + role + '</strong> pre-filled.' +
+    '<br><br>' + cvReminder +
+    '<br><br><small style="color:var(--sl)">Sending to <strong>careers@staffona.com</strong>. ' +
+    'If your email app does not open, email us directly at ' +
+    '<a href="mailto:careers@staffona.com" style="color:var(--gold)">careers@staffona.com</a>.</small></div>';
+
+  document.getElementById('appOk').style.display = 'block';
+
+  // Short delay so the UI update is visible before the mailto dialog opens
+  setTimeout(function() { window.location.href = mailto; }, 350);
 
   btn.textContent = 'Send Application →'; btn.disabled = false;
 });
+
 
 function esc(s) { return (s || '').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
