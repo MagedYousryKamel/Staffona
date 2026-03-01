@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pricing — HR Outsourcing & Payroll Egypt | Staffona</title>
+<meta name="description" content="Transparent pricing for HR outsourcing, payroll management, and recruitment in Egypt. No hidden fees. Get a custom quote within one business day.">
+<link rel="canonical" href="https://staffona.com/pricing">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://staffona.com/pricing">
+<meta property="og:title" content="Pricing — HR Outsourcing & Payroll Egypt | Staffona">
+<meta property="og:description" content="Transparent pricing for HR outsourcing, payroll, and recruitment in Egypt. Custom quotes within one business day.">
+<meta property="og:image" content="https://staffona.com/og-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" type="image/png" href="Favicon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://staffona.com"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://staffona.com/pricing"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does Staffona pricing work?","acceptedAnswer":{"@type":"Answer","text":"Staffona charges a monthly management fee per employee for payroll and managed employment, and a one-time placement fee for recruitment. All pricing is transparent with no hidden fees. A custom quote is provided within one business day."}},{"@type":"Question","name":"Is there a minimum contract length?","acceptedAnswer":{"@type":"Answer","text":"No. Staffona's managed employment and payroll services have no minimum contract term. You can exit with 30 days' notice."}},{"@type":"Question","name":"Are there setup fees?","acceptedAnswer":{"@type":"Answer","text":"There is a one-time onboarding fee for new clients which covers contract preparation, Labor Office registration, and NOSI enrollment. This fee is waived for teams of 3 or more employees."}}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── PRICING CARDS ── */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.pc{background:var(--white);border:1px solid var(--border);border-radius:var(--rx);padding:32px;display:flex;flex-direction:column;position:relative;transition:all var(--t)}
+.pc:hover{box-shadow:var(--sh3);transform:translateY(-4px)}
+.pc.featured{background:var(--navy);border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.pc-label{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:11px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:.06em;white-space:nowrap}
+.pc-icon{font-size:28px;margin-bottom:14px}
+.pc-name{font-family:var(--fh);font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px}
+.pc.featured .pc-name{color:#fff}
+.pc-tagline{font-size:13px;color:var(--sl);margin-bottom:24px;line-height:1.55}
+.pc.featured .pc-tagline{color:rgba(255,255,255,.5)}
+.pc-price{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.pc.featured .pc-price{border-color:rgba(255,255,255,.1)}
+.pc-from{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sl);margin-bottom:4px}
+.pc.featured .pc-from{color:rgba(255,255,255,.4)}
+.pc-amount{font-family:var(--fh);font-size:36px;font-weight:800;color:var(--navy);line-height:1}
+.pc.featured .pc-amount{color:var(--gold)}
+.pc-unit{font-size:13px;color:var(--sl);margin-top:4px}
+.pc.featured .pc-unit{color:rgba(255,255,255,.4)}
+.pc-features{list-style:none;flex:1;margin-bottom:28px;display:flex;flex-direction:column;gap:10px}
+.pc-features li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:var(--sl);line-height:1.55}
+.pc.featured .pc-features li{color:rgba(255,255,255,.65)}
+.pc-features li svg{width:15px;height:15px;color:var(--gold);flex-shrink:0;margin-top:2px}
+.pc-cta{display:block;text-align:center;padding:11px 18px;border-radius:var(--r);font-size:14px;font-weight:700;cursor:pointer;border:none;font-family:var(--fb);transition:all var(--t)}
+.pc-cta-gold{background:var(--gold);color:var(--navy)}.pc-cta-gold:hover{background:var(--gold-lt)}
+.pc-cta-navy{background:var(--navy);color:#fff}.pc-cta-navy:hover{background:var(--navy-lt)}
+.pc-cta-out{background:transparent;border:2px solid var(--border);color:var(--text)}.pc-cta-out:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── ADD-ONS TABLE ── */
+.addon-grid{display:grid;gap:1px;background:var(--border);border-radius:var(--rx);overflow:hidden;margin-top:32px}
+.addon-row{display:grid;grid-template-columns:1fr 160px 200px;background:var(--white);align-items:center}
+.addon-row.head{background:var(--navy)}
+.addon-row.head div{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:12px 16px}
+.addon-row div{padding:14px 16px;font-size:13.5px;color:var(--text)}
+.addon-name{font-weight:600}
+.addon-price{color:var(--gold);font-weight:700}
+.addon-desc{font-size:12.5px;color:var(--sl)}
+[data-theme="dark"] .addon-row{background:rgba(255,255,255,.03)}
+[data-theme="dark"] .addon-row.head{background:var(--navy)}
+@media(max-width:900px){.price-grid{grid-template-columns:1fr}.addon-grid{display:none}}
+@media(max-width:768px){.price-grid{gap:16px}}
+
+/* ── QUOTE FORM ── */
+.qf-wrap{background:var(--off);border:1px solid var(--border);border-radius:var(--rx);padding:40px;max-width:680px;margin:0 auto}
+[data-theme="dark"] .qf-wrap{background:rgba(255,255,255,.03)}
+.qf-title{font-family:var(--fh);font-size:24px;font-weight:700;color:var(--text);margin-bottom:6px}
+.qf-sub{font-size:14px;color:var(--sl);margin-bottom:28px}
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:11px;font-weight:600;color:var(--sl);margin-bottom:5px;letter-spacing:.05em;text-transform:uppercase}
+.fi,.fsel,.fta{width:100%;padding:10px 12px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);color:var(--text);font-size:13.5px;font-family:var(--fb);transition:border-color var(--t);outline:none}
+[data-theme="dark"] .fi,[data-theme="dark"] .fsel,[data-theme="dark"] .fta{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);color:#fff}
+.fi::placeholder,.fta::placeholder{color:var(--sl)}
+.fi:focus,.fsel:focus,.fta:focus{border-color:var(--gold)}
+.fsel option{background:var(--white)}
+[data-theme="dark"] .fsel option{background:#0f1e35}
+.fta{resize:vertical;min-height:80px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sub-btn{width:100%;padding:13px;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);font-size:14px;font-weight:700;cursor:pointer;font-family:var(--fb);transition:all var(--t);margin-top:6px}
+.sub-btn:hover{background:var(--gold-lt);transform:translateY(-1px)}
+.sub-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-ok{display:none;text-align:center;padding:32px 0}
+.form-ok-icon{font-size:44px;margin-bottom:12px}
+.form-ok-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px}
+.form-ok-desc{font-size:14px;color:var(--sl);line-height:1.7}
+
+/* ── GUARANTEE ── */
+.guarantee-strip{background:rgba(200,151,58,.06);border:1px solid rgba(200,151,58,.2);border-radius:var(--rx);padding:28px 32px;display:flex;align-items:center;gap:24px;margin-bottom:52px}
+.g-icon{font-size:40px;flex-shrink:0}
+.g-title{font-family:var(--fh);font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px}
+.g-desc{font-size:13.5px;color:var(--sl);line-height:1.65}
+@media(max-width:600px){.frow{grid-template-columns:1fr}.qf-wrap{padding:24px 18px}.guarantee-strip{flex-direction:column;gap:14px;text-align:center}}
+</style>
+</head>
+<body>
+<div class="nav-wrap page" id="navbar">
+  <div class="w"><nav class="nav-in" aria-label="Main">
+    <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="nlf">Staff<em>ona</em></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="ndrop"><a href="services.html">Services ▾</a>
+        <div class="ndrop-menu">
+          <a href="hr-outsourcing.html">HR Outsourcing</a>
+          <a href="payroll-egypt.html">Payroll Management</a>
+          <a href="recruitment-egypt.html">Recruitment</a>
+          <a href="compliance.html">HR Compliance</a>
+          <a href="services.html">All Services →</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+      </li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="laws.html">Laws &amp; Guides</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-r">
+      <a href="mailto:info@staffona.com" class="nav-email">info@staffona.com</a>
+      <button class="dm-btn" aria-label="Toggle dark mode"><svg class="dm-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="dm-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg></button>
+      <button class="btn btn-gold btn-sm" data-cal>Book Consultation</button>
+      <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false" style="display:none"><span></span><span></span><span></span></button>
+    </div>
+  </nav></div>
+</div>
+<nav class="mob-nav" id="mobNav">
+  <a href="index.html">Home</a><a href="services.html">Services</a>
+  <a href="hr-outsourcing.html">HR Outsourcing</a><a href="payroll-egypt.html">Payroll</a>
+  <a href="recruitment-egypt.html">Recruitment</a><a href="resources.html">Resources</a>
+  <a href="laws.html">Laws</a><a href="careers.html">Careers</a><a href="about.html">About</a>
+  <a href="mailto:info@staffona.com" style="color:var(--gold)">info@staffona.com</a>
+  <div style="padding-top:12px"><button class="btn btn-gold" style="width:100%;justify-content:center" data-cal>Book Free Consultation</button></div>
+</nav>
+
+<section class="ph">
+  <div class="ph-glow"></div>
+  <div class="w ph-in">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="bc-sep">›</span><span>Pricing</span></div>
+    <div class="ph-pill">Transparent Pricing</div>
+    <h1>Simple, Honest Pricing<br>for <span>Egypt HR Services</span></h1>
+    <p class="sub">No hidden fees. No long-term lock-in. Get a custom quote within one business day — the first consultation is always free.</p>
+  </div>
+</section>
+
+<!-- PRICING CARDS -->
+<section class="sec">
+  <div class="w">
+    <div class="sh sh-c rv"><div class="lbl lbl-c">Services</div><h2 class="h2 h2-c">Choose What You Need</h2><p class="sub sub-c">Services can be combined. Most clients start with one service and expand as their team grows.</p></div>
+
+    <div class="price-grid">
+
+      <!-- PAYROLL ONLY -->
+      <div class="pc rv">
+        <div class="pc-icon">💰</div>
+        <div class="pc-name">Payroll Management</div>
+        <p class="pc-tagline">For companies with an existing Egyptian entity that need payroll handled.</p>
+        <div class="pc-price">
+          <div class="pc-from">Starting from</div>
+          <div class="pc-amount">$120</div>
+          <div class="pc-unit">per employee / month</div>
+        </div>
+        <ul class="pc-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Monthly salary calculation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Income tax withholding &amp; filing (ETA)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>NOSI contributions &amp; remittance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Quarterly Form 4 returns</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Digital payslips &amp; audit records</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Annual reconciliation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Multi-currency invoicing</li>
+        </ul>
+        <button class="pc-cta pc-cta-out" onclick="openQuote('Payroll Management')">Get a Quote →</button>
+      </div>
+
+      <!-- MANAGED EMPLOYMENT -->
+      <div class="pc featured rv d1">
+        <div class="pc-label">Most Popular</div>
+        <div class="pc-icon">🏢</div>
+        <div class="pc-name">Managed Employment (EOR)</div>
+        <p class="pc-tagline">Full employer of record — hire in Egypt without a local entity.</p>
+        <div class="pc-price">
+          <div class="pc-from">Starting from</div>
+          <div class="pc-amount">$250</div>
+          <div class="pc-unit">per employee / month</div>
+        </div>
+        <ul class="pc-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Payroll Management</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bilingual Arabic employment contract</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Labor Office registration</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>NOSI enrollment (new employees)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>No local entity required</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Exit anytime with 30 days' notice</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Dedicated HR specialist</li>
+        </ul>
+        <button class="pc-cta pc-cta-gold" onclick="openQuote('Managed Employment (EOR)')">Get a Quote →</button>
+      </div>
+
+      <!-- RECRUITMENT -->
+      <div class="pc rv d2">
+        <div class="pc-icon">🎯</div>
+        <div class="pc-name">Recruitment</div>
+        <p class="pc-tagline">Find and place vetted Egyptian talent for any role.</p>
+        <div class="pc-price">
+          <div class="pc-from">One-time fee</div>
+          <div class="pc-amount">15–20%</div>
+          <div class="pc-unit">of placed candidate's annual salary</div>
+        </div>
+        <ul class="pc-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Role scoping &amp; job description</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Multi-channel sourcing</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>CV screening &amp; shortlisting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Structured interview coordination</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reference checks</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Offer negotiation support</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>90-day replacement guarantee</li>
+        </ul>
+        <button class="pc-cta pc-cta-out" onclick="openQuote('Recruitment')">Get a Quote →</button>
+      </div>
+
+    </div>
+
+    <!-- GUARANTEES -->
+    <div style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+      <div class="guarantee-strip" style="margin-bottom:0">
+        <div class="g-icon">🔓</div>
+        <div><div class="g-title">No lock-in</div><div class="g-desc">Exit managed employment or payroll with 30 days' notice. No penalties.</div></div>
+      </div>
+      <div class="guarantee-strip" style="margin-bottom:0">
+        <div class="g-icon">💬</div>
+        <div><div class="g-title">Free first consultation</div><div class="g-desc">We understand your needs and quote within 24 hours. No commitment.</div></div>
+      </div>
+      <div class="guarantee-strip" style="margin-bottom:0">
+        <div class="g-icon">🔄</div>
+        <div><div class="g-title">90-day replacement</div><div class="g-desc">If a placed recruit leaves in 90 days, we re-run the search at no cost.</div></div>
+      </div>
+    </div>
+
+    <!-- ADD-ONS -->
+    <div style="margin-top:64px">
+      <div class="sh sh-c rv"><div class="lbl lbl-c">Additional Services</div><h2 class="h2 h2-c">Add-Ons &amp; <span>One-Time Services</span></h2></div>
+      <div class="addon-grid rv" style="margin-top:32px">
+        <div class="addon-row head">
+          <div>Service</div><div>Fee</div><div>Notes</div>
+        </div>
+        <div class="addon-row">
+          <div class="addon-name">Employee onboarding (first employee)</div>
+          <div class="addon-price">$200</div>
+          <div class="addon-desc">One-time. Waived for teams of 3+</div>
+        </div>
+        <div class="addon-row">
+          <div class="addon-name">HR compliance audit</div>
+          <div class="addon-price">$350</div>
+          <div class="addon-desc">Review existing employment contracts and filings</div>
+        </div>
+        <div class="addon-row">
+          <div class="addon-name">Employee termination management</div>
+          <div class="addon-price">$150</div>
+          <div class="addon-desc">Legal notice, NOSI exit, tax clearance</div>
+        </div>
+        <div class="addon-row">
+          <div class="addon-name">Employment contract drafting</div>
+          <div class="addon-price">$120</div>
+          <div class="addon-desc">Bilingual Arabic/English, Labor Law 12/2003 compliant</div>
+        </div>
+        <div class="addon-row">
+          <div class="addon-name">Labor Office dispute support</div>
+          <div class="addon-price">Custom</div>
+          <div class="addon-desc">Representation and documentation for disputes</div>
+        </div>
+        <div class="addon-row">
+          <div class="addon-name">Background check (per candidate)</div>
+          <div class="addon-price">$80</div>
+          <div class="addon-desc">Employment history, criminal record, references</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--sl);text-align:center;margin-top:12px">All prices are in USD. Egyptian pound equivalent invoicing available. Prices are indicative — final quote depends on specific requirements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section class="sec" style="background:var(--off)" id="getQuote">
+  <div class="w">
+    <div class="sh sh-c rv"><div class="lbl lbl-c">Get Started</div><h2 class="h2 h2-c">Request a Custom <span>Quote</span></h2><p class="sub sub-c">Tell us what you need. We respond with a tailored proposal within one business day.</p></div>
+    <div class="qf-wrap rv d1">
+      <div id="qfForm">
+        <div class="qf-title" id="qf-title">Get Your Custom Quote</div>
+        <p class="qf-sub">No commitment. The first consultation is always free.</p>
+        <form id="quoteForm" novalidate>
+          <div class="frow">
+            <div class="fg"><label class="fl">First Name *</label><input class="fi" id="qf-fn" placeholder="Ahmed" required></div>
+            <div class="fg"><label class="fl">Last Name</label><input class="fi" id="qf-ln" placeholder="Hassan"></div>
+          </div>
+          <div class="frow">
+            <div class="fg"><label class="fl">Work Email *</label><input class="fi" id="qf-em" type="email" placeholder="you@company.com" required></div>
+            <div class="fg"><label class="fl">Company Name</label><input class="fi" id="qf-co" placeholder="Acme Ltd."></div>
+          </div>
+          <div class="frow">
+            <div class="fg">
+              <label class="fl">Service Needed *</label>
+              <select class="fsel" id="qf-svc" required>
+                <option value="">Select...</option>
+                <option>Payroll Management</option>
+                <option>Managed Employment (EOR)</option>
+                <option>Recruitment</option>
+                <option>Compliance Advisory</option>
+                <option>Multiple services</option>
+                <option>Not sure — need guidance</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="fl">Team Size in Egypt</label>
+              <select class="fsel" id="qf-size">
+                <option value="">Select...</option>
+                <option>1 employee</option>
+                <option>2–5 employees</option>
+                <option>6–15 employees</option>
+                <option>16–30 employees</option>
+                <option>30+ employees</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg">
+            <label class="fl">Country of Your Company</label>
+            <select class="fsel" id="qf-country">
+              <option value="">Select...</option>
+              <option>Egypt</option>
+              <option>United Arab Emirates</option>
+              <option>Saudi Arabia</option>
+              <option>Qatar</option>
+              <option>United Kingdom</option>
+              <option>United States</option>
+              <option>Other GCC</option>
+              <option>Europe</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg"><label class="fl">Tell us more (optional)</label><textarea class="fta" id="qf-msg" placeholder="What roles, timelines, or specific requirements should we know about?"></textarea></div>
+          <button type="submit" class="sub-btn" id="qfSubmit">Send Quote Request →</button>
+        </form>
+        <div class="form-ok" id="formOk">
+          <div class="form-ok-icon">✅</div>
+          <div class="form-ok-title">Quote Request Received!</div>
+          <div class="form-ok-desc">Thank you. We'll review your requirements and send a tailored proposal to your email within one business day.<br><br>The first consultation call is always free — we'll include a Calendly link in our reply.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec">
+  <div class="w">
+    <div class="sh sh-c rv"><div class="lbl lbl-c">FAQ</div><h2 class="h2 h2-c">Pricing Questions <span>Answered</span></h2></div>
+    <div style="max-width:720px;margin:40px auto 0">
+      <div class="faq-item"><div class="faq-q" onclick="faqT(this)"><span class="faq-ic">+</span><span class="faq-qt">How does Staffona's pricing work?</span></div><div class="faq-a"><p>Payroll management and managed employment are charged as a monthly fee per employee. Recruitment is a one-time placement fee as a percentage of the hired candidate's annual salary. All pricing is transparent — no monthly surprises.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="faqT(this)"><span class="faq-ic">+</span><span class="faq-qt">Are prices in USD? Can I pay in other currencies?</span></div><div class="faq-a"><p>Pricing is quoted in USD for international clients. We also invoice in AED, GBP, and EUR. Egyptian clients can be invoiced in EGP at current exchange rates.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="faqT(this)"><span class="faq-ic">+</span><span class="faq-qt">Is there a minimum contract length?</span></div><div class="faq-a"><p>No. Payroll management and managed employment services have no minimum contract term. You can exit with 30 days' notice at any time with no penalties.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="faqT(this)"><span class="faq-ic">+</span><span class="faq-qt">Are there setup or onboarding fees?</span></div><div class="faq-a"><p>There is a one-time onboarding fee of $200 for the first employee, which covers contract preparation, Labor Office registration, and NOSI enrollment. This fee is waived for clients starting with 3 or more employees.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="faqT(this)"><span class="faq-ic">+</span><span class="faq-qt">What's included in the managed employment fee?</span></div><div class="faq-a"><p>The monthly per-employee fee covers: employment contract, Labor Office registration, NOSI enrollment and monthly contributions, income tax withholding and filing, quarterly Form 4 returns, digital payslips, and a dedicated specialist. Employee salary is billed separately at actual cost.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="faqT(this)"><span class="faq-ic">+</span><span class="faq-qt">Can I combine services?</span></div><div class="faq-a"><p>Yes — most clients combine services. For example, managed employment plus active recruitment to grow the team, or payroll management plus compliance advisory. Combined packages are quoted together and can reduce the per-service cost.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<style>
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{padding:18px 0;display:flex;align-items:center;gap:14px;cursor:pointer}
+.faq-ic{width:24px;height:24px;border-radius:50%;background:var(--gold-pl);border:1px solid rgba(200,151,58,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:15px;color:var(--gold);transition:transform .22s}
+.faq-item.open .faq-ic{transform:rotate(45deg)}
+.faq-qt{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--text);flex:1}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:18px}
+.faq-a p{font-size:14px;color:var(--sl);line-height:1.8}
+</style>
+
+<footer class="footer">
+  <div class="w">
+    <div class="ftg">
+      <div class="flb">
+        <a href="index.html"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="flb-fb">Staff<em>ona</em></span></a>
+        <p>Egypt's trusted HR outsourcing and recruitment consultancy. Based in Alexandria, serving international and Egyptian businesses.</p>
+        <a href="mailto:info@staffona.com" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@staffona.com</a>
+        <a href="https://www.linkedin.com/company/staffona" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Staffona</a>
+      </div>
+      <div><div class="flct">Services</div><ul class="flls"><li><a href="hr-outsourcing.html">HR Outsourcing</a></li><li><a href="payroll-egypt.html">Payroll</a></li><li><a href="recruitment-egypt.html">Recruitment</a></li><li><a href="compliance.html">HR Compliance</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div><div class="flct">Resources</div><ul class="flls"><li><a href="resources.html">All Resources</a></li><li><a href="laws.html">Egyptian Laws</a></li><li><a href="resources/hiring-guide.html">Hiring Guide</a></li><li><a href="resources/payroll-taxes.html">Payroll Tax Guide</a></li></ul></div>
+      <div><div class="flct">Company</div><ul class="flls"><li><a href="about.html">About Staffona</a></li><li><a href="careers.html">Careers</a></li><li><a href="mailto:info@staffona.com">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+    </div>
+    <div class="ftbtm">
+      <div><div class="f-copy">© 2026 Staffona. All rights reserved.</div><p class="f-disc">All pricing is indicative. Final fees depend on specific requirements and are confirmed in writing before any engagement begins.</p></div>
+      <div class="fbl"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="sitemap.xml">Sitemap</a></div>
+    </div>
+  </div>
+</footer>
+<div class="cookie" id="cookieBanner"><p>We use cookies to improve your experience. <a href="privacy.html">Privacy Policy</a></p><div class="cb-btns"><button class="btn btn-gold btn-sm" id="cookieAccept">Accept</button><button style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.4);border-radius:var(--r);padding:7px 14px;font-size:13px;cursor:pointer" id="cookieDecline">Decline</button></div></div>
+<button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg></button>
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
+<script async src="https://assets.calendly.com/assets/external/widget.js"></script>
+<script src="shared.js"></script>
+<script>
+function openQuote(service) {
+  const sel = document.getElementById('qf-svc');
+  for (let i = 0; i < sel.options.length; i++) {
+    if (sel.options[i].value === service) { sel.selectedIndex = i; break; }
+  }
+  document.getElementById('qf-title').textContent = 'Quote: ' + service;
+  document.getElementById('getQuote').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function faqT(el) {
+  const item = el.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+document.getElementById('quoteForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('qfSubmit');
+  const fn = document.getElementById('qf-fn').value.trim();
+  const em = document.getElementById('qf-em').value.trim();
+  const svc = document.getElementById('qf-svc').value;
+  if (!fn || !em || !svc) { alert('Please fill in name, email, and service needed.'); return; }
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  const fullName = fn + ' ' + document.getElementById('qf-ln').value.trim();
+  const payload = {
+    access_key: 'a37ce092-9f36-4462-a9bd-ee4a3ecc6fa7',
+    name: fullName.trim(),
+    email: em,
+    subject: 'Quote Request: ' + svc + ' — ' + fullName,
+    from_name: 'Staffona Pricing Page',
+    message: [
+      'QUOTE REQUEST',
+      '=============',
+      'Service: ' + svc,
+      'Team size: ' + (document.getElementById('qf-size').value || '—'),
+      'Company: ' + (document.getElementById('qf-co').value.trim() || '—'),
+      'Country: ' + (document.getElementById('qf-country').value || '—'),
+      '',
+      'Message:',
+      document.getElementById('qf-msg').value.trim() || '—',
+    ].join('\n')
+  };
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const json = await res.json();
+    if (json.success) {
+      document.getElementById('quoteForm').style.display = 'none';
+      document.getElementById('formOk').style.display = 'block';
+      return;
+    }
+  } catch (err) { console.error(err); }
+  btn.textContent = 'Send Quote Request →'; btn.disabled = false;
+  alert('Could not submit. Please email info@staffona.com directly.');
+});
+</script>
+</body>
+</html>

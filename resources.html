@@ -4,25 +4,73 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Egypt HR &amp; Hiring Resources Hub — Free Guides &amp; Law Downloads | Staffona</title>
 <meta name="description" content="Free Egypt HR guides, labor law explainers, payroll tax breakdowns, and hiring checklists. Written by Staffona's Alexandria-based HR specialists.">
-<link rel="canonical" href="https://www.staffona.com/resources">
+<link rel="canonical" href="https://staffona.com/resources">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://staffona.com/resources">
+<meta property="og:title" content="Egypt HR Resources — Guides, Laws & Insights | Staffona">
+<meta property="og:description" content="Free guides on Egyptian labor law, payroll, social insurance, and hiring. Written by Egypt HR specialists.">
+<meta property="og:image" content="https://staffona.com/og-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="icon" type="image/png" href="Favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
+/* ── Resource cards ── */
 .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .rc{background:var(--off);border:1px solid var(--border);border-radius:var(--rl);padding:24px 20px;text-decoration:none;display:flex;flex-direction:column;transition:all var(--t) var(--ease)}
 .rc:hover{border-color:var(--gold);box-shadow:var(--sh2);transform:translateY(-3px)}
+[data-theme="dark"] .rc{background:rgba(255,255,255,.03)}
 .rc-cat{display:inline-block;background:var(--navy);color:var(--gold);font-size:10px;font-weight:700;padding:3px 9px;border-radius:4px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em}
 .rc-title{font-family:var(--fh);font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.35;flex:1}
-.rc-desc{font-size:13px;color:var(--slate);line-height:1.6;margin-bottom:14px}
-.rc-meta{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--slate-l)}
+.rc-desc{font-size:13px;color:var(--sl);line-height:1.6;margin-bottom:14px}
+.rc-meta{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--sl)}
 .rc-arrow{color:var(--gold);font-weight:600;font-size:12.5px;display:flex;align-items:center;gap:4px}
 .rc-arrow svg{width:12px;height:12px;transition:transform .18s}
 .rc:hover .rc-arrow svg{transform:translateX(4px)}
-@media(max-width:900px){.res-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.res-grid{grid-template-columns:1fr}}
+.rc[data-cat].hidden{display:none}
+
+/* ── Filter bar ── */
+.filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.fb-label{font-size:11.5px;font-weight:700;color:var(--sl);text-transform:uppercase;letter-spacing:.08em;margin-right:4px;flex-shrink:0}
+.fb-btn{padding:7px 16px;border-radius:100px;font-size:13px;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--sl);cursor:pointer;font-family:var(--fb);transition:all .18s}
+.fb-btn:hover{border-color:var(--gold);color:var(--gold)}
+.fb-btn.active{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+[data-theme="dark"] .fb-btn{color:rgba(255,255,255,.5);border-color:rgba(255,255,255,.12)}
+[data-theme="dark"] .fb-btn:hover{border-color:var(--gold);color:var(--gold)}
+[data-theme="dark"] .fb-btn.active{color:var(--navy)}
+
+/* ── Featured resource ── */
+.rc-featured{background:var(--navy);border:1px solid rgba(200,151,58,.3);border-radius:var(--rx);padding:32px;text-decoration:none;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-bottom:12px;transition:all var(--t)}
+.rc-featured:hover{border-color:var(--gold);box-shadow:0 8px 32px rgba(11,31,58,.4)}
+.rc-feat-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(200,151,58,.12);border:1px solid rgba(200,151,58,.25);border-radius:100px;padding:4px 12px;font-size:11px;font-weight:700;color:var(--gold);margin-bottom:12px}
+.rc-feat-title{font-family:var(--fh);font-size:22px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:10px}
+.rc-feat-desc{font-size:14px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:16px}
+.rc-feat-meta{display:flex;align-items:center;gap:16px;font-size:12.5px;color:rgba(255,255,255,.35)}
+.rc-feat-cta{background:var(--gold);color:var(--navy);padding:11px 22px;border-radius:var(--r);font-size:13.5px;font-weight:700;white-space:nowrap;flex-shrink:0;transition:all var(--t)}
+.rc-featured:hover .rc-feat-cta{background:#e0ac56}
+
+/* ── Stats row ── */
+.res-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:var(--rx);overflow:hidden;margin-bottom:52px}
+.rs-item{background:var(--white);padding:20px 24px;text-align:center}
+[data-theme="dark"] .rs-item{background:rgba(255,255,255,.03)}
+.rs-n{font-family:var(--fh);font-size:28px;font-weight:800;color:var(--gold)}
+.rs-l{font-size:12px;color:var(--sl);margin-top:4px}
+
+/* ── Divider section heading ── */
+.sec-div{display:flex;align-items:center;gap:14px;margin:48px 0 24px}
+.sec-div-line{flex:1;height:1px;background:var(--border)}
+.sec-div-label{font-size:11.5px;font-weight:700;color:var(--sl);text-transform:uppercase;letter-spacing:.1em;white-space:nowrap}
+
+/* ── No results ── */
+.no-results{display:none;text-align:center;padding:60px 20px;color:var(--sl);font-size:15px}
+.no-results.show{display:block}
+
+@media(max-width:900px){.res-grid{grid-template-columns:1fr 1fr}.rc-featured{grid-template-columns:1fr}.rc-feat-cta{display:none}.res-stats{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.res-grid{grid-template-columns:1fr}.res-stats{grid-template-columns:1fr 1fr}}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","@id":"https://staffona.com/resources#page","name":"Egypt HR Resources \u2014 Guides, Laws & Insights","description":"Free guides on Egyptian labor law, payroll, social insurance, and hiring. Written by Egypt HR specialists at Staffona.","url":"https://staffona.com/resources","publisher":{"@type":"Organization","name":"Staffona","url":"https://staffona.com"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://staffona.com"},{"@type":"ListItem","position":2,"name":"Resources","item":"https://staffona.com/resources"}]}]}</script>
 </head>
 <body>
 <div class="nav-wrap page" id="navbar">
@@ -37,6 +85,7 @@
           <a href="recruitment-egypt.html">Recruitment</a>
           <a href="compliance.html">HR Compliance</a>
           <a href="services.html">All Services →</a>
+          <a href="pricing.html">Pricing</a>
         </div>
       </li>
       <li><a href="resources.html">Resources</a></li>
@@ -75,29 +124,156 @@
 
 <section class="sec">
   <div class="w">
-    <div class="sh rv"><div class="lbl">Hiring Guides</div><h2 class="h2">How to Hire in <span>Egypt</span></h2></div>
-    <div class="res-grid">
-      <a href="resources/hiring-guide.html" class="rc rv"><div class="rc-cat">Essential Guide</div><div class="rc-title">Complete Guide to Hiring in Egypt (2026)</div><div class="rc-desc">Everything from finding candidates to signing compliant contracts and registering with NOSI — step by step.</div><div class="rc-meta"><span>15 min read</span><div class="rc-arrow">Read Guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div></div></a>
-      <a href="resources/gcc-hiring.html" class="rc rv d1"><div class="rc-cat">GCC Focus</div><div class="rc-title">How GCC Companies Can Hire in Egypt Legally</div><div class="rc-desc">Specialized guide for UAE, Saudi, Qatar, and Kuwait companies building teams in Egypt without registering locally.</div><div class="rc-meta"><span>12 min read</span><div class="rc-arrow">Read Guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div></div></a>
-      <a href="resources/payroll-taxes.html" class="rc rv d2"><div class="rc-cat">Tax Reference</div><div class="rc-title">Payroll Taxes in Egypt — Complete Employer Guide</div><div class="rc-desc">Income tax brackets, social insurance rates, quarterly filings, and employer obligations explained clearly.</div><div class="rc-meta"><span>10 min read</span><div class="rc-arrow">Read Guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div></div></a>
+
+    <!-- STATS -->
+    <div class="res-stats rv">
+      <div class="rs-item"><div class="rs-n">6</div><div class="rs-l">Expert guides</div></div>
+      <div class="rs-item"><div class="rs-n">100%</div><div class="rs-l">Free to read</div></div>
+      <div class="rs-item"><div class="rs-n">2026</div><div class="rs-l">Updated for this year</div></div>
+      <div class="rs-item"><div class="rs-n">0</div><div class="rs-l">Signup required</div></div>
     </div>
 
-    <div class="sh rv" style="margin-top:60px"><div class="lbl">Labor Law</div><h2 class="h2">Understanding <span>Egyptian Labor Law</span></h2></div>
-    <div class="res-grid">
-      <a href="resources/labor-law.html" class="rc rv"><div class="rc-cat">Law Explainer</div><div class="rc-title">Egyptian Labor Law 12/2003 — Key Articles Explained</div><div class="rc-desc">Working hours, overtime, annual leave, maternity leave, termination rights, and end-of-service gratuity.</div><div class="rc-meta"><span>18 min read</span><div class="rc-arrow">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div></div></a>
-      <a href="resources/termination-rules.html" class="rc rv d1"><div class="rc-cat">HR Operations</div><div class="rc-title">Employee Termination Rules in Egypt — What Employers Must Know</div><div class="rc-desc">Lawful grounds, notice periods, end-of-service calculations, and how to exit cleanly without legal risk.</div><div class="rc-meta"><span>10 min read</span><div class="rc-arrow">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div></div></a>
-      <a href="resources/social-insurance.html" class="rc rv d2"><div class="rc-cat">NOSI Guide</div><div class="rc-title">Social Insurance Law 148/2019 — Employer's Complete Guide</div><div class="rc-desc">Contribution rates, registration process, monthly remittance, and what happens if you miss a payment.</div><div class="rc-meta"><span>8 min read</span><div class="rc-arrow">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div></div></a>
+    <!-- FEATURED -->
+    <a href="resources/hiring-guide.html" class="rc-featured rv">
+      <div>
+        <div class="rc-feat-badge">⭐ Most Popular</div>
+        <div class="rc-feat-title">Complete Guide to Hiring in Egypt (2026)</div>
+        <div class="rc-feat-desc">Everything from finding candidates to signing compliant contracts, registering with NOSI, and running your first payroll — step by step, in plain English.</div>
+        <div class="rc-feat-meta">
+          <span>📁 Hiring &amp; EOR</span>
+          <span>15 min read</span>
+          <span>Updated Feb 2026</span>
+        </div>
+      </div>
+      <div class="rc-feat-cta">Read Guide →</div>
+    </a>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar rv">
+      <span class="fb-label">Filter:</span>
+      <button class="fb-btn active" data-filter="all">All Guides</button>
+      <button class="fb-btn" data-filter="hiring">Hiring &amp; EOR</button>
+      <button class="fb-btn" data-filter="payroll">Payroll &amp; Tax</button>
+      <button class="fb-btn" data-filter="laborlaw">Labor Law</button>
+      <button class="fb-btn" data-filter="compliance">Compliance</button>
     </div>
 
-    <div class="sh rv" style="margin-top:60px"><div class="lbl">Official Sources</div><h2 class="h2">Download Official <span>Egyptian Laws</span></h2><p class="sub">Links to official government sources. Always reference the latest version from the original authority.</p></div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
-      <a href="https://www.manpower.gov.eg" target="_blank" rel="noopener" class="rv" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--off);border:1px solid var(--border);border-radius:var(--rm);text-decoration:none;transition:all var(--t)"><div style="width:40px;height:40px;border-radius:var(--r);background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">⚖️</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">Ministry of Manpower</div><div style="font-size:12px;color:var(--slate)">manpower.gov.eg — Labor Law, Work Permits</div></div></a>
-      <a href="https://www.nosi.gov.eg" target="_blank" rel="noopener" class="rv d1" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--off);border:1px solid var(--border);border-radius:var(--rm);text-decoration:none;transition:all var(--t)"><div style="width:40px;height:40px;border-radius:var(--r);background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🛡️</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">NOSI — Social Insurance Authority</div><div style="font-size:12px;color:var(--slate)">nosi.gov.eg — Law 148/2019, Contributions</div></div></a>
-      <a href="https://www.eta.gov.eg" target="_blank" rel="noopener" class="rv d2" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--off);border:1px solid var(--border);border-radius:var(--rm);text-decoration:none;transition:all var(--t)"><div style="width:40px;height:40px;border-radius:var(--r);background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🏛️</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">Egyptian Tax Authority</div><div style="font-size:12px;color:var(--slate)">eta.gov.eg — Income Tax, Form 4 Filing</div></div></a>
-      <a href="https://www.mof.gov.eg" target="_blank" rel="noopener" class="rv d3" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--off);border:1px solid var(--border);border-radius:var(--rm);text-decoration:none;transition:all var(--t)"><div style="width:40px;height:40px;border-radius:var(--r);background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">📊</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">Ministry of Finance</div><div style="font-size:12px;color:var(--slate)">mof.gov.eg — Tax Policy, Minimum Wage</div></div></a>
+    <!-- ALL RESOURCE CARDS -->
+    <div class="res-grid" id="resGrid">
+
+      <a href="resources/hiring-guide.html" class="rc rv" data-cat="hiring">
+        <div class="rc-cat">Essential Guide</div>
+        <div class="rc-title">Complete Guide to Hiring in Egypt (2026)</div>
+        <div class="rc-desc">Contracts, NOSI registration, payroll setup, and compliance checklist for first-time employers in Egypt.</div>
+        <div class="rc-meta"><span>15 min read</span><div class="rc-arrow">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div></div>
+      </a>
+
+      <a href="resources/gcc-hiring.html" class="rc rv d1" data-cat="hiring">
+        <div class="rc-cat">GCC Focus</div>
+        <div class="rc-title">How GCC Companies Can Hire in Egypt Legally</div>
+        <div class="rc-desc">For UAE, Saudi, Qatar, and Kuwait companies building Egyptian teams without registering a local entity.</div>
+        <div class="rc-meta"><span>12 min read</span><div class="rc-arrow">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div></div>
+      </a>
+
+      <a href="resources/payroll-taxes.html" class="rc rv d2" data-cat="payroll">
+        <div class="rc-cat">Tax Reference</div>
+        <div class="rc-title">Payroll Taxes in Egypt — Complete Employer Guide</div>
+        <div class="rc-desc">Income tax brackets, NOSI rates, quarterly Form 4 filings, and employer obligations for 2026.</div>
+        <div class="rc-meta"><span>10 min read</span><div class="rc-arrow">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div></div>
+      </a>
+
+      <a href="resources/labor-law.html" class="rc rv" data-cat="laborlaw">
+        <div class="rc-cat">Law Explainer</div>
+        <div class="rc-title">Egyptian Labor Law No. 12/2003 — Key Articles Explained</div>
+        <div class="rc-desc">Working hours, overtime, annual leave, maternity leave, termination rights, and end-of-service gratuity.</div>
+        <div class="rc-meta"><span>18 min read</span><div class="rc-arrow">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div></div>
+      </a>
+
+      <a href="resources/termination-rules.html" class="rc rv d1" data-cat="laborlaw">
+        <div class="rc-cat">HR Operations</div>
+        <div class="rc-title">Employee Termination Rules in Egypt — What Employers Must Know</div>
+        <div class="rc-desc">Lawful grounds, notice periods, severance calculations, and how to exit an employee cleanly without legal risk.</div>
+        <div class="rc-meta"><span>10 min read</span><div class="rc-arrow">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div></div>
+      </a>
+
+      <a href="resources/social-insurance.html" class="rc rv d2" data-cat="compliance">
+        <div class="rc-cat">NOSI Guide</div>
+        <div class="rc-title">Social Insurance in Egypt — Law 148/2019 Employer Guide</div>
+        <div class="rc-desc">Contribution rates, registration process, monthly remittance, and penalties for late or missed payments.</div>
+        <div class="rc-meta"><span>8 min read</span><div class="rc-arrow">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div></div>
+      </a>
+
     </div>
+    <div class="no-results" id="noResults">No guides in this category yet. <a href="mailto:info@staffona.com" style="color:var(--gold);font-weight:600">Request a topic →</a></div>
+
+    <!-- OFFICIAL SOURCES -->
+    <div class="sec-div rv">
+      <div class="sec-div-line"></div>
+      <div class="sec-div-label">Official Sources</div>
+      <div class="sec-div-line"></div>
+    </div>
+    <div class="sh rv"><h2 class="h2">Download Official <span>Egyptian Laws</span></h2><p class="sub">Always reference the latest version from the original government authority.</p></div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px">
+      <a href="https://www.manpower.gov.eg" target="_blank" rel="noopener" class="rv" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--off);border:1px solid var(--border);border-radius:var(--rm);text-decoration:none;transition:all var(--t)">
+        <div style="width:40px;height:40px;border-radius:var(--r);background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">⚖️</div>
+        <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">Ministry of Manpower</div><div style="font-size:12px;color:var(--sl)">manpower.gov.eg — Labor Law, Work Permits</div></div>
+      </a>
+      <a href="https://www.nosi.gov.eg" target="_blank" rel="noopener" class="rv d1" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--off);border:1px solid var(--border);border-radius:var(--rm);text-decoration:none;transition:all var(--t)">
+        <div style="width:40px;height:40px;border-radius:var(--r);background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🛡️</div>
+        <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">NOSI — Social Insurance Authority</div><div style="font-size:12px;color:var(--sl)">nosi.gov.eg — Law 148/2019, Contributions</div></div>
+      </a>
+      <a href="https://www.eta.gov.eg" target="_blank" rel="noopener" class="rv d2" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--off);border:1px solid var(--border);border-radius:var(--rm);text-decoration:none;transition:all var(--t)">
+        <div style="width:40px;height:40px;border-radius:var(--r);background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🏛️</div>
+        <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">Egyptian Tax Authority</div><div style="font-size:12px;color:var(--sl)">eta.gov.eg — Income Tax, Form 4 Filing</div></div>
+      </a>
+      <a href="https://www.mof.gov.eg" target="_blank" rel="noopener" class="rv d3" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--off);border:1px solid var(--border);border-radius:var(--rm);text-decoration:none;transition:all var(--t)">
+        <div style="width:40px;height:40px;border-radius:var(--r);background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">📊</div>
+        <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">Ministry of Finance</div><div style="font-size:12px;color:var(--sl)">mof.gov.eg — Tax Policy, Minimum Wage</div></div>
+      </a>
+    </div>
+
+    <!-- CTA STRIP -->
+    <div class="rv" style="margin-top:52px;background:var(--navy);border-radius:var(--rx);padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 20%,rgba(200,151,58,.09),transparent);pointer-events:none"></div>
+      <div style="position:relative;z-index:1">
+        <div style="font-family:var(--fh);font-size:22px;font-weight:800;color:#fff;margin-bottom:8px">Need help applying this to your situation?</div>
+        <p style="font-size:14px;color:rgba(255,255,255,.5);margin:0">Our specialists give practical, Egypt-specific advice — not generic information. First consultation free.</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-shrink:0;position:relative;z-index:1;flex-wrap:wrap">
+        <button class="btn btn-gold" data-cal>Book Free Call →</button>
+        <a href="mailto:info@staffona.com" class="btn btn-ghost">Email Us</a>
+      </div>
+    </div>
+
   </div>
 </section>
+
+<script>
+(function(){
+  var btns = document.querySelectorAll('.fb-btn');
+  var cards = document.querySelectorAll('#resGrid .rc[data-cat]');
+  var noRes = document.getElementById('noResults');
+
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var filter = this.dataset.filter;
+      btns.forEach(function(b){ b.classList.remove('active'); });
+      this.classList.add('active');
+
+      var visible = 0;
+      cards.forEach(function(card){
+        if(filter === 'all' || card.dataset.cat === filter){
+          card.classList.remove('hidden');
+          visible++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+      noRes.classList.toggle('show', visible === 0);
+    });
+  });
+})();
+</script>
 <footer class="footer">
   <div class="w">
     <div class="ftg">
@@ -108,7 +284,7 @@
         <a href="https://maps.google.com/?q=El-Horreya+Street+Mostafa+Kamel+Alexandria+Egypt" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>El-Horreya St, Mostafa Kamel, Alexandria, Egypt</a>
         <a href="https://www.linkedin.com/company/staffona" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Staffona</a>
       </div>
-      <div><div class="flct">Services</div><ul class="flls"><li><a href="hr-outsourcing.html">HR Outsourcing</a></li><li><a href="payroll-egypt.html">Payroll</a></li><li><a href="recruitment-egypt.html">Recruitment</a></li><li><a href="compliance.html">HR Compliance</a></li><li><a href="services.html">All Services</a></li></ul></div>
+      <div><div class="flct">Services</div><ul class="flls"><li><a href="hr-outsourcing.html">HR Outsourcing</a></li><li><a href="payroll-egypt.html">Payroll</a></li><li><a href="recruitment-egypt.html">Recruitment</a></li><li><a href="compliance.html">HR Compliance</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="services.html">All Services</a></li></ul></div>
       <div><div class="flct">Resources</div><ul class="flls"><li><a href="resources.html">All Resources</a></li><li><a href="laws.html">Egyptian Laws</a></li><li><a href="resources/hiring-guide.html">Hiring Guide</a></li><li><a href="resources/payroll-taxes.html">Payroll Tax Guide</a></li><li><a href="resources/gcc-hiring.html">GCC Hiring Guide</a></li></ul></div>
       <div><div class="flct">Company</div><ul class="flls"><li><a href="about.html">About Staffona</a></li><li><a href="careers.html">Careers</a></li><li><a href="index.html#contact">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
     </div>
@@ -120,7 +296,7 @@
 </footer>
 <div class="cookie" id="cookieBanner"><p>We use cookies to improve your experience. <a href="privacy.html">Privacy Policy</a></p><div class="cb-btns"><button class="btn btn-gold btn-sm" id="cookieAccept">Accept</button><button style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.4);border-radius:var(--r);padding:7px 14px;font-size:13px;cursor:pointer" id="cookieDecline">Decline</button></div></div>
 <button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg></button>
-<script async src="https://assets.calendly.com/assets/external/widget.css"></script>
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
 <script src="shared.js"></script>
 </body></html>
