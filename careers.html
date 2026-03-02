@@ -122,7 +122,7 @@
   <div class="w">
 
     <div class="sh rv"><div class="lbl">Open Roles</div><h2 class="h2">Current <span>Openings</span></h2></div>
-    <div id="jobCards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-bottom:56px"></div>
+    <div id="jobCards" style="display:grid;gap:18px;margin-bottom:56px;max-width:1000px;margin-left:auto;margin-right:auto"></div>
 
     <!-- APPLICATION FORM -->
     <div class="app-wrap rv" id="appSection">
@@ -224,7 +224,7 @@
         <a href="index.html"><img src="/Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="flb-fb">Staff<em>ona</em></span></a>
         <p>Egypt's trusted HR outsourcing and recruitment consultancy. Based in Alexandria, serving international and Egyptian businesses.</p>
         <a href="mailto:info@staffona.com" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@staffona.com</a>
-        <a href="https://maps.google.com/?q=El-Horreya+Street+Mostafa+Kamel+Alexandria+Egypt" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>El-Horreya St, Mustafa Kamil, Alexandria, Egypt</a>
+        <a href="https://maps.google.com/?q=398+El-Horreya+Street+Mostafa+Kamel+Alexandria+Egypt" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>El-Horreya St, Mustafa Kamil, Alexandria, Egypt</a>
         <a href="https://www.linkedin.com/company/staffona" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Staffona</a>
       </div>
       <div><div class="flct">Services</div><ul class="flls"><li><a href="hr-outsourcing.html">HR Outsourcing</a></li><li><a href="payroll-egypt.html">Payroll</a></li><li><a href="recruitment-egypt.html">Recruitment</a></li><li><a href="compliance.html">HR Compliance</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="services.html">All Services</a></li></ul></div>
@@ -265,6 +265,17 @@ function loadJobs() {
 function renderJobCards() {
   const container = document.getElementById('jobCards');
   const active = jobs.filter(j => j.status === 'Active');
+  // Set grid columns based on count for centering
+  if (active.length === 1) {
+    container.style.gridTemplateColumns = 'minmax(300px, 480px)';
+    container.style.justifyContent = 'center';
+  } else if (active.length === 2) {
+    container.style.gridTemplateColumns = 'repeat(2, minmax(300px, 480px))';
+    container.style.justifyContent = 'center';
+  } else {
+    container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
+    container.style.justifyContent = '';
+  }
   if (!active.length) {
     container.innerHTML = `
       <div class="job-card featured rv">
@@ -299,6 +310,12 @@ function renderJobCards() {
       </div>`;
     return;
   }
+  /* Adjust columns based on count for better centering */
+  const cols = active.length === 1 ? '1fr' : active.length === 2 ? 'repeat(2,1fr)' : 'repeat(auto-fill,minmax(300px,1fr))';
+  container.style.gridTemplateColumns = cols;
+  if (active.length === 1) container.style.maxWidth = '480px';
+  else if (active.length === 2) container.style.maxWidth = '740px';
+  else container.style.maxWidth = '1000px';
   container.innerHTML = active.map((j, i) => {
     const skillTags = j.skills ? j.skills.map(s => `<span class="skill-tag">${esc(s)}</span>`).join('') : '';
     const qNote = j.questions && j.questions.length

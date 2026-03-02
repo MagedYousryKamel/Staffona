@@ -198,7 +198,7 @@ button,input,select,textarea{font-family:var(--fb)}ul{list-style:none}
 .footer{background:#06101E;padding-top:60px}
 .ftg{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
 .flb a{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.flb img{height:52px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+.flb img{height:110px;width:auto;filter:brightness(0) invert(1);opacity:.95}
 .flb-fb{font-family:var(--fh);font-size:20px;font-weight:700;color:#fff;display:none}.flb-fb em{color:var(--gold);font-style:normal}
 .flb p{font-size:13px;color:rgba(255,255,255,.42);line-height:1.7;max-width:270px;margin-bottom:16px}
 .flci{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:rgba(255,255,255,.4);margin-bottom:8px;transition:color var(--t)}
@@ -233,6 +233,36 @@ button,input,select,textarea{font-family:var(--fb)}ul{list-style:none}
   .ftg{grid-template-columns:1fr}.ftbtm{flex-direction:column}
   .frow2{grid-template-columns:1fr}
   .cta-btns{flex-direction:column;align-items:center}
+  /* Hero fixes */
+  .hero-title{font-size:clamp(28px,7vw,48px)!important}
+  .hero-sub{font-size:15px}
+  .hero-btns{flex-direction:column;align-items:center;gap:12px}
+  /* Pricing table mobile */
+  .cmptbl{font-size:11px}
+  .cmptbl th,.cmptbl td{padding:8px 6px}
+  /* Nav mobile  */
+  .nav-wa{display:none}
+  /* Footer logo center on mobile */
+  .flb{text-align:center;align-items:center}
+  .flb a{justify-content:center}
+  /* Steps single column */
+  .steps{grid-template-columns:1fr!important}
+  /* Resource cards */
+  .res-grid{grid-template-columns:1fr!important}
+  /* Testimonial dots */
+  .tst-dots{justify-content:center}
+  /* Contact section */
+  .ctc-grid{grid-template-columns:1fr!important}
+  /* Table responsive */
+  table{font-size:13px}
+}
+@media(max-width:480px){
+  .h1,.h2{font-size:clamp(22px,6.5vw,36px)}
+  .w{padding:0 14px}
+  .tst-card{padding:20px 16px}
+  .price-card{padding:24px 18px}
+  .job-card{padding:20px 16px}
+  .flb img{height:80px}
 }
 
 /* ── Legacy class aliases (from older page builds) ── */
@@ -313,3 +343,39 @@ button,input,select,textarea{font-family:var(--fb)}ul{list-style:none}
 .tst-dots{display:flex;justify-content:center;gap:8px;margin-top:24px}
 .tst-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;cursor:pointer;padding:0;transition:all .25s}
 .tst-dot.active{background:var(--gold);width:22px;border-radius:4px}
+
+/* ── MOBILE RESPONSIVE ADDITIONS ── */
+@media(max-width:768px){
+  /* Wrapper padding */
+  .w{padding:0 18px}
+  /* Hero / page header */
+  .ph{padding:100px 0 52px}
+  .ph .h1{font-size:clamp(28px,7vw,48px)}
+  /* Stats grid: 2 cols on mobile */
+  .stats{grid-template-columns:1fr 1fr}
+  /* Two/three col grids: stack */
+  .g2,.g3{grid-template-columns:1fr}
+  /* Service big cards */
+  .svc-big{flex-direction:column}
+  /* Section padding */
+  .sec{padding:52px 0}
+  /* Nav logo size on mobile */
+  .nav-logo img{height:60px}
+  /* Testimonial card full width on mobile */
+  .tst-card{flex:0 0 calc(100vw - 60px);max-width:100%}
+  /* Pricing cards stack */
+  .pricing-grid{grid-template-columns:1fr}
+  /* CTA section */
+  .ctitle{font-size:clamp(26px,6vw,42px)}
+  /* Footer columns */
+  .footer-grid{grid-template-columns:1fr 1fr}
+  /* Resource cards */
+  .res-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .stats{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .tst-card{flex:0 0 calc(100vw - 48px)}
+  .ph .h1{font-size:clamp(24px,8vw,36px)}
+  .nav-logo img{height:52px}
+}
