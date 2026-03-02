@@ -321,12 +321,15 @@ tr:hover td{background:rgba(255,255,255,.02)}
 <div class="tab-pane" id="tab-reviews">
 
   <div class="note-box">
-    <strong>⭐ Client Reviews / Testimonials:</strong> Log real client reviews here. Use <strong>Hide</strong> to temporarily remove from the public site. To publish on the website, copy the details into the <code>tst-card</code> blocks in <strong>index.html</strong>, <strong>about.html</strong>, and <strong>services.html</strong>. Each review needs: Name, Role, Country, Service, and Quote.
+    <strong>⭐ Client Reviews / Testimonials:</strong> Reviews are stored here and rendered live on <strong>index.html</strong>, <strong>about.html</strong>, and <strong>services.html</strong> automatically — no code editing needed. Use <strong>Hide</strong> on individual reviews or <strong>Hide All</strong> to remove the entire testimonials section from all public pages at once.
   </div>
 
   <div class="sh">
     <div><div class="sh-t">Client Reviews</div><div class="sh-d" id="rev-count">0 reviews</div></div>
-    <button class="tb-btn btn-gold" onclick="openRevPanel()">+ Add Review</button>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="tb-btn btn-out" id="toggleAllRevBtn" onclick="toggleAllReviews()">Hide All</button>
+      <button class="tb-btn btn-gold" onclick="openRevPanel()">+ Add Review</button>
+    </div>
   </div>
 
   <div class="panel" id="addRevPanel">
@@ -447,6 +450,29 @@ let filterStatus = 'all', filterRole = '';
 let editAppId = null, editJobId = null, editRevId = null;
 
 /* ── LOAD ── */
+const DEFAULT_REVIEWS = [
+  {id:101,name:'Khalid R.',role:'Head of Engineering · Gulf-Based Employer',country:'🇦🇪 Dubai, UAE',
+   service:'Managed Employment',stars:'5',status:'Published',
+   quote:'We hired three Egyptian engineers through Staffona without setting up a local entity. The whole process — contracts, NOSI, payroll — was done in four days. Our team in Dubai had no idea how smooth it could be.',
+   date:'2026-01-15T00:00:00.000Z'},
+  {id:102,name:'Nadia F.',role:'Finance Director · Cairo-Based Business',country:'🇪🇬 Cairo, Egypt',
+   service:'Compliance & Payroll',stars:'5',status:'Published',
+   quote:'Staffona cleaned up three years of payroll compliance issues in two months — dealing directly with NOSI and the Tax Authority on our behalf. Something we\'d been delaying for years, resolved cleanly.',
+   date:'2026-01-20T00:00:00.000Z'},
+  {id:103,name:'James T.',role:'Managing Director · UK Tech Company',country:'🇬🇧 London, UK',
+   service:'Recruitment + EOR',stars:'5',status:'Published',
+   quote:'As a UK startup, we needed one Egyptian data analyst and had no idea where to start legally. Staffona found the candidate, drafted the Arabic contract, and processed first payroll. Genuinely exceptional service.',
+   date:'2026-01-28T00:00:00.000Z'},
+  {id:104,name:'Ahmed S.',role:'Managing Director · Alexandria Business',country:'🇪🇬 Alexandria, Egypt',
+   service:'Payroll Management',stars:'5',status:'Published',
+   quote:'Our monthly payroll used to take our accountant two full days. With Staffona, we send one number and everything else is handled — payslips, NOSI, Form 4. The best operational decision we made this year.',
+   date:'2026-02-03T00:00:00.000Z'},
+  {id:105,name:'Tariq A.',role:'Operations Director · Saudi-Based Employer',country:'🇸🇦 Riyadh, Saudi Arabia',
+   service:'HR Outsourcing',stars:'5',status:'Published',
+   quote:'Expanding into Egypt from Riyadh, we needed someone who understood both sides — Arabic-speaking, Egyptian law expertise, comfortable with international business culture. Staffona was exactly that.',
+   date:'2026-02-10T00:00:00.000Z'}
+];
+
 function loadAll() {
   try { apps = JSON.parse(localStorage.getItem(APPS_KEY) || '[]'); } catch { apps = []; }
   try { jobs = JSON.parse(localStorage.getItem(JOBS_KEY) || '[]'); } catch { jobs = []; }
@@ -454,6 +480,8 @@ function loadAll() {
   /* Seed default jobs if empty OR if jobs exist but have no screening questions */
   const needsSeed = !jobs.length || jobs.every(j => !j.questions || !j.questions.length);
   if (needsSeed) { seedDefaultJobs(); }
+  /* Seed default reviews if storage is empty */
+  if (!reviews.length) { reviews = JSON.parse(JSON.stringify(DEFAULT_REVIEWS)); saveRevs(); }
   renderApps(); renderJobs(); renderReviews();
   populateRoleFilters(); populateRoleSelect();
 }
@@ -962,6 +990,16 @@ function deleteReview(id) {
   showToast('Review deleted');
 }
 
+function toggleAllReviews() {
+  const btn = document.getElementById('toggleAllRevBtn');
+  const allHidden = reviews.every(r => r.status === 'Hidden');
+  /* If all are already hidden → show all. Otherwise → hide all. */
+  reviews.forEach(r => { r.status = allHidden ? 'Published' : 'Hidden'; });
+  saveRevs(); renderReviews();
+  btn.textContent = allHidden ? 'Hide All' : 'Show All';
+  showToast(allHidden ? 'All reviews now visible ✓' : 'All reviews hidden from public pages ✓');
+}
+
 function renderReviews() {
   const grid = document.getElementById('revsGrid');
   document.getElementById('rev-count').textContent = reviews.length + ' review' + (reviews.length!==1?'s':'');
@@ -969,6 +1007,10 @@ function renderReviews() {
     grid.innerHTML = '<div class="empty"><div class="empty-ic">⭐</div><div class="empty-t">No reviews yet</div><div class="empty-d">Click "+ Add Review" to log a client testimonial</div></div>';
     return;
   }
+  /* Sync Hide All / Show All button */
+  const allHidden = reviews.every(r => r.status === 'Hidden');
+  const toggleBtn = document.getElementById('toggleAllRevBtn');
+  if (toggleBtn) toggleBtn.textContent = allHidden ? 'Show All' : 'Hide All';
   const stars = n => '★'.repeat(Number(n)) + '☆'.repeat(5-Number(n));
   grid.innerHTML = reviews.map(r => {
     const hidden = r.status === 'Hidden';
