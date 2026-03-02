@@ -48,11 +48,7 @@ img{max-width:100%;display:block}
 
 /* ── NAV ── */
 .nav-wrap{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.07)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
-.nav-brand{display:flex;align-items:center;gap:10px}
-.nav-brand img{height:42px}
-.brand-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:#fff}
-.brand-name em{color:var(--gold);font-style:normal}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;direction:ltr}
 .nav-links{display:flex;align-items:center;gap:4px;list-style:none}
 .nav-links a{padding:7px 12px;font-size:13.5px;color:rgba(255,255,255,.65);border-radius:6px;transition:all var(--t);font-weight:500}
 .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.07)}
@@ -146,6 +142,13 @@ img{max-width:100%;display:block}
 .faq-item.open .faq-a{max-height:200px;padding-bottom:18px}
 .faq-a-text{font-size:14px;color:var(--slate);line-height:1.8}
 
+/* ── NAV LOGO ── */
+.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none}
+.nav-logo img{height:64px;width:auto;filter:brightness(0) invert(1);object-fit:contain}
+.nlf{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;display:none}.nlf em{color:var(--gold);font-style:normal}
+/* ── FOOTER LOGO ── */
+.flb img{height:40px;width:auto;filter:brightness(0) invert(1);opacity:.85}
+.flb-fb{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;display:none}.flb-fb em{color:var(--gold);font-style:normal}
 /* ── FOOTER ── */
 .footer{background:#060F1E;padding:52px 0 28px}
 .ftg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px}
@@ -187,7 +190,6 @@ img{max-width:100%;display:block}
   .cta-t{font-size:28px}
   .stats-grid{grid-template-columns:1fr 1fr}
 }
-.nav-brand .brand-name,.flb-name{font-family:'Playfair Display',serif!important}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://staffona.com/ar#page","name":"استشارات موارد بشرية في مصر | ستافونا","description":"ستافونا — شريكك المتخصص في إدارة الموارد البشرية والرواتب والتوظيف في مصر.","url":"https://staffona.com/ar","inLanguage":"ar","publisher":{"@type":"Organization","name":"Staffona","url":"https://staffona.com"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://staffona.com/ar"}]}]}</script>
 </head>
@@ -197,10 +199,10 @@ img{max-width:100%;display:block}
 <div class="nav-wrap">
   <div class="w">
     <nav class="nav-in">
-      <div class="nav-brand">
-        <img src="Logo.png" alt="Staffona" height="42" onerror="this.style.display='none'">
-        <span class="brand-name">Staff<em>ona</em></span>
-      </div>
+      <a href="ar.html" class="nav-logo">
+        <img src="/Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="nlf">Staff<em>ona</em></span>
+      </a>
       <ul class="nav-links">
         <li><a href="#services">خدماتنا</a></li>
         <li><a href="#why">لماذا ستافونا</a></li>
@@ -482,7 +484,7 @@ img{max-width:100%;display:block}
   <div class="w">
     <div class="ftg">
       <div class="flb">
-        <div class="flb-name">Staff<em>ona</em></div>
+        <a href="ar.html"><img src="/Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="flb-fb">Staff<em>ona</em></span></a>
         <p>استشارات موارد بشرية متخصصة في مصر — إدارة رواتب، توظيف، وامتثال لقانون العمل للشركات المصرية والدولية.</p>
         <a href="mailto:info@staffona.com" class="flci">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
