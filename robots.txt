@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /careers-admin.html
 
-Sitemap: https://www.staffona.com/sitemap.xml
+Sitemap: https://staffona.com/sitemap.xml
