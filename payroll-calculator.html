@@ -190,12 +190,12 @@
 
             <!-- Medical Insurance Premium -->
             <div class="fi">
-              <label>Medical Insurance Premium (EGP/month) <span class="fi-note">optional</span></label>
+              <label>Your Medical Insurance Premium (EGP/month) <span class="fi-note">optional</span></label>
               <div class="fi-wrap">
                 <span class="fi-pfx">EGP</span>
                 <input type="number" id="medical" placeholder="0" min="0" max="16700" oninput="onType()">
               </div>
-              <div class="fi-hint">Tax deductible up to 16,700 EGP/year</div>
+              <div class="fi-hint">Your share · Employer pays 4× · Reduces your taxable income (capped at EGP 10,000/yr deduction)</div>
             </div>
 
             <!-- Toggles -->
@@ -304,12 +304,13 @@
                 <div class="bk-val neg" id="r-martyrs">—</div>
               </div>
 
-              <!-- Medical if entered -->
+              <!-- Medical benefit note if entered -->
               <div class="bk-row" id="r-med-row" style="display:none;margin-top:4px">
                 <div>
-                  <div class="bk-lbl">Medical Insurance Premium</div>
+                  <div class="bk-lbl">Medical Insurance Benefit</div>
+                  <div class="bk-sub" id="r-med-sub">In-kind benefit · Reduces taxable income</div>
                 </div>
-                <div class="bk-val neg" id="r-medical">—</div>
+                <div class="bk-val" style="color:var(--sl);font-size:12px" id="r-medical">—</div>
               </div>
 
               <div class="bk-total">
@@ -379,12 +380,12 @@
       <div class="rv d1">
         <div style="font-size:26px;margin-bottom:10px">💰</div>
         <h3 style="font-family:var(--fh);font-size:16px;font-weight:700;margin-bottom:8px">Income Tax</h3>
-        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Progressive brackets 0%→27.5% per Egyptian Tax Law. Taxable income = annual gross minus SI deductions minus personal exemption (EGP 20,000/yr) minus medical premiums.</p>
+        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Progressive brackets 0%→27.5% per Egyptian Tax Law 2026, with high-income adjustments above EGP 600k/year. Taxable income = annual gross minus SI deductions minus personal exemption (EGP 20,000/yr) minus employer medical premiums (up to EGP 10,000/yr).</p>
       </div>
       <div class="rv d2">
         <div style="font-size:26px;margin-bottom:10px">🔄</div>
         <h3 style="font-family:var(--fh);font-size:16px;font-weight:700;margin-bottom:8px">Net ↔ Gross</h3>
-        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Switch modes to calculate from desired net take-home. Finds the exact gross needed to deliver your target salary using iterative calculation.</p>
+        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Switch modes to calculate from desired net take-home. Finds the exact gross needed to deliver your target net using iterative binary search — accurate to EGP 0.05.</p>
       </div>
     </div>
   </div>
@@ -400,25 +401,16 @@ const SB_URL = "https://filagqajbgofboyyuifi.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpbGFncWFqYmdvZmJveXl1aWZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MjM2MjUsImV4cCI6MjA4NjI5OTYyNX0.b34HrBoTN2TP2qKehX5DHzZ8cLgP7WaEF3WoUXDYY5o";
 
 const D = {
-  brackets: [
-    {min:0,       max:40000,    rate:0.00},
-    {min:40000,   max:55000,    rate:0.10},
-    {min:55000,   max:70000,    rate:0.15},
-    {min:70000,   max:200000,   rate:0.20},
-    {min:200000,  max:400000,   rate:0.225},
-    {min:400000,  max:1200000,  rate:0.25},
-    {min:1200000, max:Infinity, rate:0.275},
-  ],
-  si_emp:    0.11,    // 9+1+1
-  si_er:     0.1875,  // 10+3.25+2+1+2.5
+  // Tax formula hardcoded in progressiveTax() — exact replica of EGPayslip calculate_progressive_tax SQL
+  si_emp:    0.11,    // employee: pension 9% + health 1% + EOS 1%
+  si_er:     0.1875,  // employer: pension 10% + health 3.25% + injury 2% + unemployment 1% + EOS 2.5%
   si_min:    2700,
   si_max:    16700,
-  ex_std:    20000,   // annual personal exemption
-  ex_dis:    30000,   // disabled
-  martyrs:   0.0005,  // 0.05% of gross
-  emergency: 25.40,   // EGP/month fixed (confirmed from EGPayslip)
-  med_er_multiplier: 4, // employer pays 4x employee medical premium
-  disc: "Calculations are indicative and based on current Egyptian tax and social insurance regulations. For official payroll processing and compliance review, consult a licensed payroll provider."
+  ex_std:    20000,   // annual personal exemption (standard)
+  ex_dis:    30000,   // annual personal exemption (disabled)
+  martyrs:   0.0005,  // Martyrs & Victims Fund: 0.05% of gross
+  med_er_multiplier: 4, // employer pays 4× employee medical premium
+  disc: "Calculations are indicative and based on current Egyptian tax and social insurance regulations. Powered by EGPayslip. For official payroll processing, consult a licensed payroll provider."
 };
 
 // Refresh from Supabase silently
@@ -429,17 +421,12 @@ const D = {
       if (!r.ok) throw new Error(`${t} ${r.status}`);
       return r.json();
     });
-    const [brackets, si, exemptions, settings] = await Promise.all([
-      q('tax_brackets','order=bracket_order'),
+    const [si, exemptions, settings] = await Promise.all([
       q('social_insurance_rates','effective_to=is.null'),
       q('tax_exemptions','effective_to=is.null'),
       q('system_settings'),
     ]);
-    D.brackets = brackets.map(b => ({
-      min:+b.min_annual_income,
-      max:b.max_annual_income?+b.max_annual_income:Infinity,
-      rate:+b.rate
-    }));
+    // Tax formula is hardcoded (EGPayslip uses calculate_progressive_tax SQL, not bracket table)
     const r = (type,comp) => { const x=si.find(s=>s.type===type&&s.component===comp); return x?+x.rate:null; };
     D.si_emp = (r('employee','pension')??0.09)+(r('employee','health')??0.01)+(r('employee','end_of_service')??0.01);
     D.si_er  = (r('employer','pension')??0.10)+(r('employer','health')??0.0325)+(r('employer','work_injury')??0.02)+(r('employer','unemployment')??0.01)+(r('employer','end_of_service')??0.025);
@@ -455,51 +442,92 @@ const D = {
 })();
 
 // ══════════════════════════════════════════════════════
-// CALCULATION ENGINE
+// CALCULATION ENGINE — exact replica of EGPayslip SQL
+// calculate_progressive_tax() + calculate_salary_v1()
 // ══════════════════════════════════════════════════════
+
+// Exact port of calculate_progressive_tax() from Supabase
+function progressiveTax(t) {
+  if (t <= 0)          return 0;
+  if (t <= 40000)      return 0;
+  if (t <= 55000)      return (t - 40000) * 0.10;
+  if (t <= 70000)      return (t - 55000) * 0.15 + 1500;
+  if (t <= 200000)     return (t - 70000) * 0.20 + 1500 + 2250;
+  if (t <= 400000)     return (t - 200000) * 0.225 + 1500 + 2250 + 26000;
+  if (t <= 600000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000;
+  // HIGH-INCOME BRACKET ADJUSTMENTS (bracket merging)
+  if (t <= 700000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 4000;
+  if (t <= 800000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 6750;
+  if (t <= 900000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 10250;
+  if (t <= 1200000)    return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 15250;
+  return (t - 1200000) * 0.275 + 300000;
+}
+
+// Build bracket breakdown rows for display only (simulate what brackets were hit)
+function bracketRows(taxableA) {
+  const brackets = [
+    {min:0,       max:40000,    rate:0.00, label:'0%'},
+    {min:40000,   max:55000,    rate:0.10, label:'10%'},
+    {min:55000,   max:70000,    rate:0.15, label:'15%'},
+    {min:70000,   max:200000,   rate:0.20, label:'20%'},
+    {min:200000,  max:400000,   rate:0.225,label:'22.5%'},
+    {min:400000,  max:600000,   rate:0.25, label:'25%'},
+    {min:600000,  max:1200000,  rate:0.25, label:'25%+'},
+    {min:1200000, max:Infinity, rate:0.275,label:'27.5%'},
+  ];
+  return brackets
+    .filter(b => taxableA > b.min && b.rate > 0)
+    .map(b => {
+      const inB = Math.min(taxableA, b.max) - b.min;
+      return { rate:b.rate, label:b.label, inB, taxM_month: inB * b.rate / 12 };
+    });
+}
+
 function calcGross(grossM, medM, withSI, isDisabled) {
-  // 1. Social Insurance
+  // 1. Social Insurance (exact SQL: GREATEST(min, LEAST(gross, max)))
   const ins    = Math.min(Math.max(grossM, D.si_min), D.si_max);
-  const si_emp = withSI ? ins * D.si_emp : 0;
+  const si_emp = withSI ? Math.round(ins * D.si_emp * 100) / 100 : 0;
+  const si_er  = withSI ? Math.round(ins * D.si_er  * 100) / 100 : 0;
 
-  // 2. Martyrs Fund (0.05% of gross)
-  const martyrs = grossM * D.martyrs;
-
-  // 3. Annual taxable income
-  // = gross annual − SI annual − personal exemption − medical premium annual
+  // 2. Annual figures
   const grossA    = grossM * 12;
   const siA       = si_emp * 12;
   const exemption = isDisabled ? D.ex_dis : D.ex_std;
-  const medAnnual = medM * 12;
-  const taxableA  = Math.max(0, grossA - siA - exemption - medAnnual);
 
-  // 4. Tax by bracket
-  let taxA = 0;
-  const bRows = [];
-  for (const b of D.brackets) {
-    if (taxableA <= b.min) continue;
-    const inB  = Math.min(taxableA, b.max) - b.min;
-    const taxB = inB * b.rate;
-    taxA += taxB;
-    if (b.rate > 0) bRows.push({ rate:b.rate, inB, taxM_month:taxB/12 });
-  }
-  const taxM = taxA / 12;
+  // 3. Medical tax deduction — exact SQL formula from calculate_salary_v1:
+  //    employer pays 4x employee premium; EMPLOYER's annual is passed to tax deduction
+  //    v_medical_deduction = LEAST(med_annual, LEAST((annual_gross - si_annual)*0.15, 10000))
+  const medErAnnual   = medM * D.med_er_multiplier * 12;   // employer annual premium
+  const medDeduction  = Math.min(medErAnnual, Math.min((grossA - siA) * 0.15, 10000));
 
-  // 5. Net
-  const net = grossM - si_emp - taxM - martyrs - medM;
+  // 4. Annual taxable income
+  const taxableA = Math.max(0, grossA - siA - exemption - medDeduction);
 
-  // 6. Employer cost
-  const er_si    = withSI ? ins * D.si_er : 0;
-  const er_med   = medM * D.med_er_multiplier;
-  const erTotal  = grossM + er_si + er_med + D.emergency;
+  // 5. Annual tax — exact EGPayslip formula
+  const taxA  = progressiveTax(taxableA);
+  const taxM  = Math.round(taxA / 12 * 100) / 100;
 
-  // 7. Effective tax rate vs gross
-  const etr = grossA > 0 ? taxA / grossA * 100 : 0;
-  const topB = [...D.brackets].reverse().find(b => taxableA > b.min && b.rate > 0);
+  // 6. Martyrs & Emergency
+  const martyrs  = Math.round(grossM * D.martyrs  * 100) / 100;
+  const emergency= Math.round(Math.min(grossM, 2540) * 0.01 * 100) / 100;
 
-  return { grossM, net, si_emp, taxM, taxA, taxableA, ins,
-           bRows, exemption, martyrs, medM,
-           er_si, er_med, erTotal, etr, topB };
+  // 7. Net salary (medical is NOT deducted from net — it's an employer in-kind benefit)
+  const totalDed = si_emp + taxM + martyrs;
+  const net      = Math.round((grossM - totalDed) * 100) / 100;
+
+  // 8. Total employer cost = gross + SI(18.75%) + emergency + employer_medical
+  const er_med  = medM * D.med_er_multiplier;
+  const erTotal = Math.round((grossM + si_er + emergency + er_med) * 100) / 100;
+
+  // 9. Effective tax rate & top bracket for display
+  const etr  = grossA > 0 ? taxA / grossA * 100 : 0;
+  const bRows_display = bracketRows(taxableA);
+  const topB = bRows_display.length ? bRows_display[bRows_display.length - 1] : null;
+
+  return { grossM, net, si_emp, si_er, ins, taxM, taxA, taxableA,
+           medDeduction, medErAnnual, exemption, martyrs, emergency,
+           er_med, erTotal, totalDed,
+           bRows: bRows_display, etr, topB };
 }
 
 function calcNet(targetNetM, medM, withSI, isDisabled) {
@@ -590,18 +618,19 @@ function calculate() {
       <div class="bk-val">−EGP ${fmtR(b.taxM_month)}/mo</div>
     </div>`).join('');
 
-  // Medical row
+  // Medical row — shown as benefit info, NOT a net deduction
   if (medM > 0) {
     document.getElementById('r-med-row').style.display = '';
-    document.getElementById('r-medical').textContent = `−EGP ${fmtR(medM)}`;
+    document.getElementById('r-medical').textContent = `Employer pays EGP ${fmtR(r.er_med)}/mo · Saves EGP ${fmtR(r.medDeduction/12)}/mo tax`;
+    document.getElementById('r-med-sub').textContent = `In-kind benefit · Tax deduction: EGP ${fmtR(r.medDeduction)}/yr (capped at 10,000)`;
   } else {
     document.getElementById('r-med-row').style.display = 'none';
   }
 
   // Employer
   document.getElementById('r-er-gross').textContent = `EGP ${fmtR(r.grossM)}`;
-  document.getElementById('r-er-si').textContent    = withSI ? `+EGP ${fmtR(r.er_si)}` : `EGP 0`;
-  document.getElementById('r-emergency').textContent= `+EGP ${D.emergency.toFixed(2)}`;
+  document.getElementById('r-er-si').textContent    = withSI ? `+EGP ${fmtR(r.si_er)}` : `EGP 0`;
+  document.getElementById('r-emergency').textContent= `+EGP ${fmtR(r.emergency)}`;
   document.getElementById('r-er-total').textContent = `EGP ${fmtR(r.erTotal)}`;
 
   if (medM > 0) {
