@@ -109,9 +109,9 @@
 .bk-total .bk-val{font-size:15px;font-weight:700}
 
 /* employer box */
-.er-box{background:var(--off);border:1px solid var(--bd);border-radius:var(--rm);padding:13px 16px;display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:12px}
-.er-lbl{font-size:12px;color:var(--sl);line-height:1.4}
-.er-val{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--navy);white-space:nowrap}
+.er-box{background:#EEF3FF;border:2px solid #0B1F3A;border-radius:var(--rm);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px}
+.er-lbl{font-size:12px;color:#0B1F3A;font-weight:600;line-height:1.4}
+.er-val{font-family:var(--fh);font-size:22px;font-weight:800;color:#0B1F3A !important;white-space:nowrap}
 
 /* disclaimer + powered-by */
 .calc-disc{padding:12px 22px;background:var(--off);border-top:1px solid var(--bd)}
@@ -134,7 +134,7 @@
   .calc-cta{padding:20px 16px}
   .calc-cta-btns{flex-direction:column;align-items:center}
   .er-box{flex-direction:column;align-items:flex-start;gap:6px}
-  .er-val{font-size:18px}
+  .er-val{font-size:19px;color:#0B1F3A !important}
 }
 </style>
 </head>
@@ -335,7 +335,7 @@
                 <div class="bk-val" id="r-er-si">—</div>
               </div>
               <div class="bk-row" id="r-er-med-row" style="display:none">
-                <div class="bk-lbl">Medical Insurance</div>
+                <div class="bk-lbl">Medical Insurance Premium</div>
                 <div class="bk-val" id="r-er-medical">—</div>
               </div>
               <div class="bk-row">
@@ -409,7 +409,7 @@ const D = {
   ex_std:    20000,   // annual personal exemption (standard)
   ex_dis:    30000,   // annual personal exemption (disabled)
   martyrs:   0.0005,  // Martyrs & Victims Fund: 0.05% of gross
-  med_er_multiplier: 4, // employer pays 4× employee medical premium
+  med_er_multiplier: 1, // employer passes monthly premium (1x) as entered
   disc: "Calculations are indicative and based on current Egyptian tax and social insurance regulations. Powered by EGPayslip. For official payroll processing, consult a licensed payroll provider."
 };
 
@@ -494,11 +494,9 @@ function calcGross(grossM, medM, withSI, isDisabled) {
   const siA       = si_emp * 12;
   const exemption = isDisabled ? D.ex_dis : D.ex_std;
 
-  // 3. Medical tax deduction — exact SQL formula from calculate_salary_v1:
-  //    employer pays 4x employee premium; EMPLOYER's annual is passed to tax deduction
-  //    v_medical_deduction = LEAST(med_annual, LEAST((annual_gross - si_annual)*0.15, 10000))
-  const medErAnnual   = medM * D.med_er_multiplier * 12;   // employer annual premium
-  const medDeduction  = Math.min(medErAnnual, Math.min((grossA - siA) * 0.15, 10000));
+  // 3. Medical tax deduction: annual premium paid, capped at EGP 10,000/yr (per tax law)
+  const medAnnual    = medM * 12;
+  const medDeduction = Math.min(medAnnual, 10000);
 
   // 4. Annual taxable income
   const taxableA = Math.max(0, grossA - siA - exemption - medDeduction);
@@ -515,8 +513,8 @@ function calcGross(grossM, medM, withSI, isDisabled) {
   const totalDed = si_emp + taxM + martyrs;
   const net      = Math.round((grossM - totalDed) * 100) / 100;
 
-  // 8. Total employer cost = gross + SI(18.75%) + emergency + employer_medical
-  const er_med  = medM * D.med_er_multiplier;
+  // 8. Total employer cost: gross + SI(18.75%) + emergency + monthly medical premium (1x)
+  const er_med  = medM;  // monthly premium as entered — employer bears this cost
   const erTotal = Math.round((grossM + si_er + emergency + er_med) * 100) / 100;
 
   // 9. Effective tax rate & top bracket for display
@@ -525,7 +523,7 @@ function calcGross(grossM, medM, withSI, isDisabled) {
   const topB = bRows_display.length ? bRows_display[bRows_display.length - 1] : null;
 
   return { grossM, net, si_emp, si_er, ins, taxM, taxA, taxableA,
-           medDeduction, medErAnnual, exemption, martyrs, emergency,
+           medDeduction, medAnnual, exemption, martyrs, emergency,
            er_med, erTotal, totalDed,
            bRows: bRows_display, etr, topB };
 }
@@ -621,8 +619,8 @@ function calculate() {
   // Medical row — shown as benefit info, NOT a net deduction
   if (medM > 0) {
     document.getElementById('r-med-row').style.display = '';
-    document.getElementById('r-medical').textContent = `Employer pays EGP ${fmtR(r.er_med)}/mo · Saves EGP ${fmtR(r.medDeduction/12)}/mo tax`;
-    document.getElementById('r-med-sub').textContent = `In-kind benefit · Tax deduction: EGP ${fmtR(r.medDeduction)}/yr (capped at 10,000)`;
+    document.getElementById('r-medical').textContent = `In-kind benefit · Reduces taxable income by EGP ${fmtR(r.medDeduction)}/yr`;
+    document.getElementById('r-med-sub').textContent = `Tax deduction: EGP ${fmtR(r.medDeduction)}/yr (annual premium, capped at EGP 10,000/yr)`;
   } else {
     document.getElementById('r-med-row').style.display = 'none';
   }
