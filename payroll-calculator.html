@@ -2,140 +2,212 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Egyptian Payroll Calculator — Staffona</title>
-<meta name="description" content="Free Egyptian salary calculator. Compute net salary, income tax, and social insurance deductions instantly. Based on current Egyptian tax law.">
+<meta name="description" content="Free Egyptian salary calculator. Compute net salary, income tax, and social insurance deductions instantly. Based on current Egyptian tax law 2026.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://staffona.com/payroll-calculator">
+<meta property="og:title" content="Free Egyptian Payroll Calculator — Staffona">
+<meta property="og:description" content="Calculate Egyptian net salary, income tax brackets, social insurance, and total employer cost. Free tool powered by EGPayslip.">
+<meta property="og:image" content="https://staffona.com/og-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://staffona.com/payroll-calculator">
+<link rel="icon" type="image/png" href="/Favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
+/* ─── page hero ─── */
 .pg-hero{background:var(--navy);padding:72px 0 52px;border-bottom:1px solid rgba(255,255,255,.07)}
 .pg-hero .lbl{margin-bottom:12px}
 .pg-hero h1{color:#fff;font-size:clamp(26px,4vw,44px);max-width:640px;line-height:1.15}
 .pg-hero p{color:rgba(255,255,255,.5);font-size:15px;max-width:500px;margin-top:12px;line-height:1.7}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:40px;padding:5px 14px 5px 8px;font-size:12px;color:rgba(255,255,255,.45);margin-top:18px}
-.hero-dot{width:7px;height:7px;background:#4ade80;border-radius:50%;flex-shrink:0}
+.hero-dot{width:7px;height:7px;background:#4ade80;border-radius:50%;flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.8)}}
+
+/* ─── layout ─── */
 .calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:44px 0 88px;align-items:start}
-@media(max-width:860px){.calc-layout{grid-template-columns:1fr}}
+@media(max-width:860px){.calc-layout{grid-template-columns:1fr;padding:28px 0 60px}}
+
+/* ─── card ─── */
 .cc{background:var(--white);border:1px solid var(--bd);border-radius:var(--rx);overflow:hidden;box-shadow:var(--s2)}
-.cc-head{padding:20px 24px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px}
-.cc-icon{width:34px;height:34px;background:var(--gpl);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cc-head{padding:18px 22px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px}
+.cc-icon{width:32px;height:32px;background:var(--gpl);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .cc-icon svg{color:var(--gold)}
-.cc-head h2{font-family:var(--fh);font-size:16px;font-weight:700;color:var(--tx);margin:0}
-.cc-head p{font-size:12px;color:var(--sl);margin:1px 0 0}
-.cc-body{padding:24px}
-.mode-sw{display:grid;grid-template-columns:1fr 1fr;background:var(--off);border:1.5px solid var(--bd);border-radius:var(--rl);padding:3px;margin-bottom:22px;gap:2px}
-.mode-btn{padding:9px 12px;text-align:center;font-size:13.5px;font-weight:600;color:var(--sl);border:none;background:none;border-radius:calc(var(--rl) - 2px);cursor:pointer;transition:background .15s,color .15s;font-family:var(--fb)}
+.cc-head h2{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--tx);margin:0}
+.cc-head p{font-size:11.5px;color:var(--sl);margin:1px 0 0}
+.cc-body{padding:20px 22px}
+
+/* ─── mode switcher ─── */
+.mode-sw{display:grid;grid-template-columns:1fr 1fr;background:var(--off);border:1.5px solid var(--bd);border-radius:var(--rl);padding:3px;margin-bottom:20px;gap:2px}
+.mode-btn{padding:8px 10px;text-align:center;font-size:13px;font-weight:600;color:var(--sl);border:none;background:none;border-radius:calc(var(--rl) - 2px);cursor:pointer;transition:background .15s,color .15s;font-family:var(--fb);line-height:1.3}
 .mode-btn.on{background:var(--white);color:var(--tx);box-shadow:var(--s1)}
-.fi{margin-bottom:18px}
-.fi label{display:block;font-size:11.5px;font-weight:700;color:var(--sl);text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px}
+
+/* ─── field ─── */
+.fi{margin-bottom:16px}
+.fi label{display:block;font-size:11px;font-weight:700;color:var(--sl);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.fi-note{font-size:10.5px;color:var(--sll);font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px}
 .fi-wrap{position:relative}
-.fi-pfx{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:700;color:var(--sll);pointer-events:none}
-.fi input{width:100%;padding:12px 14px 12px 48px;border:1.5px solid var(--bd);border-radius:var(--rl);font-size:17px;font-weight:600;font-family:var(--fb);color:var(--tx);background:var(--white);transition:border-color .18s;-moz-appearance:textfield}
+.fi-pfx{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:12.5px;font-weight:700;color:var(--sll);pointer-events:none}
+.fi input{width:100%;padding:11px 13px 11px 46px;border:1.5px solid var(--bd);border-radius:var(--rl);font-size:16px;font-weight:600;font-family:var(--fb);color:var(--tx);background:var(--white);transition:border-color .18s;-moz-appearance:textfield}
 .fi input::-webkit-outer-spin-button,.fi input::-webkit-inner-spin-button{-webkit-appearance:none}
 .fi input:focus{outline:none;border-color:var(--gold)}
 .fi input.err{border-color:#e05555}
-.opt-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid var(--bd);margin-top:4px}
+.fi-hint{font-size:11px;color:var(--sll);margin-top:4px}
+
+/* ─── toggle ─── */
+.opt-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--bd)}
 .opt-lbl{font-size:13px;color:var(--tx)}
-.opt-sub{font-size:11.5px;color:var(--sl);margin-top:2px}
+.opt-sub{font-size:11px;color:var(--sll);margin-top:1px}
 .tog{position:relative;width:40px;height:22px;flex-shrink:0}
 .tog input{opacity:0;width:0;height:0;position:absolute}
 .tog-sl{position:absolute;inset:0;background:var(--bd);border-radius:11px;cursor:pointer;transition:.18s}
-.tog-sl::before{content:'';position:absolute;width:16px;height:16px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.18s}
+.tog-sl::before{content:'';position:absolute;width:16px;height:16px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.18s;box-shadow:0 1px 3px rgba(0,0,0,.15)}
 .tog input:checked~.tog-sl{background:var(--gold)}
 .tog input:checked~.tog-sl::before{transform:translateX(18px)}
-.calc-go{width:100%;margin-top:22px;padding:14px;background:var(--navy);color:#fff;font-size:15px;font-weight:700;font-family:var(--fb);border:none;border-radius:var(--rl);cursor:pointer;transition:background .18s,transform .12s;letter-spacing:.01em}
+
+/* ─── button ─── */
+.calc-go{width:100%;margin-top:18px;padding:13px;background:var(--navy);color:#fff;font-size:14.5px;font-weight:700;font-family:var(--fb);border:none;border-radius:var(--rl);cursor:pointer;transition:background .18s,transform .12s;letter-spacing:.01em;display:flex;align-items:center;justify-content:center;gap:8px}
 .calc-go:hover{background:var(--nvm)}
 .calc-go:active{transform:scale(.99)}
-.res-empty{padding:52px 24px;text-align:center}
-.res-empty p{font-size:13.5px;color:var(--sll);line-height:1.7;margin-top:14px}
+.calc-go svg{flex-shrink:0}
+
+/* ─── results ─── */
+.res-empty{padding:48px 22px;text-align:center}
+.res-empty p{font-size:13px;color:var(--sll);line-height:1.7;margin-top:12px}
 .res-inner{display:none}
-.net-hero{padding:24px;background:linear-gradient(135deg,var(--navy) 0%,var(--nvm) 100%);text-align:center}
-.nh-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--glt);margin-bottom:10px}
-.nh-val{font-family:var(--fh);font-size:clamp(30px,5vw,42px);font-weight:700;color:#fff;line-height:1}
-.nh-unit{font-size:15px;font-weight:400;color:rgba(255,255,255,.5);margin-left:5px}
-.nh-sub{font-size:12px;color:rgba(255,255,255,.38);margin-top:8px}
-.nh-pills{display:flex;justify-content:center;gap:8px;margin-top:14px;flex-wrap:wrap}
-.np{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border-radius:40px;padding:4px 11px;font-size:11.5px;color:rgba(255,255,255,.55)}
-.bk-sec{padding:18px 24px;border-bottom:1px solid var(--bd)}
+
+/* net hero */
+.net-hero{padding:22px;background:linear-gradient(140deg,#0B1F3A 0%,#1B3460 100%);text-align:center}
+.nh-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--glt);margin-bottom:9px}
+.nh-val{font-family:var(--fh);font-size:clamp(28px,5vw,40px);font-weight:700;color:#fff;line-height:1}
+.nh-unit{font-size:14px;font-weight:400;color:rgba(255,255,255,.45);margin-left:4px}
+.nh-sub{font-size:11.5px;color:rgba(255,255,255,.35);margin-top:7px}
+.nh-pills{display:flex;justify-content:center;gap:7px;margin-top:12px;flex-wrap:wrap}
+.np{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:40px;padding:3px 10px;font-size:11px;color:rgba(255,255,255,.5)}
+
+/* breakdown */
+.bk-sec{padding:16px 22px;border-bottom:1px solid var(--bd)}
 .bk-sec:last-child{border-bottom:none}
-.bk-title{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--sll);margin-bottom:12px}
-.bk-row{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0}
-.bk-lbl{font-size:13.5px;color:var(--tx)}
-.bk-sub{font-size:11.5px;color:var(--sll);margin-top:2px}
-.bk-val{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--tx);white-space:nowrap;margin-left:12px}
+.bk-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--sll);margin-bottom:10px}
+.bk-row{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0;gap:8px}
+.bk-lbl{font-size:13px;color:var(--tx);flex:1;min-width:0}
+.bk-sub{font-size:11px;color:var(--sll);margin-top:1px}
+.bk-val{font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--tx);white-space:nowrap}
 .bk-val.neg{color:#dc4545}
 .bk-val.pos{color:#16a34a}
-.bk-sub-row{display:flex;justify-content:space-between;align-items:baseline;padding:3px 0 3px 14px;border-left:2px solid var(--bd)}
-.bk-sub-row .bk-lbl{font-size:12px;color:var(--sl)}
-.bk-sub-row .bk-val{font-size:12.5px;font-weight:500;color:var(--sl)}
-.bk-divider{border:none;border-top:1px dashed var(--bd);margin:6px 0}
-.bk-total{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;margin-top:6px;border-top:1.5px solid var(--bd)}
-.bk-total .bk-lbl{font-size:14px;font-weight:700}
-.bk-total .bk-val{font-size:16px;font-weight:700}
-.er-box{background:var(--off);border:1px solid var(--bd);border-radius:var(--rm);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-.er-lbl{font-size:12.5px;color:var(--sl)}
-.er-lbl small{font-size:11px;color:var(--sll);display:block;margin-top:2px}
-.er-val{font-family:var(--fh);font-size:22px;font-weight:700;color:var(--navy)}
-.calc-disc{padding:14px 24px;background:var(--off);border-top:1px solid var(--bd)}
-.calc-disc p{font-size:11px;color:var(--sll);line-height:1.6;margin:0}
-.pwby{text-align:center;padding:12px 24px;border-top:1px solid var(--bd)}
-.pwby a{font-size:11.5px;color:var(--sll);text-decoration:none}
+.bk-sub-row{display:flex;justify-content:space-between;align-items:baseline;padding:2px 0 2px 12px;border-left:2px solid var(--bd);gap:8px}
+.bk-sub-row .bk-lbl{font-size:11.5px;color:var(--sl)}
+.bk-sub-row .bk-val{font-size:11.5px;font-weight:500;color:var(--sl)}
+.bk-divider{border:none;border-top:1px dashed var(--bd);margin:5px 0}
+.bk-total{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0 4px;margin-top:5px;border-top:1.5px solid var(--bd);gap:8px}
+.bk-total .bk-lbl{font-size:13.5px;font-weight:700}
+.bk-total .bk-val{font-size:15px;font-weight:700}
+
+/* employer box */
+.er-box{background:var(--off);border:1px solid var(--bd);border-radius:var(--rm);padding:13px 16px;display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:12px}
+.er-lbl{font-size:12px;color:var(--sl);line-height:1.4}
+.er-val{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--navy);white-space:nowrap}
+
+/* disclaimer + powered-by */
+.calc-disc{padding:12px 22px;background:var(--off);border-top:1px solid var(--bd)}
+.calc-disc p{font-size:10.5px;color:var(--sll);line-height:1.6;margin:0}
+.pwby{text-align:center;padding:10px 22px;border-top:1px solid var(--bd)}
+.pwby a{font-size:11px;color:var(--sll);text-decoration:none}
 .pwby a:hover{color:var(--gold)}
-.calc-cta{background:var(--navy);border-radius:var(--rx);padding:28px;margin-top:22px;text-align:center}
-.calc-cta h3{font-family:var(--fh);font-size:18px;color:#fff;margin-bottom:8px}
-.calc-cta p{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:18px;line-height:1.65}
+
+/* cta */
+.calc-cta{background:var(--navy);border-radius:var(--rx);padding:26px;margin-top:20px;text-align:center}
+.calc-cta h3{font-family:var(--fh);font-size:17px;color:#fff;margin-bottom:7px}
+.calc-cta p{font-size:12.5px;color:rgba(255,255,255,.42);margin-bottom:16px;line-height:1.65}
+.calc-cta-btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+
+/* mobile fixes */
 @media(max-width:480px){
-  .nh-val{font-size:28px}
-  .cc-body,.bk-sec{padding:18px 16px}
+  .nh-val{font-size:26px}
+  .cc-body,.bk-sec{padding:16px 14px}
+  .cc-head{padding:14px 16px}
+  .calc-cta{padding:20px 16px}
+  .calc-cta-btns{flex-direction:column;align-items:center}
+  .er-box{flex-direction:column;align-items:flex-start;gap:6px}
+  .er-val{font-size:18px}
 }
 </style>
 </head>
 <body>
 <div id="nav-placeholder"></div>
 
+<!-- HERO -->
 <section class="pg-hero">
   <div class="w">
     <div class="lbl">Free Tool</div>
     <h1>Egyptian Payroll<br>Cost Calculator</h1>
-    <p>Instant net salary, income tax breakdown, and total employer cost — based on current Egyptian law.</p>
+    <p>Instant net salary, income tax, social insurance breakdown, and total employer cost — based on Egyptian Tax Law 2026.</p>
     <div class="hero-badge">
       <div class="hero-dot"></div>
-      Live data · Powered by EGPayslip · Updated Jan 2026
+      Live rates · Powered by EGPayslip · Updated Jan 2026
     </div>
   </div>
 </section>
 
+<!-- CALCULATOR -->
 <section style="background:var(--off);padding-bottom:0">
   <div class="w">
     <div class="calc-layout">
 
-      <!-- INPUT -->
+      <!-- ── INPUTS ── -->
       <div>
         <div class="cc">
           <div class="cc-head">
             <div class="cc-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             </div>
             <div>
               <h2>Salary Details</h2>
-              <p>Monthly figures in Egyptian Pounds</p>
+              <p>Monthly figures · Egyptian Pounds</p>
             </div>
           </div>
           <div class="cc-body">
 
+            <!-- Mode -->
             <div class="mode-sw">
               <button class="mode-btn on" id="btn-gtn" onclick="setMode('gtn')">Gross → Net</button>
               <button class="mode-btn"    id="btn-ntg" onclick="setMode('ntg')">Net → Gross</button>
             </div>
 
+            <!-- Salary -->
             <div class="fi">
-              <label id="sal-lbl">Gross Monthly Salary</label>
+              <label id="sal-lbl">Monthly Gross Salary (EGP)</label>
               <div class="fi-wrap">
                 <span class="fi-pfx">EGP</span>
                 <input type="number" id="salary" placeholder="e.g. 15,000" min="1" max="10000000" oninput="onType()">
               </div>
+            </div>
+
+            <!-- Medical Insurance Premium -->
+            <div class="fi">
+              <label>Medical Insurance Premium (EGP/month) <span class="fi-note">optional</span></label>
+              <div class="fi-wrap">
+                <span class="fi-pfx">EGP</span>
+                <input type="number" id="medical" placeholder="0" min="0" max="16700" oninput="onType()">
+              </div>
+              <div class="fi-hint">Tax deductible up to 16,700 EGP/year</div>
+            </div>
+
+            <!-- Toggles -->
+            <div class="opt-row">
+              <div>
+                <div class="opt-lbl">Subject to Social Insurance</div>
+                <div class="opt-sub">Disable only for exempted employment types</div>
+              </div>
+              <label class="tog">
+                <input type="checkbox" id="chk-si" onchange="onType()" checked>
+                <span class="tog-sl"></span>
+              </label>
             </div>
 
             <div class="opt-row">
@@ -149,31 +221,42 @@
               </label>
             </div>
 
-            <button class="calc-go" onclick="calculate()">Calculate</button>
+            <button class="calc-go" onclick="calculate()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+              Calculate Salary
+            </button>
           </div>
         </div>
 
+        <!-- CTA -->
         <div class="calc-cta rv">
           <h3>Need us to handle payroll for you?</h3>
-          <p>Staffona manages payroll, social insurance, tax filings, and contracts — 100% compliant with Egyptian Labour Law.</p>
-          <a href="/pricing.html" class="btn" style="margin-right:10px">View Pricing</a>
-          <a href="https://wa.me/201068347083?text=Hi%20Staffona%2C%20I%27d%20like%20to%20discuss%20payroll%20outsourcing." class="btn btn-out" target="_blank" rel="noopener">WhatsApp Us</a>
+          <p>Staffona manages payroll, social insurance filings, tax submissions, and employment contracts — fully compliant with Egyptian Labour Law.</p>
+          <div class="calc-cta-btns">
+            <a href="/pricing.html" class="btn">View Pricing</a>
+            <a href="https://wa.me/201068347083?text=Hi%20Staffona%2C%20I%27d%20like%20to%20discuss%20payroll%20outsourcing." class="btn btn-out" target="_blank" rel="noopener">WhatsApp Us</a>
+          </div>
         </div>
       </div>
 
-      <!-- RESULTS -->
+      <!-- ── RESULTS ── -->
       <div>
         <div class="cc" style="position:sticky;top:88px">
 
+          <!-- Empty state -->
           <div class="res-empty" id="res-empty">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto;display:block;color:var(--bd)"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            <p>Enter a salary and press <strong>Calculate</strong><br>to see the full breakdown.</p>
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto;display:block;color:var(--bd)">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <p>Enter a salary and press<br><strong>Calculate Salary</strong> to see the breakdown.</p>
           </div>
 
+          <!-- Results -->
           <div class="res-inner" id="res-out">
 
+            <!-- Net hero -->
             <div class="net-hero">
-              <div class="nh-lbl" id="nh-lbl">Employee Net Take-Home / Month</div>
+              <div class="nh-lbl" id="nh-lbl">Employee Net Salary / Month</div>
               <div><span class="nh-val" id="r-net">—</span><span class="nh-unit">EGP</span></div>
               <div class="nh-sub" id="nh-sub"></div>
               <div class="nh-pills">
@@ -182,9 +265,9 @@
               </div>
             </div>
 
-            <!-- Employee breakdown -->
+            <!-- EMPLOYEE VIEW -->
             <div class="bk-sec">
-              <div class="bk-title">Employee — Monthly</div>
+              <div class="bk-title">Employee View · Monthly Breakdown</div>
 
               <div class="bk-row">
                 <div class="bk-lbl">Gross Salary</div>
@@ -193,22 +276,41 @@
 
               <hr class="bk-divider">
 
+              <!-- SI row -->
               <div class="bk-row">
                 <div>
-                  <div class="bk-lbl">Social Insurance</div>
-                  <div class="bk-sub" id="r-si-sub">11% of insurable wage</div>
+                  <div class="bk-lbl">Social Insurance (11%)</div>
+                  <div class="bk-sub" id="r-si-sub">On insurable wage</div>
                 </div>
                 <div class="bk-val neg" id="r-si">—</div>
               </div>
 
-              <div class="bk-row" style="margin-top:6px">
+              <!-- Income Tax row -->
+              <div class="bk-row" style="margin-top:4px">
                 <div>
                   <div class="bk-lbl">Income Tax</div>
                   <div class="bk-sub" id="r-tax-sub">—</div>
                 </div>
                 <div class="bk-val neg" id="r-tax">—</div>
               </div>
+              <!-- Bracket sub-rows injected here -->
               <div id="r-bracket-rows"></div>
+
+              <!-- Martyrs Fund -->
+              <div class="bk-row" id="r-martyrs-row" style="margin-top:4px">
+                <div>
+                  <div class="bk-lbl">Martyrs Fund (0.05%)</div>
+                </div>
+                <div class="bk-val neg" id="r-martyrs">—</div>
+              </div>
+
+              <!-- Medical if entered -->
+              <div class="bk-row" id="r-med-row" style="display:none;margin-top:4px">
+                <div>
+                  <div class="bk-lbl">Medical Insurance Premium</div>
+                </div>
+                <div class="bk-val neg" id="r-medical">—</div>
+              </div>
 
               <div class="bk-total">
                 <div class="bk-lbl">Net Take-Home</div>
@@ -216,26 +318,32 @@
               </div>
             </div>
 
-            <!-- Employer breakdown -->
+            <!-- EMPLOYER COST -->
             <div class="bk-sec">
-              <div class="bk-title">Employer Additions / Month</div>
-              <div class="bk-sub-row">
-                <div class="bk-lbl">Pension (employer 10%)</div>
-                <div class="bk-val" id="r-er-pen">—</div>
+              <div class="bk-title">Employer Cost · Monthly Investment</div>
+
+              <div class="bk-row">
+                <div class="bk-lbl">Employee Gross</div>
+                <div class="bk-val" id="r-er-gross">—</div>
               </div>
-              <div class="bk-sub-row">
-                <div class="bk-lbl">Health 3.25% + Work Injury 2%</div>
-                <div class="bk-val" id="r-er-hi">—</div>
-              </div>
-              <div class="bk-sub-row">
-                <div class="bk-lbl">Unemployment 1% + EOS 2.5%</div>
-                <div class="bk-val" id="r-er-ue">—</div>
-              </div>
-              <div class="er-box">
+              <div class="bk-row">
                 <div>
-                  <div class="er-lbl">Total Employer Cost / Month</div>
-                  <small style="font-size:11px;color:var(--sll);display:block;margin-top:2px">Gross + all employer contributions</small>
+                  <div class="bk-lbl">Employer Insurance (18.75%)</div>
+                  <div class="bk-sub">Pension 10% + Health 3.25% + Injury 2% + Unemployment 1% + EOS 2.5%</div>
                 </div>
+                <div class="bk-val" id="r-er-si">—</div>
+              </div>
+              <div class="bk-row" id="r-er-med-row" style="display:none">
+                <div class="bk-lbl">Medical Insurance</div>
+                <div class="bk-val" id="r-er-medical">—</div>
+              </div>
+              <div class="bk-row">
+                <div class="bk-lbl">Emergency Fund</div>
+                <div class="bk-val" id="r-emergency">—</div>
+              </div>
+
+              <div class="er-box">
+                <div class="er-lbl">Total Cost<br><span style="font-size:10.5px">Gross + all employer contributions</span></div>
                 <div class="er-val" id="r-er-total">—</div>
               </div>
             </div>
@@ -247,7 +355,7 @@
               <a href="https://www.egpayslip.com" target="_blank" rel="noopener">Powered by EGPayslip</a>
             </div>
 
-          </div>
+          </div><!-- /.res-inner -->
         </div>
       </div>
 
@@ -266,17 +374,17 @@
       <div class="rv">
         <div style="font-size:26px;margin-bottom:10px">📊</div>
         <h3 style="font-family:var(--fh);font-size:16px;font-weight:700;margin-bottom:8px">Social Insurance</h3>
-        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Applied on insurable wage capped at EGP 16,700/mo. Employee pays 11% total (pension 9% + health 1% + EOS 1%). Employer pays 18.75%.</p>
+        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Applied on insurable wage capped at EGP 16,700/mo. Employee pays 11% (pension 9% + health 1% + EOS 1%). Employer pays 18.75% on top.</p>
       </div>
       <div class="rv d1">
         <div style="font-size:26px;margin-bottom:10px">💰</div>
         <h3 style="font-family:var(--fh);font-size:16px;font-weight:700;margin-bottom:8px">Income Tax</h3>
-        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Progressive brackets 0%→27.5%. Taxable income = annual gross minus SI deductions minus personal exemption (EGP 20,000/yr standard).</p>
+        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Progressive brackets 0%→27.5% per Egyptian Tax Law. Taxable income = annual gross minus SI deductions minus personal exemption (EGP 20,000/yr) minus medical premiums.</p>
       </div>
       <div class="rv d2">
         <div style="font-size:26px;margin-bottom:10px">🔄</div>
         <h3 style="font-family:var(--fh);font-size:16px;font-weight:700;margin-bottom:8px">Net ↔ Gross</h3>
-        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Enter a desired take-home salary and the calculator finds the exact gross needed to deliver it, accounting for all deductions.</p>
+        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Switch modes to calculate from desired net take-home. Finds the exact gross needed to deliver your target salary using iterative calculation.</p>
       </div>
     </div>
   </div>
@@ -286,7 +394,7 @@
 <script src="shared.js"></script>
 <script>
 // ══════════════════════════════════════════════════════
-// DATA — live from Supabase with hardcoded fallback
+// LIVE DATA from EGPayslip Supabase (hardcoded fallback)
 // ══════════════════════════════════════════════════════
 const SB_URL = "https://filagqajbgofboyyuifi.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpbGFncWFqYmdvZmJveXl1aWZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MjM2MjUsImV4cCI6MjA4NjI5OTYyNX0.b34HrBoTN2TP2qKehX5DHzZ8cLgP7WaEF3WoUXDYY5o";
@@ -301,85 +409,71 @@ const D = {
     {min:400000,  max:1200000,  rate:0.25},
     {min:1200000, max:Infinity, rate:0.275},
   ],
-  si_emp: 0.11,        // 9+1+1
-  si_er:  0.1875,      // 10+3.25+2+1+2.5
-  er_pen: 0.10,
-  er_hi:  0.0525,      // health 3.25 + injury 2
-  er_ue:  0.035,       // unemployment 1 + eos 2.5
-  si_min: 2700,
-  si_max: 16700,
-  ex_std: 20000,
-  ex_dis: 30000,
-  disc: "Calculations are indicative and based on current Egyptian tax and social insurance regulations. For official payroll processing, consult a licensed payroll provider."
+  si_emp:    0.11,    // 9+1+1
+  si_er:     0.1875,  // 10+3.25+2+1+2.5
+  si_min:    2700,
+  si_max:    16700,
+  ex_std:    20000,   // annual personal exemption
+  ex_dis:    30000,   // disabled
+  martyrs:   0.0005,  // 0.05% of gross
+  emergency: 25.40,   // EGP/month fixed (confirmed from EGPayslip)
+  med_er_multiplier: 4, // employer pays 4x employee medical premium
+  disc: "Calculations are indicative and based on current Egyptian tax and social insurance regulations. For official payroll processing and compliance review, consult a licensed payroll provider."
 };
 
-// Refresh from Supabase (non-blocking — uses fallback if it fails)
+// Refresh from Supabase silently
 (async () => {
   try {
     const H = { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}` };
     const q = (t, p='') => fetch(`${SB_URL}/rest/v1/${t}?${p}`, {headers:H}).then(r => {
-      if (!r.ok) throw new Error(t + ' ' + r.status);
+      if (!r.ok) throw new Error(`${t} ${r.status}`);
       return r.json();
     });
-
     const [brackets, si, exemptions, settings] = await Promise.all([
-      q('tax_brackets', 'order=bracket_order'),
-      q('social_insurance_rates', 'effective_to=is.null'),
-      q('tax_exemptions', 'effective_to=is.null'),
+      q('tax_brackets','order=bracket_order'),
+      q('social_insurance_rates','effective_to=is.null'),
+      q('tax_exemptions','effective_to=is.null'),
       q('system_settings'),
     ]);
-
-    // Brackets
     D.brackets = brackets.map(b => ({
-      min: +b.min_annual_income,
-      max: b.max_annual_income ? +b.max_annual_income : Infinity,
-      rate: +b.rate
+      min:+b.min_annual_income,
+      max:b.max_annual_income?+b.max_annual_income:Infinity,
+      rate:+b.rate
     }));
-
-    // SI
-    const r = (type, comp) => { const x = si.find(s => s.type===type && s.component===comp); return x ? +x.rate : null; };
-    const emp = (r('employee','pension')??0.09) + (r('employee','health')??0.01) + (r('employee','end_of_service')??0.01);
-    const er_p  = r('employer','pension') ?? 0.10;
-    const er_h  = (r('employer','health')??0.0325) + (r('employer','work_injury')??0.02);
-    const er_ue = (r('employer','unemployment')??0.01) + (r('employer','end_of_service')??0.025);
-    const sirow = si.find(s => s.min_wage);
-    D.si_emp = emp; D.si_er = er_p+er_h+er_ue;
-    D.er_pen = er_p; D.er_hi = er_h; D.er_ue = er_ue;
-    if (sirow) { D.si_min = +sirow.min_wage; D.si_max = +sirow.max_wage; }
-
-    // Exemptions
-    const std = exemptions.find(e => e.applies_to==='all');
-    const dis = exemptions.find(e => e.applies_to==='disabled');
-    if (std) D.ex_std = +std.amount;
-    if (dis) D.ex_dis = +dis.amount;
-
-    // Disclaimer
-    const disc = settings.find(s => s.setting_key==='calculation_disclaimer');
-    if (disc) D.disc = disc.setting_value;
-
-    console.log('✓ Supabase data loaded');
-  } catch (e) {
-    console.warn('Using fallback data:', e.message);
-  }
+    const r = (type,comp) => { const x=si.find(s=>s.type===type&&s.component===comp); return x?+x.rate:null; };
+    D.si_emp = (r('employee','pension')??0.09)+(r('employee','health')??0.01)+(r('employee','end_of_service')??0.01);
+    D.si_er  = (r('employer','pension')??0.10)+(r('employer','health')??0.0325)+(r('employer','work_injury')??0.02)+(r('employer','unemployment')??0.01)+(r('employer','end_of_service')??0.025);
+    const sirow = si.find(s=>s.min_wage);
+    if(sirow){ D.si_min=+sirow.min_wage; D.si_max=+sirow.max_wage; }
+    const std=exemptions.find(e=>e.applies_to==='all'), dis=exemptions.find(e=>e.applies_to==='disabled');
+    if(std) D.ex_std=+std.amount;
+    if(dis) D.ex_dis=+dis.amount;
+    const disc=settings.find(s=>s.setting_key==='calculation_disclaimer');
+    if(disc) D.disc=disc.setting_value;
+    console.log('✓ EGPayslip data refreshed');
+  } catch(e){ console.warn('Using fallback data:',e.message); }
 })();
 
 // ══════════════════════════════════════════════════════
 // CALCULATION ENGINE
 // ══════════════════════════════════════════════════════
-function calcGross(grossM, isDisabled) {
-  // 1. Insurable wage
-  const ins = Math.min(Math.max(grossM, D.si_min), D.si_max);
+function calcGross(grossM, medM, withSI, isDisabled) {
+  // 1. Social Insurance
+  const ins    = Math.min(Math.max(grossM, D.si_min), D.si_max);
+  const si_emp = withSI ? ins * D.si_emp : 0;
 
-  // 2. Employee SI (monthly)
-  const si_emp = ins * D.si_emp;
+  // 2. Martyrs Fund (0.05% of gross)
+  const martyrs = grossM * D.martyrs;
 
   // 3. Annual taxable income
+  // = gross annual − SI annual − personal exemption − medical premium annual
   const grossA    = grossM * 12;
   const siA       = si_emp * 12;
   const exemption = isDisabled ? D.ex_dis : D.ex_std;
-  const taxableA  = Math.max(0, grossA - siA - exemption);
+  const medAnnual = medM * 12;
+  const taxableA  = Math.max(0, grossA - siA - exemption - medAnnual);
 
-  // 4. Income tax per bracket (annual → /12 for monthly)
+  // 4. Tax by bracket
   let taxA = 0;
   const bRows = [];
   for (const b of D.brackets) {
@@ -387,40 +481,37 @@ function calcGross(grossM, isDisabled) {
     const inB  = Math.min(taxableA, b.max) - b.min;
     const taxB = inB * b.rate;
     taxA += taxB;
-    if (b.rate > 0) bRows.push({ rate: b.rate, inB, taxB });
+    if (b.rate > 0) bRows.push({ rate:b.rate, inB, taxM_month:taxB/12 });
   }
   const taxM = taxA / 12;
 
   // 5. Net
-  const net = grossM - si_emp - taxM;
+  const net = grossM - si_emp - taxM - martyrs - medM;
 
-  // 6. Employer
-  const er_pen = ins * D.er_pen;
-  const er_hi  = ins * D.er_hi;
-  const er_ue  = ins * D.er_ue;
-  const erTotal = grossM + ins * D.si_er;
+  // 6. Employer cost
+  const er_si    = withSI ? ins * D.si_er : 0;
+  const er_med   = medM * D.med_er_multiplier;
+  const erTotal  = grossM + er_si + er_med + D.emergency;
 
-  // 7. Effective tax rate (vs gross annual)
+  // 7. Effective tax rate vs gross
   const etr = grossA > 0 ? taxA / grossA * 100 : 0;
-
-  // Top marginal bracket actually hit
   const topB = [...D.brackets].reverse().find(b => taxableA > b.min && b.rate > 0);
 
   return { grossM, net, si_emp, taxM, taxA, taxableA, ins,
-           bRows, exemption, er_pen, er_hi, er_ue, erTotal, etr, topB };
+           bRows, exemption, martyrs, medM,
+           er_si, er_med, erTotal, etr, topB };
 }
 
-function calcNet(targetNetM, isDisabled) {
-  // Binary search for the gross that yields exactly targetNetM
-  let lo = targetNetM, hi = Math.max(targetNetM * 4, 50000);
-  while (calcGross(hi, isDisabled).net < targetNetM) hi *= 2;
+function calcNet(targetNetM, medM, withSI, isDisabled) {
+  let lo = Math.max(targetNetM, 1), hi = Math.max(targetNetM * 4, 50000);
+  while (calcGross(hi, medM, withSI, isDisabled).net < targetNetM) hi *= 2;
   for (let i = 0; i < 80; i++) {
     const mid = (lo + hi) / 2;
-    const res = calcGross(mid, isDisabled);
+    const res = calcGross(mid, medM, withSI, isDisabled);
     if (Math.abs(res.net - targetNetM) < 0.05) break;
     if (res.net < targetNetM) lo = mid; else hi = mid;
   }
-  return calcGross((lo + hi) / 2, isDisabled);
+  return calcGross((lo + hi) / 2, medM, withSI, isDisabled);
 }
 
 // ══════════════════════════════════════════════════════
@@ -430,10 +521,10 @@ let mode = 'gtn';
 
 function setMode(m) {
   mode = m;
-  document.getElementById('btn-gtn').classList.toggle('on', m === 'gtn');
-  document.getElementById('btn-ntg').classList.toggle('on', m === 'ntg');
-  document.getElementById('sal-lbl').textContent = m === 'gtn'
-    ? 'Gross Monthly Salary' : 'Desired Net Monthly Salary';
+  document.getElementById('btn-gtn').classList.toggle('on', m==='gtn');
+  document.getElementById('btn-ntg').classList.toggle('on', m==='ntg');
+  document.getElementById('sal-lbl').textContent = m==='gtn'
+    ? 'Monthly Gross Salary (EGP)' : 'Desired Net Monthly Salary (EGP)';
   document.getElementById('res-empty').style.display = '';
   document.getElementById('res-out').style.display = 'none';
   const sal = document.getElementById('salary');
@@ -451,60 +542,84 @@ function onType() {
 }
 
 function calculate() {
-  const salEl = document.getElementById('salary');
-  const val   = parseFloat(salEl.value);
+  const salEl  = document.getElementById('salary');
+  const val    = parseFloat(salEl.value);
   if (!val || val <= 0) { salEl.classList.add('err'); return; }
   salEl.classList.remove('err');
 
-  const isDisabled = document.getElementById('chk-dis').checked;
-  const r = mode === 'gtn' ? calcGross(val, isDisabled) : calcNet(val, isDisabled);
+  const medM     = Math.max(0, parseFloat(document.getElementById('medical').value) || 0);
+  const withSI   = document.getElementById('chk-si').checked;
+  const isDisab  = document.getElementById('chk-dis').checked;
 
-  // Show results
+  const r = mode === 'gtn'
+    ? calcGross(val, medM, withSI, isDisab)
+    : calcNet(val, medM, withSI, isDisab);
+
+  // Show results panel
   document.getElementById('res-empty').style.display = 'none';
   document.getElementById('res-out').style.display   = 'block';
 
   // Net hero
   const displayNet = mode === 'gtn' ? r.net : val;
-  document.getElementById('r-net').textContent   = fmtR(displayNet);
-  document.getElementById('nh-lbl').textContent  = mode === 'gtn'
-    ? 'Employee Net Take-Home / Month' : 'Confirmed Net / Month';
-  document.getElementById('nh-sub').textContent  = mode === 'gtn'
-    ? `From gross EGP ${fmtR(r.grossM)}/mo · Annual EGP ${fmtR(r.grossM * 12)}`
+  document.getElementById('r-net').textContent  = fmtR(displayNet);
+  document.getElementById('nh-lbl').textContent = mode === 'gtn'
+    ? 'Employee Net Salary / Month' : 'Confirmed Net / Month';
+  document.getElementById('nh-sub').textContent = mode === 'gtn'
+    ? `From gross EGP ${fmtR(r.grossM)}/mo · Annual EGP ${fmtR(r.grossM*12)}`
     : `Required gross: EGP ${fmtR(r.grossM)}/month`;
 
-  // Pills
-  document.getElementById('r-etr-pill').textContent = `${r.etr.toFixed(1)}% effective tax`;
+  document.getElementById('r-etr-pill').textContent     = `${r.etr.toFixed(1)}% effective tax`;
   document.getElementById('r-bracket-pill').textContent = r.topB
-    ? `Top bracket: ${(r.topB.rate * 100).toFixed(1)}%`
-    : 'Tax-exempt';
+    ? `Top bracket: ${(r.topB.rate*100).toFixed(1)}%` : 'Tax-exempt';
 
   // Employee rows
   document.getElementById('r-gross').textContent   = `EGP ${fmtR(r.grossM)}`;
-  document.getElementById('r-si').textContent      = `−EGP ${fmtR(r.si_emp)}`;
-  document.getElementById('r-si-sub').textContent  = `11% on insurable wage EGP ${fmtR(r.ins)}/mo (cap EGP ${fmtR(D.si_max)})`;
+  document.getElementById('r-si').textContent      = withSI ? `−EGP ${fmtR(r.si_emp)}` : `EGP 0 (exempt)`;
+  document.getElementById('r-si-sub').textContent  = withSI
+    ? `11% on insurable wage EGP ${fmtR(r.ins)}/mo (max EGP ${fmtR(D.si_max)})`
+    : 'Social insurance not applied';
   document.getElementById('r-tax').textContent     = `−EGP ${fmtR(r.taxM)}`;
-  document.getElementById('r-tax-sub').textContent = `Taxable annual EGP ${fmtR(r.taxableA)} · Exemption EGP ${fmtR(r.exemption)}`;
+  document.getElementById('r-tax-sub').textContent = `Taxable annual: EGP ${fmtR(r.taxableA)} · Exemption: EGP ${fmtR(r.exemption)}`;
+  document.getElementById('r-martyrs').textContent = `−EGP ${fmtR(r.martyrs)}`;
   document.getElementById('r-net2').textContent    = `EGP ${fmtR(r.net)}`;
 
-  // Bracket sub-rows
+  // Tax bracket rows
   document.getElementById('r-bracket-rows').innerHTML = r.bRows.map(b => `
     <div class="bk-sub-row">
       <div class="bk-lbl">${(b.rate*100).toFixed(1)}% on EGP ${fmtR(b.inB)}/yr</div>
-      <div class="bk-val">−EGP ${fmtR(b.taxB / 12)}/mo</div>
+      <div class="bk-val">−EGP ${fmtR(b.taxM_month)}/mo</div>
     </div>`).join('');
 
+  // Medical row
+  if (medM > 0) {
+    document.getElementById('r-med-row').style.display = '';
+    document.getElementById('r-medical').textContent = `−EGP ${fmtR(medM)}`;
+  } else {
+    document.getElementById('r-med-row').style.display = 'none';
+  }
+
   // Employer
-  document.getElementById('r-er-pen').textContent   = `EGP ${fmtR(r.er_pen)}`;
-  document.getElementById('r-er-hi').textContent    = `EGP ${fmtR(r.er_hi)}`;
-  document.getElementById('r-er-ue').textContent    = `EGP ${fmtR(r.er_ue)}`;
+  document.getElementById('r-er-gross').textContent = `EGP ${fmtR(r.grossM)}`;
+  document.getElementById('r-er-si').textContent    = withSI ? `+EGP ${fmtR(r.er_si)}` : `EGP 0`;
+  document.getElementById('r-emergency').textContent= `+EGP ${D.emergency.toFixed(2)}`;
   document.getElementById('r-er-total').textContent = `EGP ${fmtR(r.erTotal)}`;
+
+  if (medM > 0) {
+    document.getElementById('r-er-med-row').style.display = '';
+    document.getElementById('r-er-medical').textContent = `+EGP ${fmtR(r.er_med)}`;
+  } else {
+    document.getElementById('r-er-med-row').style.display = 'none';
+  }
 
   // Disclaimer
   document.getElementById('r-disc').textContent = D.disc;
 }
 
-function fmtR(n) { return Math.round(n).toLocaleString('en-EG'); }
-document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+function fmtR(n) { return Math.round(n * 100) / 100 % 1 === 0
+  ? Math.round(n).toLocaleString('en-EG')
+  : n.toLocaleString('en-EG', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+document.addEventListener('keydown', e => { if (e.key==='Enter') calculate(); });
 </script>
 </body>
 </html>
