@@ -127,19 +127,66 @@
 .calc-cta-btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
 
 /* mobile fixes */
+@media(max-width:768px){
+  .calc-layout{gap:20px}
+  .cc-body{padding:18px 16px}
+}
 @media(max-width:480px){
   .nh-val{font-size:26px}
-  .cc-body,.bk-sec{padding:16px 14px}
-  .cc-head{padding:14px 16px}
-  .calc-cta{padding:20px 16px}
+  .cc-body,.bk-sec{padding:14px 12px}
+  .cc-head{padding:12px 14px}
+  .cc-head h2{font-size:13.5px}
+  .calc-cta{padding:18px 14px}
   .calc-cta-btns{flex-direction:column;align-items:center}
+  .calc-cta-btns .btn{width:100%;justify-content:center}
   .er-box{flex-direction:column;align-items:flex-start;gap:6px}
   .er-val{font-size:19px;color:#0B1F3A !important}
+  .bk-val{font-size:12.5px}
+  .bk-lbl{font-size:12px}
+  .bk-sub{font-size:10.5px}
+  .fi input{font-size:15px}
+  .pg-hero h1{font-size:clamp(22px,6vw,36px)}
 }
 </style>
 </head>
 <body>
-<div id="nav-placeholder"></div>
+<div class="nav-wrap page" id="navbar">
+  <div class="w"><nav class="nav-in" aria-label="Main">
+    <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="nlf">Staff<em>ona</em></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="ndrop"><a href="services.html">Services ▾</a>
+        <div class="ndrop-menu">
+          <a href="hr-outsourcing.html">HR Outsourcing</a>
+          <a href="payroll-egypt.html">Payroll Management</a>
+          <a href="recruitment-egypt.html">Recruitment</a>
+          <a href="compliance.html">HR Compliance</a>
+          <a href="services.html">All Services →</a>
+          <a href="payroll-calculator.html" class="active">💰 Payroll Calculator</a>
+        </div>
+      </li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="laws.html">Laws &amp; Guides</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-r">
+      <a href="mailto:info@staffona.com" class="nav-email">info@staffona.com</a>
+      <a href="ar.html" class="lang-btn" title="Arabic / العربية">🌐 AR</a>
+      <button class="dm-btn" aria-label="Toggle dark mode"><svg class="dm-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="dm-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg></button>
+      <button class="btn btn-gold btn-sm" data-cal>Book Consultation</button>
+      <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false" style="display:none"><span></span><span></span><span></span></button>
+    </div>
+  </nav></div>
+</div>
+<nav class="mob-nav" id="mobNav">
+  <a href="index.html">Home</a><a href="services.html">Services</a>
+  <a href="hr-outsourcing.html">HR Outsourcing</a><a href="payroll-egypt.html">Payroll</a>
+  <a href="recruitment-egypt.html">Recruitment</a><a href="resources.html">Resources</a>
+  <a href="laws.html">Laws</a><a href="careers.html">Careers</a><a href="about.html">About</a>
+  <a href="mailto:info@staffona.com" style="color:var(--gold)">info@staffona.com</a>
+  <div style="padding-top:12px"><button class="btn btn-gold" style="width:100%;justify-content:center" data-cal>Book Free Consultation</button></div>
+</nav>
 
 <!-- HERO -->
 <section class="pg-hero">
@@ -391,7 +438,44 @@
   </div>
 </section>
 
-<div id="footer-placeholder"></div>
+<footer class="footer"><div class="w">
+  <div class="ftg">
+    <div class="flb">
+      <a href="index.html"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="flb-fb">Staff<em>ona</em></span></a>
+      <p>Egypt's trusted HR outsourcing and recruitment consultancy. Based in Alexandria, serving international and Egyptian businesses.</p>
+      <a href="mailto:info@staffona.com" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@staffona.com</a>
+      <a href="https://maps.google.com/?q=398+El-Horreya+Street,+Mostafa+Kamel,+Alexandria,+Egypt" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>398 El-Horreya St, Mostafa Kamel, Alexandria</a>
+      <a href="https://www.linkedin.com/company/staffona" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Staffona</a>
+    </div>
+    <div><div class="flct">Services</div><ul class="flls">
+      <li><a href="hr-outsourcing.html">HR Outsourcing</a></li>
+      <li><a href="payroll-egypt.html">Payroll Management</a></li>
+      <li><a href="recruitment-egypt.html">Recruitment</a></li>
+      <li><a href="compliance.html">HR Compliance</a></li>
+      <li><a href="services.html">All Services</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+    </ul></div>
+    <div><div class="flct">Tools</div><ul class="flls">
+      <li><a href="payroll-calculator.html">Payroll Calculator</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="laws.html">Egyptian Labor Laws</a></li>
+    </ul></div>
+    <div><div class="flct">Company</div><ul class="flls">
+      <li><a href="about.html">About Staffona</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+    </ul></div>
+  </div>
+  <div class="ftbtm">
+    <div>
+      <div class="ftcopy">© 2026 Staffona. All rights reserved. 398 El-Horreya St, Mostafa Kamel, Alexandria, Egypt.</div>
+    </div>
+    <div class="ftbl"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+  </div>
+</div></footer>
+<button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg></button>
 <script src="shared.js"></script>
 <script>
 // ══════════════════════════════════════════════════════
@@ -633,20 +717,37 @@ function calculate() {
 
   if (medM > 0) {
     document.getElementById('r-er-med-row').style.display = '';
-    document.getElementById('r-er-medical').textContent = `+EGP ${fmtR(r.er_med)}`;
-  } else {
-    document.getElementById('r-er-med-row').style.display = 'none';
+    document.getElementById('r-er-medical'
+<script>
+/* ── Lazy-load Calendly only when needed ── */
+(function(){
+  var calLoaded=false;
+  function loadCalendly(cb){
+    if(calLoaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';
+    l.href='https://assets.calendly.com/assets/external/widget.css';
+    document.head.appendChild(l);
+    var s=document.createElement('script');
+    s.src='https://assets.calendly.com/assets/external/widget.js';
+    s.onload=function(){calLoaded=true;if(cb)cb();};
+    document.head.appendChild(s);
   }
-
-  // Disclaimer
-  document.getElementById('r-disc').textContent = D.disc;
-}
-
-function fmtR(n) { return Math.round(n * 100) / 100 % 1 === 0
-  ? Math.round(n).toLocaleString('en-EG')
-  : n.toLocaleString('en-EG', {minimumFractionDigits:2, maximumFractionDigits:2}); }
-
-document.addEventListener('keydown', e => { if (e.key==='Enter') calculate(); });
+  var _sw=window.swTab;
+  window.swTab=function(name,btn){
+    if(name==='cal') loadCalendly(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});
+    if(_sw)_sw(name,btn);
+  };
+  window.openCal=function(e){
+    if(e)e.preventDefault();
+    var calUrl=(window.SF&&SF.CAL)?SF.CAL:'https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
+    loadCalendly(function(){
+      if(typeof Calendly!=='undefined') Calendly.initPopupWidget({url:calUrl});
+      else window.open('https://calendly.com/maged-staffona/free-consultation','_blank');
+    });
+    return false;
+  };
+  document.querySelectorAll('[data-cal]').forEach(function(el){el.onclick=function(e){window.openCal(e);};});
+})();
 </script>
 </body>
 </html>
