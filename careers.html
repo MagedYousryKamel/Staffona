@@ -446,11 +446,6 @@ document.getElementById('careerForm').addEventListener('submit', function(e) {
   if (!role)        { e.preventDefault(); alert('Please select a role.'); return; }
   if (!firstName)   { e.preventDefault(); alert('Please enter your first name.'); return; }
   if (!email)       { e.preventDefault(); alert('Please enter your email.'); return; }
-  if (!cv)          { e.preventDefault(); alert('Please attach your CV (PDF or Word).'); return; }
-
-  const screeningInputs = document.querySelectorAll('#screeningQs [id^="sq_"]');
-  for (const inp of screeningInputs) {
-    if (inp.dataset.required === '1' && !inp.value.trim()) {
-      e.preventDefau
+  if (!cv)          { e.preventDefault(); alert('Please attach your CV (PDF or
 </body>
 </html>
