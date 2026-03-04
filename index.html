@@ -542,23 +542,23 @@
 (function(){
   var REVS_KEY = 'sf-reviews-v1';
   var DEFAULTS = [
-    {id:101,name:'Khalid R.',role:'Head of Engineering \u00b7 Gulf-Based Employer',country:'\U0001f1e6\U0001f1ea Dubai, UAE',
+    {id:101,name:'Khalid R.',role:'Head of Engineering \u00b7 Gulf-Based Employer',country:'🇦🇪 Dubai, UAE',
      service:'Managed Employment',stars:'5',status:'Published',
      quote:'We hired three Egyptian engineers through Staffona without setting up a local entity. The whole process \u2014 contracts, NOSI, payroll \u2014 was done in four days. Our team in Dubai had no idea how smooth it could be.',
      date:'2026-01-15T00:00:00.000Z'},
-    {id:102,name:'Nadia F.',role:'Finance Director \u00b7 Cairo-Based Business',country:'\U0001f1ea\U0001f1ec Cairo, Egypt',
+    {id:102,name:'Nadia F.',role:'Finance Director \u00b7 Cairo-Based Business',country:'🇪🇬 Cairo, Egypt',
      service:'Compliance & Payroll',stars:'5',status:'Published',
      quote:'Staffona cleaned up three years of payroll compliance issues in two months \u2014 dealing directly with NOSI and the Tax Authority on our behalf. Something we\'d been delaying for years, resolved cleanly.',
      date:'2026-01-20T00:00:00.000Z'},
-    {id:103,name:'James T.',role:'Managing Director \u00b7 UK Tech Company',country:'\U0001f1ec\U0001f1e7 London, UK',
+    {id:103,name:'James T.',role:'Managing Director \u00b7 UK Tech Company',country:'🇬🇧 London, UK',
      service:'Recruitment + EOR',stars:'5',status:'Published',
      quote:'As a UK startup, we needed one Egyptian data analyst and had no idea where to start legally. Staffona found the candidate, drafted the Arabic contract, and processed first payroll. Genuinely exceptional service.',
      date:'2026-01-28T00:00:00.000Z'},
-    {id:104,name:'Ahmed S.',role:'Managing Director \u00b7 Alexandria Business',country:'\U0001f1ea\U0001f1ec Alexandria, Egypt',
+    {id:104,name:'Ahmed S.',role:'Managing Director \u00b7 Alexandria Business',country:'🇪🇬 Alexandria, Egypt',
      service:'Payroll Management',stars:'5',status:'Published',
      quote:'Our monthly payroll used to take our accountant two full days. With Staffona, we send one number and everything else is handled \u2014 payslips, NOSI, Form 4. The best operational decision we made this year.',
      date:'2026-02-03T00:00:00.000Z'},
-    {id:105,name:'Tariq A.',role:'Operations Director \u00b7 Saudi-Based Employer',country:'\U0001f1f8\U0001f1e6 Riyadh, Saudi Arabia',
+    {id:105,name:'Tariq A.',role:'Operations Director \u00b7 Saudi-Based Employer',country:'🇸🇦 Riyadh, Saudi Arabia',
      service:'HR Outsourcing',stars:'5',status:'Published',
      quote:'Expanding into Egypt from Riyadh, we needed someone who understood both sides \u2014 Arabic-speaking, Egyptian law expertise, comfortable with international business culture. Staffona was exactly that.',
      date:'2026-02-10T00:00:00.000Z'}
@@ -767,19 +767,33 @@
   }
   var _sw=window.swTab;
   window.swTab=function(name,btn){
-    if(name==='cal') loadCalendly(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});
+    if(name==='cal') loadCalendly(funct
+<script>
+/* Lazy-load Calendly */
+(function(){
+  var loaded=false;
+  function load(cb){
+    if(loaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
+    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);
+  }
+  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
+  var _sw=window.swTab;
+  window.swTab=function(name,btn){
+    if(name==='cal') load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});
     if(_sw)_sw(name,btn);
   };
   window.openCal=function(e){
     if(e)e.preventDefault();
-    var calUrl=(window.SF&&SF.CAL)?SF.CAL:'https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
-    loadCalendly(function(){
-      if(typeof Calendly!=='undefined') Calendly.initPopupWidget({url:calUrl});
+    load(function(){
+      if(typeof Calendly!=='undefined') Calendly.initPopupWidget({url:(window.SF&&SF.CAL)||CAL_URL});
       else window.open('https://calendly.com/maged-staffona/free-consultation','_blank');
     });
     return false;
   };
-  document.querySelectorAll('[data-cal]').forEach(function(el){el.onclick=function(e){window.openCal(e);};});
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('[data-cal]').forEach(function(el){el.onclick=function(e){window.openCal(e);};});
+  });
 })();
 </script>
 </body>

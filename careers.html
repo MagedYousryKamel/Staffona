@@ -21,9 +21,11 @@
 .jc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
 .jc-badges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
 .badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11.5px;font-weight:600}
-.badge-ft{background:rgba(11,31,58,.08);color:var(--navy)}
+.badge-ft{background:rgba(11,31,58,.1);color:var(--navy);border:1px solid rgba(11,31,58,.15)}
+[data-theme=dark] .badge-ft{background:rgba(255,255,255,.12);color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.18)}
 .badge-feat{background:var(--gold);color:var(--navy)}
-.badge-loc{background:rgba(71,85,105,.08);color:var(--slate)}
+.badge-loc{background:rgba(71,85,105,.1);color:var(--slate);border:1px solid rgba(71,85,105,.15)}
+[data-theme=dark] .badge-loc{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.15)}
 .jc-title{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--text);margin-bottom:6px}
 .jc-dept{font-size:13px;color:var(--slate-l);margin-bottom:12px}
 .job-card.featured .jc-title{color:#fff}
@@ -241,8 +243,6 @@
 </footer>
 <div class="cookie" id="cookieBanner"><p>We use cookies to improve your experience. <a href="privacy.html">Privacy Policy</a></p><div class="cb-btns"><button class="btn btn-gold btn-sm" id="cookieAccept">Accept</button><button style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.4);border-radius:var(--r);padding:7px 14px;font-size:13px;cursor:pointer" id="cookieDecline">Decline</button></div></div>
 <button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg></button>
-<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
-<script async src="https://assets.calendly.com/assets/external/widget.js"></script>
 <script src="shared.js"></script>
 <script>
 const JOBS_KEY = 'sf-jobs-v2';
@@ -451,22 +451,6 @@ document.getElementById('careerForm').addEventListener('submit', function(e) {
   const screeningInputs = document.querySelectorAll('#screeningQs [id^="sq_"]');
   for (const inp of screeningInputs) {
     if (inp.dataset.required === '1' && !inp.value.trim()) {
-      e.preventDefault();
-      alert('Please answer: ' + inp.dataset.qText);
-      inp.focus();
-      return;
-    }
-  }
-
-  /* All valid — show sending state while FormSubmit POSTs the form */
-  const btn = document.getElementById('appSubmit');
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
-});
-
-function esc(s) { return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-loadJobs();
-</script>
+      e.preventDefau
 </body>
 </html>
