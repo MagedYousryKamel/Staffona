@@ -181,7 +181,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
   </div>
 
   <div class="note-box">
-    <strong>ℹ️ How applications arrive:</strong> The careers form sends CV + all fields directly to <strong>careers@staffona.com</strong> via FormSubmit. Log each received application here to track status and store screening answers. Applications logged here are local to this browser.
+    <strong>ℹ️ How applications arrive:</strong> The careers form sends CV + all fields directly to <strong>info@staffona.com</strong> via FormSubmit. Log each received application here to track status and store screening answers. Applications logged here are local to this browser.
   </div>
 
   <div class="sh">
@@ -1101,16 +1101,6 @@ function showToast(msg) {
   let t = document.getElementById('sf-toast');
   if (!t) {
     t = document.createElement('div'); t.id = 'sf-toast';
-    t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--gold);color:var(--navy);padding:11px 22px;border-radius:100px;font-size:13px;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.4);opacity:0;transition:all .3s;z-index:9999;white-space:nowrap;pointer-events:none';
-    document.body.appendChild(t);
-  }
-  t.textContent = msg;
-  t.style.opacity = '1'; t.style.transform = 'translateX(-50%) translateY(0)';
-  setTimeout(() => { t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(20px)'; }, 3000);
-}
-
-/* ── INIT ── */
-loadAll();
-</script>
+    t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--gold);color:var(--navy);padding:11px 22px;border-radius:100px;font-size:13px;font
 </body>
 </html>

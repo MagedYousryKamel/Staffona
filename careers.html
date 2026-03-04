@@ -444,6 +444,13 @@ document.getElementById('careerForm').addEventListener('submit', function(e) {
   const cv = document.getElementById('cvFile').files[0];
 
   if (!role)        { e.preventDefault(); alert('Please select a role.'); return; }
-  if (!firstName)   { e.preventDefa
+  if (!firstName)   { e.preventDefault(); alert('Please enter your first name.'); return; }
+  if (!email)       { e.preventDefault(); alert('Please enter your email.'); return; }
+  if (!cv)          { e.preventDefault(); alert('Please attach your CV (PDF or Word).'); return; }
+
+  const screeningInputs = document.querySelectorAll('#screeningQs [id^="sq_"]');
+  for (const inp of screeningInputs) {
+    if (inp.dataset.required === '1' && !inp.value.trim()) {
+      e.preventDefau
 </body>
 </html>
