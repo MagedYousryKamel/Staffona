@@ -1101,6 +1101,26 @@ function showToast(msg) {
   let t = document.getElementById('sf-toast');
   if (!t) {
     t = document.createElement('div'); t.id = 'sf-toast';
-    t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--gold);color:var(--navy);padding:11px 22px;border-radius:100px;font-size:13px;font
+    t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--gold);color:var(--navy);padding:11px 22px;border-radius:100px;font-size:13px;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.4);opacity:0;transition:all .3s;z-index:9999;white-space:nowrap';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(20px)'; }, 3000);
+}
+
+function resetJobs() {
+  if (!confirm('Reset job listings to the 3 default openings? Your applications will be kept.')) return;
+  jobs = [];
+  seedDefaultJobs();
+  renderJobs();
+  populateRoleSelect();
+  showToast('Jobs reset to defaults ✓');
+}
+
+loadAll();
+</script>
+
 </body>
 </html>

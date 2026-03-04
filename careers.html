@@ -446,11 +446,27 @@ document.getElementById('careerForm').addEventListener('submit', function(e) {
   if (!role)        { e.preventDefault(); alert('Please select a role.'); return; }
   if (!firstName)   { e.preventDefault(); alert('Please enter your first name.'); return; }
   if (!email)       { e.preventDefault(); alert('Please enter your email.'); return; }
-  if (!cv)          { e.preventDefault(); alert('Please attach your CV (PDF or Word).'); return; }
+  if (!cv)          { e.preventDefault(); alert('Please attach your CV (PDF orWord).'); return; }
 
   const screeningInputs = document.querySelectorAll('#screeningQs [id^="sq_"]');
   for (const inp of screeningInputs) {
     if (inp.dataset.required === '1' && !inp.value.trim()) {
-      e.preventDefau
+      e.preventDefault();
+      alert('Please answer: ' + inp.dataset.qText);
+      inp.focus();
+      return;
+    }
+  }
+
+  /* All valid — show sending state while FormSubmit POSTs the form */
+  const btn = document.getElementById('appSubmit');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+});
+
+function esc(s) { return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+loadJobs();
+</script>
 </body>
 </html>
