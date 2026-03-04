@@ -27,6 +27,7 @@
 @media(max-width:768px){.step-flow{grid-template-columns:1fr 1fr;gap:28px}.step-flow::before{display:none}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://staffona.com/hr-outsourcing#service","name":"HR Outsourcing & Managed Employment Egypt","description":"Staffona's managed employment service legally employs Egyptian staff on behalf of foreign companies \u2014 handling payroll, social insurance, contracts, and full HR compliance. No local entity required.","url":"https://staffona.com/hr-outsourcing","serviceType":"HR Outsourcing","provider":{"@type":"Organization","name":"Staffona","url":"https://staffona.com"},"areaServed":[{"@type":"Country","name":"Egypt"},{"@type":"Country","name":"United Arab Emirates"},{"@type":"Country","name":"Saudi Arabia"},{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"United States"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://staffona.com"},{"@type":"ListItem","position":2,"name":"Services","item":"https://staffona.com/services"},{"@type":"ListItem","position":3,"name":"HR Outsourcing & Managed Employment Egypt","item":"https://staffona.com/hr-outsourcing"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can a foreign company hire in Egypt without a local entity?","acceptedAnswer":{"@type":"Answer","text":"Yes. Through Staffona's managed employment service, foreign companies legally employ Egyptian staff without registering a local company. Staffona becomes the legal employer and handles all payroll, NOSI, and compliance."}},{"@type":"Question","name":"How long does it take to onboard a new employee?","acceptedAnswer":{"@type":"Answer","text":"48 to 72 hours from signed agreement to the employee's first active day, including employment contract registration and NOSI enrollment."}},{"@type":"Question","name":"What does managed employment cost?","acceptedAnswer":{"@type":"Answer","text":"Fees depend on headcount and contract structure. Contact Staffona for a tailored quote \u2014 the first consultation is always free."}}]}] }</script>
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <div class="nav-wrap page" id="navbar">
@@ -232,17 +233,35 @@ if(!window._sfFaq){window._sfFaq=true;document.addEventListener('click',function
   </div>
 </div></footer>
 <button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg></button>
+<script src="shared.js"></script>
 <script>
 /* Lazy-load Calendly */
 (function(){
   var loaded=false;
   function load(cb){if(loaded){if(cb)cb();return;}var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);}
+  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_ty
+<script>
+/* Lazy-load Calendly */
+(function(){
+  var loaded=false;
+  function load(cb){if(loaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
+    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);
+  }
+  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type
+<script>
+/* Lazy-load Calendly */
+(function(){
+  var loaded=false;
+  function load(cb){if(loaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
+    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);}
   var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
-  var _sw=window.swTab;window.swTab=function(name,btn){if(name==='cal') load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});if(_sw)_sw(name,btn);};
+  var _sw=window.swTab;
+  window.swTab=function(name,btn){if(name==='cal')load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});if(_sw)_sw(name,btn);};
   window.openCal=function(e){if(e)e.preventDefault();load(function(){if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:(window.SF&&SF.CAL)||CAL_URL});else window.open('https://calendly.com/maged-staffona/free-consultation','_blank');});return false;};
   document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('[data-cal]').forEach(function(el){el.onclick=function(e){window.openCal(e);};});});
 })();
 </script>
-<script src="shared.js"></script>
 </body>
 </html>

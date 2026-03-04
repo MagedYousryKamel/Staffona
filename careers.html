@@ -71,6 +71,7 @@
 @media(max-width:600px){.frow{grid-template-columns:1fr}.app-wrap{padding:24px 18px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"JobPosting","title":"HR & Payroll Specialist","description":"Lead payroll processing and HR administration for a portfolio of international clients.","datePosted":"2026-02-01","validThrough":"2026-06-30","employmentType":"FULL_TIME","hiringOrganization":{"@type":"Organization","name":"Staffona","sameAs":"https://staffona.com"},"jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Alexandria","addressCountry":"EG"}},"url":"https://staffona.com/careers"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://staffona.com"},{"@type":"ListItem","position":2,"name":"Careers","item":"https://staffona.com/careers"}]}]}</script>
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <div class="nav-wrap page" id="navbar">
@@ -444,29 +445,6 @@ document.getElementById('careerForm').addEventListener('submit', function(e) {
   const cv = document.getElementById('cvFile').files[0];
 
   if (!role)        { e.preventDefault(); alert('Please select a role.'); return; }
-  if (!firstName)   { e.preventDefault(); alert('Please enter your first name.'); return; }
-  if (!email)       { e.preventDefault(); alert('Please enter your email.'); return; }
-  if (!cv)          { e.preventDefault(); alert('Please attach your CV (PDF orWord).'); return; }
-
-  const screeningInputs = document.querySelectorAll('#screeningQs [id^="sq_"]');
-  for (const inp of screeningInputs) {
-    if (inp.dataset.required === '1' && !inp.value.trim()) {
-      e.preventDefault();
-      alert('Please answer: ' + inp.dataset.qText);
-      inp.focus();
-      return;
-    }
-  }
-
-  /* All valid — show sending state while FormSubmit POSTs the form */
-  const btn = document.getElementById('appSubmit');
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
-});
-
-function esc(s) { return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-loadJobs();
-</script>
+  if (!firstName)   { e.preventDefa
 </body>
 </html>

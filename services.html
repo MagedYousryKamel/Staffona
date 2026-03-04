@@ -53,6 +53,7 @@
 @media(max-width:768px){.svc-row{grid-template-columns:1fr}.price-row{grid-template-columns:1fr}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","@id":"https://staffona.com/services#page","name":"HR Services Egypt \u2014 Outsourcing, Payroll & Recruitment","description":"Complete HR outsourcing, payroll management, recruitment, and compliance advisory for companies hiring in Egypt.","url":"https://staffona.com/services","publisher":{"@type":"Organization","name":"Staffona","url":"https://staffona.com"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://staffona.com"},{"@type":"ListItem","position":2,"name":"Services","item":"https://staffona.com/services"}]}]}</script>
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <div class="nav-wrap page" id="navbar">
@@ -413,18 +414,32 @@ if(!window._sfFaq){window._sfFaq=true;document.addEventListener('click',function
   </div>
 </div></footer>
 <button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg></button>
+<script src="shared.js"></script>
 <script>
 /* Lazy-load Calendly */
 (function(){
   var loaded=false;
-  function load(cb){if(loaded){if(cb)cb();return;}var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);}
-  var CAcolor=ffffff&primary_color=c8973a';
+  function load(cb){if(loaded){if(cb)cb();return;}var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};docum
+<script>
+/* Lazy-load Calendly */
+(function(){
+  var loaded=false;
+  function load(cb){if(loaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
+    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.h
+<script>
+/* Lazy-load Calendly */
+(function(){
+  var loaded=false;
+  function load(cb){if(loaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
+    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);}
+  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
   var _sw=window.swTab;
   window.swTab=function(name,btn){if(name==='cal')load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});if(_sw)_sw(name,btn);};
   window.openCal=function(e){if(e)e.preventDefault();load(function(){if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:(window.SF&&SF.CAL)||CAL_URL});else window.open('https://calendly.com/maged-staffona/free-consultation','_blank');});return false;};
   document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('[data-cal]').forEach(function(el){el.onclick=function(e){window.openCal(e);};});});
 })();
 </script>
-<script src="shared.js"></script>
 </body>
 </html>

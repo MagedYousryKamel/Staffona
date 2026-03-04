@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="description" content="Page not found. Return to Staffona — Egypt's trusted HR outsourcing and recruitment consultancy.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page Not Found | Staffona</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/Favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+.err-page{min-height:100vh;background:var(--navy);display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;position:relative;overflow:hidden}
+.err-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,151,58,.08),transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.err-in{position:relative;z-index:1;max-width:520px}
+.err-code{font-family:var(--fh);font-size:120px;font-weight:800;color:rgba(200,151,58,.15);line-height:1;margin-bottom:-20px}
+.err-title{font-family:var(--fh);font-size:32px;font-weight:700;color:#fff;margin-bottom:14px}
+.err-title span{color:var(--gold)}
+.err-desc{font-size:15px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:32px}
+.err-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="nav-wrap page" id="navbar"><div class="w"><nav class="nav-in" aria-label="Main">
+  <a href="/" class="nav-logo"><img src="/Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="nlf">Staff<em>ona</em></span></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="ndrop"><a href="/services.html">Services ▾</a>
+      <div class="ndrop-menu">
+        <a href="/hr-outsourcing.html">HR Outsourcing</a>
+        <a href="/payroll-egypt.html">Payroll Management</a>
+        <a href="/recruitment-egypt.html">Recruitment</a>
+        <a href="/compliance.html">HR Compliance</a>
+      </div>
+    </li>
+    <li><a href="/resources.html">Resources</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="dm-btn" aria-label="Toggle dark mode">
+      <svg class="dm-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="dm-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
+    </button>
+    <button class="btn btn-gold btn-sm" data-cal>Book Consultation</button>
+    <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false" style="display:none"><span></span><span></span><span></span></button>
+  </div>
+</nav></div></div>
+<nav class="mob-nav" id="mobNav">
+  <a href="/">Home</a><a href="/services.html">Services</a><a href="/resources.html">Resources</a>
+  <a href="/about.html">About</a><a href="/careers.html">Careers</a>
+  <a href="mailto:info@staffona.com" style="color:var(--gold)">info@staffona.com</a>
+</nav>
+
+<div class="err-page">
+  <div class="err-glow"></div>
+  <div class="err-in">
+    <div class="err-code">404</div>
+    <h1 class="err-title">Page <span>Not Found</span></h1>
+    <p class="err-desc">The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
+    <div class="err-links">
+      <a href="/" class="btn btn-gold btn-lg">← Back to Home</a>
+      <a href="/services.h
+<script>
+/* ── Lazy-load Calendly only when needed ── */
+(function(){
+  var calLoaded=false;
+  function loadCalendly(cb){
+    if(calLoaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';
+    l.href='https://assets.calendly.com/assets/external/widget.css';
+    document.head.appendChild(l);
+    var s=document.createElement('script');
+    s.src='https://assets.calendly.com/assets/external/widget.js';
+    s.onload=function(){calLoaded=true;if(cb)cb();};
+    document.head.appendChild(s);
+  }
+  var _sw=window.swTab;
+  window.swTab=function(name,btn){
+    if(name==='cal') loadCalendly(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});
+    if(_sw)_sw(name,btn);
+  };
+  window.openCal=function(e){
+    if(e)e.preventDefault();
+    var calUrl=(window.SF&&SF.CAL)?SF.CAL:'https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
+    loadCalendly(function(){
+      if(typeof Calendly!=='undefined') Calendly.initPopupWidget({url:calUrl});
+      else window.open('https://calendly.com/maged-staffona/free-consultation','_blank');
+    });
+    return false;
+  };
+  document
+<script src="shared.js"></script>
+<script>
+/* Lazy-load Calendly */
+(function(){
+  var loaded=false;
+  function load(cb){
+    if(loaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
+    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);
+  }
+  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
+  var _sw=window.swTab;
+  window.swTab=function(name,btn){
+    if(name==='cal') load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});
+    if(_sw)_sw(name,btn);
+  };
+  window.openCal=function(e){
+    if(e)e.preventDefault();
+    load(function(){
+      if(typeof Calendly!=='undefined') Calendly.initPopupWidget({url:(window.SF&&SF.CAL)||CAL_URL});
+      else window.open('https://calendly.com/maged-staffona/free-consultation','_blank');
+    });
+    return false;
+  };
+  document.addEventListener('DOMContentLoaded',function(){
+    document.queryS
+<script>
+/* Lazy-load Calendly */
+(function(){
+  var loaded=false;
+  function load(cb){if(loaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
+    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);
+  }
+  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
+  var _sw=window.swTab;
+  window.swTab=function(name,btn){if(name==='cal')load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});if(_sw)_sw(name,btn);};
+  window.openCal=function(e){if(e)e.preventDefault();load(function(){if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:(window.SF&&SF.CAL)||CAL_URL});else window.open('https://calendly.com/maged-staffona/free-consu
+<script>
+/* Lazy-load Calendly */
+(function(){
+  var loaded=false;
+  function load(cb){if(loaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
+    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);}
+  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
+  var _sw=window.swTab;
+  window.swTab=function(name,btn){if(name==='cal')load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});if(_sw)_sw(name,btn);};
+  window.openCal=function(e){if(e)e.preventDefault();load(function(){if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:(window.SF&&SF.CAL)||CAL_URL});else window.open('https://calendly.com/maged-staffona/free-consultation','_blank');});return false;};
+  document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('[data-cal]').forEach(function(el){el.onclick=function(e){window.openCal(e);};});});
+})();
+</script>
+</body>
+</html>

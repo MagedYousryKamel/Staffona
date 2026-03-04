@@ -1,5 +1,26 @@
 User-agent: *
 Allow: /
-Disallow: /careers-admin.html
+Disallow: /careers-admin
+Disallow: /thank-you.html
 
 Sitemap: https://staffona.com/sitemap.xml
+
+# Allow major AI crawlers explicitly
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+

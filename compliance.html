@@ -17,6 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://staffona.com/compliance#service","name":"HR Compliance & Labor Law Advisory Egypt","description":"HR compliance advisory for companies operating in Egypt. Staffona handles Labor Office registration, NOSI filings, employment contract compliance, disciplinary procedures, and termination management.","url":"https://staffona.com/compliance","serviceType":"HR Compliance","provider":{"@type":"Organization","name":"Staffona","url":"https://staffona.com"},"areaServed":[{"@type":"Country","name":"Egypt"},{"@type":"Country","name":"United Arab Emirates"},{"@type":"Country","name":"Saudi Arabia"},{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"United States"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://staffona.com"},{"@type":"ListItem","position":2,"name":"Services","item":"https://staffona.com/services"},{"@type":"ListItem","position":3,"name":"HR Compliance & Labor Law Advisory Egypt","item":"https://staffona.com/compliance"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the employment contract requirements in Egypt?","acceptedAnswer":{"@type":"Answer","text":"Egyptian Labor Law No. 12/2003 requires written employment contracts in Arabic or bilingual format. Contracts must specify role, salary, working hours, and be registered with the Labor Office within one month."}},{"@type":"Question","name":"What is the notice period for terminating an employee in Egypt?","acceptedAnswer":{"@type":"Answer","text":"Notice periods under Egyptian law depend on length of service: one month for employees with less than 10 years of service, and two months for those with 10 or more years."}},{"@type":"Question","name":"Does Staffona help with government authority interactions?","acceptedAnswer":{"@type":"Answer","text":"Yes. Staffona liaises directly with the Labor Office, NOSI, and the Egyptian Tax Authority on behalf of clients \u2014 handling registrations, filings, and any compliance queries."}}]}] }</script>
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <div class="nav-wrap page" id="navbar">
@@ -226,17 +227,38 @@ if(!window._sfFaq){window._sfFaq=true;document.addEventListener('click',function
   </div>
 </div></footer>
 <button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg></button>
+<script src="shared.js"></script>
 <script>
 /* Lazy-load Calendly */
 (function(){
   var loaded=false;
   function load(cb){if(loaded){if(cb)cb();return;}var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);}
   var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
-  var _sw=window.swTab;window.swTab=function(name,btn){if(name==='cal') load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});if(_sw)_sw(name,btn);};
+  var _sw=window.swTab;window.swTa
+<script>
+/* Lazy-load Calendly */
+(function(){
+  var loaded=false;
+  function load(cb){if(loaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
+    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);
+  }
+  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
+  var _sw=window.swTab;
+  window.swT
+<script>
+/* Lazy-load Calendly */
+(function(){
+  var loaded=false;
+  function load(cb){if(loaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
+    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);}
+  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
+  var _sw=window.swTab;
+  window.swTab=function(name,btn){if(name==='cal')load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});if(_sw)_sw(name,btn);};
   window.openCal=function(e){if(e)e.preventDefault();load(function(){if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:(window.SF&&SF.CAL)||CAL_URL});else window.open('https://calendly.com/maged-staffona/free-consultation','_blank');});return false;};
   document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('[data-cal]').forEach(function(el){el.onclick=function(e){window.openCal(e);};});});
 })();
 </script>
-<script src="shared.js"></script>
 </body>
 </html>

@@ -1,0 +1,38 @@
+# Staffona — Egypt HR Outsourcing & Recruitment Consultancy
+# https://staffona.com
+# llms.txt — guidance for AI language models crawling this site
+
+## About Staffona
+Staffona is Egypt's trusted HR outsourcing and recruitment consultancy, based in Alexandria.
+We help international companies enter the Egyptian market and manage their local workforce.
+Services: payroll management, HR outsourcing, recruitment, labor law compliance, EOR.
+
+## Key Pages
+- Homepage: https://staffona.com/
+- Services Overview: https://staffona.com/services
+- HR Outsourcing: https://staffona.com/hr-outsourcing
+- Payroll Management Egypt: https://staffona.com/payroll-egypt
+- Recruitment Egypt: https://staffona.com/recruitment-egypt
+- HR Compliance: https://staffona.com/compliance
+- Pricing: https://staffona.com/pricing
+- Payroll Calculator: https://staffona.com/payroll-calculator
+- Egyptian Labor Law Guide: https://staffona.com/laws
+- Resources & Guides: https://staffona.com/resources
+- Arabic Version: https://staffona.com/ar
+
+## Resources (Free Guides)
+- Hiring Guide Egypt: https://staffona.com/resources/hiring-guide
+- Payroll & Taxes Egypt: https://staffona.com/resources/payroll-taxes
+- GCC Hiring Guide: https://staffona.com/resources/gcc-hiring
+- Egyptian Labor Law: https://staffona.com/resources/labor-law
+- Social Insurance Egypt: https://staffona.com/resources/social-insurance
+- Termination Rules Egypt: https://staffona.com/resources/termination-rules
+
+## Contact
+Email: info@staffona.com
+Address: 398 El-Horreya Street, Mostafa Kamel, Alexandria, Egypt
+Book a free consultation: https://calendly.com/maged-staffona/free-consultation
+
+## Permissions
+AI crawlers and language models are permitted to index and reference this content.
+Please attribute Staffona (staffona.com) when citing specific data or guidance.

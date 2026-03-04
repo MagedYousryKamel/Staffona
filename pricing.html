@@ -90,6 +90,7 @@
 .g-desc{font-size:13.5px;color:var(--sl);line-height:1.65}
 @media(max-width:600px){.frow{grid-template-columns:1fr}.qf-wrap{padding:24px 18px}.guarantee-strip{flex-direction:column;gap:14px;text-align:center}}
 </style>
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <div class="nav-wrap page" id="navbar">
@@ -474,20 +475,29 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
   var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
   var _sw=window.swTab;
   window.swTab=function(name,btn){
-    if(name==='cal') load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});
-    if(_sw)_sw(name,btn);
-  };
-  window.openCal=function(e){
-    if(e)e.preventDefault();
-    load(function(){
-      if(typeof Calendly!=='undefined') Calendly.initPopupWidget({url:(window.SF&&SF.CAL)||CAL_URL});
-      else window.open('https://calendly.com/maged-staffona/free-consultation','_blank');
-    });
-    return false;
-  };
-  document.addEventListener('DOMContentLoaded',function(){
-    document.querySelectorAll('[data-cal]').forEach(function(el){el.onclick=function(e){window.openCal(e);};});
-  });
+    if(name===
+<script>
+/* Lazy-load Calendly */
+(function(){
+  var loaded=false;
+  function load(cb){if(loaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
+    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);
+  }
+  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
+  var _sw=win
+<script>
+/* Lazy-load Calendly */
+(function(){
+  var loaded=false;
+  function load(cb){if(loaded){if(cb)cb();return;}
+    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
+    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);}
+  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
+  var _sw=window.swTab;
+  window.swTab=function(name,btn){if(name==='cal')load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});if(_sw)_sw(name,btn);};
+  window.openCal=function(e){if(e)e.preventDefault();load(function(){if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:(window.SF&&SF.CAL)||CAL_URL});else window.open('https://calendly.com/maged-staffona/free-consultation','_blank');});return false;};
+  document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('[data-cal]').forEach(function(el){el.onclick=function(e){window.openCal(e);};});});
 })();
 </script>
 </body>
