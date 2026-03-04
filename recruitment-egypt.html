@@ -1,652 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Egyptian Payroll Calculator — Staffona</title>
-<meta name="description" content="Free Egyptian salary calculator. Compute net salary, income tax, and social insurance deductions instantly. Based on current Egyptian tax law 2026.">
-<meta name="robots" content="index, follow">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Recruitment Consultancy Egypt — Top Local Talent | Staffona</title>
+<meta name="description" content="Egyptian recruitment consultancy. We source, screen and place top local talent across HR, finance, operations, and tech. Local expertise, fast turnaround.">
+<link rel="canonical" href="https://staffona.com/recruitment-egypt">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://staffona.com/payroll-calculator">
-<meta property="og:title" content="Free Egyptian Payroll Calculator — Staffona">
-<meta property="og:description" content="Calculate Egyptian net salary, income tax brackets, social insurance, and total employer cost. Free tool powered by EGPayslip.">
+<meta property="og:url" content="https://staffona.com/recruitment-egypt">
+<meta property="og:title" content="Recruitment Consultancy Egypt — Find Vetted Talent | Staffona">
+<meta property="og:description" content="End-to-end recruitment for Egyptian and international roles. Sourcing, screening, and placement across tech, finance, and operations.">
 <meta property="og:image" content="https://staffona.com/og-banner.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://staffona.com/payroll-calculator">
-<link rel="icon" type="image/png" href="/Favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="Favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-/* ─── page hero ─── */
-.pg-hero{background:var(--navy);padding:72px 0 52px;border-bottom:1px solid rgba(255,255,255,.07)}
-.pg-hero .lbl{margin-bottom:12px}
-.pg-hero h1{color:#fff;font-size:clamp(26px,4vw,44px);max-width:640px;line-height:1.15}
-.pg-hero p{color:rgba(255,255,255,.5);font-size:15px;max-width:500px;margin-top:12px;line-height:1.7}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:40px;padding:5px 14px 5px 8px;font-size:12px;color:rgba(255,255,255,.45);margin-top:18px}
-.hero-dot{width:7px;height:7px;background:#4ade80;border-radius:50%;flex-shrink:0;animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.8)}}
-
-/* ─── layout ─── */
-.calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:44px 0 88px;align-items:start}
-@media(max-width:860px){.calc-layout{grid-template-columns:1fr;padding:28px 0 60px}}
-
-/* ─── card ─── */
-.cc{background:var(--white);border:1px solid var(--bd);border-radius:var(--rx);overflow:hidden;box-shadow:var(--s2)}
-.cc-head{padding:18px 22px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px}
-.cc-icon{width:32px;height:32px;background:var(--gpl);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cc-icon svg{color:var(--gold)}
-.cc-head h2{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--tx);margin:0}
-.cc-head p{font-size:11.5px;color:var(--sl);margin:1px 0 0}
-.cc-body{padding:20px 22px}
-
-/* ─── mode switcher ─── */
-.mode-sw{display:grid;grid-template-columns:1fr 1fr;background:var(--off);border:1.5px solid var(--bd);border-radius:var(--rl);padding:3px;margin-bottom:20px;gap:2px}
-.mode-btn{padding:8px 10px;text-align:center;font-size:13px;font-weight:600;color:var(--sl);border:none;background:none;border-radius:calc(var(--rl) - 2px);cursor:pointer;transition:background .15s,color .15s;font-family:var(--fb);line-height:1.3}
-.mode-btn.on{background:var(--white);color:var(--tx);box-shadow:var(--s1)}
-
-/* ─── field ─── */
-.fi{margin-bottom:16px}
-.fi label{display:block;font-size:11px;font-weight:700;color:var(--sl);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
-.fi-note{font-size:10.5px;color:var(--sll);font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px}
-.fi-wrap{position:relative}
-.fi-pfx{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:12.5px;font-weight:700;color:var(--sll);pointer-events:none}
-.fi input{width:100%;padding:11px 13px 11px 46px;border:1.5px solid var(--bd);border-radius:var(--rl);font-size:16px;font-weight:600;font-family:var(--fb);color:var(--tx);background:var(--white);transition:border-color .18s;-moz-appearance:textfield}
-.fi input::-webkit-outer-spin-button,.fi input::-webkit-inner-spin-button{-webkit-appearance:none}
-.fi input:focus{outline:none;border-color:var(--gold)}
-.fi input.err{border-color:#e05555}
-.fi-hint{font-size:11px;color:var(--sll);margin-top:4px}
-
-/* ─── toggle ─── */
-.opt-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--bd)}
-.opt-lbl{font-size:13px;color:var(--tx)}
-.opt-sub{font-size:11px;color:var(--sll);margin-top:1px}
-.tog{position:relative;width:40px;height:22px;flex-shrink:0}
-.tog input{opacity:0;width:0;height:0;position:absolute}
-.tog-sl{position:absolute;inset:0;background:var(--bd);border-radius:11px;cursor:pointer;transition:.18s}
-.tog-sl::before{content:'';position:absolute;width:16px;height:16px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.18s;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.tog input:checked~.tog-sl{background:var(--gold)}
-.tog input:checked~.tog-sl::before{transform:translateX(18px)}
-
-/* ─── button ─── */
-.calc-go{width:100%;margin-top:18px;padding:13px;background:var(--navy);color:#fff;font-size:14.5px;font-weight:700;font-family:var(--fb);border:none;border-radius:var(--rl);cursor:pointer;transition:background .18s,transform .12s;letter-spacing:.01em;display:flex;align-items:center;justify-content:center;gap:8px}
-.calc-go:hover{background:var(--nvm)}
-.calc-go:active{transform:scale(.99)}
-.calc-go svg{flex-shrink:0}
-
-/* ─── results ─── */
-.res-empty{padding:48px 22px;text-align:center}
-.res-empty p{font-size:13px;color:var(--sll);line-height:1.7;margin-top:12px}
-.res-inner{display:none}
-
-/* net hero */
-.net-hero{padding:22px;background:linear-gradient(140deg,#0B1F3A 0%,#1B3460 100%);text-align:center}
-.nh-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--glt);margin-bottom:9px}
-.nh-val{font-family:var(--fh);font-size:clamp(28px,5vw,40px);font-weight:700;color:#fff;line-height:1}
-.nh-unit{font-size:14px;font-weight:400;color:rgba(255,255,255,.45);margin-left:4px}
-.nh-sub{font-size:11.5px;color:rgba(255,255,255,.35);margin-top:7px}
-.nh-pills{display:flex;justify-content:center;gap:7px;margin-top:12px;flex-wrap:wrap}
-.np{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:40px;padding:3px 10px;font-size:11px;color:rgba(255,255,255,.5)}
-
-/* breakdown */
-.bk-sec{padding:16px 22px;border-bottom:1px solid var(--bd)}
-.bk-sec:last-child{border-bottom:none}
-.bk-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--sll);margin-bottom:10px}
-.bk-row{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0;gap:8px}
-.bk-lbl{font-size:13px;color:var(--tx);flex:1;min-width:0}
-.bk-sub{font-size:11px;color:var(--sll);margin-top:1px}
-.bk-val{font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--tx);white-space:nowrap}
-.bk-val.neg{color:#dc4545}
-.bk-val.pos{color:#16a34a}
-.bk-sub-row{display:flex;justify-content:space-between;align-items:baseline;padding:2px 0 2px 12px;border-left:2px solid var(--bd);gap:8px}
-.bk-sub-row .bk-lbl{font-size:11.5px;color:var(--sl)}
-.bk-sub-row .bk-val{font-size:11.5px;font-weight:500;color:var(--sl)}
-.bk-divider{border:none;border-top:1px dashed var(--bd);margin:5px 0}
-.bk-total{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0 4px;margin-top:5px;border-top:1.5px solid var(--bd);gap:8px}
-.bk-total .bk-lbl{font-size:13.5px;font-weight:700}
-.bk-total .bk-val{font-size:15px;font-weight:700}
-
-/* employer box */
-.er-box{background:#EEF3FF;border:2px solid #0B1F3A;border-radius:var(--rm);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px}
-.er-lbl{font-size:12px;color:#0B1F3A;font-weight:600;line-height:1.4}
-.er-val{font-family:var(--fh);font-size:22px;font-weight:800;color:#0B1F3A !important;white-space:nowrap}
-
-/* disclaimer + powered-by */
-.calc-disc{padding:12px 22px;background:var(--off);border-top:1px solid var(--bd)}
-.calc-disc p{font-size:10.5px;color:var(--sll);line-height:1.6;margin:0}
-.pwby{text-align:center;padding:10px 22px;border-top:1px solid var(--bd)}
-.pwby a{font-size:11px;color:var(--sll);text-decoration:none}
-.pwby a:hover{color:var(--gold)}
-
-/* cta */
-.calc-cta{background:var(--navy);border-radius:var(--rx);padding:26px;margin-top:20px;text-align:center}
-.calc-cta h3{font-family:var(--fh);font-size:17px;color:#fff;margin-bottom:7px}
-.calc-cta p{font-size:12.5px;color:rgba(255,255,255,.42);margin-bottom:16px;line-height:1.65}
-.calc-cta-btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-
-/* mobile fixes */
-@media(max-width:480px){
-  .nh-val{font-size:26px}
-  .cc-body,.bk-sec{padding:16px 14px}
-  .cc-head{padding:14px 16px}
-  .calc-cta{padding:20px 16px}
-  .calc-cta-btns{flex-direction:column;align-items:center}
-  .er-box{flex-direction:column;align-items:flex-start;gap:6px}
-  .er-val{font-size:19px;color:#0B1F3A !important}
-}
-</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://staffona.com/recruitment-egypt#service","name":"Recruitment Consultancy Egypt","description":"End-to-end recruitment for Egyptian and international roles. Staffona sources, screens, and places candidates in tech, finance, operations, and HR roles \u2014 with a 90-day replacement guarantee.","url":"https://staffona.com/recruitment-egypt","serviceType":"Recruitment Services","provider":{"@type":"Organization","name":"Staffona","url":"https://staffona.com"},"areaServed":[{"@type":"Country","name":"Egypt"},{"@type":"Country","name":"United Arab Emirates"},{"@type":"Country","name":"Saudi Arabia"},{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"United States"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://staffona.com"},{"@type":"ListItem","position":2,"name":"Services","item":"https://staffona.com/services"},{"@type":"ListItem","position":3,"name":"Recruitment Consultancy Egypt","item":"https://staffona.com/recruitment-egypt"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How long does a typical recruitment search take in Egypt?","acceptedAnswer":{"@type":"Answer","text":"For mid-level roles, Staffona typically presents qualified candidates within 7 to 14 business days. Executive and specialist searches may take 3 to 5 weeks."}},{"@type":"Question","name":"What is the 90-day replacement guarantee?","acceptedAnswer":{"@type":"Answer","text":"If a placed candidate leaves or is let go within 90 days of starting for performance reasons, Staffona will conduct a replacement search at no additional fee."}},{"@type":"Question","name":"Does Staffona recruit for remote roles for Egyptian candidates?","acceptedAnswer":{"@type":"Answer","text":"Yes. We recruit Egyptian professionals for remote positions with GCC, UK, and US employers. Many placements are fully remote with managed employment through Staffona."}}]}] }</script>
 </head>
 <body>
-<div id="nav-placeholder"></div>
-
-<!-- HERO -->
-<section class="pg-hero">
-  <div class="w">
-    <div class="lbl">Free Tool</div>
-    <h1>Egyptian Payroll<br>Cost Calculator</h1>
-    <p>Instant net salary, income tax, social insurance breakdown, and total employer cost — based on Egyptian Tax Law 2026.</p>
-    <div class="hero-badge">
-      <div class="hero-dot"></div>
-      Live rates · Powered by EGPayslip · Updated Jan 2026
+<div class="nav-wrap page" id="navbar">
+  <div class="w"><nav class="nav-in" aria-label="Main">
+    <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="nlf">Staff<em>ona</em></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="ndrop"><a href="services.html">Services ▾</a>
+        <div class="ndrop-menu">
+          <a href="hr-outsourcing.html">HR Outsourcing</a>
+          <a href="payroll-egypt.html">Payroll Management</a>
+          <a href="recruitment-egypt.html">Recruitment</a>
+          <a href="compliance.html">HR Compliance</a>
+          <a href="services.html">All Services →</a>
+          <a href="payroll-calculator.html">💰 Free Payroll Calculator</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+      </li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="laws.html">Laws &amp; Guides</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-r">
+      <a href="mailto:info@staffona.com" class="nav-email">info@staffona.com</a>
+            <a href="ar.html" class="lang-btn" title="Arabic / العربية">🌐 AR</a>
+      <button class="dm-btn" aria-label="Toggle dark mode">
+        <svg class="dm-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="dm-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
+      </button>
+      <button class="btn btn-gold btn-sm" data-cal>Book Consultation</button>
+      <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false" style="display:none"><span></span><span></span><span></span></button>
     </div>
+  </nav></div>
+</div>
+<nav class="mob-nav" id="mobNav">
+  <a href="index.html">Home</a><a href="services.html">Services</a>
+  <a href="hr-outsourcing.html">HR Outsourcing</a><a href="payroll-egypt.html">Payroll</a>
+  <a href="recruitment-egypt.html">Recruitment</a><a href="resources.html">Resources</a>
+  <a href="laws.html">Laws</a><a href="careers.html">Careers</a><a href="about.html">About</a>
+  <a href="mailto:info@staffona.com" style="color:var(--gold)">info@staffona.com</a>
+  <div style="padding-top:12px"><button class="btn btn-gold" style="width:100%;justify-content:center" data-cal>Book Free Consultation</button></div>
+</nav>
+<section class="ph">
+  <div class="ph-glow"></div>
+  <div class="w ph-in">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="bc-sep">›</span><a href="services.html">Services</a><span class="bc-sep">›</span><span>Recruitment</span></div>
+    <div class="ph-pill">Recruitment Consultancy · Egypt</div>
+    <h1>Find Your Best Hire<br>in <span>Egypt</span></h1>
+    <p class="sub">We source, screen, and deliver top Egyptian talent for tech, finance, operations, and bilingual support roles. Every placement comes with a 90-day replacement guarantee.</p>
   </div>
 </section>
 
-<!-- CALCULATOR -->
-<section style="background:var(--off);padding-bottom:0">
+<section class="sec">
   <div class="w">
-    <div class="calc-layout">
-
-      <!-- ── INPUTS ── -->
-      <div>
-        <div class="cc">
-          <div class="cc-head">
-            <div class="cc-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-            </div>
-            <div>
-              <h2>Salary Details</h2>
-              <p>Monthly figures · Egyptian Pounds</p>
-            </div>
-          </div>
-          <div class="cc-body">
-
-            <!-- Mode -->
-            <div class="mode-sw">
-              <button class="mode-btn on" id="btn-gtn" onclick="setMode('gtn')">Gross → Net</button>
-              <button class="mode-btn"    id="btn-ntg" onclick="setMode('ntg')">Net → Gross</button>
-            </div>
-
-            <!-- Salary -->
-            <div class="fi">
-              <label id="sal-lbl">Monthly Gross Salary (EGP)</label>
-              <div class="fi-wrap">
-                <span class="fi-pfx">EGP</span>
-                <input type="number" id="salary" placeholder="e.g. 15,000" min="1" max="10000000" oninput="onType()">
-              </div>
-            </div>
-
-            <!-- Medical Insurance Premium -->
-            <div class="fi">
-              <label>Your Medical Insurance Premium (EGP/month) <span class="fi-note">optional</span></label>
-              <div class="fi-wrap">
-                <span class="fi-pfx">EGP</span>
-                <input type="number" id="medical" placeholder="0" min="0" max="16700" oninput="onType()">
-              </div>
-              <div class="fi-hint">Your share · Employer pays 4× · Reduces your taxable income (capped at EGP 10,000/yr deduction)</div>
-            </div>
-
-            <!-- Toggles -->
-            <div class="opt-row">
-              <div>
-                <div class="opt-lbl">Subject to Social Insurance</div>
-                <div class="opt-sub">Disable only for exempted employment types</div>
-              </div>
-              <label class="tog">
-                <input type="checkbox" id="chk-si" onchange="onType()" checked>
-                <span class="tog-sl"></span>
-              </label>
-            </div>
-
-            <div class="opt-row">
-              <div>
-                <div class="opt-lbl">Disabled Employee</div>
-                <div class="opt-sub">Personal exemption: EGP 30,000/yr instead of 20,000/yr</div>
-              </div>
-              <label class="tog">
-                <input type="checkbox" id="chk-dis" onchange="onType()">
-                <span class="tog-sl"></span>
-              </label>
-            </div>
-
-            <button class="calc-go" onclick="calculate()">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-              Calculate Salary
-            </button>
-          </div>
-        </div>
-
-        <!-- CTA -->
-        <div class="calc-cta rv">
-          <h3>Need us to handle payroll for you?</h3>
-          <p>Staffona manages payroll, social insurance filings, tax submissions, and employment contracts — fully compliant with Egyptian Labour Law.</p>
-          <div class="calc-cta-btns">
-            <a href="/pricing.html" class="btn">View Pricing</a>
-            <a href="https://wa.me/201068347083?text=Hi%20Staffona%2C%20I%27d%20like%20to%20discuss%20payroll%20outsourcing." class="btn btn-out" target="_blank" rel="noopener">WhatsApp Us</a>
-          </div>
+    <div class="sh sh-c rv"><div class="lbl lbl-c">What We Recruit</div><h2 class="h2 h2-c">Roles We <span>Specialise In</span></h2></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px">
+      <div class="rv" style="background:var(--off);border:1px solid var(--border);border-radius:var(--rl);padding:26px 22px">
+        <div style="font-size:28px;margin-bottom:12px">💻</div>
+        <div style="font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text)">Tech &amp; Software</div>
+        <p style="font-size:13px;color:var(--slate);line-height:1.65;margin-bottom:12px">Developers, QA, DevOps, data analysts, and IT support with English proficiency.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">Software Engineers</span>
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">QA Engineers</span>
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">Data Analysts</span>
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">DevOps</span>
         </div>
       </div>
-
-      <!-- ── RESULTS ── -->
-      <div>
-        <div class="cc" style="position:sticky;top:88px">
-
-          <!-- Empty state -->
-          <div class="res-empty" id="res-empty">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto;display:block;color:var(--bd)">
-              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-            </svg>
-            <p>Enter a salary and press<br><strong>Calculate Salary</strong> to see the breakdown.</p>
-          </div>
-
-          <!-- Results -->
-          <div class="res-inner" id="res-out">
-
-            <!-- Net hero -->
-            <div class="net-hero">
-              <div class="nh-lbl" id="nh-lbl">Employee Net Salary / Month</div>
-              <div><span class="nh-val" id="r-net">—</span><span class="nh-unit">EGP</span></div>
-              <div class="nh-sub" id="nh-sub"></div>
-              <div class="nh-pills">
-                <div class="np" id="r-etr-pill">—</div>
-                <div class="np" id="r-bracket-pill">—</div>
-              </div>
-            </div>
-
-            <!-- EMPLOYEE VIEW -->
-            <div class="bk-sec">
-              <div class="bk-title">Employee View · Monthly Breakdown</div>
-
-              <div class="bk-row">
-                <div class="bk-lbl">Gross Salary</div>
-                <div class="bk-val" id="r-gross">—</div>
-              </div>
-
-              <hr class="bk-divider">
-
-              <!-- SI row -->
-              <div class="bk-row">
-                <div>
-                  <div class="bk-lbl">Social Insurance (11%)</div>
-                  <div class="bk-sub" id="r-si-sub">On insurable wage</div>
-                </div>
-                <div class="bk-val neg" id="r-si">—</div>
-              </div>
-
-              <!-- Income Tax row -->
-              <div class="bk-row" style="margin-top:4px">
-                <div>
-                  <div class="bk-lbl">Income Tax</div>
-                  <div class="bk-sub" id="r-tax-sub">—</div>
-                </div>
-                <div class="bk-val neg" id="r-tax">—</div>
-              </div>
-              <!-- Bracket sub-rows injected here -->
-              <div id="r-bracket-rows"></div>
-
-              <!-- Martyrs Fund -->
-              <div class="bk-row" id="r-martyrs-row" style="margin-top:4px">
-                <div>
-                  <div class="bk-lbl">Martyrs Fund (0.05%)</div>
-                </div>
-                <div class="bk-val neg" id="r-martyrs">—</div>
-              </div>
-
-              <!-- Medical benefit note if entered -->
-              <div class="bk-row" id="r-med-row" style="display:none;margin-top:4px">
-                <div>
-                  <div class="bk-lbl">Medical Insurance Benefit</div>
-                  <div class="bk-sub" id="r-med-sub">In-kind benefit · Reduces taxable income</div>
-                </div>
-                <div class="bk-val" style="color:var(--sl);font-size:12px" id="r-medical">—</div>
-              </div>
-
-              <div class="bk-total">
-                <div class="bk-lbl">Net Take-Home</div>
-                <div class="bk-val pos" id="r-net2">—</div>
-              </div>
-            </div>
-
-            <!-- EMPLOYER COST -->
-            <div class="bk-sec">
-              <div class="bk-title">Employer Cost · Monthly Investment</div>
-
-              <div class="bk-row">
-                <div class="bk-lbl">Employee Gross</div>
-                <div class="bk-val" id="r-er-gross">—</div>
-              </div>
-              <div class="bk-row">
-                <div>
-                  <div class="bk-lbl">Employer Insurance (18.75%)</div>
-                  <div class="bk-sub">Pension 10% + Health 3.25% + Injury 2% + Unemployment 1% + EOS 2.5%</div>
-                </div>
-                <div class="bk-val" id="r-er-si">—</div>
-              </div>
-              <div class="bk-row" id="r-er-med-row" style="display:none">
-                <div class="bk-lbl">Medical Insurance Premium</div>
-                <div class="bk-val" id="r-er-medical">—</div>
-              </div>
-              <div class="bk-row">
-                <div class="bk-lbl">Emergency Fund</div>
-                <div class="bk-val" id="r-emergency">—</div>
-              </div>
-
-              <div class="er-box">
-                <div class="er-lbl">Total Cost<br><span style="font-size:10.5px">Gross + all employer contributions</span></div>
-                <div class="er-val" id="r-er-total">—</div>
-              </div>
-            </div>
-
-            <div class="calc-disc">
-              <p id="r-disc">Calculations are indicative and based on current Egyptian tax and social insurance regulations. For official payroll processing, consult a licensed payroll provider.</p>
-            </div>
-            <div class="pwby">
-              <a href="https://www.egpayslip.com" target="_blank" rel="noopener">Powered by EGPayslip</a>
-            </div>
-
-          </div><!-- /.res-inner -->
+      <div class="rv d1" style="background:var(--off);border:1px solid var(--border);border-radius:var(--rl);padding:26px 22px">
+        <div style="font-size:28px;margin-bottom:12px">🌐</div>
+        <div style="font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text)">Bilingual &amp; Support</div>
+        <p style="font-size:13px;color:var(--slate);line-height:1.65;margin-bottom:12px">Arabic/English and Arabic/French professionals for customer-facing and back-office roles.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">Customer Support</span>
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">Account Managers</span>
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">Operations</span>
         </div>
       </div>
-
+      <div class="rv d2" style="background:var(--off);border:1px solid var(--border);border-radius:var(--rl);padding:26px 22px">
+        <div style="font-size:28px;margin-bottom:12px">💰</div>
+        <div style="font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text)">Finance &amp; Accounting</div>
+        <p style="font-size:13px;color:var(--slate);line-height:1.65;margin-bottom:12px">Accountants, finance managers, and payroll specialists familiar with Egyptian regulations.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">Accountants</span>
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">Finance Managers</span>
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">Payroll Specialists</span>
+        </div>
+      </div>
+      <div class="rv d1" style="background:var(--off);border:1px solid var(--border);border-radius:var(--rl);padding:26px 22px">
+        <div style="font-size:28px;margin-bottom:12px">📋</div>
+        <div style="font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text)">HR &amp; Admin</div>
+        <p style="font-size:13px;color:var(--slate);line-height:1.65;margin-bottom:12px">HR generalists, payroll administrators, and office managers with local regulatory knowledge.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">HR Managers</span>
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">HR Generalists</span>
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">Office Managers</span>
+        </div>
+      </div>
+      <div class="rv d2" style="background:var(--off);border:1px solid var(--border);border-radius:var(--rl);padding:26px 22px">
+        <div style="font-size:28px;margin-bottom:12px">🏢</div>
+        <div style="font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text)">Sales &amp; Business Dev</div>
+        <p style="font-size:13px;color:var(--slate);line-height:1.65;margin-bottom:12px">Sales professionals with regional market knowledge and language skills for GCC-facing roles.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">Sales Managers</span>
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">BDMs</span>
+          <span style="background:var(--white);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--slate)">Account Execs</span>
+        </div>
+      </div>
+      <div class="rv d3" style="background:var(--navy);border-radius:var(--rl);padding:26px 22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+        <div style="font-size:28px;margin-bottom:12px">🎯</div>
+        <div style="font-family:var(--fh);font-size:17px;font-weight:700;margin-bottom:8px;color:#fff">Executive Search</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:16px">C-level and senior management placements with retained search methodology.</p>
+        <button class="btn btn-gold btn-sm" data-cal>Discuss Your Search</button>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- How it works -->
-<section class="sec" style="background:var(--white)">
-  <div class="w">
-    <div class="shc sh">
-      <div class="lbl lbl-c">Methodology</div>
-      <h2 class="h2">How the Calculator Works</h2>
-    </div>
-    <div class="grid3">
-      <div class="rv">
-        <div style="font-size:26px;margin-bottom:10px">📊</div>
-        <h3 style="font-family:var(--fh);font-size:16px;font-weight:700;margin-bottom:8px">Social Insurance</h3>
-        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Applied on insurable wage capped at EGP 16,700/mo. Employee pays 11% (pension 9% + health 1% + EOS 1%). Employer pays 18.75% on top.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center">
+      <div class="rv-l">
+        <div class="lbl">Our Process</div>
+        <h2 class="h2">How We Find<br><span>Your Perfect Hire</span></h2>
+        <p class="sub" style="margin-bottom:28px">We don't just post jobs. We actively source, screen, and assess candidates — so you only meet people worth your time.</p>
+        <div style="display:grid;gap:14px">
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">Brief &amp; role definition</div><div style="font-size:13px;color:var(--slate)">We understand the role requirements, salary budget, team culture, and timelines.</div></div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">Active sourcing</div><div style="font-size:13px;color:var(--slate)">We search our network, LinkedIn, and specialized Egyptian job boards for matching candidates.</div></div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">Screening &amp; assessment</div><div style="font-size:13px;color:var(--slate)">CV review, structured phone screen, English proficiency check, and skills assessment.</div></div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">Shortlist delivery</div><div style="font-size:13px;color:var(--slate)">Typically 3–5 shortlisted candidates within 5–10 business days of brief.</div></div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">5</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px">Offer &amp; onboarding</div><div style="font-size:13px;color:var(--slate)">We coordinate the offer process and can handle full onboarding if needed.</div></div></div>
+        </div>
       </div>
-      <div class="rv d1">
-        <div style="font-size:26px;margin-bottom:10px">💰</div>
-        <h3 style="font-family:var(--fh);font-size:16px;font-weight:700;margin-bottom:8px">Income Tax</h3>
-        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Progressive brackets 0%→27.5% per Egyptian Tax Law 2026, with high-income adjustments above EGP 600k/year. Taxable income = annual gross minus SI deductions minus personal exemption (EGP 20,000/yr) minus employer medical premiums (up to EGP 10,000/yr).</p>
-      </div>
-      <div class="rv d2">
-        <div style="font-size:26px;margin-bottom:10px">🔄</div>
-        <h3 style="font-family:var(--fh);font-size:16px;font-weight:700;margin-bottom:8px">Net ↔ Gross</h3>
-        <p style="font-size:13.5px;color:var(--sl);line-height:1.7">Switch modes to calculate from desired net take-home. Finds the exact gross needed to deliver your target net using iterative binary search — accurate to EGP 0.05.</p>
+      <div class="rv-r d1" style="background:var(--navy);border-radius:var(--rx);padding:36px">
+        <div style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:24px">Our Guarantee</div>
+        <div style="display:grid;gap:20px">
+          <div style="border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:20px"><div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:6px">90-Day Replacement Guarantee</div><div style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">If a placed candidate leaves or is let go within 90 days for performance reasons, we replace them at no additional fee.</div></div>
+          <div style="border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:20px"><div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:6px">Salary Benchmarking Included</div><div style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">Every search comes with a market salary report for the role in Egypt — so you make competitive offers.</div></div>
+          <div><div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:6px">Background Checks Included</div><div style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">Employment history verification and reference checks are included in every permanent placement.</div></div>
+        </div>
+        <button class="btn btn-gold" style="width:100%;justify-content:center;margin-top:24px" data-cal>Start a Search</button>
       </div>
     </div>
   </div>
 </section>
 
-<div id="footer-placeholder"></div>
-<script src="shared.js"></script>
+<section class="sec" style="background:var(--navy);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(200,151,58,.07),transparent)"></div>
+  <div class="w" style="position:relative;z-index:1;text-align:center">
+    <h2 class="h2 h2-w h2-c rv">Start Your Search in Egypt</h2>
+    <p class="sub sub-w sub-c rv d1" style="margin-bottom:36px">Tell us the role, budget, and timeline. We'll respond within 1 working day with our approach.</p>
+    <div class="rv d2" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <button class="btn btn-gold btn-lg" data-cal>Book a Free Consultation</button>
+      <a href="mailto:info@staffona.com" class="btn btn-ghost btn-lg">info@staffona.com</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--off)">
+  <div class="w">
+    <div class="sh sh-c rv"><div class="lbl lbl-c">FAQ</div><h2 class="h2 h2-c">Recruitment in Egypt <span>— Common Questions</span></h2></div>
+    <div class="faq-wrap" style="max-width:720px;margin:40px auto 0">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-ic">+</span><span class="faq-qt">How long does a recruitment search take?</span></div>
+        <div class="faq-a"><p>For mid-level professional roles, Staffona typically presents a shortlist of 3 to 5 qualified candidates within 7 to 14 business days. Senior or specialised searches may take 3 to 5 weeks. We never present candidates until confident in their fit.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-ic">+</span><span class="faq-qt">What does the 90-day replacement guarantee cover?</span></div>
+        <div class="faq-a"><p>If a Staffona-placed candidate leaves or is let go for performance reasons within 90 calendar days of their start date, Staffona conducts a full replacement search at no additional placement fee. This applies to all standard placements.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-ic">+</span><span class="faq-qt">Does Staffona recruit for remote roles?</span></div>
+        <div class="faq-a"><p>Yes. Many of our clients are GCC, UK, and US companies hiring Egyptian professionals who work fully remotely. Staffona sources and vets candidates and can also provide the managed employment structure to legally employ remote hires in Egypt.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-ic">+</span><span class="faq-qt">What industries and roles does Staffona specialise in?</span></div>
+        <div class="faq-a"><p>Our strongest track record is in: technology (developers, QA, DevOps, data analysts), finance and accounting, HR and payroll, bilingual support and operations (Arabic/English), and executive search across these functions.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-ic">+</span><span class="faq-qt">Is there a retainer or upfront fee?</span></div>
+        <div class="faq-a"><p>Standard recruitment charges a placement fee only on successful hire. For executive search or high-volume mandates, a retained arrangement may be proposed. No fee is charged until a candidate is placed and starts. First consultation is always free.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{padding:18px 0;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none}
+.faq-ic{width:24px;height:24px;border-radius:50%;background:var(--gold-pl);border:1px solid rgba(200,151,58,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:15px;color:var(--gold);transition:transform .22s}
+.faq-item.open .faq-ic{transform:rotate(45deg)}
+.faq-qt{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--text);flex:1}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s}
+.faq-item.open .faq-a{max-height:240px;padding-bottom:18px}
+.faq-a p{font-size:14px;color:var(--sl);line-height:1.8}
+</style>
 <script>
-// ══════════════════════════════════════════════════════
-// LIVE DATA from EGPayslip Supabase (hardcoded fallback)
-// ══════════════════════════════════════════════════════
-const SB_URL = "https://filagqajbgofboyyuifi.supabase.co";
-const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpbGFncWFqYmdvZmJveXl1aWZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MjM2MjUsImV4cCI6MjA4NjI5OTYyNX0.b34HrBoTN2TP2qKehX5DHzZ8cLgP7WaEF3WoUXDYY5o";
-
-const D = {
-  // Tax formula hardcoded in progressiveTax() — exact replica of EGPayslip calculate_progressive_tax SQL
-  si_emp:    0.11,    // employee: pension 9% + health 1% + EOS 1%
-  si_er:     0.1875,  // employer: pension 10% + health 3.25% + injury 2% + unemployment 1% + EOS 2.5%
-  si_min:    2700,
-  si_max:    16700,
-  ex_std:    20000,   // annual personal exemption (standard)
-  ex_dis:    30000,   // annual personal exemption (disabled)
-  martyrs:   0.0005,  // Martyrs & Victims Fund: 0.05% of gross
-  med_er_multiplier: 1, // employer passes monthly premium (1x) as entered
-  disc: "Calculations are indicative and based on current Egyptian tax and social insurance regulations. Powered by EGPayslip. For official payroll processing, consult a licensed payroll provider."
-};
-
-// Refresh from Supabase silently
-(async () => {
-  try {
-    const H = { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}` };
-    const q = (t, p='') => fetch(`${SB_URL}/rest/v1/${t}?${p}`, {headers:H}).then(r => {
-      if (!r.ok) throw new Error(`${t} ${r.status}`);
-      return r.json();
-    });
-    const [si, exemptions, settings] = await Promise.all([
-      q('social_insurance_rates','effective_to=is.null'),
-      q('tax_exemptions','effective_to=is.null'),
-      q('system_settings'),
-    ]);
-    // Tax formula is hardcoded (EGPayslip uses calculate_progressive_tax SQL, not bracket table)
-    const r = (type,comp) => { const x=si.find(s=>s.type===type&&s.component===comp); return x?+x.rate:null; };
-    D.si_emp = (r('employee','pension')??0.09)+(r('employee','health')??0.01)+(r('employee','end_of_service')??0.01);
-    D.si_er  = (r('employer','pension')??0.10)+(r('employer','health')??0.0325)+(r('employer','work_injury')??0.02)+(r('employer','unemployment')??0.01)+(r('employer','end_of_service')??0.025);
-    const sirow = si.find(s=>s.min_wage);
-    if(sirow){ D.si_min=+sirow.min_wage; D.si_max=+sirow.max_wage; }
-    const std=exemptions.find(e=>e.applies_to==='all'), dis=exemptions.find(e=>e.applies_to==='disabled');
-    if(std) D.ex_std=+std.amount;
-    if(dis) D.ex_dis=+dis.amount;
-    const disc=settings.find(s=>s.setting_key==='calculation_disclaimer');
-    if(disc) D.disc=disc.setting_value;
-    console.log('✓ EGPayslip data refreshed');
-  } catch(e){ console.warn('Using fallback data:',e.message); }
-})();
-
-// ══════════════════════════════════════════════════════
-// CALCULATION ENGINE — exact replica of EGPayslip SQL
-// calculate_progressive_tax() + calculate_salary_v1()
-// ══════════════════════════════════════════════════════
-
-// Exact port of calculate_progressive_tax() from Supabase
-function progressiveTax(t) {
-  if (t <= 0)          return 0;
-  if (t <= 40000)      return 0;
-  if (t <= 55000)      return (t - 40000) * 0.10;
-  if (t <= 70000)      return (t - 55000) * 0.15 + 1500;
-  if (t <= 200000)     return (t - 70000) * 0.20 + 1500 + 2250;
-  if (t <= 400000)     return (t - 200000) * 0.225 + 1500 + 2250 + 26000;
-  if (t <= 600000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000;
-  // HIGH-INCOME BRACKET ADJUSTMENTS (bracket merging)
-  if (t <= 700000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 4000;
-  if (t <= 800000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 6750;
-  if (t <= 900000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 10250;
-  if (t <= 1200000)    return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 15250;
-  return (t - 1200000) * 0.275 + 300000;
-}
-
-// Build bracket breakdown rows for display only (simulate what brackets were hit)
-function bracketRows(taxableA) {
-  const brackets = [
-    {min:0,       max:40000,    rate:0.00, label:'0%'},
-    {min:40000,   max:55000,    rate:0.10, label:'10%'},
-    {min:55000,   max:70000,    rate:0.15, label:'15%'},
-    {min:70000,   max:200000,   rate:0.20, label:'20%'},
-    {min:200000,  max:400000,   rate:0.225,label:'22.5%'},
-    {min:400000,  max:600000,   rate:0.25, label:'25%'},
-    {min:600000,  max:1200000,  rate:0.25, label:'25%+'},
-    {min:1200000, max:Infinity, rate:0.275,label:'27.5%'},
-  ];
-  return brackets
-    .filter(b => taxableA > b.min && b.rate > 0)
-    .map(b => {
-      const inB = Math.min(taxableA, b.max) - b.min;
-      return { rate:b.rate, label:b.label, inB, taxM_month: inB * b.rate / 12 };
-    });
-}
-
-function calcGross(grossM, medM, withSI, isDisabled) {
-  // 1. Social Insurance (exact SQL: GREATEST(min, LEAST(gross, max)))
-  const ins    = Math.min(Math.max(grossM, D.si_min), D.si_max);
-  const si_emp = withSI ? Math.round(ins * D.si_emp * 100) / 100 : 0;
-  const si_er  = withSI ? Math.round(ins * D.si_er  * 100) / 100 : 0;
-
-  // 2. Annual figures
-  const grossA    = grossM * 12;
-  const siA       = si_emp * 12;
-  const exemption = isDisabled ? D.ex_dis : D.ex_std;
-
-  // 3. Medical tax deduction: annual premium paid, capped at EGP 10,000/yr (per tax law)
-  const medAnnual    = medM * 12;
-  const medDeduction = Math.min(medAnnual, 10000);
-
-  // 4. Annual taxable income
-  const taxableA = Math.max(0, grossA - siA - exemption - medDeduction);
-
-  // 5. Annual tax — exact EGPayslip formula
-  const taxA  = progressiveTax(taxableA);
-  const taxM  = Math.round(taxA / 12 * 100) / 100;
-
-  // 6. Martyrs & Emergency
-  const martyrs  = Math.round(grossM * D.martyrs  * 100) / 100;
-  const emergency= Math.round(Math.min(grossM, 2540) * 0.01 * 100) / 100;
-
-  // 7. Net salary (medical is NOT deducted from net — it's an employer in-kind benefit)
-  const totalDed = si_emp + taxM + martyrs;
-  const net      = Math.round((grossM - totalDed) * 100) / 100;
-
-  // 8. Total employer cost: gross + SI(18.75%) + emergency + monthly medical premium (1x)
-  const er_med  = medM;  // monthly premium as entered — employer bears this cost
-  const erTotal = Math.round((grossM + si_er + emergency + er_med) * 100) / 100;
-
-  // 9. Effective tax rate & top bracket for display
-  const etr  = grossA > 0 ? taxA / grossA * 100 : 0;
-  const bRows_display = bracketRows(taxableA);
-  const topB = bRows_display.length ? bRows_display[bRows_display.length - 1] : null;
-
-  return { grossM, net, si_emp, si_er, ins, taxM, taxA, taxableA,
-           medDeduction, medAnnual, exemption, martyrs, emergency,
-           er_med, erTotal, totalDed,
-           bRows: bRows_display, etr, topB };
-}
-
-function calcNet(targetNetM, medM, withSI, isDisabled) {
-  let lo = Math.max(targetNetM, 1), hi = Math.max(targetNetM * 4, 50000);
-  while (calcGross(hi, medM, withSI, isDisabled).net < targetNetM) hi *= 2;
-  for (let i = 0; i < 80; i++) {
-    const mid = (lo + hi) / 2;
-    const res = calcGross(mid, medM, withSI, isDisabled);
-    if (Math.abs(res.net - targetNetM) < 0.05) break;
-    if (res.net < targetNetM) lo = mid; else hi = mid;
-  }
-  return calcGross((lo + hi) / 2, medM, withSI, isDisabled);
-}
-
-// ══════════════════════════════════════════════════════
-// UI
-// ══════════════════════════════════════════════════════
-let mode = 'gtn';
-
-function setMode(m) {
-  mode = m;
-  document.getElementById('btn-gtn').classList.toggle('on', m==='gtn');
-  document.getElementById('btn-ntg').classList.toggle('on', m==='ntg');
-  document.getElementById('sal-lbl').textContent = m==='gtn'
-    ? 'Monthly Gross Salary (EGP)' : 'Desired Net Monthly Salary (EGP)';
-  document.getElementById('res-empty').style.display = '';
-  document.getElementById('res-out').style.display = 'none';
-  const sal = document.getElementById('salary');
-  sal.value = '';
-  sal.focus();
-}
-
-let _t;
-function onType() {
-  clearTimeout(_t);
-  _t = setTimeout(() => {
-    const v = parseFloat(document.getElementById('salary').value);
-    if (v > 0) calculate();
-  }, 450);
-}
-
-function calculate() {
-  const salEl  = document.getElementById('salary');
-  const val    = parseFloat(salEl.value);
-  if (!val || val <= 0) { salEl.classList.add('err'); return; }
-  salEl.classList.remove('err');
-
-  const medM     = Math.max(0, parseFloat(document.getElementById('medical').value) || 0);
-  const withSI   = document.getElementById('chk-si').checked;
-  const isDisab  = document.getElementById('chk-dis').checked;
-
-  const r = mode === 'gtn'
-    ? calcGross(val, medM, withSI, isDisab)
-    : calcNet(val, medM, withSI, isDisab);
-
-  // Show results panel
-  document.getElementById('res-empty').style.display = 'none';
-  document.getElementById('res-out').style.display   = 'block';
-
-  // Net hero
-  const displayNet = mode === 'gtn' ? r.net : val;
-  document.getElementById('r-net').textContent  = fmtR(displayNet);
-  document.getElementById('nh-lbl').textContent = mode === 'gtn'
-    ? 'Employee Net Salary / Month' : 'Confirmed Net / Month';
-  document.getElementById('nh-sub').textContent = mode === 'gtn'
-    ? `From gross EGP ${fmtR(r.grossM)}/mo · Annual EGP ${fmtR(r.grossM*12)}`
-    : `Required gross: EGP ${fmtR(r.grossM)}/month`;
-
-  document.getElementById('r-etr-pill').textContent     = `${r.etr.toFixed(1)}% effective tax`;
-  document.getElementById('r-bracket-pill').textContent = r.topB
-    ? `Top bracket: ${(r.topB.rate*100).toFixed(1)}%` : 'Tax-exempt';
-
-  // Employee rows
-  document.getElementById('r-gross').textContent   = `EGP ${fmtR(r.grossM)}`;
-  document.getElementById('r-si').textContent      = withSI ? `−EGP ${fmtR(r.si_emp)}` : `EGP 0 (exempt)`;
-  document.getElementById('r-si-sub').textContent  = withSI
-    ? `11% on insurable wage EGP ${fmtR(r.ins)}/mo (max EGP ${fmtR(D.si_max)})`
-    : 'Social insurance not applied';
-  document.getElementById('r-tax').textContent     = `−EGP ${fmtR(r.taxM)}`;
-  document.getElementById('r-tax-sub').textContent = `Taxable annual: EGP ${fmtR(r.taxableA)} · Exemption: EGP ${fmtR(r.exemption)}`;
-  document.getElementById('r-martyrs').textContent = `−EGP ${fmtR(r.martyrs)}`;
-  document.getElementById('r-net2').textContent    = `EGP ${fmtR(r.net)}`;
-
-  // Tax bracket rows
-  document.getElementById('r-bracket-rows').innerHTML = r.bRows.map(b => `
-    <div class="bk-sub-row">
-      <div class="bk-lbl">${(b.rate*100).toFixed(1)}% on EGP ${fmtR(b.inB)}/yr</div>
-      <div class="bk-val">−EGP ${fmtR(b.taxM_month)}/mo</div>
-    </div>`).join('');
-
-  // Medical row — shown as benefit info, NOT a net deduction
-  if (medM > 0) {
-    document.getElementById('r-med-row').style.display = '';
-    document.getElementById('r-medical').textContent = `In-kind benefit · Reduces taxable income by EGP ${fmtR(r.medDeduction)}/yr`;
-    document.getElementById('r-med-sub').textContent = `Tax deduction: EGP ${fmtR(r.medDeduction)}/yr (annual premium, capped at EGP 10,000/yr)`;
-  } else {
-    document.getElementById('r-med-row').style.display = 'none';
-  }
-
-  // Employer
-  document.getElementById('r-er-gross').textContent = `EGP ${fmtR(r.grossM)}`;
-  document.getElementById('r-er-si').textContent    = withSI ? `+EGP ${fmtR(r.si_er)}` : `EGP 0`;
-  document.getElementById('r-emergency').textContent= `+EGP ${fmtR(r.emergency)}`;
-  document.getElementById('r-er-total').textContent = `EGP ${fmtR(r.erTotal)}`;
-
-  if (medM > 0) {
-    document.getElementById('r-er-med-row').style.display = '';
-    document.getElementById('r-er-medical').textContent = `+EGP ${fmtR(r.er_med)}`;
-  } else {
-    document.getElementById('r-er-med-row').style.display = 'none';
-  }
-
-  // Disclaimer
-  document.getElementById('r-disc').textContent = D.disc;
-}
-
-function fmtR(n) { return Math.round(n * 100) / 100 % 1 === 0
-  ? Math.round(n).toLocaleString('en-EG')
-  : n.toLocaleString('en-EG', {minimumFractionDigits:2, maximumFractionDigits:2}); }
-
-document.addEventListener('keydown', e => { if (e.key==='Enter') calculate(); });
+if(!window._sfFaq){window._sfFaq=true;document.addEventListener('click',function(e){var b=e.target.closest('.faq-q');if(!b)return;var i=b.closest('.faq-item'),w=i.closest('.faq-wrap'),o=i.classList.contains('open');w.querySelectorAll('.faq-item.open').forEach(function(x){x.classList.remove('open')});if(!o)i.classList.add('open');});}
 </script>
+<footer class="footer">
+  <div class="w">
+    <div class="ftg">
+      <div class="flb">
+        <a href="index.html"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="flb-fb">Staff<em>ona</em></span></a>
+        <p>Egypt's trusted HR outsourcing and recruitment consultancy. Based in Alexandria, serving international and Egyptian businesses.</p>
+        <a href="mailto:info@staffona.com" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@staffona.com</a>
+        <a href="https://maps.google.com/?q=398+El-Horreya+Street+Mostafa+Kamel+Alexandria+Egypt" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>El-Horreya St, Mostafa Kamel, Alexandria, Egypt</a>
+        <a href="https://www.linkedin.com/company/staffona" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Staffona</a>
+      </div>
+      <div><div class="flct">Services</div><ul class="flls"><li><a href="hr-outsourcing.html">HR Outsourcing</a></li><li><a href="payroll-egypt.html">Payroll</a></li><li><a href="recruitment-egypt.html">Recruitment</a></li><li><a href="compliance.html">HR Compliance</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="services.html">All Services</a></li></ul></div>
+      <div><div class="flct">Resources</div><ul class="flls"><li><a href="resources.html">All Resources</a></li><li><a href="laws.html">Egyptian Laws</a></li><li><a href="resources/hiring-guide.html">Hiring Guide</a></li><li><a href="resources/payroll-taxes.html">Payroll Tax Guide</a></li><li><a href="resources/gcc-hiring.html">GCC Hiring Guide</a></li></ul></div>
+      <div><div class="flct">Company</div><ul class="flls"><li><a href="about.html">About Staffona</a></li><li><a href="careers.html">Careers</a></li><li><a href="index.html#contact">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+    </div>
+    <div class="ftbtm">
+      <div><div class="f-copy">© 2026 Staffona. All rights reserved. <a href="https://maps.google.com/?q=398+El-Horreya+Street+Mostafa+Kamel+Alexandria+Egypt" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">398 El-Horreya St, Mostafa Kamel, Alexandria, Egypt</a>.</div><p class="f-disc">Staffona provides HR consultancy, payroll administration, and recruitment services. All managed employment arrangements are structured as HR outsourcing engagements in accordance with applicable Egyptian law.</p></div>
+      <div class="fbl"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="sitemap.xml">Sitemap</a></div>
+    </div>
+  </div>
+</footer>
+<div class="cookie" id="cookieBanner"><p>We use cookies to improve your experience. <a href="privacy.html">Privacy Policy</a></p><div class="cb-btns"><button class="btn btn-gold btn-sm" id="cookieAccept">Accept</button><button style="background:trans
+<script src="shared.js"></script>
 </body>
 </html>
