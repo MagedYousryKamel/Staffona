@@ -441,7 +441,8 @@ function cvSelected(inp) {
 document.getElementById('careerForm').addEventListener('submit', function(e) {
   const role = document.getElementById('aRole').value;
   const firstName = document.getElementById('aFirst').value.trim();
-  const email = docWord).'); return; }
+  const email = document.getElementById('aEmail').value.trim();
+  if (!role || !firstName || !email) { e.preventDefault(); alert('Please fill in all required fields.'); return; }
 
   const screeningInputs = document.querySelectorAll('#screeningQs [id^="sq_"]');
   for (const inp of screeningInputs) {
@@ -454,18 +455,13 @@ document.getElementById('careerForm').addEventListener('submit', function(e) {
   }
 
   const btn = document.getElementById('appSubmit');
-      return;
-    }
-  }
-
-  const btn = document.getElementById('appSubmit');
   btn.textContent = 'Sending…';
   btn.disabled = true;
 });
 
 function esc(s) { return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-loadJobs();
+    loadJobs();
 </script>
 </body>
 </html>

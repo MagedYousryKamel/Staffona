@@ -111,7 +111,7 @@
 /* employer box */
 .er-box{background:#EEF3FF;border:2px solid #0B1F3A;border-radius:var(--rm);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px}
 .er-lbl{font-size:12px;color:#0B1F3A;font-weight:600;line-height:1.4}
-.er-val{font-family:var(--fh);font-size:22px;font-weight:800;color:#0B1F3A !important;white-space:nowrap}
+.er-val{font-family:var(--fh);font-size:22px;font-weight:800;color:#0B1F3A!important;white-space:nowrap}
 
 /* disclaimer + powered-by */
 .calc-disc{padding:12px 22px;background:var(--off);border-top:1px solid var(--bd)}
@@ -140,30 +140,7 @@
   .calc-cta-btns{flex-direction:column;align-items:center}
   .calc-cta-btns .btn{width:100%;justify-content:center}
   .er-box{flex-direction:column;align-items:flex-start;gap:6px}
-  .er-val{font-size:19px;color:#0B1F3A !important}
-  .bk-val{font-size:12.5px}
-  .bk-lbl{font-size:12px}
-  .bk-sub{font-size:10.5px}
-  .fi input{font-size:15px}
-  .pg-hero h1{font-size:clamp(22px,6vw,36px)}
-}
-</style>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://staffona.com/"},
-    {"@type":"ListItem","position":2,"name":"Payroll Calculator","item":"https://staffona.com/payroll-calculator"}
-  ]
-}
-</script>
-</head>
-<body>
-<div class="nav-wrap page" id="navbar">
-  <div class="w"><nav class="nav-in" aria-label="Main">
-    <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="nlf">Staff<em>ona</em></span></a>
+  .er-val{font-size:19px;color:#0B1F3A!important;this.nextElementSibling.style.display='block'"><span class="nlf">Staff<em>ona</em></span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li class="ndrop"><a href="services.html">Services ▾</a>
@@ -647,16 +624,6 @@ function fmt(egp) {
   if (cur === 'EGP') return primary;
   const egpNum = Math.round(egp).toLocaleString('en-EG');
   return primary + ' (EGP ' + egpNum + ')';
-});
-  const primary = CURRENCY_SYMBOLS[cur] + ' ' + num;
-  if (cur === 'EGP') return primary;
-  const egpNum = Math.round(egp).toLocaleString('en-EG');
-  return primary + ' (EGP ' + egpNum + ')';
-});
-  if (cur === 'EGP') return primary;
-  // Show dual: "USD 3.05 (EGP 150)"
-  const egpStr = 'EGP ' + Math.round(egp).toLocaleString('en-EG');
-  return primary + ' (' + egpStr + ')';
 }
 
 function updateRateInfo() {
@@ -926,7 +893,12 @@ function renderResult(r, medM, cur) {
   function load(cb){
     if(loaded){if(cb)cb();return;}
     var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
-    var s=document.createElement('scri
+        var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);
+  }
+  document.querySelectorAll('[data-url]').forEach(function(el){
+    el.addEventListener('click',function(){load(function(){Calendly.initPopupWidget({url:el.dataset.url});});return false;});
+  });
+})();
 </script>
 </body>
 </html>

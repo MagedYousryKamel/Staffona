@@ -538,7 +538,6 @@ function openPanel(id) {
 function closePanel(id) {
   const p = document.getElementById(id);
   if (p) p.classList.remove('open');
-}ist.add('open'); setTimeout(() => p.scrollIntoView({ behavior:'smooth', block:'start' }), 50); });
 }
 function closePanel(id) { document.getElementById(id).classList.remove('open'); }
 
@@ -1099,7 +1098,10 @@ function clearAll() {
    UTILS
 ══════════════════════════════════════ */
 function v(id) { return (document.getElementById(id).value||'').trim(); }
-function v2(id) { return document.getElementByf-toast';
+function v2(id) { return document.getElementById(id)?.checked; }
+function showToast(msg) {
+  let t = document.getElementById('f-toast');
+  if (!t) { t = document.createElement('div'); t.id = 'f-toast';
     t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--gold);color:var(--navy);padding:11px 22px;border-radius:100px;font-size:13px;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.4);opacity:0;transition:all .3s;z-index:9999;white-space:nowrap';
     document.body.appendChild(t);
   }
@@ -1109,14 +1111,7 @@ function v2(id) { return document.getElementByf-toast';
   setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(20px)'; }, 3000);
 }
 
-function resetJobs() {
-  if (!confirm('Reset job listings to the 3 default openings?')) return;
-  jobs = [];
-  seedDefaultJobs();
-  renderJobs();
-  populateRoleSelect();
-  showToast('Jobs reset to defaults ✓');
-}
+
 
 loadAll();
 </script>
