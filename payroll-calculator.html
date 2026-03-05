@@ -412,7 +412,7 @@
                 <div class="bk-val" id="r-er-si">—</div>
               </div>
               <div class="bk-row" id="r-er-med-row" style="display:none">
-                <div class="bk-lbl">Medical Insurance Premium</div>
+                <div class="bk-lbl">Medical Premium (employer pays 4× your share)</div>
                 <div class="bk-val" id="r-er-medical">—</div>
               </div>
               <div class="bk-row">
@@ -642,7 +642,16 @@ function fmt(egp) {
   const cur = selectedCurrency();
   const dec = CURRENCY_DECIMALS[cur] ?? 2;
   const val = egpToDisplay(egp);
-  return CURRENCY_SYMBOLS[cur] + ' ' + val.toLocaleString('en-EG', {minimumFractionDigits:dec, maximumFractionDigits:dec});
+  const num = val.toLocaleString('en-EG', {minimumFractionDigits:dec, maximumFractionDigits:dec});
+  const primary = CURRENCY_SYMBOLS[cur] + ' ' + num;
+  if (cur === 'EGP') return primary;
+  const egpNum = Math.round(egp).toLocaleString('en-EG');
+  return primary + ' (EGP ' + egpNum + ')';
+});
+  if (cur === 'EGP') return primary;
+  // Show dual: "USD 3.05 (EGP 150)"
+  const egpStr = 'EGP ' + Math.round(egp).toLocaleString('en-EG');
+  return primary + ' (' + egpStr + ')';
 }
 
 function updateRateInfo() {
@@ -873,8 +882,8 @@ function renderResult(r, medM, cur) {
   const medRow = document.getElementById('r-med-row');
   if (medM > 0) {
     medRow.style.display = '';
-    document.getElementById('r-medical').textContent = fmt(medM) + '/mo';
-    document.getElementById('r-med-sub').textContent = 'In-kind benefit · Tax deduction: ' + fmt(r.medDeduction / 12) + '/mo (capped EGP 10k/yr)';
+    document.getElementById('r-medical').textContent = fmt(medM) + '/mo (your share)';
+    document.getElementById('r-med-sub').textContent = 'Employer pays ' + fmt(r.er_med) + '/mo · Tax deduction: ' + fmt(r.medDeduction / 12) + '/mo';
   } else {
     medRow.style.display = 'none';
   }
@@ -886,7 +895,7 @@ function renderResult(r, medM, cur) {
   const erMedRow = document.getElementById('r-er-med-row');
   if (r.er_med > 0) {
     erMedRow.style.display = '';
-    document.getElementById('r-er-medical').textContent = fmt(r.er_med);
+    document.getElementById('r-er-medical').textContent = fmt(r.er_med) + '/mo (4× employee share of ' + fmt(medM) + ')';
   } else {
     erMedRow.style.display = 'none';
   }
@@ -912,12 +921,7 @@ function renderResult(r, medM, cur) {
   function load(cb){
     if(loaded){if(cb)cb();return;}
     var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
-    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';
-    s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);
-  }
-  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
-  var _sw=window.swTab;
-  window.swTab=function(name,btn){if(name==='cal')load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWi
+    var s=document.createElement('scri
 </script>
 </body>
 </html>
