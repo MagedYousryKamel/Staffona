@@ -79,7 +79,7 @@
 /* ─── results ─── */
 .res-empty{padding:48px 22px;text-align:center}
 .res-empty p{font-size:13px;color:var(--sll);line-height:1.7;margin-top:12px}
-.res-inner{display:none}
+.res-inner{display:block}
 
 /* net hero */
 .net-hero{padding:22px;background:linear-gradient(140deg,#0B1F3A 0%,#1B3460 100%);text-align:center}
@@ -329,7 +329,7 @@
           </div>
 
           <!-- Results -->
-          <div class="res-inner" id="res-out">
+          <div class="res-inner" id="res-out" style="display:none">
 
             <!-- Net hero -->
             <div class="net-hero">
@@ -917,10 +917,7 @@ function renderResult(r, medM, cur) {
   }
   var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a';
   var _sw=window.swTab;
-  window.swTab=function(name,btn){if(name==='cal')load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});if(_sw)_sw(name,btn);};
-  window.openCal=function(e){if(e)e.preventDefault();load(function(){if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:(window.SF&&SF.CAL)||CAL_URL});else window.open('https://calendly.com/maged-staffona/free-consultation','_blank');});return false;};
-  document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('[data-cal]').forEach(function(el){el.onclick=function(e){window.openCal(e);};});});
-})();
+  window.swTab=function(name,btn){if(name==='cal')load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWi
 </script>
 </body>
 </html>

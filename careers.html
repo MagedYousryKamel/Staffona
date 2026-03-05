@@ -454,6 +454,11 @@ document.getElementById('careerForm').addEventListener('submit', function(e) {
   }
 
   const btn = document.getElementById('appSubmit');
+      return;
+    }
+  }
+
+  const btn = document.getElementById('appSubmit');
   btn.textContent = 'Sending…';
   btn.disabled = true;
 });
