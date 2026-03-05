@@ -532,7 +532,13 @@ function togglePanel(id) { document.getElementById(id).classList.toggle('open');
 function openPanel(id) {
   const p = document.getElementById(id);
   p.classList.remove('open');
-  requestAnimationFrame(() => { p.classList.add('open'); setTimeout(() => p.scrollIntoView({ behavior:'smooth', block:'start' }), 50); });
+  requestAnimationFrame(() => { p.classList.add('open'); });
+}
+
+function closePanel(id) {
+  const p = document.getElementById(id);
+  if (p) p.classList.remove('open');
+}ist.add('open'); setTimeout(() => p.scrollIntoView({ behavior:'smooth', block:'start' }), 50); });
 }
 function closePanel(id) { document.getElementById(id).classList.remove('open'); }
 
@@ -1093,9 +1099,36 @@ function clearAll() {
    UTILS
 ══════════════════════════════════════ */
 function v(id) { return (document.getElementById(id).value||'').trim(); }
-function v2(id) { return document.getElementById(id).value; }
-function setText(id, val) { const el = document.getElementById(id); if (el) el.textContent = val||''; }
-function esc(s) { return (s||'').toString().replace(/&/g,
-<script src="shared.js"></script>
+function v2(id) { return document.getElementByf-toast';
+    t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--gold);color:var(--navy);padding:11px 22px;border-radius:100px;font-size:13px;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.4);opacity:0;transition:all .3s;z-index:9999;white-space:nowrap';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(20px)'; }, 3000);
+}
+
+function resetJobs() {
+  if (!confirm('Reset job listings to the 3 default openings?')) return;
+  jobs = [];
+  seedDefaultJobs();
+  renderJobs();
+  populateRoleSelect();
+  showToast('Jobs reset to defaults ✓');
+}
+
+loadAll();
+</script>
+
+<script>
+function swTab(name, btn) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  var pane = document.getElementById('tab-' + name);
+  if (pane) pane.classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+</script>
 </body>
 </html>

@@ -441,10 +441,26 @@ function cvSelected(inp) {
 document.getElementById('careerForm').addEventListener('submit', function(e) {
   const role = document.getElementById('aRole').value;
   const firstName = document.getElementById('aFirst').value.trim();
-  const email = document.getElementById('aEmail').value.trim();
-  const cv = document.getElementById('cvFile').files[0];
+  const email = docWord).'); return; }
 
-  if (!role)        { e.preventDefault(); alert('Please select a role.'); return; }
-  if (!firstName)   { e.preventDefa
+  const screeningInputs = document.querySelectorAll('#screeningQs [id^="sq_"]');
+  for (const inp of screeningInputs) {
+    if (inp.dataset.required === '1' && !inp.value.trim()) {
+      e.preventDefault();
+      alert('Please answer: ' + inp.dataset.qText);
+      inp.focus();
+      return;
+    }
+  }
+
+  const btn = document.getElementById('appSubmit');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+});
+
+function esc(s) { return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+loadJobs();
+</script>
 </body>
 </html>
