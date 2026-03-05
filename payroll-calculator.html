@@ -536,8 +536,8 @@ const D = {
   ex_std:  20000,   // annual personal exemption
   ex_dis:  30000,   // disabled
   martyrs: 0.0005,
-  emergency: 25.40,
-  med_er_multiplier: 4,
+  // emergency = min(gross,2540)*0.01 — computed in calcGross
+  // med_er_multiplier removed — employer pays premium 1:1 (no multiplier)
   disc: 'Calculations are indicative and based on current Egyptian tax and social insurance regulations. For official payroll processing and compliance review, consult a licensed payroll provider.'
 };
 
@@ -648,6 +648,11 @@ function fmt(egp) {
   const egpNum = Math.round(egp).toLocaleString('en-EG');
   return primary + ' (EGP ' + egpNum + ')';
 });
+  const primary = CURRENCY_SYMBOLS[cur] + ' ' + num;
+  if (cur === 'EGP') return primary;
+  const egpNum = Math.round(egp).toLocaleString('en-EG');
+  return primary + ' (EGP ' + egpNum + ')';
+});
   if (cur === 'EGP') return primary;
   // Show dual: "USD 3.05 (EGP 150)"
   const egpStr = 'EGP ' + Math.round(egp).toLocaleString('en-EG');
@@ -741,8 +746,8 @@ function calcGross(grossM, medM, withSI, isDisabled) {
   const exemption = isDisabled ? D.ex_dis : D.ex_std;
 
   // 3. Medical tax deduction (employer annual premium, capped per SQL)
-  const medErAnnual  = medM * D.med_er_multiplier * 12;
-  const medDeduction = Math.min(medErAnnual, Math.min((grossA - siA) * 0.15, 10000));
+  const medErAnnual  = medM * 12;  // annual premium (no multiplier)
+  const medDeduction = Math.min(medErAnnual, 10000);  // cap EGP 10,000/yr
 
   // 4. Taxable income
   const taxableA = Math.max(0, grossA - siA - exemption - medDeduction);
@@ -753,14 +758,14 @@ function calcGross(grossM, medM, withSI, isDisabled) {
 
   // 6. Martyrs & Emergency funds
   const martyrs  = Math.round(grossM * D.martyrs * 100) / 100;
-  const emergency = Math.round(D.emergency * 100) / 100;
+  const emergency = Math.round(Math.min(grossM, 2540) * 0.01 * 100) / 100;
 
   // 7. Net (medical NOT deducted — employer in-kind benefit)
   const totalDed = si_emp + taxM + martyrs;
   const net      = Math.round((grossM - totalDed) * 100) / 100;
 
   // 8. Total employer cost
-  const er_med  = medM * D.med_er_multiplier;
+  const er_med  = medM;  // employer passes premium as entered (no multiplier)
   const erTotal = Math.round((grossM + si_er + emergency + er_med) * 100) / 100;
 
   // 9. Effective tax rate
@@ -882,8 +887,8 @@ function renderResult(r, medM, cur) {
   const medRow = document.getElementById('r-med-row');
   if (medM > 0) {
     medRow.style.display = '';
-    document.getElementById('r-medical').textContent = fmt(medM) + '/mo (your share)';
-    document.getElementById('r-med-sub').textContent = 'Employer pays ' + fmt(r.er_med) + '/mo · Tax deduction: ' + fmt(r.medDeduction / 12) + '/mo';
+    document.getElementById('r-medical').textContent = fmt(medM) + '/mo';
+    document.getElementById('r-med-sub').textContent = 'In-kind benefit · Tax deduction: EGP ' + Math.round(r.medDeduction).toLocaleString('en-EG') + '/yr';
   } else {
     medRow.style.display = 'none';
   }
@@ -895,7 +900,7 @@ function renderResult(r, medM, cur) {
   const erMedRow = document.getElementById('r-er-med-row');
   if (r.er_med > 0) {
     erMedRow.style.display = '';
-    document.getElementById('r-er-medical').textContent = fmt(r.er_med) + '/mo (4× employee share of ' + fmt(medM) + ')';
+    document.getElementById('r-er-medical').textContent = fmt(r.er_med) + '/mo';
   } else {
     erMedRow.style.display = 'none';
   }
