@@ -136,10 +136,60 @@
   .er-box{flex-direction:column;align-items:flex-start;gap:6px}
   .er-val{font-size:19px;color:#0B1F3A !important}
 }
+
+/* ── Currency selector ── */
+.cur-bar{display:flex;align-items:center;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.cur-lbl{font-size:12px;color:var(--sl);font-weight:600;white-space:nowrap}
+.cur-pills{display:flex;gap:6px;flex-wrap:wrap}
+.cur-pill{padding:5px 12px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:transparent;color:var(--sl);transition:all .15s}
+.cur-pill.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+[data-theme="dark"] .cur-pill.on{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.cur-note{font-size:11px;color:var(--sl);margin-top:6px;opacity:.8}
+.fx-badge{display:inline-block;font-size:10px;padding:2px 7px;border-radius:100px;background:rgba(200,151,58,.15);color:var(--gold);font-weight:600;margin-left:6px;vertical-align:middle}
+.fx-egp{opacity:.55;font-size:.88em}
 </style>
 </head>
 <body>
-<div id="nav-placeholder"></div>
+<nav class="nav-in" aria-label="Main">
+    <a href="index.html" class="nav-logo"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="nlf">Staff<em>ona</em></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="ndrop"><a href="services.html">Services ▾</a>
+        <div class="ndrop-menu">
+          <a href="hr-outsourcing.html">HR Outsourcing</a>
+          <a href="payroll-egypt.html">Payroll Management</a>
+          <a href="recruitment-egypt.html">Recruitment</a>
+          <a href="compliance.html">HR Compliance</a>
+          <a href="services.html">All Services →</a>
+          <a href="payroll-calculator.html">💰 Free Payroll Calculator</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+      </li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="laws.html">Laws &amp; Guides</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-r">
+      <a href="mailto:info@staffona.com" class="nav-email">info@staffona.com</a>
+            <a href="ar.html" class="lang-btn" title="Arabic / العربية">🌐 AR</a>
+      <button class="dm-btn" aria-label="Toggle dark mode">
+        <svg class="dm-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="dm-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
+      </button>
+      <button class="btn btn-gold btn-sm" data-cal>Book Consultation</button>
+      <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false" style="display:none"><span></span><span></span><span></span></button>
+    </div>
+  </nav></div>
+</div>
+<nav class="mob-nav" id="mobNav">
+  <a href="index.html">Home</a><a href="services.html">Services</a>
+  <a href="hr-outsourcing.html">HR Outsourcing</a><a href="payroll-egypt.html">Payroll</a>
+  <a href="recruitment-egypt.html">Recruitment</a><a href="resources.html">Resources</a>
+  <a href="laws.html">Laws</a><a href="careers.html">Careers</a><a href="about.html">About</a>
+  <a href="mailto:info@staffona.com" style="color:var(--gold)">info@staffona.com</a>
+  <div style="padding-top:12px"><button class="btn btn-gold" style="width:100%;justify-content:center" data-cal>Book Free Consultation</button></div>
+</nav>
 
 <!-- HERO -->
 <section class="pg-hero">
@@ -181,18 +231,34 @@
 
             <!-- Salary -->
             <div class="fi">
-              <label id="sal-lbl">Monthly Gross Salary (EGP)</label>
+                          <!-- Currency selector -->
+            <div class="cur-bar">
+              <span class="cur-lbl">Display currency:</span>
+              <div class="cur-pills">
+                <button class="cur-pill on" onclick="setCurrency('EGP',this)">EGP</button>
+                <button class="cur-pill" onclick="setCurrency('USD',this)">USD</button>
+                <button class="cur-pill" onclick="setCurrency('EUR',this)">EUR</button>
+                <button class="cur-pill" onclick="setCurrency('GBP',this)">GBP</button>
+                <button class="cur-pill" onclick="setCurrency('SAR',this)">SAR</button>
+                <button class="cur-pill" onclick="setCurrency('AED',this)">AED</button>
+                <button class="cur-pill" onclick="setCurrency('KWD',this)">KWD</button>
+              </div>
+              <span class="fx-badge" id="fx-badge" style="display:none">live rate</span>
+            </div>
+            <div class="cur-note" id="fx-note" style="display:none"></div>
+
+<label id="sal-lbl">Monthly Gross Salary (<span id="sal-cur">EGP</span>)</label>
               <div class="fi-wrap">
-                <span class="fi-pfx">EGP</span>
+                <span class="fi-pfx" id="sal-pfx">EGP</span>
                 <input type="number" id="salary" placeholder="e.g. 15,000" min="1" max="10000000" oninput="onType()">
               </div>
             </div>
 
             <!-- Medical Insurance Premium -->
             <div class="fi">
-              <label>Your Medical Insurance Premium (EGP/month) <span class="fi-note">optional</span></label>
+              <label>Your Medical Insurance Premium (<span id="med-cur">EGP</span>/month) <span class="fi-note">optional</span></label>
               <div class="fi-wrap">
-                <span class="fi-pfx">EGP</span>
+                <span class="fi-pfx" id="sal-pfx">EGP</span>
                 <input type="number" id="medical" placeholder="0" min="0" max="16700" oninput="onType()">
               </div>
               <div class="fi-hint">Your share · Employer pays 4× · Reduces your taxable income (capped at EGP 10,000/yr deduction)</div>
@@ -257,7 +323,7 @@
             <!-- Net hero -->
             <div class="net-hero">
               <div class="nh-lbl" id="nh-lbl">Employee Net Salary / Month</div>
-              <div><span class="nh-val" id="r-net">—</span><span class="nh-unit">EGP</span></div>
+              <div><span class="nh-val" id="r-net">—</span><span class="nh-unit" id="nh-unit">EGP</span></div>
               <div class="nh-sub" id="nh-sub"></div>
               <div class="nh-pills">
                 <div class="np" id="r-etr-pill">—</div>
@@ -304,14 +370,7 @@
                 <div class="bk-val neg" id="r-martyrs">—</div>
               </div>
 
-              <!-- Medical benefit note if entered -->
-              <div class="bk-row" id="r-med-row" style="display:none;margin-top:4px">
-                <div>
-                  <div class="bk-lbl">Medical Insurance Benefit</div>
-                  <div class="bk-sub" id="r-med-sub">In-kind benefit · Reduces taxable income</div>
-                </div>
-                <div class="bk-val" style="color:var(--sl);font-size:12px" id="r-medical">—</div>
-              </div>
+
 
               <div class="bk-total">
                 <div class="bk-lbl">Net Take-Home</div>
@@ -335,7 +394,10 @@
                 <div class="bk-val" id="r-er-si">—</div>
               </div>
               <div class="bk-row" id="r-er-med-row" style="display:none">
-                <div class="bk-lbl">Medical Insurance Premium</div>
+                <div>
+                  <div class="bk-lbl">Medical Insurance Premium</div>
+                  <div class="bk-sub" id="r-med-sub">In-kind benefit · Reduces taxable income</div>
+                </div>
                 <div class="bk-val" id="r-er-medical">—</div>
               </div>
               <div class="bk-row">
@@ -391,9 +453,112 @@
   </div>
 </section>
 
-<div id="footer-placeholder"></div>
+<footer class="footer">
+  <div class="w">
+    <div class="ftg">
+      <div class="flb">
+        <a href="index.html"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="flb-fb">Staff<em>ona</em></span></a>
+        <p>Egypt's trusted HR outsourcing and recruitment consultancy. Based in Alexandria, serving international and Egyptian businesses.</p>
+        <a href="mailto:info@staffona.com" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@staffona.com</a>
+        <a href="https://maps.google.com/?q=398+El-Horreya+Street,+Mostafa+Kamel,+Alexandria,+Egypt" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>El-Horreya St, Mostafa Kamel, Alexandria, Egypt</a>
+        <a href="https://www.linkedin.com/company/staffona" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Staffona</a>
+      </div>
+      <div><div class="flct">Services</div><ul class="flls"><li><a href="hr-outsourcing.html">HR Outsourcing</a></li><li><a href="payroll-egypt.html">Payroll</a></li><li><a href="recruitment-egypt.html">Recruitment</a></li><li><a href="compliance.html">HR Compliance</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="services.html">All Services</a></li></ul></div>
+      <div><div class="flct">Resources</div><ul class="flls"><li><a href="resources.html">All Resources</a></li><li><a href="laws.html">Egyptian Laws</a></li><li><a href="resources/hiring-guide.html">Hiring Guide</a></li><li><a href="resources/payroll-taxes.html">Payroll Tax Guide</a></li><li><a href="resources/gcc-hiring.html">GCC Hiring Guide</a></li></ul></div>
+      <div><div class="flct">Company</div><ul class="flls"><li><a href="about.html">About Staffona</a></li><li><a href="careers.html">Careers</a></li><li><a href="index.html#contact">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+    </div>
+    <div class="ftbtm">
+      <div><div class="f-copy">© 2026 Staffona. All rights reserved. <a href="https://maps.google.com/?q=398+El-Horreya+Street,+Mostafa+Kamel,+Alexandria,+Egypt" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">398 El-Horreya St, Mostafa Kamel, Alexandria, Egypt</a>.</div><p class="f-disc">Staffona provides HR consultancy, payroll administration, and recruitment services. All managed employment arrangements are structured as HR outsourcing engagements in accordance with applicable Egyptian law.</p></div>
+      <div class="fbl"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="sitemap.xml">Sitemap</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie" id="cookieBanner"><p>We use cookies to improve your experience. <a href="privacy.html">Privacy Policy</a></p><div class="cb-btns"><button class="btn btn-gold btn-sm" id="cookieAccept">Accept</button><button style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.4);border-radius:var(--r);padding:7px 14px;font-size:13px;cursor:pointer" id="cookieDecline">Decline</button></div></div>
+<button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg></button>
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
+<script async src="https://assets.calendly.com/assets/external/widget.js"></script>
 <script src="shared.js"></script>
 <script>
+
+// ══════════════════════════════════════════════════════
+// CURRENCY / FX
+// ══════════════════════════════════════════════════════
+const FX_FALLBACK = { USD:0.0199, EUR:0.0185, GBP:0.0158, SAR:0.0748, AED:0.0733, KWD:0.00614 };
+const CUR_DEC     = { EGP:0, USD:2, EUR:2, GBP:2, SAR:2, AED:2, KWD:3 };
+let FX = { rates: Object.assign({},FX_FALLBACK), source:'fallback', date:'' };
+let _curSel = 'EGP';
+
+(function initFX(){
+  fetch('https://v6.exchangerate-api.com/v6/latest/EGP')
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if(d && d.conversion_rates){
+        ['USD','EUR','GBP','SAR','AED','KWD'].forEach(function(cur){
+          if(d.conversion_rates[cur]) FX.rates[cur]=d.conversion_rates[cur];
+        });
+        FX.source='live';
+        FX.date=new Date().toLocaleDateString('en-EG',{day:'2-digit',month:'short',year:'numeric'});
+        updateFXBadge();
+      }
+    }).catch(function(){});
+})();
+
+function updateFXBadge(){
+  var badge=document.getElementById('fx-badge');
+  var note=document.getElementById('fx-note');
+  var cur=_curSel;
+  if(cur==='EGP'){
+    if(badge) badge.style.display='none';
+    if(note)  note.style.display='none';
+    return;
+  }
+  if(badge){badge.style.display='';badge.textContent=FX.source==='live'?'⚡ live rate':'~ est. rate';}
+  var rate=FX.rates[cur];
+  if(note&&rate){
+    var dec=CUR_DEC[cur]||2;
+    note.style.display='';
+    note.textContent='1 EGP ≈ '+rate.toFixed(dec)+' '+cur+(FX.source==='live'?' · CBE rate '+FX.date:' · estimated — may vary');
+  }
+}
+
+function selectedCurrency(){ return _curSel; }
+
+function setCurrency(cur,btn){
+  _curSel=cur;
+  document.querySelectorAll('.cur-pill').forEach(function(b){b.classList.remove('on');});
+  if(btn) btn.classList.add('on');
+  var pfx=document.getElementById('sal-pfx'); if(pfx) pfx.textContent=cur;
+  var sc=document.getElementById('sal-cur');  if(sc)  sc.textContent=cur;
+  var mc=document.getElementById('med-cur');  if(mc)  mc.textContent=cur;
+  updateFXBadge();
+  var ro=document.getElementById('res-out');
+  if(ro && ro.style.display!=='none') calculate();
+}
+
+function toEGP(val){
+  if(_curSel==='EGP') return val;
+  var rate=FX.rates[_curSel];
+  return rate ? val/rate : val;
+}
+
+function fmtCur(egp){
+  var cur=_curSel, dec=CUR_DEC[cur]||0;
+  var egpStr='EGP '+Math.round(egp).toLocaleString('en-EG');
+  if(cur==='EGP') return egpStr;
+  var rate=FX.rates[cur]||1;
+  var conv=(egp*rate).toLocaleString('en-EG',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+  return cur+' '+conv+' <span class="fx-egp">(EGP '+Math.round(egp).toLocaleString('en-EG')+')</span>';
+}
+
+function fmtCurText(egp){
+  var cur=_curSel, dec=CUR_DEC[cur]||0;
+  if(cur==='EGP') return 'EGP '+Math.round(egp).toLocaleString('en-EG');
+  var rate=FX.rates[cur]||1;
+  var conv=(egp*rate).toLocaleString('en-EG',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+  return cur+' '+conv+' (EGP '+Math.round(egp).toLocaleString('en-EG')+')';
+}
+
 // ══════════════════════════════════════════════════════
 // LIVE DATA from EGPayslip Supabase (hardcoded fallback)
 // ══════════════════════════════════════════════════════
@@ -569,11 +734,12 @@ function onType() {
 
 function calculate() {
   const salEl  = document.getElementById('salary');
-  const val    = parseFloat(salEl.value);
-  if (!val || val <= 0) { salEl.classList.add('err'); return; }
+  const valDisplay = parseFloat(salEl.value);
+  if (!valDisplay || valDisplay <= 0) { salEl.classList.add('err'); return; }
   salEl.classList.remove('err');
+  const val = toEGP(valDisplay);
 
-  const medM     = Math.max(0, parseFloat(document.getElementById('medical').value) || 0);
+  const medM     = toEGP(Math.max(0, parseFloat(document.getElementById('medical').value) || 0));
   const withSI   = document.getElementById('chk-si').checked;
   const isDisab  = document.getElementById('chk-dis').checked;
 
@@ -617,13 +783,7 @@ function calculate() {
     </div>`).join('');
 
   // Medical row — shown as benefit info, NOT a net deduction
-  if (medM > 0) {
-    document.getElementById('r-med-row').style.display = '';
-    document.getElementById('r-medical').textContent = `In-kind benefit · Reduces taxable income by EGP ${fmtR(r.medDeduction)}/yr`;
-    document.getElementById('r-med-sub').textContent = `Tax deduction: EGP ${fmtR(r.medDeduction)}/yr (annual premium, capped at EGP 10,000/yr)`;
-  } else {
-    document.getElementById('r-med-row').style.display = 'none';
-  }
+  // Medical shown only in employer section
 
   // Employer
   document.getElementById('r-er-gross').textContent = `EGP ${fmtR(r.grossM)}`;
@@ -633,7 +793,314 @@ function calculate() {
 
   if (medM > 0) {
     document.getElementById('r-er-med-row').style.display = '';
-    document.getElementById('r-er-medical').textContent = `+EGP ${fmtR(r.er_med)}`;
+    document.getElementById('r-er-medical').textContent = `+EGP ${fmtR(r.er_med)}/mo`;
+    document.getElementById('r-med-sub').textContent = `In-kind benefit · Reduces employee taxable income by EGP ${fmtR(r.medDeduction)}/yr (capped at EGP 10,000/yr)`;
+  } else {
+    document.getElementById('r-er-med-row').style.display = 'none';
+  }
+
+  // Disclaimer
+  document.getElementById('r-disc').textContent = D.disc;
+}
+
+function fmtR(n) { return Math.round(n * 100) / 100 % 1 === 0
+  ? Math.round(n).toLocaleString('en-EG')
+  : n.toLocaleString('en-EG', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+document.addEventListener('keydown', e => { if (e.key==='Enter') calculate(); });
+
+
+function updateFXBadge(){
+  var badge=document.getElementById('fx-badge');
+  var note=document.getElementById('fx-note');
+  var cur=_curSel;
+  if(cur==='EGP'){
+    if(badge) badge.style.display='none';
+    if(note)  note.style.display='none';
+    return;
+  }
+  if(badge){badge.style.display='';badge.textContent=FX.source==='live'?'⚡ live rate':'~ est. rate';}
+  var rate=FX.rates[cur];
+  if(note&&rate){
+    var dec=CUR_DEC[cur]||2;
+    note.style.display='';
+    note.textContent='1 EGP ≈ '+rate.toFixed(dec)+' '+cur+(FX.source==='live'?' · CBE rate '+FX.date:' · estimated — may vary');
+  }
+}
+
+function selectedCurrency(){ return _curSel; }
+
+function setCurrency(cur,btn){
+  _curSel=cur;
+  document.querySelectorAll('.cur-pill').forEach(function(b){b.classList.remove('on');});
+  if(btn) btn.classList.add('on');
+  var pfx=document.getElementById('sal-pfx'); if(pfx) pfx.textContent=cur;
+  var sc=document.getElementById('sal-cur');  if(sc)  sc.textContent=cur;
+  var mc=document.getElementById('med-cur');  if(mc)  mc.textContent=cur;
+  updateFXBadge();
+  var ro=document.getElementById('res-out');
+  if(ro && ro.style.display!=='none') calculate();
+}
+
+function toEGP(val){
+  if(_curSel==='EGP') return val;
+  var rate=FX.rates[_curSel];
+  return rate ? val/rate : val;
+}
+
+function fmtCur(egp){
+  var cur=_curSel, dec=CUR_DEC[cur]||0;
+  var egpStr='EGP '+Math.round(egp).toLocaleString('en-EG');
+  if(cur==='EGP') return egpStr;
+  var rate=FX.rates[cur]||1;
+  var conv=(egp*rate).toLocaleString('en-EG',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+  return cur+' '+conv+' <span class="fx-egp">(EGP '+Math.round(egp).toLocaleString('en-EG')+')</span>';
+}
+
+function fmtCurText(egp){
+  var cur=_curSel, dec=CUR_DEC[cur]||0;
+  if(cur==='EGP') return 'EGP '+Math.round(egp).toLocaleString('en-EG');
+  var rate=FX.rates[cur]||1;
+  var conv=(egp*rate).toLocaleString('en-EG',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+  return cur+' '+conv+' (EGP '+Math.round(egp).toLocaleString('en-EG')+')';
+}
+
+// ══════════════════════════════════════════════════════
+// LIVE DATA from EGPayslip Supabase (hardcoded fallback)
+// ══════════════════════════════════════════════════════
+const SB_URL = "https://filagqajbgofboyyuifi.supabase.co";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpbGFncWFqYmdvZmJveXl1aWZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MjM2MjUsImV4cCI6MjA4NjI5OTYyNX0.b34HrBoTN2TP2qKehX5DHzZ8cLgP7WaEF3WoUXDYY5o";
+
+const D = {
+  // Tax formula hardcoded in progressiveTax() — exact replica of EGPayslip calculate_progressive_tax SQL
+  si_emp:    0.11,    // employee: pension 9% + health 1% + EOS 1%
+  si_er:     0.1875,  // employer: pension 10% + health 3.25% + injury 2% + unemployment 1% + EOS 2.5%
+  si_min:    2700,
+  si_max:    16700,
+  ex_std:    20000,   // annual personal exemption (standard)
+  ex_dis:    30000,   // annual personal exemption (disabled)
+  martyrs:   0.0005,  // Martyrs & Victims Fund: 0.05% of gross
+  med_er_multiplier: 1, // employer passes monthly premium (1x) as entered
+  disc: "Calculations are indicative and based on current Egyptian tax and social insurance regulations. Powered by EGPayslip. For official payroll processing, consult a licensed payroll provider."
+};
+
+// Refresh from Supabase silently
+(async () => {
+  try {
+    const H = { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}` };
+    const q = (t, p='') => fetch(`${SB_URL}/rest/v1/${t}?${p}`, {headers:H}).then(r => {
+      if (!r.ok) throw new Error(`${t} ${r.status}`);
+      return r.json();
+    });
+    const [si, exemptions, settings] = await Promise.all([
+      q('social_insurance_rates','effective_to=is.null'),
+      q('tax_exemptions','effective_to=is.null'),
+      q('system_settings'),
+    ]);
+    // Tax formula is hardcoded (EGPayslip uses calculate_progressive_tax SQL, not bracket table)
+    const r = (type,comp) => { const x=si.find(s=>s.type===type&&s.component===comp); return x?+x.rate:null; };
+    D.si_emp = (r('employee','pension')??0.09)+(r('employee','health')??0.01)+(r('employee','end_of_service')??0.01);
+    D.si_er  = (r('employer','pension')??0.10)+(r('employer','health')??0.0325)+(r('employer','work_injury')??0.02)+(r('employer','unemployment')??0.01)+(r('employer','end_of_service')??0.025);
+    const sirow = si.find(s=>s.min_wage);
+    if(sirow){ D.si_min=+sirow.min_wage; D.si_max=+sirow.max_wage; }
+    const std=exemptions.find(e=>e.applies_to==='all'), dis=exemptions.find(e=>e.applies_to==='disabled');
+    if(std) D.ex_std=+std.amount;
+    if(dis) D.ex_dis=+dis.amount;
+    const disc=settings.find(s=>s.setting_key==='calculation_disclaimer');
+    if(disc) D.disc=disc.setting_value;
+    console.log('✓ EGPayslip data refreshed');
+  } catch(e){ console.warn('Using fallback data:',e.message); }
+})();
+
+// ══════════════════════════════════════════════════════
+// CALCULATION ENGINE — exact replica of EGPayslip SQL
+// calculate_progressive_tax() + calculate_salary_v1()
+// ══════════════════════════════════════════════════════
+
+// Exact port of calculate_progressive_tax() from Supabase
+function progressiveTax(t) {
+  if (t <= 0)          return 0;
+  if (t <= 40000)      return 0;
+  if (t <= 55000)      return (t - 40000) * 0.10;
+  if (t <= 70000)      return (t - 55000) * 0.15 + 1500;
+  if (t <= 200000)     return (t - 70000) * 0.20 + 1500 + 2250;
+  if (t <= 400000)     return (t - 200000) * 0.225 + 1500 + 2250 + 26000;
+  if (t <= 600000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000;
+  // HIGH-INCOME BRACKET ADJUSTMENTS (bracket merging)
+  if (t <= 700000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 4000;
+  if (t <= 800000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 6750;
+  if (t <= 900000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 10250;
+  if (t <= 1200000)    return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 15250;
+  return (t - 1200000) * 0.275 + 300000;
+}
+
+// Build bracket breakdown rows for display only (simulate what brackets were hit)
+function bracketRows(taxableA) {
+  const brackets = [
+    {min:0,       max:40000,    rate:0.00, label:'0%'},
+    {min:40000,   max:55000,    rate:0.10, label:'10%'},
+    {min:55000,   max:70000,    rate:0.15, label:'15%'},
+    {min:70000,   max:200000,   rate:0.20, label:'20%'},
+    {min:200000,  max:400000,   rate:0.225,label:'22.5%'},
+    {min:400000,  max:600000,   rate:0.25, label:'25%'},
+    {min:600000,  max:1200000,  rate:0.25, label:'25%+'},
+    {min:1200000, max:Infinity, rate:0.275,label:'27.5%'},
+  ];
+  return brackets
+    .filter(b => taxableA > b.min && b.rate > 0)
+    .map(b => {
+      const inB = Math.min(taxableA, b.max) - b.min;
+      return { rate:b.rate, label:b.label, inB, taxM_month: inB * b.rate / 12 };
+    });
+}
+
+function calcGross(grossM, medM, withSI, isDisabled) {
+  // 1. Social Insurance (exact SQL: GREATEST(min, LEAST(gross, max)))
+  const ins    = Math.min(Math.max(grossM, D.si_min), D.si_max);
+  const si_emp = withSI ? Math.round(ins * D.si_emp * 100) / 100 : 0;
+  const si_er  = withSI ? Math.round(ins * D.si_er  * 100) / 100 : 0;
+
+  // 2. Annual figures
+  const grossA    = grossM * 12;
+  const siA       = si_emp * 12;
+  const exemption = isDisabled ? D.ex_dis : D.ex_std;
+
+  // 3. Medical tax deduction: annual premium paid, capped at EGP 10,000/yr (per tax law)
+  const medAnnual    = medM * 12;
+  const medDeduction = Math.min(medAnnual, 10000);
+
+  // 4. Annual taxable income
+  const taxableA = Math.max(0, grossA - siA - exemption - medDeduction);
+
+  // 5. Annual tax — exact EGPayslip formula
+  const taxA  = progressiveTax(taxableA);
+  const taxM  = Math.round(taxA / 12 * 100) / 100;
+
+  // 6. Martyrs & Emergency
+  const martyrs  = Math.round(grossM * D.martyrs  * 100) / 100;
+  const emergency= Math.round(Math.min(grossM, 2540) * 0.01 * 100) / 100;
+
+  // 7. Net salary (medical is NOT deducted from net — it's an employer in-kind benefit)
+  const totalDed = si_emp + taxM + martyrs;
+  const net      = Math.round((grossM - totalDed) * 100) / 100;
+
+  // 8. Total employer cost: gross + SI(18.75%) + emergency + monthly medical premium (1x)
+  const er_med  = medM;  // monthly premium as entered — employer bears this cost
+  const erTotal = Math.round((grossM + si_er + emergency + er_med) * 100) / 100;
+
+  // 9. Effective tax rate & top bracket for display
+  const etr  = grossA > 0 ? taxA / grossA * 100 : 0;
+  const bRows_display = bracketRows(taxableA);
+  const topB = bRows_display.length ? bRows_display[bRows_display.length - 1] : null;
+
+  return { grossM, net, si_emp, si_er, ins, taxM, taxA, taxableA,
+           medDeduction, medAnnual, exemption, martyrs, emergency,
+           er_med, erTotal, totalDed,
+           bRows: bRows_display, etr, topB };
+}
+
+function calcNet(targetNetM, medM, withSI, isDisabled) {
+  let lo = Math.max(targetNetM, 1), hi = Math.max(targetNetM * 4, 50000);
+  while (calcGross(hi, medM, withSI, isDisabled).net < targetNetM) hi *= 2;
+  for (let i = 0; i < 80; i++) {
+    const mid = (lo + hi) / 2;
+    const res = calcGross(mid, medM, withSI, isDisabled);
+    if (Math.abs(res.net - targetNetM) < 0.05) break;
+    if (res.net < targetNetM) lo = mid; else hi = mid;
+  }
+  return calcGross((lo + hi) / 2, medM, withSI, isDisabled);
+}
+
+// ══════════════════════════════════════════════════════
+// UI
+// ══════════════════════════════════════════════════════
+let mode = 'gtn';
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('btn-gtn').classList.toggle('on', m==='gtn');
+  document.getElementById('btn-ntg').classList.toggle('on', m==='ntg');
+  document.getElementById('sal-lbl').textContent = m==='gtn'
+    ? 'Monthly Gross Salary (EGP)' : 'Desired Net Monthly Salary (EGP)';
+  document.getElementById('res-empty').style.display = '';
+  document.getElementById('res-out').style.display = 'none';
+  const sal = document.getElementById('salary');
+  sal.value = '';
+  sal.focus();
+}
+
+let _t;
+function onType() {
+  clearTimeout(_t);
+  _t = setTimeout(() => {
+    const v = parseFloat(document.getElementById('salary').value);
+    if (v > 0) calculate();
+  }, 450);
+}
+
+function calculate() {
+  const salEl  = document.getElementById('salary');
+  const valDisplay = parseFloat(salEl.value);
+  if (!valDisplay || valDisplay <= 0) { salEl.classList.add('err'); return; }
+  salEl.classList.remove('err');
+  const val = toEGP(valDisplay);
+
+  const medM     = toEGP(Math.max(0, parseFloat(document.getElementById('medical').value) || 0));
+  const withSI   = document.getElementById('chk-si').checked;
+  const isDisab  = document.getElementById('chk-dis').checked;
+
+  const r = mode === 'gtn'
+    ? calcGross(val, medM, withSI, isDisab)
+    : calcNet(val, medM, withSI, isDisab);
+
+  // Show results panel
+  document.getElementById('res-empty').style.display = 'none';
+  document.getElementById('res-out').style.display   = 'block';
+
+  // Net hero
+  const displayNet = mode === 'gtn' ? r.net : val;
+  document.getElementById('r-net').textContent  = fmtR(displayNet);
+  document.getElementById('nh-lbl').textContent = mode === 'gtn'
+    ? 'Employee Net Salary / Month' : 'Confirmed Net / Month';
+  document.getElementById('nh-sub').textContent = mode === 'gtn'
+    ? `From gross EGP ${fmtR(r.grossM)}/mo · Annual EGP ${fmtR(r.grossM*12)}`
+    : `Required gross: EGP ${fmtR(r.grossM)}/month`;
+
+  document.getElementById('r-etr-pill').textContent     = `${r.etr.toFixed(1)}% effective tax`;
+  document.getElementById('r-bracket-pill').textContent = r.topB
+    ? `Top bracket: ${(r.topB.rate*100).toFixed(1)}%` : 'Tax-exempt';
+
+  // Employee rows
+  document.getElementById('r-gross').textContent   = `EGP ${fmtR(r.grossM)}`;
+  document.getElementById('r-si').textContent      = withSI ? `−EGP ${fmtR(r.si_emp)}` : `EGP 0 (exempt)`;
+  document.getElementById('r-si-sub').textContent  = withSI
+    ? `11% on insurable wage EGP ${fmtR(r.ins)}/mo (max EGP ${fmtR(D.si_max)})`
+    : 'Social insurance not applied';
+  document.getElementById('r-tax').textContent     = `−EGP ${fmtR(r.taxM)}`;
+  document.getElementById('r-tax-sub').textContent = `Taxable annual: EGP ${fmtR(r.taxableA)} · Exemption: EGP ${fmtR(r.exemption)}`;
+  document.getElementById('r-martyrs').textContent = `−EGP ${fmtR(r.martyrs)}`;
+  document.getElementById('r-net2').textContent    = `EGP ${fmtR(r.net)}`;
+
+  // Tax bracket rows
+  document.getElementById('r-bracket-rows').innerHTML = r.bRows.map(b => `
+    <div class="bk-sub-row">
+      <div class="bk-lbl">${(b.rate*100).toFixed(1)}% on EGP ${fmtR(b.inB)}/yr</div>
+      <div class="bk-val">−EGP ${fmtR(b.taxM_month)}/mo</div>
+    </div>`).join('');
+
+  // Medical row — shown as benefit info, NOT a net deduction
+  // Medical shown only in employer section
+
+  // Employer
+  document.getElementById('r-er-gross').textContent = `EGP ${fmtR(r.grossM)}`;
+  document.getElementById('r-er-si').textContent    = withSI ? `+EGP ${fmtR(r.si_er)}` : `EGP 0`;
+  document.getElementById('r-emergency').textContent= `+EGP ${fmtR(r.emergency)}`;
+  document.getElementById('r-er-total').textContent = `EGP ${fmtR(r.erTotal)}`;
+
+  if (medM > 0) {
+    document.getElementById('r-er-med-row').style.display = '';
+    document.getElementById('r-er-medical').textContent = `+EGP ${fmtR(r.er_med)}/mo`;
+    document.getElementById('r-med-sub').textContent = `In-kind benefit · Reduces employee taxable income by EGP ${fmtR(r.medDeduction)}/yr (capped at EGP 10,000/yr)`;
   } else {
     document.getElementById('r-er-med-row').style.display = 'none';
   }
