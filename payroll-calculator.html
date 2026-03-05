@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="style.css">
 <style>
 /* ─── page hero ─── */
-.pg-hero{background:var(--navy);padding:72px 0 52px;border-bottom:1px solid rgba(255,255,255,.07)}
+.pg-hero{background:var(--navy);padding:90px 0 52px;border-bottom:1px solid rgba(255,255,255,.07)}
 .pg-hero .lbl{margin-bottom:12px}
 .pg-hero h1{color:#fff;font-size:clamp(26px,4vw,44px);max-width:640px;line-height:1.15}
 .pg-hero p{color:rgba(255,255,255,.5);font-size:15px;max-width:500px;margin-top:12px;line-height:1.7}
@@ -147,6 +147,16 @@
 .cur-note{font-size:11px;color:var(--sl);margin-top:6px;opacity:.8}
 .fx-badge{display:inline-block;font-size:10px;padding:2px 7px;border-radius:100px;background:rgba(200,151,58,.15);color:var(--gold);font-weight:600;margin-left:6px;vertical-align:middle}
 .fx-egp{opacity:.55;font-size:.88em}
+
+/* ── Mobile nav clearance (calculator page) ── */
+@media(max-width:768px){
+  .pg-hero{padding-top:86px}
+}
+@media(max-width:480px){
+  .pg-hero{padding-top:82px}
+}
+/* Nav separator on dark hero pages */
+.nav-wrap.page{border-bottom:1px solid rgba(255,255,255,.12)}
 </style>
 
 <script type="application/ld+json">
@@ -212,7 +222,7 @@
         <svg class="dm-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
       </button>
       <button class="btn btn-gold btn-sm" data-cal>Book Consultation</button>
-      <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false" style="display:none"><span></span><span></span><span></span></button>
+      <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </nav></div>
 </div>
