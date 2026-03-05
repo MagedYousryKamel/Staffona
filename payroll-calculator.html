@@ -395,39 +395,25 @@
 <script src="shared.js"></script>
 <script>
 // ══════════════════════════════════════════════════════
-// STAFFONA PAYROLL CALCULATOR
-// Currency conversion: CBE official rates (fallback hardcoded)
-// Calc engine: exact replica of EGPayslip SQL functions
+// LIVE DATA from EGPayslip Supabase (hardcoded fallback)
 // ══════════════════════════════════════════════════════
+const SB_URL = "https://filagqajbgofboyyuifi.supabase.co";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpbGFncWFqYmdvZmJveXl1aWZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MjM2MjUsImV4cCI6MjA4NjI5OTYyNX0.b34HrBoTN2TP2qKehX5DHzZ8cLgP7WaEF3WoUXDYY5o";
 
-// ── Supabase (EGPayslip live data) ──
-const SB_URL = 'https://fjbscwbdcpptiqbfcnkm.supabase.co';
-const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqYnNjd2JkY3BwdGlxYmZjbmttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA3NTkzMDQsImV4cCI6MjA1NjMzNTMwNH0.ZNpjU47gJAA7fjx8XK_BbLwVFrFMJQWKqQBG7j_XGiU';
-
-// ── Egyptian tax & SI data (fallback — refreshed from Supabase) ──
 const D = {
-  brackets: [
-    {min:0,       max:40000,    rate:0.00},
-    {min:40000,   max:55000,    rate:0.10},
-    {min:55000,   max:70000,    rate:0.15},
-    {min:70000,   max:200000,   rate:0.20},
-    {min:200000,  max:400000,   rate:0.225},
-    {min:400000,  max:1200000,  rate:0.25},
-    {min:1200000, max:Infinity, rate:0.275},
-  ],
-  si_emp:  0.11,    // 9+1+1
-  si_er:   0.1875,  // 10+3.25+2+1+2.5
-  si_min:  2700,
-  si_max:  16700,
-  ex_std:  20000,   // annual personal exemption
-  ex_dis:  30000,   // disabled
-  martyrs: 0.0005,
-  // emergency = min(gross,2540)*0.01 — computed in calcGross
-  // med_er_multiplier removed — employer pays premium 1:1 (no multiplier)
-  disc: 'Calculations are indicative and based on current Egyptian tax and social insurance regulations. For official payroll processing and compliance review, consult a licensed payroll provider.'
+  // Tax formula hardcoded in progressiveTax() — exact replica of EGPayslip calculate_progressive_tax SQL
+  si_emp:    0.11,    // employee: pension 9% + health 1% + EOS 1%
+  si_er:     0.1875,  // employer: pension 10% + health 3.25% + injury 2% + unemployment 1% + EOS 2.5%
+  si_min:    2700,
+  si_max:    16700,
+  ex_std:    20000,   // annual personal exemption (standard)
+  ex_dis:    30000,   // annual personal exemption (disabled)
+  martyrs:   0.0005,  // Martyrs & Victims Fund: 0.05% of gross
+  med_er_multiplier: 1, // employer passes monthly premium (1x) as entered
+  disc: "Calculations are indicative and based on current Egyptian tax and social insurance regulations. Powered by EGPayslip. For official payroll processing, consult a licensed payroll provider."
 };
 
-// Refresh D from Supabase silently
+// Refresh from Supabase silently
 (async () => {
   try {
     const H = { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}` };
@@ -435,17 +421,12 @@ const D = {
       if (!r.ok) throw new Error(`${t} ${r.status}`);
       return r.json();
     });
-    const [brackets, si, exemptions, settings] = await Promise.all([
-      q('tax_brackets','order=bracket_order'),
+    const [si, exemptions, settings] = await Promise.all([
       q('social_insurance_rates','effective_to=is.null'),
       q('tax_exemptions','effective_to=is.null'),
       q('system_settings'),
     ]);
-    D.brackets = brackets.map(b => ({
-      min:+b.min_annual_income,
-      max:b.max_annual_income?+b.max_annual_income:Infinity,
-      rate:+b.rate
-    }));
+    // Tax formula is hardcoded (EGPayslip uses calculate_progressive_tax SQL, not bracket table)
     const r = (type,comp) => { const x=si.find(s=>s.type===type&&s.component===comp); return x?+x.rate:null; };
     D.si_emp = (r('employee','pension')??0.09)+(r('employee','health')??0.01)+(r('employee','end_of_service')??0.01);
     D.si_er  = (r('employer','pension')??0.10)+(r('employer','health')??0.0325)+(r('employer','work_injury')??0.02)+(r('employer','unemployment')??0.01)+(r('employer','end_of_service')??0.025);
@@ -457,121 +438,15 @@ const D = {
     const disc=settings.find(s=>s.setting_key==='calculation_disclaimer');
     if(disc) D.disc=disc.setting_value;
     console.log('✓ EGPayslip data refreshed');
-  } catch(e){ console.warn('Using fallback data:', e.message); }
+  } catch(e){ console.warn('Using fallback data:',e.message); }
 })();
-
-// ══════════════════════════════════════════════════════
-// CURRENCY — CBE official rates
-// Source: api.freecurrencyapi.com with EGP as base
-// Falls back to hardcoded rates if API unavailable
-// ══════════════════════════════════════════════════════
-const FX = {
-  rates: { EGP:1, USD:0.02033, EUR:0.01876, GBP:0.01604, SAR:0.07625, AED:0.07463, KWD:0.00624, QAR:0.07407 },
-  source: 'fallback',
-  date: null,
-  loaded: false
-};
-
-const CURRENCY_SYMBOLS = { EGP:'EGP', USD:'USD', EUR:'EUR', GBP:'GBP', SAR:'SAR', AED:'AED', KWD:'KWD', QAR:'QAR' };
-const CURRENCY_DECIMALS = { EGP:0, USD:2, EUR:2, GBP:2, SAR:2, AED:2, KWD:3, QAR:2 };
-
-// Fetch from CBE-aligned API (ExchangeRate-API is free, uses CBE for EGP)
-(async () => {
-  try {
-    // Use exchangerate-api free tier — EGP rates updated from CBE
-    const resp = await fetch('https://api.exchangerate-api.com/v4/latest/EGP');
-    if (!resp.ok) throw new Error('API error');
-    const data = await resp.json();
-    // data.rates are how many of each currency = 1 EGP
-    const r = data.rates;
-    FX.rates = {
-      EGP: 1,
-      USD: r.USD ?? FX.rates.USD,
-      EUR: r.EUR ?? FX.rates.EUR,
-      GBP: r.GBP ?? FX.rates.GBP,
-      SAR: r.SAR ?? FX.rates.SAR,
-      AED: r.AED ?? FX.rates.AED,
-      KWD: r.KWD ?? FX.rates.KWD,
-      QAR: r.QAR ?? FX.rates.QAR,
-    };
-    FX.source = 'live';
-    FX.date   = data.date || new Date().toISOString().slice(0,10);
-    FX.loaded = true;
-    updateRateInfo();
-    console.log('✓ FX rates refreshed from CBE-aligned source:', FX.date);
-  } catch(e) {
-    FX.source = 'fallback';
-    FX.loaded = true;
-    updateRateInfo();
-    console.warn('FX fallback rates in use:', e.message);
-  }
-})();
-
-function egpToDisplay(egp) {
-  const cur = selectedCurrency();
-  const rate = FX.rates[cur] || 1;
-  return egp * rate;
-}
-
-function displayToEgp(val) {
-  const cur = selectedCurrency();
-  const rate = FX.rates[cur] || 1;
-  return rate > 0 ? val / rate : val;
-}
-
-function selectedCurrency() {
-  const sel = document.getElementById('currencySel');
-  return sel ? sel.value : 'EGP';
-}
-
-function fmt(egp) {
-  const cur = selectedCurrency();
-  const dec = CURRENCY_DECIMALS[cur] ?? 2;
-  const val = egpToDisplay(egp);
-  const num = val.toLocaleString('en-EG', {minimumFractionDigits:dec, maximumFractionDigits:dec});
-  const primary = CURRENCY_SYMBOLS[cur] + ' ' + num;
-  if (cur === 'EGP') return primary;
-  const egpNum = Math.round(egp).toLocaleString('en-EG');
-  return primary + ' (EGP ' + egpNum + ')';
-}
-
-function updateRateInfo() {
-  const cur = selectedCurrency();
-  const el  = document.getElementById('rateInfo');
-  if (!el) return;
-  if (cur === 'EGP') { el.textContent = ''; return; }
-  const rate = FX.rates[cur];
-  const dec  = CURRENCY_DECIMALS[cur] ?? 2;
-  const egpPer = rate ? (1/rate).toLocaleString('en-EG',{maximumFractionDigits:2}) : '—';
-  const label  = FX.source === 'live'
-    ? `1 EGP = ${rate.toFixed(dec)} ${cur}` + (FX.date ? `\n(CBE rate · ${FX.date})` : '')
-    : `1 EGP ≈ ${rate.toFixed(dec)} ${cur}\n(est. — live rate unavailable)`;
-  el.title = label;
-  el.innerHTML = `1 EGP = <strong>${rate.toFixed(dec)} ${cur}</strong><br><span style="opacity:.7;font-size:10px">${FX.source === 'live' ? 'CBE rate · '+FX.date : 'est. fallback'}</span>`;
-}
-
-function onCurrencyChange() {
-  const cur = selectedCurrency();
-  // Update prefix labels
-  ['sal-pfx','med-pfx'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = cur;
-  });
-  // Update salary label
-  const lbl = document.getElementById('sal-lbl');
-  if (lbl) lbl.textContent = 'Monthly ' + (currentMode === 'gtn' ? 'Gross' : 'Net') + ' Salary (' + cur + ')';
-  updateRateInfo();
-  // If result is showing, recalculate
-  const res = document.getElementById('res-out');
-  if (res && res.style.display !== 'none') calculate();
-}
 
 // ══════════════════════════════════════════════════════
 // CALCULATION ENGINE — exact replica of EGPayslip SQL
 // calculate_progressive_tax() + calculate_salary_v1()
 // ══════════════════════════════════════════════════════
 
-// Exact replica of calculate_progressive_tax() Supabase function
+// Exact port of calculate_progressive_tax() from Supabase
 function progressiveTax(t) {
   if (t <= 0)          return 0;
   if (t <= 40000)      return 0;
@@ -580,7 +455,7 @@ function progressiveTax(t) {
   if (t <= 200000)     return (t - 70000) * 0.20 + 1500 + 2250;
   if (t <= 400000)     return (t - 200000) * 0.225 + 1500 + 2250 + 26000;
   if (t <= 600000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000;
-  // HIGH-INCOME BRACKET ADJUSTMENTS (bracket merging per EGPayslip SQL)
+  // HIGH-INCOME BRACKET ADJUSTMENTS (bracket merging)
   if (t <= 700000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 4000;
   if (t <= 800000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 6750;
   if (t <= 900000)     return (t - 400000) * 0.25 + 1500 + 2250 + 26000 + 45000 + 10250;
@@ -588,7 +463,7 @@ function progressiveTax(t) {
   return (t - 1200000) * 0.275 + 300000;
 }
 
-// Build bracket display rows
+// Build bracket breakdown rows for display only (simulate what brackets were hit)
 function bracketRows(taxableA) {
   const brackets = [
     {min:0,       max:40000,    rate:0.00, label:'0%'},
@@ -596,22 +471,20 @@ function bracketRows(taxableA) {
     {min:55000,   max:70000,    rate:0.15, label:'15%'},
     {min:70000,   max:200000,   rate:0.20, label:'20%'},
     {min:200000,  max:400000,   rate:0.225,label:'22.5%'},
-    {min:400000,  max:1200000,  rate:0.25, label:'25%'},
+    {min:400000,  max:600000,   rate:0.25, label:'25%'},
+    {min:600000,  max:1200000,  rate:0.25, label:'25%+'},
     {min:1200000, max:Infinity, rate:0.275,label:'27.5%'},
   ];
-  const rows = [];
-  for (const b of brackets) {
-    if (taxableA <= b.min || b.rate === 0) continue;
-    const inB  = Math.min(taxableA, b.max) - b.min;
-    const taxM = inB * b.rate / 12;
-    rows.push({ label: b.label, taxM });
-  }
-  return rows;
+  return brackets
+    .filter(b => taxableA > b.min && b.rate > 0)
+    .map(b => {
+      const inB = Math.min(taxableA, b.max) - b.min;
+      return { rate:b.rate, label:b.label, inB, taxM_month: inB * b.rate / 12 };
+    });
 }
 
-// Exact replica of calculate_salary_v1()
 function calcGross(grossM, medM, withSI, isDisabled) {
-  // 1. Social Insurance
+  // 1. Social Insurance (exact SQL: GREATEST(min, LEAST(gross, max)))
   const ins    = Math.min(Math.max(grossM, D.si_min), D.si_max);
   const si_emp = withSI ? Math.round(ins * D.si_emp * 100) / 100 : 0;
   const si_er  = withSI ? Math.round(ins * D.si_er  * 100) / 100 : 0;
@@ -621,48 +494,48 @@ function calcGross(grossM, medM, withSI, isDisabled) {
   const siA       = si_emp * 12;
   const exemption = isDisabled ? D.ex_dis : D.ex_std;
 
-  // 3. Medical tax deduction (employer annual premium, capped per SQL)
-  const medErAnnual  = medM * 12;  // annual premium (no multiplier)
-  const medDeduction = Math.min(medErAnnual, 10000);  // cap EGP 10,000/yr
+  // 3. Medical tax deduction: annual premium paid, capped at EGP 10,000/yr (per tax law)
+  const medAnnual    = medM * 12;
+  const medDeduction = Math.min(medAnnual, 10000);
 
-  // 4. Taxable income
+  // 4. Annual taxable income
   const taxableA = Math.max(0, grossA - siA - exemption - medDeduction);
 
   // 5. Annual tax — exact EGPayslip formula
-  const taxA = progressiveTax(taxableA);
-  const taxM = Math.round(taxA / 12 * 100) / 100;
+  const taxA  = progressiveTax(taxableA);
+  const taxM  = Math.round(taxA / 12 * 100) / 100;
 
-  // 6. Martyrs & Emergency funds
-  const martyrs  = Math.round(grossM * D.martyrs * 100) / 100;
-  const emergency = Math.round(Math.min(grossM, 2540) * 0.01 * 100) / 100;
+  // 6. Martyrs & Emergency
+  const martyrs  = Math.round(grossM * D.martyrs  * 100) / 100;
+  const emergency= Math.round(Math.min(grossM, 2540) * 0.01 * 100) / 100;
 
-  // 7. Net (medical NOT deducted — employer in-kind benefit)
+  // 7. Net salary (medical is NOT deducted from net — it's an employer in-kind benefit)
   const totalDed = si_emp + taxM + martyrs;
   const net      = Math.round((grossM - totalDed) * 100) / 100;
 
-  // 8. Total employer cost
-  const er_med  = medM;  // employer passes premium as entered (no multiplier)
+  // 8. Total employer cost: gross + SI(18.75%) + emergency + monthly medical premium (1x)
+  const er_med  = medM;  // monthly premium as entered — employer bears this cost
   const erTotal = Math.round((grossM + si_er + emergency + er_med) * 100) / 100;
 
-  // 9. Effective tax rate
-  const etr       = grossA > 0 ? taxA / grossA * 100 : 0;
-  const bRows_d   = bracketRows(taxableA);
-  const topB      = bRows_d.length ? bRows_d[bRows_d.length - 1] : null;
+  // 9. Effective tax rate & top bracket for display
+  const etr  = grossA > 0 ? taxA / grossA * 100 : 0;
+  const bRows_display = bracketRows(taxableA);
+  const topB = bRows_display.length ? bRows_display[bRows_display.length - 1] : null;
 
   return { grossM, net, si_emp, si_er, ins, taxM, taxA, taxableA,
-           medDeduction, medErAnnual, exemption, martyrs, emergency,
-           er_med, erTotal, totalDed, bRows: bRows_d, etr, topB };
+           medDeduction, medAnnual, exemption, martyrs, emergency,
+           er_med, erTotal, totalDed,
+           bRows: bRows_display, etr, topB };
 }
 
-// Binary search: find gross that yields target net
 function calcNet(targetNetM, medM, withSI, isDisabled) {
   let lo = Math.max(targetNetM, 1), hi = Math.max(targetNetM * 4, 50000);
   while (calcGross(hi, medM, withSI, isDisabled).net < targetNetM) hi *= 2;
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 80; i++) {
     const mid = (lo + hi) / 2;
-    if (calcGross(mid, medM, withSI, isDisabled).net < targetNetM) lo = mid;
-    else hi = mid;
-    if (hi - lo < 0.05) break;
+    const res = calcGross(mid, medM, withSI, isDisabled);
+    if (Math.abs(res.net - targetNetM) < 0.05) break;
+    if (res.net < targetNetM) lo = mid; else hi = mid;
   }
   return calcGross((lo + hi) / 2, medM, withSI, isDisabled);
 }
@@ -670,130 +543,110 @@ function calcNet(targetNetM, medM, withSI, isDisabled) {
 // ══════════════════════════════════════════════════════
 // UI
 // ══════════════════════════════════════════════════════
-let currentMode = 'gtn'; // gtn = gross→net, ntg = net→gross
+let mode = 'gtn';
 
 function setMode(m) {
-  currentMode = m;
-  document.getElementById('btn-gtn').classList.toggle('on', m === 'gtn');
-  document.getElementById('btn-ntg').classList.toggle('on', m === 'ntg');
-  const cur = selectedCurrency();
-  const lbl = document.getElementById('sal-lbl');
-  if (lbl) lbl.textContent = 'Monthly ' + (m === 'gtn' ? 'Gross' : 'Net') + ' Salary (' + cur + ')';
-  const nhLbl = document.getElementById('nh-lbl');
-  if (nhLbl) nhLbl.textContent = m === 'gtn' ? 'Employee Net Salary / Month' : 'Required Gross Salary / Month';
+  mode = m;
+  document.getElementById('btn-gtn').classList.toggle('on', m==='gtn');
+  document.getElementById('btn-ntg').classList.toggle('on', m==='ntg');
+  document.getElementById('sal-lbl').textContent = m==='gtn'
+    ? 'Monthly Gross Salary (EGP)' : 'Desired Net Monthly Salary (EGP)';
+  document.getElementById('res-empty').style.display = '';
+  document.getElementById('res-out').style.display = 'none';
+  const sal = document.getElementById('salary');
+  sal.value = '';
+  sal.focus();
 }
 
+let _t;
 function onType() {
-  // Auto-calculate on type after short delay
-  clearTimeout(onType._t);
-  onType._t = setTimeout(calculate, 600);
+  clearTimeout(_t);
+  _t = setTimeout(() => {
+    const v = parseFloat(document.getElementById('salary').value);
+    if (v > 0) calculate();
+  }, 450);
 }
 
 function calculate() {
-  const cur   = selectedCurrency();
-  const salEl = document.getElementById('salary');
-  const medEl = document.getElementById('medical');
-  const siEl  = document.getElementById('chk-si');
-  const disEl = document.getElementById('chk-dis');
+  const salEl  = document.getElementById('salary');
+  const val    = parseFloat(salEl.value);
+  if (!val || val <= 0) { salEl.classList.add('err'); return; }
+  salEl.classList.remove('err');
 
-  const salDisplay = parseFloat(salEl.value);
-  if (!salDisplay || salDisplay <= 0) {
-    document.getElementById('res-empty').style.display = '';
-    document.getElementById('res-out').style.display   = 'none';
-    return;
-  }
+  const medM     = Math.max(0, parseFloat(document.getElementById('medical').value) || 0);
+  const withSI   = document.getElementById('chk-si').checked;
+  const isDisab  = document.getElementById('chk-dis').checked;
 
-  // Convert input to EGP for calculation
-  const salEGP = displayToEgp(salDisplay);
-  const medDisplay = parseFloat(medEl.value) || 0;
-  const medEGP = displayToEgp(medDisplay);
-  const withSI    = siEl ? siEl.checked : true;
-  const isDisabled= disEl ? disEl.checked : false;
+  const r = mode === 'gtn'
+    ? calcGross(val, medM, withSI, isDisab)
+    : calcNet(val, medM, withSI, isDisab);
 
-  let r;
-  if (currentMode === 'gtn') {
-    r = calcGross(salEGP, medEGP, withSI, isDisabled);
-  } else {
-    r = calcNet(salEGP, medEGP, withSI, isDisabled);
-  }
-
-  renderResult(r, medEGP, cur);
-}
-
-function renderResult(r, medM, cur) {
+  // Show results panel
   document.getElementById('res-empty').style.display = 'none';
-  document.getElementById('res-out').style.display   = '';
+  document.getElementById('res-out').style.display   = 'block';
 
-  const hero    = currentMode === 'gtn' ? r.net : r.grossM;
-  const heroLbl = currentMode === 'gtn' ? 'Employee Net Salary / Month' : 'Required Gross Salary / Month';
+  // Net hero
+  const displayNet = mode === 'gtn' ? r.net : val;
+  document.getElementById('r-net').textContent  = fmtR(displayNet);
+  document.getElementById('nh-lbl').textContent = mode === 'gtn'
+    ? 'Employee Net Salary / Month' : 'Confirmed Net / Month';
+  document.getElementById('nh-sub').textContent = mode === 'gtn'
+    ? `From gross EGP ${fmtR(r.grossM)}/mo · Annual EGP ${fmtR(r.grossM*12)}`
+    : `Required gross: EGP ${fmtR(r.grossM)}/month`;
 
-  document.getElementById('nh-lbl').textContent  = heroLbl;
-  document.getElementById('r-net').textContent   = fmt(hero);
-  document.getElementById('r-net2').textContent  = fmt(r.net);
+  document.getElementById('r-etr-pill').textContent     = `${r.etr.toFixed(1)}% effective tax`;
+  document.getElementById('r-bracket-pill').textContent = r.topB
+    ? `Top bracket: ${(r.topB.rate*100).toFixed(1)}%` : 'Tax-exempt';
 
-  // ETR pill
-  document.getElementById('r-etr-pill').textContent    = 'Eff. tax ' + r.etr.toFixed(1) + '%';
-  document.getElementById('r-bracket-pill').textContent = r.topB ? 'Top bracket ' + r.topB.label : 'No income tax';
+  // Employee rows
+  document.getElementById('r-gross').textContent   = `EGP ${fmtR(r.grossM)}`;
+  document.getElementById('r-si').textContent      = withSI ? `−EGP ${fmtR(r.si_emp)}` : `EGP 0 (exempt)`;
+  document.getElementById('r-si-sub').textContent  = withSI
+    ? `11% on insurable wage EGP ${fmtR(r.ins)}/mo (max EGP ${fmtR(D.si_max)})`
+    : 'Social insurance not applied';
+  document.getElementById('r-tax').textContent     = `−EGP ${fmtR(r.taxM)}`;
+  document.getElementById('r-tax-sub').textContent = `Taxable annual: EGP ${fmtR(r.taxableA)} · Exemption: EGP ${fmtR(r.exemption)}`;
+  document.getElementById('r-martyrs').textContent = `−EGP ${fmtR(r.martyrs)}`;
+  document.getElementById('r-net2').textContent    = `EGP ${fmtR(r.net)}`;
 
-  // nh-sub
-  if (currentMode === 'ntg') {
-    document.getElementById('nh-sub').textContent = 'Gross needed: ' + fmt(r.grossM);
-  } else {
-    document.getElementById('nh-sub').textContent = '';
-  }
+  // Tax bracket rows
+  document.getElementById('r-bracket-rows').innerHTML = r.bRows.map(b => `
+    <div class="bk-sub-row">
+      <div class="bk-lbl">${(b.rate*100).toFixed(1)}% on EGP ${fmtR(b.inB)}/yr</div>
+      <div class="bk-val">−EGP ${fmtR(b.taxM_month)}/mo</div>
+    </div>`).join('');
 
-  // Breakdown
-  document.getElementById('r-gross').textContent   = fmt(r.grossM);
-  document.getElementById('r-si').textContent      = '− ' + fmt(r.si_emp);
-  document.getElementById('r-si-sub').textContent  = 'Insurable wage: ' + fmt(r.ins) + '/mo';
-  document.getElementById('r-tax').textContent     = '− ' + fmt(r.taxM);
-  document.getElementById('r-tax-sub').textContent = 'Annual taxable: ' + fmt(r.taxableA) + ' | Annual tax: ' + fmt(r.taxA);
-  document.getElementById('r-martyrs').textContent = '− ' + fmt(r.martyrs);
-
-  // Bracket rows
-  const bCont = document.getElementById('r-bracket-rows');
-  bCont.innerHTML = r.bRows.map(b =>
-    `<div class="bk-row bk-sub-row" style="padding-left:20px;margin-top:2px">
-       <div class="bk-sub">${b.label} bracket</div>
-       <div class="bk-val neg" style="font-size:12px">− ${fmt(b.taxM)}</div>
-     </div>`
-  ).join('');
-
-  // Medical row
-  const medRow = document.getElementById('r-med-row');
+  // Medical row — shown as benefit info, NOT a net deduction
   if (medM > 0) {
-    medRow.style.display = '';
-    document.getElementById('r-medical').textContent = fmt(medM) + '/mo';
-    document.getElementById('r-med-sub').textContent = 'In-kind benefit · Tax deduction: EGP ' + Math.round(r.medDeduction).toLocaleString('en-EG') + '/yr';
+    document.getElementById('r-med-row').style.display = '';
+    document.getElementById('r-medical').textContent = `In-kind benefit · Reduces taxable income by EGP ${fmtR(r.medDeduction)}/yr`;
+    document.getElementById('r-med-sub').textContent = `Tax deduction: EGP ${fmtR(r.medDeduction)}/yr (annual premium, capped at EGP 10,000/yr)`;
   } else {
-    medRow.style.display = 'none';
+    document.getElementById('r-med-row').style.display = 'none';
   }
 
-  // Employer cost
-  document.getElementById('r-er-gross').textContent   = fmt(r.grossM);
-  document.getElementById('r-er-si').textContent      = fmt(r.si_er);
-  document.getElementById('r-emergency').textContent  = fmt(r.emergency);
-  const erMedRow = document.getElementById('r-er-med-row');
-  if (r.er_med > 0) {
-    erMedRow.style.display = '';
-    document.getElementById('r-er-medical').textContent = fmt(r.er_med) + '/mo';
+  // Employer
+  document.getElementById('r-er-gross').textContent = `EGP ${fmtR(r.grossM)}`;
+  document.getElementById('r-er-si').textContent    = withSI ? `+EGP ${fmtR(r.si_er)}` : `EGP 0`;
+  document.getElementById('r-emergency').textContent= `+EGP ${fmtR(r.emergency)}`;
+  document.getElementById('r-er-total').textContent = `EGP ${fmtR(r.erTotal)}`;
+
+  if (medM > 0) {
+    document.getElementById('r-er-med-row').style.display = '';
+    document.getElementById('r-er-medical').textContent = `+EGP ${fmtR(r.er_med)}`;
   } else {
-    erMedRow.style.display = 'none';
+    document.getElementById('r-er-med-row').style.display = 'none';
   }
-  document.getElementById('r-er-total').textContent = fmt(r.erTotal);
 
   // Disclaimer
   document.getElementById('r-disc').textContent = D.disc;
-
-  // Currency note if not EGP
-  if (cur !== 'EGP') {
-    const rate = FX.rates[cur] || 1;
-    const note = document.getElementById('r-disc');
-    const dec  = CURRENCY_DECIMALS[cur] ?? 2;
-    note.textContent = `Shown in ${cur} (1 EGP = ${rate.toFixed(dec)} ${cur}, ${FX.source === 'live' ? 'CBE rate · ' + FX.date : 'estimated fallback'}). All calculations performed in EGP per Egyptian tax law. ` + D.disc;
-  }
 }
 
+function fmtR(n) { return Math.round(n * 100) / 100 % 1 === 0
+  ? Math.round(n).toLocaleString('en-EG')
+  : n.toLocaleString('en-EG', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+document.addEventListener('keydown', e => { if (e.key==='Enter') calculate(); });
 </script>
 </body>
 </html>
