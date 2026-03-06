@@ -220,7 +220,7 @@ button,input,select,textarea{font-family:var(--fb)}ul{list-style:none}
 .btt.show{opacity:1;pointer-events:auto}.btt:hover{background:var(--glt);transform:translateY(-3px)}.btt svg{width:18px;height:18px}
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){
-  .nav-links,.nav-email{display:none!important}.hbg{display:flex!important}
+  .nav-links,.nav-email,.dm-btn,.lang-btn,.btn-gold.btn-sm,.nav-email{display:none!important}.hbg{display:flex!important}
   .grid2,.grid3,.grid4{grid-template-columns:1fr 1fr}
   .steps{grid-template-columns:1fr 1fr}.steps::before{display:none}
   .ftg{grid-template-columns:1fr 1fr}
@@ -240,11 +240,19 @@ button,input,select,textarea{font-family:var(--fb)}ul{list-style:none}
   /* Pricing table mobile */
   .cmptbl{font-size:11px}
   .cmptbl th,.cmptbl td{padding:8px 6px}
-  /* Nav mobile  */
+  /* Nav mobile */
   .nav-wa{display:none}
-  /* Footer logo center on mobile */
-  .flb{text-align:center;align-items:center}
-  .flb a{justify-content:center}
+  /* Nav hamburger: ensure it has enough tap target and breathing room */
+  .nav-in{padding:0 2px}
+  .hbg{padding:8px;margin-right:2px;min-width:40px;min-height:40px;justify-content:center;align-items:center}
+  .hbg span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px}
+  /* Footer: all columns left-aligned on mobile */
+  .flb{text-align:left;align-items:flex-start}
+  .flb a{justify-content:flex-start}
+  .flct{text-align:left}
+  .flls{text-align:left}
+  .ftbtm{text-align:left;gap:12px}
+  .ftbl{justify-content:flex-start;flex-wrap:wrap}
   /* Steps single column */
   .steps{grid-template-columns:1fr!important}
   /* Resource cards */
@@ -452,5 +460,82 @@ button,input,select,textarea{font-family:var(--fb)}ul{list-style:none}
     flex-direction:column;
     align-items:flex-start!important;
     gap:20px!important;
+  }
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE POLISH — consistency pass
+   ══════════════════════════════════════ */
+
+/* Ensure all inline-grid divs get proper mobile treatment */
+@media(max-width:768px){
+  /* Icon+text list items: prevent icon from being squished */
+  .sec div[style*="display:flex"][style*="align-items:flex-start"] > div:first-child,
+  .w   div[style*="display:flex"][style*="align-items:flex-start"] > div:first-child {
+    flex-shrink:0;
+  }
+  /* Service feature list items */
+  .sec div[style*="display:flex"][style*="padding:16px"],
+  .w   div[style*="display:flex"][style*="padding:16px"] {
+    flex-wrap:nowrap; /* icon+text rows should NOT wrap */
+  }
+  /* CTA buttons always stacked on small screens */
+  .sec div[style*="justify-content:center"][style*="display:flex"],
+  .w   div[style*="justify-content:center"][style*="display:flex"] {
+    flex-direction:column;
+    align-items:center;
+  }
+  /* Ensure section headings don't overflow */
+  .h1,.h2,.h3{word-break:break-word}
+  /* Consistent card padding on mobile */
+  .card,.svc-card,.price-card,.job-card{padding:20px 18px!important}
+  /* Consistent section padding */
+  .sec-sm{padding:48px 0}
+}
+
+/* CTA section buttons on ALL screen sizes */
+.sec .btn + .btn { /* sibling buttons in same flex */
+  margin-top: 0;
+}
+@media(max-width:520px){
+  /* Stack CTA buttons vertically on very small screens */
+  div[style*="justify-content:center"] > .btn,
+  div[style*="justify-content:center"] > a.btn,
+  div[style*="justify-content:center"] > button.btn {
+    width:100%;
+    max-width:340px;
+    justify-content:center;
+  }
+}
+
+/* Footer consistency */
+.footer .w {
+  overflow-x: hidden;
+}
+@media(max-width:768px){
+  .ftg > div { /* all footer columns left-aligned */
+    text-align:left;
+  }
+  .ftg > div:first-child { /* brand column */
+    margin-bottom:8px;
+  }
+  .flb p { max-width:100%; }
+  .ftbtm > div:last-child { margin-top:8px; }
+}
+
+/* Hamburger: bigger tap target, proper spacing from edge */
+@media(max-width:1024px){
+  .hbg {
+    display:flex!important;
+    padding:10px 8px;
+    margin-left:4px;
+    min-width:44px;
+    min-height:44px;
+    align-items:center;
+    justify-content:center;
+  }
+  .nav-r {
+    gap:8px;
+    align-items:center;
   }
 }
