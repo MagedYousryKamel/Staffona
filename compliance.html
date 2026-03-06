@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" href="Favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.v2.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://staffona.com/compliance#service","name":"HR Compliance & Labor Law Advisory Egypt","description":"HR compliance advisory for companies operating in Egypt. Staffona handles Labor Office registration, NOSI filings, employment contract compliance, disciplinary procedures, and termination management.","url":"https://staffona.com/compliance","serviceType":"HR Compliance","provider":{"@type":"Organization","name":"Staffona","url":"https://staffona.com"},"areaServed":[{"@type":"Country","name":"Egypt"},{"@type":"Country","name":"United Arab Emirates"},{"@type":"Country","name":"Saudi Arabia"},{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"United States"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://staffona.com"},{"@type":"ListItem","position":2,"name":"Services","item":"https://staffona.com/services"},{"@type":"ListItem","position":3,"name":"HR Compliance & Labor Law Advisory Egypt","item":"https://staffona.com/compliance"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the employment contract requirements in Egypt?","acceptedAnswer":{"@type":"Answer","text":"Egyptian Labor Law No. 12/2003 requires written employment contracts in Arabic or bilingual format. Contracts must specify role, salary, working hours, and be registered with the Labor Office within one month."}},{"@type":"Question","name":"What is the notice period for terminating an employee in Egypt?","acceptedAnswer":{"@type":"Answer","text":"Notice periods under Egyptian law depend on length of service: one month for employees with less than 10 years of service, and two months for those with 10 or more years."}},{"@type":"Question","name":"Does Staffona help with government authority interactions?","acceptedAnswer":{"@type":"Answer","text":"Yes. Staffona liaises directly with the Labor Office, NOSI, and the Egyptian Tax Authority on behalf of clients \u2014 handling registrations, filings, and any compliance queries."}}]}] }</script>
 </head>
 <body>
@@ -185,26 +185,46 @@
 <script>
 if(!window._sfFaq){window._sfFaq=true;document.addEventListener('click',function(e){var b=e.target.closest('.faq-q');if(!b)return;var i=b.closest('.faq-item'),w=i.closest('.faq-wrap'),o=i.classList.contains('open');w.querySelectorAll('.faq-item.open').forEach(function(x){x.classList.remove('open')});if(!o)i.classList.add('open');});}
 </script>
-<footer class="footer">
-  <div class="w">
-    <div class="ftg">
-      <div class="flb">
-        <a href="index.html"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="flb-fb">Staff<em>ona</em></span></a>
-        <p>Egypt's trusted HR outsourcing and recruitment consultancy. Based in Alexandria, serving international and Egyptian businesses.</p>
-        <a href="mailto:info@staffona.com" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@staffona.com</a>
-        <a href="https://maps.google.com/?q=398+El-Horreya+Street+Mostafa+Kamel+Alexandria+Egypt" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>El-Horreya St, Mostafa Kamel, Alexandria, Egypt</a>
-        <a href="https://www.linkedin.com/company/staffona" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Staffona</a>
-      </div>
-      <div><div class="flct">Services</div><ul class="flls"><li><a href="hr-outsourcing.html">HR Outsourcing</a></li><li><a href="payroll-egypt.html">Payroll</a></li><li><a href="recruitment-egypt.html">Recruitment</a></li><li><a href="compliance.html">HR Compliance</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="services.html">All Services</a></li></ul></div>
-      <div><div class="flct">Resources</div><ul class="flls"><li><a href="resources.html">All Resources</a></li><li><a href="laws.html">Egyptian Laws</a></li><li><a href="resources/hiring-guide.html">Hiring Guide</a></li><li><a href="resources/payroll-taxes.html">Payroll Tax Guide</a></li><li><a href="resources/gcc-hiring.html">GCC Hiring Guide</a></li></ul></div>
-      <div><div class="flct">Company</div><ul class="flls"><li><a href="about.html">About Staffona</a></li><li><a href="careers.html">Careers</a></li><li><a href="index.html#contact">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+<footer class="footer"><div class="w">
+  <div class="ftg">
+    <div class="flb">
+      <a href="/"><img src="Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="flb-fb">Staff<em>ona</em></span></a>
+      <p>Egypt's trusted HR outsourcing and recruitment consultancy. Based in Alexandria, serving international and Egyptian businesses.</p>
+      <a href="mailto:info@staffona.com" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@staffona.com</a>
+      <a href="https://maps.google.com/?q=398+El-Horreya+Street,+Mostafa+Kamel,+Alexandria,+Egypt" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>El-Horreya St, Mostafa Kamel, Alexandria, Egypt</a>
+      <a href="https://www.linkedin.com/company/staffona" target="_blank" rel="noopener" class="flci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Staffona</a>
     </div>
-    <div class="ftbtm">
-      <div><div class="f-copy">© 2026 Staffona. All rights reserved. <a href="https://maps.google.com/?q=398+El-Horreya+Street+Mostafa+Kamel+Alexandria+Egypt" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">398 El-Horreya St, Mostafa Kamel, Alexandria, Egypt</a>.</div><p class="f-disc">Staffona provides HR consultancy, payroll administration, and recruitment services. All managed employment arrangements are structured as HR outsourcing engagements in accordance with applicable Egyptian law.</p></div>
-      <div class="fbl"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="sitemap.xml">Sitemap</a></div>
-    </div>
+    <div><div class="flct">Services</div><ul class="flls">
+      <li><a href="hr-outsourcing.html">HR Outsourcing</a></li>
+      <li><a href="payroll-egypt.html">Payroll Management</a></li>
+      <li><a href="recruitment-egypt.html">Recruitment</a></li>
+      <li><a href="compliance.html">HR Compliance</a></li>
+      <li><a href="services.html">All Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+    </ul></div>
+    <div><div class="flct">Resources</div><ul class="flls">
+      <li><a href="resources/hiring-guide.html">Egypt Hiring Guide</a></li>
+      <li><a href="resources/payroll-taxes.html">Payroll Tax Guide</a></li>
+      <li><a href="resources/gcc-hiring.html">GCC Hiring Guide</a></li>
+      <li><a href="laws.html">Egyptian Labor Laws</a></li>
+      <li><a href="resources.html">All Resources →</a></li>
+    </ul></div>
+    <div><div class="flct">Company</div><ul class="flls">
+      <li><a href="about.html">About Staffona</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+    </ul></div>
   </div>
-</footer>
+  <div class="ftbtm">
+    <div>
+      <div class="ftcopy">© 2026 Staffona. All rights reserved. El-Horreya St, Mostafa Kamel, Alexandria, Egypt.</div>
+      <p class="ftdisc">Staffona provides HR consultancy, payroll administration, and recruitment services. All managed employment arrangements are structured as HR outsourcing engagements in accordance with applicable Egyptian law.</p>
+    </div>
+    <div class="ftbl"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="sitemap.xml">Sitemap</a></div>
+  </div>
+</div></footer>
 <div class="cookie" id="cookieBanner"><p>We use cookies to improve your experience. <a href="privacy.html">Privacy Policy</a></p><div class="cb-btns"><button class="btn btn-gold btn-sm" id="cookieAccept">Accept</button><button style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.4);border-radius:var(--r);padding:7px 14px;font-size:13px;cursor:pointer" id="cookieDecline">Decline</button></div></div>
 <button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg></button>
 <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
