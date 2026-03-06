@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Egypt Payroll Calculator 2026 — Free Net Salary & Tax Tool | Staffona</title>
-<meta name="description" content="Free Egyptian payroll calculator for 2026. Instantly compute net salary, income tax brackets, social insurance (11%/18.75%), and total employer cost. Supports EGP, USD, EUR, GBP, SAR, AED, KWD. Based on Egyptian Tax Law.">>
+<title>Egypt Payroll Calculator 2026 — Salary & Tax | Staffona</title>
+<meta name="description" content="Free Egyptian payroll calculator 2026. Compute net salary, income tax, social insurance, and employer cost. Multi-currency support. Based on Egyptian Tax Law.">>
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://staffona.com/payroll-calculator">
@@ -302,7 +302,7 @@
             <div class="fi">
               <label>Your Medical Insurance Premium (<span id="med-cur">EGP</span>/month) <span class="fi-note">optional</span></label>
               <div class="fi-wrap">
-                <span class="fi-pfx" id="sal-pfx">EGP</span>
+                <span class="fi-pfx" id="med-pfx">EGP</span>
                 <input type="number" id="medical" placeholder="0" min="0" max="16700" oninput="onType()">
               </div>
               <div class="fi-hint">Your share · Employer pays 4× · Reduces your taxable income (capped at EGP 10,000/yr deduction)</div>
@@ -593,6 +593,7 @@ function setCurrency(cur,btn){
   document.querySelectorAll('.cur-pill').forEach(function(b){b.classList.remove('on');});
   if(btn) btn.classList.add('on');
   var pfx=document.getElementById('sal-pfx'); if(pfx) pfx.textContent=cur;
+  var mpfx=document.getElementById('med-pfx'); if(mpfx) mpfx.textContent=cur;
   var sc=document.getElementById('sal-cur');  if(sc)  sc.textContent=cur;
   var mc=document.getElementById('med-cur');  if(mc)  mc.textContent=cur;
   updateFXBadge();

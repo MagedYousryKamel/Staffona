@@ -190,13 +190,26 @@ img{max-width:100%;display:block}
   .cta-t{font-size:28px}
   .stats-grid{grid-template-columns:1fr 1fr}
 }
+/* ─── Mobile nav ─── */
+.hbg{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;background:none;border:none;cursor:pointer;padding:8px;border-radius:6px;flex-shrink:0}
+.hbg span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .25s}
+.mob-nav{display:none;position:fixed;top:68px;left:0;right:0;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.1);z-index:99;padding:12px 0}
+.mob-nav a{display:block;padding:11px 20px;font-size:14px;color:rgba(255,255,255,.78);border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none}
+.mob-nav a:last-child{border-bottom:none}
+.mob-nav a.btn{margin:10px 16px 4px;display:block;text-align:center}
+.mob-nav.open{display:block}
+@media(max-width:768px){
+  .hbg{display:flex}
+  .nav-links{display:none!important}
+  .nav-r .btn:not(.hbg){display:none}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://staffona.com/ar#page","name":"استشارات موارد بشرية في مصر | ستافونا","description":"ستافونا — شريكك المتخصص في إدارة الموارد البشرية والرواتب والتوظيف في مصر.","url":"https://staffona.com/ar","inLanguage":"ar","publisher":{"@type":"Organization","name":"Staffona","url":"https://staffona.com"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://staffona.com/ar"}]}]}</script>
 </head>
 <body>
 
 <!-- NAV -->
-<div class="nav-wrap">
+<div class="nav-wrap" id="navbar">
   <div class="w">
     <nav class="nav-in">
       <a href="ar.html" class="nav-logo">
@@ -209,12 +222,22 @@ img{max-width:100%;display:block}
         <li><a href="#faq">أسئلة شائعة</a></li>
       </ul>
       <div class="nav-r">
-        <a href="index.html" class="lang-btn">🌐 English</a>
-        <a href="mailto:info@staffona.com" class="btn btn-gold">تواصل معنا</a>
+        <a href="index.html" class="lang-btn" title="English">🌐 EN</a>
+        <a href="mailto:info@staffona.com" class="btn btn-gold btn-sm" style="font-size:13px">تواصل معنا</a>
+        <button class="hbg" id="hbg" aria-label="القائمة" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </nav>
   </div>
 </div>
+
+<nav class="mob-nav" id="mobNav" dir="rtl" style="text-align:right">
+  <a href="#services">خدماتنا</a>
+  <a href="#why">لماذا ستافونا</a>
+  <a href="#process">آلية العمل</a>
+  <a href="#faq">أسئلة شائعة</a>
+  <a href="index.html">🌐 English</a>
+  <a href="mailto:info@staffona.com" class="btn btn-gold" style="text-align:center;margin-top:8px">تواصل معنا</a>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -295,7 +318,7 @@ img{max-width:100%;display:block}
         <div class="svc-ic">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <div class="svc-t">الاستخدام المُدار والتوظيف الخارجي</div>
+        <div class="svc-t">الاستخدام المُدار والتوظيف الخارجي (PEO)</div>
         <p class="svc-d">وظّف موظفين مصريين قانونياً دون الحاجة لتأسيس كيان محلي. ستافونا تتولى عقود العمل والرواتب والامتثال نيابةً عنك.</p>
         <span class="svc-link">اعرف المزيد ←</span>
       </a>
@@ -459,6 +482,30 @@ img{max-width:100%;display:block}
         <div class="faq-a"><p class="faq-a-text">ابدأ باستشارة مجانية عبر البريد الإلكتروني أو مكالمة فيديو عبر Calendly. نستغرق 30 دقيقة لفهم احتياجاتك وتقديم عرض سعر واضح. الاستشارة الأولى مجانية تماماً وبلا أي التزام.</p></div>
       </div>
 
+    
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-ic">+</span>
+          <span class="faq-q-text">ما الفرق بين ستافونا وتأسيس شركة محلية في مصر؟</span>
+        </div>
+        <div class="faq-a"><p class="faq-a-text">تأسيس شركة في مصر يستغرق أشهراً وتكاليف تشغيلية ثابتة مرتفعة. مع ستافونا، أنت توظّف بسرعة وبتكلفة مرنة دون أي التزامات قانونية تجاه كيان محلي. مثالي لمراحل النمو التجريبية أو الفرق الصغيرة.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-ic">+</span>
+          <span class="faq-q-text">هل تتعاملون مع الشركات المصرية أم فقط الشركات الأجنبية؟</span>
+        </div>
+        <div class="faq-a"><p class="faq-a-text">نخدم كلا النوعين. الشركات المصرية تستعين بنا لإدارة الرواتب والتوظيف والامتثال القانوني. الشركات الأجنبية والخليجية تستخدم خدمتنا للتوظيف المُدار دون كيان محلي. الاثنان يستفيدان من نفس مستوى الخبرة.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-ic">+</span>
+          <span class="faq-q-text">كيف يتم احتساب ضريبة الدخل والتأمينات الاجتماعية للموظفين المصريين؟</span>
+        </div>
+        <div class="faq-a"><p class="faq-a-text">وفقاً لقانون العمل المصري، يُقتطع من الموظف 11% للتأمينات الاجتماعية، ويتحمل صاحب العمل 18.75%. ضريبة الدخل تُحسب على شرائح تصاعدية من 0% إلى 27.5%. فريقنا يتولى حساب كل هذا وإيداعه للجهات المختصة شهرياً.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -550,5 +597,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 </script>
+<script src="shared.js"></script>
 </body>
 </html>
