@@ -184,7 +184,7 @@
 /* Responsive */
 @media(max-width:1024px){
   .hero-in,.why-in,.cin{grid-template-columns:1fr}
-  .svcg,.sg,.resg,.procg{grid-template-columns:1fr 1fr}
+  .svcg,.sg,.resg{grid-template-columns:1fr 1fr}.procg{grid-template-columns:1fr 1fr;gap:24px 12px}
   .nbg{grid-template-columns:1fr 1fr}
   .cmp{display:none}
   .comp-in{grid-template-columns:1fr}
@@ -192,7 +192,7 @@
 }
 @media(max-width:768px){
   .hero-in{padding:40px 0 60px}
-  .svcg,.sg,.resg,.procg,.nbg,.frow{grid-template-columns:1fr}
+  .svcg,.sg,.resg,.nbg,.frow{grid-template-columns:1fr}.procg{grid-template-columns:1fr 1fr;gap:20px 12px}.procg .ps{padding:0 6px}
   .hctas{flex-direction:column;align-items:flex-start}
   .serve-g{grid-template-columns:1fr}
   .cont-in,.cin{grid-template-columns:1fr;gap:36px}
@@ -230,7 +230,8 @@
 .cpanel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--rx);padding:32px}
 .cpanel-t{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px}
 .cpanel-d{font-size:12.5px;color:rgba(255,255,255,.38);margin-bottom:22px}
-</style>
+
+@media(max-width:480px){.procg{grid-template-columns:1fr}.procg .ps{padding:0}}</style>
 <script>
 /* ── Legacy hash-route redirect (old SPA links) ── */
 (function(){
