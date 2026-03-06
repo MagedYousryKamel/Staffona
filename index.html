@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://staffona.com/">
 <link rel="alternate" hreflang="en" href="https://staffona.com/">
 <link rel="alternate" hreflang="ar" href="https://staffona.com/ar">
-<link rel="icon" type="image/png" href="/Favicon.png">
+<link rel="icon" type="image/png" href="Favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://staffona.com/">
 <meta property="og:title" content="HR Outsourcing &amp; Recruitment in Egypt | Staffona">
@@ -259,7 +259,6 @@
   if (dest) window.location.replace(dest);
 })();
 </script>
-<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 
@@ -292,7 +291,7 @@
         <svg class="dm-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
       </button>
       <button class="btn btn-gold btn-sm" data-cal>Book Consultation</button>
-      <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false" style="display:none"><span></span><span></span><span></span></button>
+      <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </nav></div>
 </div>
@@ -300,7 +299,7 @@
   <a href="/">Home</a><a href="/services.html">Services</a><a href="/hr-outsourcing.html">HR Outsourcing</a>
   <a href="/payroll-egypt.html">Payroll</a><a href="/recruitment-egypt.html">Recruitment</a>
   <a href="/resources.html">Resources</a><a href="/laws.html">Laws</a>
-  <a href="/careers.html">Careers</a><a href="/about.html">About</a>
+  <a href="/careers.html">Careers</a><a href="/payroll-calculator.html">💰 Calculator</a><a href="/about.html">About</a>
   <a href="mailto:info@staffona.com" style="color:var(--gold)">info@staffona.com</a>
   <div style="padding-top:12px"><button class="btn btn-gold" style="width:100%;justify-content:center" data-cal>Book Free Consultation</button></div>
 </nav>
@@ -447,7 +446,7 @@
       </div>
       <div class="cmp rv d2">
         <div class="cmp-head"><div style="font-size:10.5px;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase">Staffona vs. Opening Your Own Entity</div></div>
-        <table class="cmptbl">
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px"><table class="cmptbl">
           <thead><tr><th>Criteria</th><th class="cs">Staffona</th><th>Own Entity</th></tr></thead>
           <tbody>
             <tr><td>Time to First Hire</td><td class="cs ok">2–5 Days</td><td class="no">4–8 Months</td></tr>
@@ -457,7 +456,7 @@
             <tr><td>Payroll &amp; Tax</td><td class="cs ok">Included</td><td class="no">Accountant needed</td></tr>
             <tr><td>Market Exit</td><td class="cs ok">30-Day Notice</td><td class="no">12–24 Months</td></tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
     </div>
   </div>
@@ -543,23 +542,23 @@
 (function(){
   var REVS_KEY = 'sf-reviews-v1';
   var DEFAULTS = [
-    {id:101,name:'Khalid R.',role:'Head of Engineering \u00b7 Gulf-Based Employer',country:'🇦🇪 Dubai, UAE',
+    {id:101,name:'Khalid R.',role:'Head of Engineering \u00b7 Gulf-Based Employer',country:'\U0001f1e6\U0001f1ea Dubai, UAE',
      service:'Managed Employment',stars:'5',status:'Published',
      quote:'We hired three Egyptian engineers through Staffona without setting up a local entity. The whole process \u2014 contracts, NOSI, payroll \u2014 was done in four days. Our team in Dubai had no idea how smooth it could be.',
      date:'2026-01-15T00:00:00.000Z'},
-    {id:102,name:'Nadia F.',role:'Finance Director \u00b7 Cairo-Based Business',country:'🇪🇬 Cairo, Egypt',
+    {id:102,name:'Nadia F.',role:'Finance Director \u00b7 Cairo-Based Business',country:'\U0001f1ea\U0001f1ec Cairo, Egypt',
      service:'Compliance & Payroll',stars:'5',status:'Published',
      quote:'Staffona cleaned up three years of payroll compliance issues in two months \u2014 dealing directly with NOSI and the Tax Authority on our behalf. Something we\'d been delaying for years, resolved cleanly.',
      date:'2026-01-20T00:00:00.000Z'},
-    {id:103,name:'James T.',role:'Managing Director \u00b7 UK Tech Company',country:'🇬🇧 London, UK',
+    {id:103,name:'James T.',role:'Managing Director \u00b7 UK Tech Company',country:'\U0001f1ec\U0001f1e7 London, UK',
      service:'Recruitment + EOR',stars:'5',status:'Published',
      quote:'As a UK startup, we needed one Egyptian data analyst and had no idea where to start legally. Staffona found the candidate, drafted the Arabic contract, and processed first payroll. Genuinely exceptional service.',
      date:'2026-01-28T00:00:00.000Z'},
-    {id:104,name:'Ahmed S.',role:'Managing Director \u00b7 Alexandria Business',country:'🇪🇬 Alexandria, Egypt',
+    {id:104,name:'Ahmed S.',role:'Managing Director \u00b7 Alexandria Business',country:'\U0001f1ea\U0001f1ec Alexandria, Egypt',
      service:'Payroll Management',stars:'5',status:'Published',
      quote:'Our monthly payroll used to take our accountant two full days. With Staffona, we send one number and everything else is handled \u2014 payslips, NOSI, Form 4. The best operational decision we made this year.',
      date:'2026-02-03T00:00:00.000Z'},
-    {id:105,name:'Tariq A.',role:'Operations Director \u00b7 Saudi-Based Employer',country:'🇸🇦 Riyadh, Saudi Arabia',
+    {id:105,name:'Tariq A.',role:'Operations Director \u00b7 Saudi-Based Employer',country:'\U0001f1f8\U0001f1e6 Riyadh, Saudi Arabia',
      service:'HR Outsourcing',stars:'5',status:'Published',
      quote:'Expanding into Egypt from Riyadh, we needed someone who understood both sides \u2014 Arabic-speaking, Egyptian law expertise, comfortable with international business culture. Staffona was exactly that.',
      date:'2026-02-10T00:00:00.000Z'}
@@ -650,13 +649,13 @@
       <div class="rv-l">
         <div class="lbl lbl-lt">Get Started</div>
         <h2 class="ctitle">Ready to Simplify<br>HR in <span>Egypt?</span></h2>
-        <p class="cdesc">First consultation is always free. Our Egypt-based HR specialists reply within 1 working day.</p>
+        <p class="cdesc">First consultation is always free. Our Egypt-based HR specialists reply within 2 business hours.</p>
         <a href="#" class="copt" data-cal>
           <div class="copic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
           <div><div class="copt-t">Schedule a Video Call</div><div class="copt-d">30-min Calendly — any timezone</div></div>
         </a>
-        <a href="mailto:info@staffona.com" class="copt"><div class="copic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></div><div><div class="copt-t">Email Us</div><div class="copt-d">info@staffona.com</div></div></a>
-        <a href="https://wa.me/201505424341?text=Hi%20Staffona%2C%20I%27d%20like%20to%20learn%20about%20your%20HR%20services." target="_blank" rel="noopener" class="copt" id="waLink">
+        <a href="mailto:info@staffona.com" class="copt">info@staffona.com</a>
+        <a href="https://wa.me/201068347083?text=Hi%20Staffona%2C%20I%27d%20like%20to%20learn%20about%20your%20HR%20services." target="_blank" rel="noopener" class="copt" id="waLink">
           <div class="copic" style="background:rgba(37,211,102,.15);border-color:rgba(37,211,102,.3)"><svg viewBox="0 0 24 24" fill="currentColor" style="color:#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 0C5.374 0 0 5.373 0 11.998c0 2.118.554 4.104 1.523 5.826L.057 23.998l6.304-1.654A11.954 11.954 0 0011.998 24c6.625 0 12-5.374 12-12S18.623 0 11.998 0zm0 21.818a9.818 9.818 0 01-5.011-1.374l-.36-.213-3.733.979 1-3.635-.234-.374a9.817 9.817 0 01-1.504-5.201c0-5.426 4.416-9.842 9.842-9.842s9.842 4.416 9.842 9.842-4.416 9.842-9.842 9.842z"/></svg></div>
           <div><div class="copt-t">WhatsApp</div><div class="copt-d">Message us — quick reply</div></div>
         </a>
@@ -667,7 +666,7 @@
       </div>
       <div class="fp rv d2">
         <div class="fpt">Book Your Free Consultation</div>
-        <div class="fps">No commitment. Reply within 1 working day.</div>
+        <div class="fps">No commitment. Reply within 2 business hours.</div>
         <div class="tabs">
           <button class="tab on" onclick="swTab('email',this)">📧 Send Message</button>
           <button class="tab" onclick="swTab('cal',this)">📅 Book a Call</button>
@@ -691,9 +690,9 @@
               </select>
             </div>
             <div class="fg"><label class="fl" for="msg">Message</label><textarea class="fta" id="msg" name="message" placeholder="Tell us about your needs..."></textarea></div>
-            <button type="submit" class="fsub">Send Message</button>
+            <button type="submit" class="fsub">Send Message — We Reply in 2 Hours</button>
           </form>
-          <div class="form-ok" id="fok"><div style="font-size:36px;margin-bottom:9px">✅</div><div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px">Message Received!</div><div style="font-size:12.5px;color:rgba(255,255,255,.44)">We'll get back to you within 1 working day.</div></div>
+          <div class="form-ok" id="fok"><div style="font-size:36px;margin-bottom:9px">✅</div><div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px">Message Received!</div><div style="font-size:12.5px;color:rgba(255,255,255,.44)">We will contact you within 2 business hours.</div></div>
         </div>
         <div class="pane" id="p-cal">
           <div class="calendly-inline-widget" data-url="https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_color=ffffff&primary_color=c8973a" style="min-width:100%;height:500px"></div>
@@ -751,56 +750,39 @@
   </div>
 </div>
 <button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg></button>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script async src="https://assets.calendly.com/assets/external/widget.js"></script>
 <script src="/shared.js"></script>
 <script>
-/* ── Lazy-load Calendly only when needed ── */
-(function(){
-  var calLoaded=false;
-  function loadCalendly(cb){
-    if(calLoaded){if(cb)cb();return;}
-    var l=document.createElement('link');l.rel='stylesheet';
-    l.href='https://assets.calendly.com/assets/external/widget.css';
-    document.head.appendChild(l);
-    var s=document.createElement('script');
-    s.src='https://assets.calendly.com/assets/external/widget.js';
-    s.onload=function(){calLoaded=true;if(cb)cb();};
-    document.head.appendChild(s);
-  }
-  var _sw=window.swTab;
-  window.swTab=function(name,btn){
-    if(name==='cal') loadCalendly(funct
-<script>
-/* Lazy-load Calendly */
-(function(){
-  var loaded=false;
-  function load(cb){
-    if(loaded){if(cb)cb();return;}
-    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
-    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);
-  }
-  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f1e35&text_c
-<script>
-/* Lazy-load Calendly */
-(function(){
-  var loaded=false;
-  function load(cb){if(loaded){if(cb)cb();return;}
-    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
-    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);
-  }
-  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_type
-<script>
-/* Lazy-load Calendly */
-(function(){
-  var loaded=false;
-  function load(cb){if(loaded){if(cb)cb();return;}
-    var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);
-    var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.onload=function(){loaded=true;if(cb)cb();};document.head.appendChild(s);}
-  var CAL_URL='https://calendly.com/maged-staffona/free-consultation?hide_event_typecolor=ffffff&primary_color=c8973a';
-  var _sw=window.swTab;
-  window.swTab=function(name,btn){if(name==='cal')load(function(){if(typeof Calendly!=='undefined')Calendly.initInlineWidgets();});if(_sw)_sw(name,btn);};
-  window.openCal=function(e){if(e)e.preventDefault();load(function(){if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:(window.SF&&SF.CAL)||CAL_URL});else window.open('https://calendly.com/maged-staffona/free-consultation','_blank');});return false;};
-  document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('[data-cal]').forEach(function(el){el.onclick=function(e){window.openCal(e);};});});
-})();
+window.swTab = function(name,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('p-'+name).classList.add('on');
+  if(name==='cal' && typeof Calendly!=='undefined') Calendly.initInlineWidgets();
+};
+document.addEventListener('DOMContentLoaded', function(){
+  document.getElementById('cform').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn = this.querySelector('.fsub'), orig = btn.textContent;
+    btn.textContent='Sending…'; btn.disabled=true;
+    const data={};
+    new FormData(this).forEach((v,k)=>data[k]=v);
+    data.subject='Staffona enquiry — '+(data.firstName||'')+' '+(data.lastName||'');
+    data._subject = data.subject;
+    try{
+      var r=await fetch('https://formspree.io/f/xreajrkr',{method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
+      if(r.ok){this.style.display='none'; var fok=document.getElementById('fok'); if(fok) fok.style.display='block';}
+      else throw new Error();
+    }catch{
+      var s=encodeURIComponent(data.subject),b=encodeURIComponent('Name: '+(data.firstName||'')+' '+(data.lastName||'')+'\nEmail: '+(data.email||'')+'\nCompany: '+(data.company||'')+'\nService: '+(data.service||'')+'\n\n'+(data.message||''));
+      location.href='mailto:info@staffona.com?subject='+s+'&body='+b;
+    }
+    btn.textContent=orig; btn.disabled=false;
+  });
+});
 </script>
+
 </body>
 </html>

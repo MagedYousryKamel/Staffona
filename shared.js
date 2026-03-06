@@ -139,14 +139,3 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
 });
-
-/* ── Calendly post-booking redirect ── */
-window.addEventListener('message', function(e) {
-  if (e.data && e.data.event === 'calendly.event_scheduled') {
-    setTimeout(function() {
-      var prefix = window.location.pathname.indexOf('/resources/') >= 0 ? '../' : '';
-      window.location.href = prefix + 'thank-you.html';
-    }, 1200);
-  }
-});
-

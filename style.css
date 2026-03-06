@@ -379,3 +379,37 @@ button,input,select,textarea{font-family:var(--fb)}ul{list-style:none}
   .ph .h1{font-size:clamp(24px,8vw,36px)}
   .nav-logo img{height:52px}
 }
+
+/* ── Mobile: stack inline-grid divs inside sections ── */
+@media(max-width:768px){
+  .sec div[style*="grid-template-columns:1fr 1fr"],
+  .sec div[style*="grid-template-columns: 1fr 1fr"],
+  .sec div[style*="grid-template-columns:repeat(2,1fr)"],
+  .sec div[style*="grid-template-columns:repeat(3,1fr)"],
+  .sec div[style*="grid-template-columns:1fr 1fr 1fr"],
+  .sec div[style*="grid-template-columns: 1fr 1fr 1fr"],
+  .w   div[style*="grid-template-columns:1fr 1fr"],
+  .w   div[style*="grid-template-columns:repeat(2,1fr)"],
+  .w   div[style*="grid-template-columns:repeat(3,1fr)"],
+  .w   div[style*="grid-template-columns:1fr 1fr 1fr"]{
+    grid-template-columns:1fr!important;
+  }
+  /* Keep 2-col for small pairs (stats, badges) */
+  .sec div[style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr 1fr!important;
+  }
+}
+@media(max-width:480px){
+  .sec div[style*="grid-template-columns"],
+  .w   div[style*="grid-template-columns"]{
+    grid-template-columns:1fr!important;
+  }
+}
+
+/* ── Mobile: reduce large gaps in 2-col hero grids ── */
+@media(max-width:768px){
+  div[style*="gap:72px"],
+  div[style*="gap: 72px"]{
+    gap:32px!important;
+  }
+}
