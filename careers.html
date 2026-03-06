@@ -39,6 +39,7 @@
 .job-card.featured .jc-btn:hover{background:var(--gold-lt)}
 /* ── APPLICATION FORM ── */
 .app-wrap{background:var(--navy);border-radius:var(--rx);padding:40px;max-width:700px;margin:0 auto}
+#appSection{scroll-margin-top:84px}
 .app-title{font-family:var(--fh);font-size:26px;font-weight:700;color:#fff;margin-bottom:6px}
 .app-sub{font-size:13.5px;color:rgba(255,255,255,.44);margin-bottom:28px;line-height:1.65}
 .fg{margin-bottom:14px}
@@ -103,10 +104,12 @@
   </nav></div>
 </div>
 <nav class="mob-nav" id="mobNav">
-  <a href="index.html">Home</a><a href="services.html">Services</a><a href="hr-outsourcing.html">HR Outsourcing</a>
-  <a href="payroll-egypt.html">Payroll</a><a href="recruitment-egypt.html">Recruitment</a><a href="compliance.html">Compliance</a>
-  <a href="pricing.html">Pricing</a><a href="resources.html">Resources</a><a href="laws.html">Laws &amp; Guides</a>
-  <a href="careers.html">Careers</a><a href="payroll-calculator.html">💰 Calculator</a><a href="about.html">About</a><a href="index.html#contact">Contact</a>
+  <a href="index.html">Home</a><a href="services.html">Services</a>
+  <a href="hr-outsourcing.html">HR Outsourcing</a><a href="payroll-egypt.html">Payroll</a>
+  <a href="recruitment-egypt.html">Recruitment</a><a href="resources.html">Resources</a>
+  <a href="laws.html">Laws</a><a href="careers.html">Careers</a><a href="payroll-calculator.html">💰 Calculator</a><a href="about.html">About</a>
+  <a href="mailto:info@staffona.com" style="color:var(--gold)">info@staffona.com</a>
+  <div style="padding-top:12px"><button class="btn btn-gold" style="width:100%;justify-content:center" data-cal>Book Free Consultation</button></div>
 </nav>
 
 <section class="ph">
@@ -424,7 +427,13 @@ function applyFor(role) {
     if (sel.options[i].value === role) { sel.selectedIndex = i; break; }
   }
   onRoleChange();
-  document.getElementById('appSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Scroll to form with nav offset accounted for
+  const el = document.getElementById('appSection');
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Highlight the role selector so user sees the pre-filled choice
+  sel.style.transition = 'box-shadow 0.3s';
+  sel.style.boxShadow = '0 0 0 3px rgba(200,151,58,0.6)';
+  setTimeout(() => { sel.style.boxShadow = ''; }, 2000);
 }
 
 function cvSelected(inp) {

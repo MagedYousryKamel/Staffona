@@ -394,10 +394,6 @@ button,input,select,textarea{font-family:var(--fb)}ul{list-style:none}
   .w   div[style*="grid-template-columns:1fr 1fr 1fr"]{
     grid-template-columns:1fr!important;
   }
-  /* Keep 2-col for small pairs (stats, badges) */
-  .sec div[style*="grid-template-columns:1fr 1fr"]{
-    grid-template-columns:1fr 1fr!important;
-  }
 }
 @media(max-width:480px){
   .sec div[style*="grid-template-columns"],
