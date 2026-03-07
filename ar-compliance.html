@@ -6,8 +6,8 @@
 <title>الامتثال لقانون العمل المصري | ستافونا</title>
 <meta name="description" content="الامتثال الكامل لقانون العمل المصري — عقود عربية قانونية، تسجيل مكتب العمل، تأمينات NOSI، واستشارات إنهاء الخدمة. ستافونا تضمن التزامك الكامل.">
 <link rel="canonical" href="https://staffona.com/ar-compliance.html">
-<link rel="alternate" hreflang="ar" href="https://staffona.com/ar">
-<link rel="alternate" hreflang="en" href="https://staffona.com/">
+<link rel="alternate" hreflang="ar" href="https://staffona.com/ar-compliance">
+<link rel="alternate" hreflang="en" href="https://staffona.com/compliance">
 <link rel="icon" type="image/x-icon" href="favicon.ico"><link rel="icon" type="image/png" href="/Favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://staffona.com/ar-compliance.html">
@@ -223,6 +223,34 @@ img{max-width:100%;display:block}
 .dm-btn:hover{background:rgba(255,255,255,.14)}
 .dm-moon,.dm-sun{width:16px;height:16px}
 
+
+/* Dropdown nav */
+.ndrop{position:relative}
+.ndrop::after{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:16px;display:none}
+.ndrop:hover::after{display:block}
+.ndrop-menu{position:absolute;top:calc(100% + 8px);right:50%;transform:translateX(50%) translateY(-6px);
+  background:var(--navy);border:1px solid rgba(255,255,255,.1);border-radius:12px;
+  padding:8px;min-width:200px;opacity:0;pointer-events:none;
+  transition:opacity .18s,transform .18s;white-space:nowrap;z-index:200;direction:rtl;text-align:right}
+.ndrop:hover .ndrop-menu{opacity:1;pointer-events:auto;transform:translateX(50%) translateY(0)}
+.ndrop-menu a{display:block;padding:9px 14px;font-size:13px;color:rgba(255,255,255,.7);border-radius:6px;transition:all .18s;text-decoration:none}
+.ndrop-menu a:hover{background:rgba(255,255,255,.07);color:#fff}
+
+/* Cookie banner + BTT */
+.cookie{position:fixed;bottom:max(16px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);
+  background:rgba(11,31,58,.97);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--rl);padding:14px 20px;display:none;align-items:center;flex-wrap:wrap;
+  gap:12px;z-index:9999;max-width:520px;width:calc(100% - 32px);direction:rtl;text-align:right}
+.cookie p{font-size:13.5px;color:rgba(255,255,255,.7);flex:1;min-width:160px;line-height:1.5}
+.cookie p a{color:var(--gold);text-decoration:none}
+.cookie.show{display:flex}
+.cb-btns{display:flex;gap:8px;flex-shrink:0}
+.btt{position:fixed;bottom:max(24px,env(safe-area-inset-bottom,24px));right:20px;
+  width:42px;height:42px;border-radius:50%;background:var(--navy);border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.6);cursor:pointer;display:none;align-items:center;justify-content:center;
+  z-index:900;transition:all .2s}
+.btt:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.btt.show{display:flex}
 </style>
 <body>
 <div class="nav-wrap" id="navbar">
@@ -233,10 +261,10 @@ img{max-width:100%;display:block}
         <span class="flb-fb" style="display:none">Staff<em>ona</em></span>
       </a>
       <ul class="nav-links">
-        <li><a href="#services">خدماتنا</a></li>
-        <li><a href="#why">لماذا ستافونا</a></li>
-        <li><a href="#process">آلية العمل</a></li>
-        <li><a href="#faq">أسئلة شائعة</a></li>
+        <li><a href="ar.html#services">خدماتنا</a></li>
+        <li><a href="ar.html#why">لماذا ستافونا</a></li>
+        <li><a href="ar.html">الرئيسية</a></li>
+        <li><a href="ar.html#faq">أسئلة شائعة</a></li>
       </ul>
       <div class="nav-r">
         <button class="dm-btn" aria-label="تبديل الوضع">
@@ -252,10 +280,14 @@ img{max-width:100%;display:block}
 </div>
 
 <nav class="mob-nav" id="mobNav" dir="rtl" style="text-align:right">
-  <a href="#services">خدماتنا</a>
-  <a href="#why">لماذا ستافونا</a>
-  <a href="#process">آلية العمل</a>
-  <a href="#faq">أسئلة شائعة</a>
+  <div style="padding:8px 16px 4px;font-size:10.5px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:.08em;text-transform:uppercase">الخدمات</div>
+  <a href="ar-hr-outsourcing.html">الاستخدام المُدار (PEO)</a>
+  <a href="ar-payroll.html">إدارة الرواتب</a>
+  <a href="ar-recruitment.html">التوظيف والاستقطاب</a>
+  <a href="ar-compliance.html">الامتثال القانوني</a>
+  <div style="height:1px;background:rgba(255,255,255,.08);margin:6px 16px"></div>
+  <a href="ar.html">🏠 الرئيسية</a>
+  <a href="ar.html#faq">أسئلة شائعة</a>
   <a href="payroll-calculator.html">🧮 حاسبة الرواتب</a>
   <a href="index.html">🌐 English</a>
   <a href="mailto:info@staffona.com" class="btn btn-gold" style="margin:10px 16px 4px;display:block;text-align:center">تواصل معنا</a>
@@ -463,5 +495,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 </script>
 <script src="shared.js"></script>
+<div class="cookie" id="cookieBanner">
+  <p>نستخدم الكوكيز لتحسين تجربتك. <a href="privacy.html">اعرف المزيد</a></p>
+  <div class="cb-btns">
+    <button class="btn btn-gold btn-sm" id="cookieAccept">قبول</button>
+    <button style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.4);border-radius:var(--r);padding:7px 15px;font-size:13px;cursor:pointer" id="cookieDecline">رفض</button>
+  </div>
+</div>
+<button class="btt" id="btt" aria-label="للأعلى"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg></button>
 </body>
 </html>

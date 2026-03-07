@@ -118,6 +118,16 @@ document.addEventListener('DOMContentLoaded',function(){
     if(name==='cal'&&typeof Calendly!=='undefined') Calendly.initInlineWidgets();
   };
 
+  /* ── Smooth scroll for all anchor links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href').slice(1);
+      if(!id) return;
+      var el=document.getElementById(id);
+      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}); }
+    });
+  });
+
   /* ── Contact form (homepage #cform) ── */
   var cform=document.getElementById('cform');
   if(cform) cform.addEventListener('submit',async function(e){

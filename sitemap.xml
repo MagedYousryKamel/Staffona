@@ -1,26 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <url><loc>https://staffona.com/</loc><lastmod>2026-03-06</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://staffona.com/payroll-calculator</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://staffona.com/ar</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://staffona.com/services</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://staffona.com/hr-outsourcing</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://staffona.com/payroll-egypt</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://staffona.com/recruitment-egypt</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://staffona.com/compliance</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://staffona.com/resources</loc><lastmod>2026-03-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://staffona.com/laws</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://staffona.com/resources/hiring-guide</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://staffona.com/resources/payroll-taxes</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://staffona.com/resources/gcc-hiring</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://staffona.com/resources/labor-law</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://staffona.com/resources/social-insurance</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://staffona.com/resources/termination-rules</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://staffona.com/pricing</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://staffona.com/about</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://staffona.com/careers</loc><lastmod>2026-03-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://staffona.com/privacy</loc><lastmod>2026-03-06</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://staffona.com/terms</loc><lastmod>2026-03-06</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url>
+    <loc>https://staffona.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staffona.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staffona.com/ar"/>
+    <changefreq>weekly</changefreq><priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://staffona.com/ar</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staffona.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staffona.com/"/>
+    <changefreq>weekly</changefreq><priority>0.9</priority>
+  </url>
+
+  <!-- English service pages -->
+  <url><loc>https://staffona.com/hr-outsourcing</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staffona.com/hr-outsourcing"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staffona.com/ar-hr-outsourcing"/>
+    <changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://staffona.com/payroll-egypt</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staffona.com/payroll-egypt"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staffona.com/ar-payroll"/>
+    <changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://staffona.com/recruitment-egypt</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staffona.com/recruitment-egypt"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staffona.com/ar-recruitment"/>
+    <changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://staffona.com/compliance</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staffona.com/compliance"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staffona.com/ar-compliance"/>
+    <changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Arabic service pages -->
+  <url><loc>https://staffona.com/ar-hr-outsourcing</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staffona.com/ar-hr-outsourcing"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staffona.com/hr-outsourcing"/>
+    <changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://staffona.com/ar-payroll</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staffona.com/ar-payroll"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staffona.com/payroll-egypt"/>
+    <changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://staffona.com/ar-recruitment</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staffona.com/ar-recruitment"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staffona.com/recruitment-egypt"/>
+    <changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://staffona.com/ar-compliance</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://staffona.com/ar-compliance"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://staffona.com/compliance"/>
+    <changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Tools & utilities -->
+  <url><loc>https://staffona.com/payroll-calculator</loc>
+    <changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://staffona.com/services</loc>
+    <changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://staffona.com/pricing</loc>
+    <changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://staffona.com/laws</loc>
+    <changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://staffona.com/resources</loc>
+    <changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <!-- Resource articles -->
+  <url><loc>https://staffona.com/resources/hiring-guide</loc>
+    <changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://staffona.com/resources/payroll-taxes</loc>
+    <changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://staffona.com/resources/gcc-hiring</loc>
+    <changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://staffona.com/resources/labor-law</loc>
+    <changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://staffona.com/resources/social-insurance</loc>
+    <changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://staffona.com/resources/termination-rules</loc>
+    <changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Company -->
+  <url><loc>https://staffona.com/about</loc>
+    <changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://staffona.com/careers</loc>
+    <changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://staffona.com/privacy</loc>
+    <changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://staffona.com/terms</loc>
+    <changefreq>yearly</changefreq><priority>0.3</priority></url>
 
 </urlset>

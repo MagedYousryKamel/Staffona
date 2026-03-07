@@ -13,7 +13,7 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico"><link rel="icon" type="image/png" href="/Favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.v2.css">
+<link rel="stylesheet" href="style.css">
 <style>
 .job-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:28px 26px;transition:all var(--t) var(--ease)}
 .job-card:hover{border-color:var(--gold);box-shadow:var(--sh2)}
@@ -266,7 +266,7 @@
     <div><div class="flct">Company</div><ul class="flls">
       <li><a href="about.html">About Staffona</a></li>
       <li><a href="careers.html">Careers</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
       <li><a href="privacy.html">Privacy Policy</a></li>
       <li><a href="terms.html">Terms of Service</a></li>
     </ul></div>
@@ -468,7 +468,7 @@ function applyFor(role) {
   // Scroll to form — scroll-margin-top:84px in CSS handles nav offset
   var el = document.getElementById('appSection');
   if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-  // Visual feedback: highlight the form section
+  // Visual feedback: highlight form + focus first name field
   setTimeout(function() {
     var wrap = document.getElementById('appSection');
     if (wrap) {
@@ -476,6 +476,9 @@ function applyFor(role) {
       wrap.style.boxShadow = '0 0 0 3px rgba(200,151,58,0.6)';
       setTimeout(function() { wrap.style.boxShadow = ''; }, 2000);
     }
+    // Focus the first name field so user sees the form is active
+    var firstField = document.getElementById('aFirst');
+    if (firstField) setTimeout(function() { firstField.focus(); }, 400);
     sel.style.outline = '2px solid rgba(200,151,58,0.8)';
     sel.style.borderColor = 'rgba(200,151,58,0.8)';
     setTimeout(function() {
