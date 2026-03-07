@@ -143,7 +143,7 @@ img{max-width:100%;display:block}
 
 /* ── NAV LOGO ── */
 .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none}
-.nav-logo img{height:80px;width:auto;filter:brightness(0) invert(1);object-fit:contain}
+.nav-logo img{height:36px;width:auto;filter:brightness(0) invert(1);object-fit:contain}
 .nlf{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;display:none}.nlf em{color:var(--gold);font-style:normal}
 /* ── FOOTER LOGO ── */
 .flb img{height:68px;width:auto;filter:brightness(0) invert(1);opacity:.92}
@@ -201,6 +201,7 @@ img{max-width:100%;display:block}
   .hbg{display:flex}
   .nav-links{display:none!important}
   .nav-r .btn:not(.hbg){display:none}
+  .nav-r .dm-btn,.nav-r .lang-btn{display:none}
 }
 /* ── DARK MODE ── */
 [data-theme="light"]{
@@ -261,6 +262,10 @@ img{max-width:100%;display:block}
   <a href="payroll-calculator.html">🧮 حاسبة الرواتب</a>
   <a href="index.html">🌐 English</a>
   <a href="mailto:info@staffona.com" class="btn btn-gold" style="margin:10px 16px 4px;display:block;text-align:center">تواصل معنا</a>
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px 14px;border-top:1px solid rgba(255,255,255,.1);margin-top:4px">
+    <span style="font-size:13px;color:rgba(255,255,255,.55)">الوضع النهاري / الليلي</span>
+    <button onclick="(function(){var h=document.documentElement;var t=h.getAttribute('data-theme')==='light'?'dark':'light';h.setAttribute('data-theme',t);try{localStorage.setItem('sf-theme',t)}catch(e){}var m=document.querySelectorAll('.dm-moon');var s=document.querySelectorAll('.dm-sun');m.forEach(function(x){x.style.display=t==='dark'?'':'none'});s.forEach(function(x){x.style.display=t==='light'?'':'none'})})()" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;color:#fff;padding:6px 14px;font-size:12px;cursor:pointer;font-family:inherit">🌙 / ☀️</button>
+  </div>
 </nav>
 
 
@@ -340,7 +345,7 @@ img{max-width:100%;display:block}
     </div>
     <div class="svc-grid">
 
-      <a href="hr-outsourcing.html" class="svc-card">
+      <a href="mailto:info@staffona.com?subject=الاستخدام المُدار" class="svc-card">
         <div class="svc-ic">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
@@ -349,7 +354,7 @@ img{max-width:100%;display:block}
         <span class="svc-link">اعرف المزيد ←</span>
       </a>
 
-      <a href="payroll-egypt.html" class="svc-card">
+      <a href="mailto:info@staffona.com?subject=إدارة الرواتب" class="svc-card">
         <div class="svc-ic">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
@@ -358,7 +363,7 @@ img{max-width:100%;display:block}
         <span class="svc-link">اعرف المزيد ←</span>
       </a>
 
-      <a href="recruitment-egypt.html" class="svc-card">
+      <a href="mailto:info@staffona.com?subject=التوظيف" class="svc-card">
         <div class="svc-ic">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
@@ -367,7 +372,7 @@ img{max-width:100%;display:block}
         <span class="svc-link">اعرف المزيد ←</span>
       </a>
 
-      <a href="compliance.html" class="svc-card">
+      <a href="mailto:info@staffona.com?subject=الامتثال القانوني" class="svc-card">
         <div class="svc-ic">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2z"/></svg>
         </div>
@@ -377,6 +382,7 @@ img{max-width:100%;display:block}
       </a>
 
     </div>
+    <p style="text-align:center;font-size:13px;color:var(--sl);margin-top:24px">انقر على أي خدمة للتواصل المباشر معنا • صفحات الخدمات التفصيلية قادمة قريباً</p>
   </div>
 </section>
 

@@ -517,7 +517,7 @@ document.getElementById('careerForm').addEventListener('submit', function(e) {
 
 function esc(s) { return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-loadJobs();
+document.addEventListener('DOMContentLoaded', loadJobs);
 </script>
 </body>
 </html>
