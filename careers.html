@@ -465,12 +465,9 @@ function applyFor(role) {
     if (sel.options[i].value === role) { sel.selectedIndex = i; break; }
   }
   onRoleChange();
-  // Scroll to form with fixed nav offset
+  // Scroll to form — scroll-margin-top:84px in CSS handles nav offset
   var el = document.getElementById('appSection');
-  if (el) {
-    var top = el.getBoundingClientRect().top + window.pageYOffset - 84;
-    window.scrollTo({ top: top, behavior: 'smooth' });
-  }
+  if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   // Visual feedback: highlight the form section
   setTimeout(function() {
     var wrap = document.getElementById('appSection');
