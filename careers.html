@@ -10,7 +10,7 @@
 <meta property="og:title" content="Careers at Staffona — Join Egypt's HR Outsourcing Team">
 <meta property="og:description" content="Open roles in HR, payroll, and recruitment at Staffona — Egypt's growing HR outsourcing consultancy in Alexandria.">
 <meta property="og:image" content="https://staffona.com/og-banner.png">
-<link rel="icon" type="image/png" href="Favicon.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico"><link rel="icon" type="image/png" href="/Favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.v2.css">
@@ -465,14 +465,20 @@ function applyFor(role) {
     if (sel.options[i].value === role) { sel.selectedIndex = i; break; }
   }
   onRoleChange();
-  // Scroll: use scrollIntoView then nudge up for fixed nav
+  // Scroll to form with fixed nav offset
   var el = document.getElementById('appSection');
-  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (el) {
+    var top = el.getBoundingClientRect().top + window.pageYOffset - 84;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+  // Visual feedback: highlight the form section
   setTimeout(function() {
-    window.scrollBy(0, -90);
-  }, 50);
-  // Gold highlight to confirm action
-  setTimeout(function() {
+    var wrap = document.getElementById('appSection');
+    if (wrap) {
+      wrap.style.transition = 'box-shadow 0.3s';
+      wrap.style.boxShadow = '0 0 0 3px rgba(200,151,58,0.6)';
+      setTimeout(function() { wrap.style.boxShadow = ''; }, 2000);
+    }
     sel.style.outline = '2px solid rgba(200,151,58,0.8)';
     sel.style.borderColor = 'rgba(200,151,58,0.8)';
     setTimeout(function() {
