@@ -212,7 +212,7 @@ img{max-width:100%;display:block}
   --border:rgba(255,255,255,.08);--tx:#e2e8f0;--bd:rgba(255,255,255,.08)
 }
 [data-theme="light"] body{background:#fff;color:#0B1F3A}
-[data-theme="light"] .svc-card,[data-theme="light"] .cg-item,[data-theme="light"] .faq-item,[data-theme="light"] .why-card,[data-theme="light"] .ps-i{background:#fff;border-color:rgba(11,31,58,.1)}
+[data-theme="light"] .svc-card,[data-theme="light"] .cg-item,[data-theme="light"] .faq-item,[data-theme="light"] .ps-i{background:#fff;border-color:rgba(11,31,58,.1)}
 [data-theme="light"] .faq-q{background:#F8F9FB}
 [data-theme="light"] .why-bg{background:#0B1F3A}
 [data-theme="light"] .cta-bg{background:var(--navy)}
@@ -405,11 +405,49 @@ img{max-width:100%;display:block}
         <div class="why-t">تجربة دولية واسعة</div>
         <p class="why-d">نخدم شركات من الإمارات والسعودية والمملكة المتحدة والولايات المتحدة — ونتعامل بسلاسة مع الاختلافات في التوقيت والعملة والأنظمة.</p>
       </div>
+      <div class="why-card">
+        <div class="why-ic">💬</div>
+        <div class="why-t">تواصل مباشر بدون وسطاء</div>
+        <p class="why-d">لديك مدير حساب مخصص يرد على استفساراتك مباشرة — لا call centers، لا بوابات إلكترونية معقدة.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ic">📊</div>
+        <div class="why-t">تقارير شهرية شفافة</div>
+        <p class="why-d">تقارير رواتب وتأمينات وضرائب واضحة وموثقة كل شهر — تعرف بالضبط ما يدفعه كل موظف وما تدفعه أنت.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ic">🔒</div>
+        <div class="why-t">بيانات آمنة ومحمية</div>
+        <p class="why-d">بيانات موظفيك ورواتبهم محمية بمعايير أمان عالية — لا مشاركة بيانات مع أطراف ثالثة غير مصرح بها.</p>
+      </div>
     </div>
   </div>
 </section>
 
 
+<!-- COMPARISON -->
+<section class="sec">
+  <div class="w">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="lbl" style="justify-content:center">قارن بنفسك</div>
+      <h2 class="h2 h2-c">ستافونا مقابل <span>التعامل المباشر</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:var(--rx);overflow:hidden;background:var(--border)">
+      <div style="background:var(--off);padding:20px 24px;font-size:13px;font-weight:700;color:var(--sl);text-transform:uppercase;letter-spacing:.06em">الطريقة التقليدية</div>
+      <div style="background:var(--navy);padding:20px 24px;font-size:13px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em">مع ستافونا</div>
+      <div style="background:var(--white);padding:18px 24px;font-size:14px;color:var(--sl)">تحتاج كيان قانوني محلي</div>
+      <div style="background:var(--navy-m);padding:18px 24px;font-size:14px;color:#e2e8f0">لا حاجة لكيان — نحن صاحب العمل القانوني</div>
+      <div style="background:var(--white);padding:18px 24px;font-size:14px;color:var(--sl)">6–12 شهراً لتأسيس الشركة</div>
+      <div style="background:var(--navy-m);padding:18px 24px;font-size:14px;color:#e2e8f0">تبدأ التوظيف خلال 48–72 ساعة</div>
+      <div style="background:var(--white);padding:18px 24px;font-size:14px;color:var(--sl)">فريق محاسبة + قانوني + موارد بشرية داخلي</div>
+      <div style="background:var(--navy-m);padding:18px 24px;font-size:14px;color:#e2e8f0">فريق ستافونا المتكامل بسعر ثابت</div>
+      <div style="background:var(--white);padding:18px 24px;font-size:14px;color:var(--sl)">مخاطر عالية من المخالفات غير المقصودة</div>
+      <div style="background:var(--navy-m);padding:18px 24px;font-size:14px;color:#e2e8f0">امتثال كامل — نتحمل المسؤولية القانونية</div>
+      <div style="background:var(--white);padding:18px 24px;font-size:14px;color:var(--sl)">تكاليف مرتفعة وغير متوقعة</div>
+      <div style="background:var(--navy-m);padding:18px 24px;font-size:14px;color:#e2e8f0">تكلفة شفافة وقابلة للتخطيط</div>
+    </div>
+  </div>
+</section>
 <!-- PROCESS -->
 <section class="sec" id="process">
   <div class="w">
@@ -461,12 +499,12 @@ img{max-width:100%;display:block}
         <div class="cg-desc">تريد الاستعانة بمصدر خارجي للموارد البشرية والرواتب</div>
       </div>
       <div class="cg-item">
-        <div class="cg-flag" style="display:flex;justify-content:center;gap:6px"><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="200" fill="#009B3A"/><rect y="200" width="900" height="200" fill="#fff"/><rect y="400" width="900" height="200" fill="#000"/><rect width="225" height="600" fill="#EF3340"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">الإمارات</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="600" fill="#006C35"/><rect x="100" y="270" width="700" height="60" fill="#fff" rx="4"/><rect x="680" y="220" width="120" height="160" fill="#fff" rx="4"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">السعودية</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="600" fill="#8D1B3D"/><polygon points="0,0 240,0 300,50 240,100 300,150 240,200 300,250 240,300 300,350 240,400 300,450 240,500 300,550 240,600 0,600" fill="#fff"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">قطر</span></span></div>
+        <div class="cg-flag" style="display:flex;justify-content:center;gap:6px"><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="200" fill="#009B3A"/><rect y="200" width="900" height="200" fill="#fff"/><rect y="400" width="900" height="200" fill="#000"/><rect width="225" height="600" fill="#EF3340"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">الإمارات</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="600" fill="#006C35"/><rect x="50" y="283" width="800" height="34" fill="#fff" rx="5"/><rect x="400" y="220" width="100" height="160" fill="#fff" rx="5"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">السعودية</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="600" fill="#8D1B3D"/><polygon points="0,0 240,0 300,50 240,100 300,150 240,200 300,250 240,300 300,350 240,400 300,450 240,500 300,550 240,600 0,600" fill="#fff"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">قطر</span></span></div>
         <div class="cg-country">شركات الخليج</div>
         <div class="cg-desc">تعيّن موظفين مصريين أو تُنشئ فرقاً في مصر</div>
       </div>
       <div class="cg-item">
-        <div class="cg-flag" style="display:flex;justify-content:center;gap:6px"><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 600 400" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="600" height="400" fill="#00247D"/><path d="M0,0 L600,400 M600,0 L0,400" stroke="#fff" stroke-width="80"/><path d="M0,0 L600,400 M600,0 L0,400" stroke="#CF142B" stroke-width="50"/><path d="M300,0 V400 M0,200 H600" stroke="#fff" stroke-width="110"/><path d="M300,0 V400 M0,200 H600" stroke="#CF142B" stroke-width="70"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">المملكة المتحدة</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="600" fill="#B22234"/><rect y="46" width="900" height="46" fill="#fff"/><rect y="138" width="900" height="46" fill="#fff"/><rect y="231" width="900" height="46" fill="#fff"/><rect y="323" width="900" height="46" fill="#fff"/><rect y="415" width="900" height="46" fill="#fff"/><rect y="508" width="900" height="46" fill="#fff"/><rect width="360" height="323" fill="#3C3B6E"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">أمريكا</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="600" fill="#003399"/><g fill="#FFCC00"><circle cx="450" cy="100" r="35"/><circle cx="531" cy="122" r="35"/><circle cx="590" cy="185" r="35"/><circle cx="610" cy="270" r="35"/><circle cx="590" cy="355" r="35"/><circle cx="531" cy="418" r="35"/><circle cx="450" cy="440" r="35"/><circle cx="369" cy="418" r="35"/><circle cx="310" cy="355" r="35"/><circle cx="290" cy="270" r="35"/><circle cx="310" cy="185" r="35"/><circle cx="369" cy="122" r="35"/></g></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">أوروبا</span></span></div>
+        <div class="cg-flag" style="display:flex;justify-content:center;gap:6px"><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 600 400" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="600" height="400" fill="#00247D"/><path d="M0,0 L600,400 M600,0 L0,400" stroke="#fff" stroke-width="80"/><path d="M0,0 L600,400 M600,0 L0,400" stroke="#CF142B" stroke-width="50"/><path d="M300,0 V400 M0,200 H600" stroke="#fff" stroke-width="110"/><path d="M300,0 V400 M0,200 H600" stroke="#CF142B" stroke-width="70"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">بريطانيا</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="600" fill="#B22234"/><rect y="46" width="900" height="46" fill="#fff"/><rect y="138" width="900" height="46" fill="#fff"/><rect y="231" width="900" height="46" fill="#fff"/><rect y="323" width="900" height="46" fill="#fff"/><rect y="415" width="900" height="46" fill="#fff"/><rect y="508" width="900" height="46" fill="#fff"/><rect width="360" height="323" fill="#3C3B6E"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">أمريكا</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="600" fill="#003399"/><g fill="#FFCC00"><circle cx="450" cy="100" r="35"/><circle cx="531" cy="122" r="35"/><circle cx="590" cy="185" r="35"/><circle cx="610" cy="270" r="35"/><circle cx="590" cy="355" r="35"/><circle cx="531" cy="418" r="35"/><circle cx="450" cy="440" r="35"/><circle cx="369" cy="418" r="35"/><circle cx="310" cy="355" r="35"/><circle cx="290" cy="270" r="35"/><circle cx="310" cy="185" r="35"/><circle cx="369" cy="122" r="35"/></g></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">أوروبا</span></span></div>
         <div class="cg-country">شركات دولية</div>
         <div class="cg-desc">تريد التوسع في مصر دون كيان قانوني محلي</div>
       </div>

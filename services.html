@@ -224,6 +224,8 @@
   var DEFAULTS = [];
 
   /* Load or seed */
+  /* Always wipe stale seeded reviews so section stays hidden until real ones added */
+  try { localStorage.removeItem(REVS_KEY); } catch(e){}
   var reviews;
   try { reviews = JSON.parse(localStorage.getItem(REVS_KEY) || 'null'); } catch(e){ reviews = null; }
   if (!reviews || !reviews.length) {
