@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>استشارات موارد بشرية وإدارة الرواتب في مصر | ستافونا</title>
-<meta name="description" content="ستافونا — شريكك المتخصص في إدارة الموارد البشرية والرواتب والتوظيف في مصر. نخدم الشركات المصرية والدولية بخبرة في قانون العمل المصري.">
+<meta name="description" content="ستافونا — شريكك المتخصص في إدارة الموارد البشرية والرواتب والتوظيف في مصر. نخدم الشركات المصرية والخليجية والدولية بخبرة عميقة في قانون العمل المصري.">
 <link rel="canonical" href="https://staffona.com/ar">
 <link rel="alternate" hreflang="ar" href="https://staffona.com/ar">
 <link rel="alternate" hreflang="en" href="https://staffona.com/">
@@ -14,12 +14,11 @@
 <meta property="og:title" content="استشارات موارد بشرية في مصر | ستافونا">
 <meta property="og:description" content="إدارة الرواتب والتوظيف والامتثال لقانون العمل — خدمات متكاملة للشركات في مصر.">
 <meta property="og:image" content="https://staffona.com/og-banner.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+
 /* ── RESET & BASE ── */
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -203,8 +202,24 @@ img{max-width:100%;display:block}
   .nav-links{display:none!important}
   .nav-r .btn:not(.hbg){display:none}
 }
+/* ── DARK MODE ── */
+[data-theme="light"]{
+  --white:#fff;--off:#F8F9FB;--text:#0B1F3A;--sl:#475569;
+  --border:rgba(11,31,58,.1);--tx:#0B1F3A;--bd:rgba(11,31,58,.12);
+  --gpl:rgba(200,151,58,.06)
+}
+[data-theme="dark"]{
+  --white:#0f1e35;--off:#0a1628;--text:#e2e8f0;--sl:#94a3b8;
+  --border:rgba(255,255,255,.08);--tx:#e2e8f0;--bd:rgba(255,255,255,.08);
+  --gpl:rgba(200,151,58,.08)
+}
+
+/* ── DARK MODE BUTTON ── */
+.dm-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;cursor:pointer;flex-shrink:0;transition:all var(--t)}
+.dm-btn:hover{background:rgba(255,255,255,.14)}
+.dm-moon,.dm-sun{width:16px;height:16px}
+
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://staffona.com/ar#page","name":"استشارات موارد بشرية في مصر | ستافونا","description":"ستافونا — شريكك المتخصص في إدارة الموارد البشرية والرواتب والتوظيف في مصر.","url":"https://staffona.com/ar","inLanguage":"ar","publisher":{"@type":"Organization","name":"Staffona","url":"https://staffona.com"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://staffona.com/ar"}]}]}</script>
 </head>
 <body>
 
@@ -213,7 +228,8 @@ img{max-width:100%;display:block}
   <div class="w">
     <nav class="nav-in">
       <a href="ar.html" class="nav-logo">
-        <img src="/Logo.png" alt="Staffona">
+        <img src="/Logo.png" alt="Staffona" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="flb-fb" style="display:none">Staff<em>ona</em></span>
       </a>
       <ul class="nav-links">
         <li><a href="#services">خدماتنا</a></li>
@@ -222,8 +238,12 @@ img{max-width:100%;display:block}
         <li><a href="#faq">أسئلة شائعة</a></li>
       </ul>
       <div class="nav-r">
+        <button class="dm-btn" aria-label="تبديل الوضع">
+          <svg class="dm-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="dm-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
         <a href="index.html" class="lang-btn" title="English">🌐 EN</a>
-        <a href="mailto:info@staffona.com" class="btn btn-gold btn-sm" style="font-size:13px">تواصل معنا</a>
+        <a href="mailto:info@staffona.com" class="btn btn-gold" style="font-size:13px;padding:8px 16px">تواصل معنا</a>
         <button class="hbg" id="hbg" aria-label="القائمة" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </nav>
@@ -235,9 +255,11 @@ img{max-width:100%;display:block}
   <a href="#why">لماذا ستافونا</a>
   <a href="#process">آلية العمل</a>
   <a href="#faq">أسئلة شائعة</a>
+  <a href="payroll-calculator.html">🧮 حاسبة الرواتب</a>
   <a href="index.html">🌐 English</a>
-  <a href="mailto:info@staffona.com" class="btn btn-gold" style="text-align:center;margin-top:8px">تواصل معنا</a>
+  <a href="mailto:info@staffona.com" class="btn btn-gold" style="margin:10px 16px 4px;display:block;text-align:center">تواصل معنا</a>
 </nav>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -304,6 +326,7 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
+
 <!-- SERVICES -->
 <section class="sec" id="services">
   <div class="w">
@@ -354,6 +377,7 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
+
 <!-- WHY STAFFONA -->
 <section class="sec why-bg" id="why">
   <div class="w">
@@ -381,6 +405,7 @@ img{max-width:100%;display:block}
     </div>
   </div>
 </section>
+
 
 <!-- PROCESS -->
 <section class="sec" id="process">
@@ -418,6 +443,7 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
+
 <!-- WHO WE SERVE -->
 <section class="sec" style="background:var(--off)">
   <div class="w">
@@ -426,9 +452,65 @@ img{max-width:100%;display:block}
       <h2 class="h2" style="text-align:center">شركات من <span>كل أنحاء العالم</span> تثق بنا</h2>
     </div>
     <div class="clients-grid">
-      <div class="cg-item"><div class="cg-flag">🇪🇬</div><div class="cg-country">شركات مصرية</div><div class="cg-desc">تريد الاستعانة بمصدر خارجي للموارد البشرية والرواتب</div></div>
-      <div class="cg-item"><div class="cg-flag">🇦🇪🇸🇦🇶🇦</div><div class="cg-country">شركات الخليج</div><div class="cg-desc">تعيّن موظفين مصريين أو تُنشئ فرقاً في مصر</div></div>
-      <div class="cg-item"><div class="cg-flag">🇬🇧🇺🇸🇪🇺</div><div class="cg-country">شركات دولية</div><div class="cg-desc">تريد التوسع في مصر دون كيان قانوني محلي</div></div>
+      <div class="cg-item">
+        <div class="cg-flag"><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="200" fill="#CE1126"/><rect y="200" width="900" height="200" fill="#fff"/><rect y="400" width="900" height="200" fill="#000"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">مصر</span></span></div>
+        <div class="cg-country">شركات مصرية</div>
+        <div class="cg-desc">تريد الاستعانة بمصدر خارجي للموارد البشرية والرواتب</div>
+      </div>
+      <div class="cg-item">
+        <div class="cg-flag" style="display:flex;justify-content:center;gap:6px"><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="200" fill="#009B3A"/><rect y="200" width="900" height="200" fill="#fff"/><rect y="400" width="900" height="200" fill="#000"/><rect width="225" height="600" fill="#EF3340"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">الإمارات</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="600" fill="#006C35"/><rect x="100" y="270" width="700" height="60" fill="#fff" rx="4"/><rect x="680" y="220" width="120" height="160" fill="#fff" rx="4"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">السعودية</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="600" fill="#8D1B3D"/><polygon points="0,0 240,0 300,50 240,100 300,150 240,200 300,250 240,300 300,350 240,400 300,450 240,500 300,550 240,600 0,600" fill="#fff"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">قطر</span></span></div>
+        <div class="cg-country">شركات الخليج</div>
+        <div class="cg-desc">تعيّن موظفين مصريين أو تُنشئ فرقاً في مصر</div>
+      </div>
+      <div class="cg-item">
+        <div class="cg-flag" style="display:flex;justify-content:center;gap:6px"><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 600 400" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="600" height="400" fill="#00247D"/><path d="M0,0 L600,400 M600,0 L0,400" stroke="#fff" stroke-width="80"/><path d="M0,0 L600,400 M600,0 L0,400" stroke="#CF142B" stroke-width="50"/><path d="M300,0 V400 M0,200 H600" stroke="#fff" stroke-width="110"/><path d="M300,0 V400 M0,200 H600" stroke="#CF142B" stroke-width="70"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">المملكة المتحدة</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="600" fill="#B22234"/><rect y="46" width="900" height="46" fill="#fff"/><rect y="138" width="900" height="46" fill="#fff"/><rect y="231" width="900" height="46" fill="#fff"/><rect y="323" width="900" height="46" fill="#fff"/><rect y="415" width="900" height="46" fill="#fff"/><rect y="508" width="900" height="46" fill="#fff"/><rect width="360" height="323" fill="#3C3B6E"/></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">أمريكا</span></span><span style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;width:60px"><span style="display:flex;justify-content:center"><svg width="40" height="27" viewBox="0 0 900 600" style="border-radius:3px;display:block;box-shadow:0 1px 4px rgba(0,0,0,.2)"><rect width="900" height="600" fill="#003399"/><g fill="#FFCC00"><circle cx="450" cy="100" r="35"/><circle cx="531" cy="122" r="35"/><circle cx="590" cy="185" r="35"/><circle cx="610" cy="270" r="35"/><circle cx="590" cy="355" r="35"/><circle cx="531" cy="418" r="35"/><circle cx="450" cy="440" r="35"/><circle cx="369" cy="418" r="35"/><circle cx="310" cy="355" r="35"/><circle cx="290" cy="270" r="35"/><circle cx="310" cy="185" r="35"/><circle cx="369" cy="122" r="35"/></g></svg></span><span style="font-size:10px;font-weight:700;color:var(--sl);text-align:center">أوروبا</span></span></div>
+        <div class="cg-country">شركات دولية</div>
+        <div class="cg-desc">تريد التوسع في مصر دون كيان قانوني محلي</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING TEASER -->
+<section class="sec">
+  <div class="w">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="lbl" style="justify-content:center">الأسعار</div>
+      <h2 class="h2 h2-c">أسعار شفافة <span>بدون مفاجآت</span></h2>
+      <p class="sub" style="text-align:center;margin:0 auto">لا رسوم خفية. لا التزامات طويلة الأجل. فقط خدمة موارد بشرية احترافية بتكلفة مناسبة.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--rx);padding:32px 24px;text-align:center">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:12px">الاستخدام المُدار</div>
+        <div style="font-size:13px;color:var(--sl);line-height:1.7">رسوم إدارة شهرية لكل موظف + خدمات الرواتب والامتثال</div>
+        <a href="pricing.html" style="display:inline-flex;align-items:center;gap:5px;margin-top:16px;font-size:13px;font-weight:700;color:var(--gold)">اطلع على التفاصيل ←</a>
+      </div>
+      <div style="background:var(--navy);border-radius:var(--rx);padding:32px 24px;text-align:center;position:relative">
+        <div style="position:absolute;top:-12px;right:50%;transform:translateX(50%);background:var(--gold);color:var(--navy);font-size:11px;font-weight:800;padding:3px 12px;border-radius:100px">الأكثر طلباً</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:12px">حزمة الموارد البشرية الكاملة</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.7">رواتب + امتثال + توظيف + استشارات قانونية</div>
+        <a href="pricing.html" style="display:inline-flex;align-items:center;gap:5px;margin-top:16px;font-size:13px;font-weight:700;color:var(--gold)">اطلع على التفاصيل ←</a>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--rx);padding:32px 24px;text-align:center">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:12px">إدارة الرواتب فقط</div>
+        <div style="font-size:13px;color:var(--sl);line-height:1.7">للشركات التي لديها كيان محلي وتحتاج فقط إدارة الرواتب</div>
+        <a href="pricing.html" style="display:inline-flex;align-items:center;gap:5px;margin-top:16px;font-size:13px;font-weight:700;color:var(--gold)">اطلع على التفاصيل ←</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CALCULATOR CTA -->
+<section class="sec" style="background:var(--off)">
+  <div class="w">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <div>
+        <div class="lbl">أداة مجانية</div>
+        <h2 class="h2" style="margin-bottom:10px">احسب تكلفة <span>الموظف المصري</span></h2>
+        <p class="sub">حاسبة الرواتب المصرية لعام 2026 — ضريبة الدخل، التأمينات الاجتماعية، وتكلفة صاحب العمل. مجانية وفورية.</p>
+      </div>
+      <div style="flex-shrink:0">
+        <a href="payroll-calculator.html" class="btn btn-gold" style="font-size:15px;padding:14px 28px">احسب الآن — مجاناً ←</a>
+      </div>
     </div>
   </div>
 </section>
@@ -510,6 +592,7 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
+
 <!-- CTA -->
 <section class="sec cta-bg">
   <div class="w">
@@ -524,6 +607,7 @@ img{max-width:100%;display:block}
     </div>
   </div>
 </section>
+
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -597,6 +681,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 </script>
+<script src="shared.js"></script>
+
+
 <script src="shared.js"></script>
 </body>
 </html>
