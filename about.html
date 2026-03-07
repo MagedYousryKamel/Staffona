@@ -287,28 +287,7 @@ document.querySelector('.faq-list').addEventListener('click',function(e){
 /* ── TESTIMONIALS — driven by sf-reviews-v1 localStorage (managed via /careers-admin.html) ── */
 (function(){
   var REVS_KEY = 'sf-reviews-v1';
-  var DEFAULTS = [
-    {id:101,name:'Khalid R.',role:'Head of Engineering \u00b7 Gulf-Based Employer',country:'📍 Dubai, UAE',
-     service:'Managed Employment',stars:'5',status:'Published',
-     quote:'We hired three Egyptian engineers through Staffona without setting up a local entity. The whole process \u2014 contracts, NOSI, payroll \u2014 was done in four days. Our team in Dubai had no idea how smooth it could be.',
-     date:'2026-01-15T00:00:00.000Z'},
-    {id:102,name:'Nadia F.',role:'Finance Director \u00b7 Cairo-Based Business',country:'📍 Cairo, Egypt',
-     service:'Compliance & Payroll',stars:'5',status:'Published',
-     quote:'Staffona cleaned up three years of payroll compliance issues in two months \u2014 dealing directly with NOSI and the Tax Authority on our behalf. Something we\'d been delaying for years, resolved cleanly.',
-     date:'2026-01-20T00:00:00.000Z'},
-    {id:103,name:'James T.',role:'Managing Director \u00b7 UK Tech Company',country:'📍 London, UK',
-     service:'Recruitment + EOR',stars:'5',status:'Published',
-     quote:'As a UK startup, we needed one Egyptian data analyst and had no idea where to start legally. Staffona found the candidate, drafted the Arabic contract, and processed first payroll. Genuinely exceptional service.',
-     date:'2026-01-28T00:00:00.000Z'},
-    {id:104,name:'Ahmed S.',role:'Managing Director \u00b7 Alexandria Business',country:'📍 Alexandria, Egypt',
-     service:'Payroll Management',stars:'5',status:'Published',
-     quote:'Our monthly payroll used to take our accountant two full days. With Staffona, we send one number and everything else is handled \u2014 payslips, NOSI, Form 4. The best operational decision we made this year.',
-     date:'2026-02-03T00:00:00.000Z'},
-    {id:105,name:'Tariq A.',role:'Operations Director \u00b7 Saudi-Based Employer',country:'📍 Riyadh, Saudi Arabia',
-     service:'HR Outsourcing',stars:'5',status:'Published',
-     quote:'Expanding into Egypt from Riyadh, we needed someone who understood both sides \u2014 Arabic-speaking, Egyptian law expertise, comfortable with international business culture. Staffona was exactly that.',
-     date:'2026-02-10T00:00:00.000Z'}
-  ];
+  var DEFAULTS = [];
 
   /* Load or seed */
   var reviews;
